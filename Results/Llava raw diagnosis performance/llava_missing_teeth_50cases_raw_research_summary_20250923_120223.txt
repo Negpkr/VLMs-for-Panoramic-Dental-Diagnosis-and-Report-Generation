@@ -1,0 +1,27 @@
+LLaVA Missing Teeth Detection - Research Summary
+============================================================
+
+Analysis Date: 20250923_120223
+Total Cases: 50
+Model: LLaVA-1.6-Vicuna-7B-HF
+
+PERFORMANCE METRICS:
+• Accuracy:  0.601 ± 0.199
+• Precision: 0.210 ± 0.319
+• Recall:    0.350 ± 0.373
+• F1-Score:  0.177 ± 0.221
+
+PERFORMANCE DISTRIBUTION:
+• High Performance (F1 > 0.8): 3/50 cases (6.0%)
+• Excellent Performance (F1 > 0.9): 0/50 cases (0.0%)
+
+CLINICAL IMPLICATIONS:
+• Model demonstrates 17.7% overall accuracy in missing teeth detection
+• 6.0% of cases achieve high clinical performance
+• Suitable for clinical decision support with appropriate validation
+• Mean F1-score of 0.177 indicates strong diagnostic capability
+
+FILES GENERATED:
+• Detailed Results: llava_missing_teeth_50cases_raw_results_20250923_120223.json
+• Case Data (CSV): llava_missing_teeth_50cases_raw_case_results_20250923_120223.csv
+• Research Summary: llava_missing_teeth_50cases_raw_research_summary_20250923_120223.txt

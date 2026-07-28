@@ -1,0 +1,45 @@
+{
+  "evaluation_type": "TH30",
+  "metrics": {
+    "f1": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "accuracy": 0.619375,
+    "tp": 0,
+    "fp": 609,
+    "fn": 0,
+    "tn": 991,
+    "n_samples": 1600
+  },
+  "bootstrap_ci": {
+    "f1": {
+      "mean": 0.0,
+      "ci_lower": 0,
+      "ci_upper": 0.0,
+      "se": 0.0,
+      "margin_error": 0.0
+    },
+    "precision": {
+      "mean": 0.0,
+      "ci_lower": 0,
+      "ci_upper": 0.0,
+      "se": 0.0,
+      "margin_error": 0.0
+    },
+    "recall": {
+      "mean": 0.0,
+      "ci_lower": 0,
+      "ci_upper": 0.0,
+      "se": 0.0,
+      "margin_error": 0.0
+    },
+    "accuracy": {
+      "mean": 0.619375,
+      "ci_lower": 0.5955835138734594,
+      "ci_upper": 0.6431664861265406,
+      "se": 0.012138513329867666,
+      "margin_error": 0.023791486126540626
+    }
+  },
+  "analysis_timestamp": "2026-07-21 21:08:37"
+}

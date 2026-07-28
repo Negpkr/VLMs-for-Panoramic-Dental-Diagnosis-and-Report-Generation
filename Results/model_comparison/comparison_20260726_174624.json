@@ -1,0 +1,1583 @@
+{
+  "timestamp": "20260726_174624",
+  "n_cases": 50,
+  "case_ids": [
+    "33",
+    "34",
+    "35",
+    "50",
+    "51",
+    "56",
+    "57",
+    "58",
+    "59",
+    "60",
+    "61",
+    "66",
+    "67",
+    "68",
+    "69",
+    "92",
+    "93",
+    "94",
+    "95",
+    "102",
+    "103",
+    "104",
+    "105",
+    "132",
+    "133",
+    "134",
+    "135",
+    "150",
+    "151",
+    "156",
+    "157",
+    "158",
+    "159",
+    "160",
+    "161",
+    "166",
+    "167",
+    "168",
+    "169",
+    "192",
+    "193",
+    "194",
+    "195",
+    "211",
+    "216",
+    "218",
+    "220",
+    "227",
+    "229",
+    "274"
+  ],
+  "parse_mode": "loose",
+  "prompt_name": "compact",
+  "prompt": "This is a panoramic dental X-ray. Teeth are numbered 1-32 (1-16 upper jaw, 17-32 lower jaw).\nIdentify which teeth are missing.\nAnswer in exactly this format:\nMissing teeth: <comma-separated numbers, or None>\nTotal missing: <count>\nConfidence: High/Medium/Low",
+  "models": {
+    "llava": {
+      "model_key": "llava",
+      "display_name": "LLaVA-1.5-7B",
+      "repo_id": "llava-hf/llava-1.5-7b-hf",
+      "metrics": {
+        "n_cases": 46,
+        "n_failed": 4,
+        "image_level": {
+          "accuracy": 0.1956521739130435,
+          "precision": 0.8,
+          "recall": 0.1,
+          "f1_score": 0.17777777777777778,
+          "confusion_matrix": [
+            [
+              5,
+              1
+            ],
+            [
+              36,
+              4
+            ]
+          ]
+        },
+        "per_tooth": {
+          "accuracy": 0.7989130434782609,
+          "precision": 0.09803921568627451,
+          "recall": 0.0196078431372549,
+          "f1_score": 0.032679738562091505,
+          "confusion_matrix": [
+            [
+              1171,
+              46
+            ],
+            [
+              250,
+              5
+            ]
+          ]
+        },
+        "mean_predicted_count": 1.108695652173913,
+        "mean_ground_truth_count": 5.543478260869565,
+        "mean_seconds_per_case": 1.2014676487964133
+      },
+      "results": [
+        {
+          "case_id": "33",
+          "response": "Missing teeth: 45, 49, 50, 58",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 3.051358938217163
+        },
+        {
+          "case_id": "34",
+          "response": "Missing teeth: 45, 48, 50, 52",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            26
+          ],
+          "confidence": "Medium",
+          "seconds": 1.4486336708068848
+        },
+        {
+          "case_id": "35",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            18,
+            20,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9692895412445068
+        },
+        {
+          "case_id": "50",
+          "response": "Missing teeth: 45, 49",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 0.9707472324371338
+        },
+        {
+          "case_id": "51",
+          "response": "Missing teeth: 4,5,8,9,10,11,12,13,14,15,16",
+          "predicted_teeth": [
+            4,
+            5,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 2.2752184867858887
+        },
+        {
+          "case_id": "56",
+          "response": "Missing teeth: 45, 49, 50, 51",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.4405186176300049
+        },
+        {
+          "case_id": "57",
+          "response": "Missing teeth: 45, 49",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9633512496948242
+        },
+        {
+          "case_id": "58",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            5,
+            13,
+            16,
+            17,
+            21,
+            29,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9680612087249756
+        },
+        {
+          "case_id": "59",
+          "response": "Missing teeth: 45, 48, 50, 52",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.436340093612671
+        },
+        {
+          "case_id": "60",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9643683433532715
+        },
+        {
+          "case_id": "61",
+          "response": "Missing teeth: 45, 48, 50, 53",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.437211036682129
+        },
+        {
+          "case_id": "66",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            21,
+            29
+          ],
+          "confidence": "Medium",
+          "seconds": 1.0466971397399902
+        },
+        {
+          "case_id": "67",
+          "response": "Missing teeth: 8, 9, 10, 11, 14, 15, 16, 18, 19, 20, 22, 23, 24, 26, 27, 29, 30",
+          "predicted_teeth": [
+            8,
+            9,
+            10,
+            11,
+            14,
+            15,
+            16,
+            18,
+            19,
+            20,
+            22,
+            23,
+            24,
+            26,
+            27,
+            29,
+            30
+          ],
+          "ground_truth_teeth": [
+            1,
+            2,
+            16,
+            17,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 4.448654651641846
+        },
+        {
+          "case_id": "68",
+          "response": "Missing teeth: 45",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 0.734567403793335
+        },
+        {
+          "case_id": "69",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9727275371551514
+        },
+        {
+          "case_id": "92",
+          "error": "UnidentifiedImageError: cannot identify image file '/home/s222393187/Dental/Tufts_Dental_Database/Radiographs/92.JPG'"
+        },
+        {
+          "case_id": "93",
+          "error": "UnidentifiedImageError: cannot identify image file '/home/s222393187/Dental/Tufts_Dental_Database/Radiographs/93.JPG'"
+        },
+        {
+          "case_id": "94",
+          "error": "UnidentifiedImageError: cannot identify image file '/home/s222393187/Dental/Tufts_Dental_Database/Radiographs/94.JPG'"
+        },
+        {
+          "case_id": "95",
+          "error": "UnidentifiedImageError: cannot identify image file '/home/s222393187/Dental/Tufts_Dental_Database/Radiographs/95.JPG'"
+        },
+        {
+          "case_id": "102",
+          "response": "Missing teeth: 45",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 0.7357735633850098
+        },
+        {
+          "case_id": "103",
+          "response": "Missing teeth: 45, 49",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            26
+          ],
+          "confidence": "Medium",
+          "seconds": 0.964545488357544
+        },
+        {
+          "case_id": "104",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9694724082946777
+        },
+        {
+          "case_id": "105",
+          "response": "Missing teeth: 45",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            5,
+            13,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.7357287406921387
+        },
+        {
+          "case_id": "132",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 0.9739398956298828
+        },
+        {
+          "case_id": "133",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9791052341461182
+        },
+        {
+          "case_id": "134",
+          "response": "Missing teeth: 45",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            16,
+            17,
+            19
+          ],
+          "confidence": "Medium",
+          "seconds": 0.7457442283630371
+        },
+        {
+          "case_id": "135",
+          "response": "Missing teeth: 45, 48, 50",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            23,
+            30,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2174441814422607
+        },
+        {
+          "case_id": "150",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            14
+          ],
+          "confidence": "Medium",
+          "seconds": 0.970252275466919
+        },
+        {
+          "case_id": "151",
+          "response": "Missing teeth: 45, 49",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9697170257568359
+        },
+        {
+          "case_id": "156",
+          "response": "Missing teeth: 4,5,8,9,10,12,14,16,18,20,22,24,26,28,30",
+          "predicted_teeth": [
+            4,
+            5,
+            8,
+            9,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30
+          ],
+          "ground_truth_teeth": [
+            1,
+            12,
+            15,
+            16,
+            17,
+            18,
+            19,
+            30,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 2.9960341453552246
+        },
+        {
+          "case_id": "157",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9820361137390137
+        },
+        {
+          "case_id": "158",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            2,
+            10,
+            16,
+            17,
+            19,
+            30
+          ],
+          "confidence": "Medium",
+          "seconds": 0.971787691116333
+        },
+        {
+          "case_id": "159",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            24,
+            29,
+            30,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9788269996643066
+        },
+        {
+          "case_id": "160",
+          "response": "Missing teeth: 45",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.7431514263153076
+        },
+        {
+          "case_id": "161",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            14,
+            16,
+            17,
+            19,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9910430908203125
+        },
+        {
+          "case_id": "166",
+          "response": "Missing teeth: 45, 49, 50, 52",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            17,
+            30
+          ],
+          "confidence": "Medium",
+          "seconds": 1.4518182277679443
+        },
+        {
+          "case_id": "167",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9676523208618164
+        },
+        {
+          "case_id": "168",
+          "response": "Missing teeth: 45",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            4,
+            7,
+            8,
+            9,
+            12,
+            13,
+            16,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.7423598766326904
+        },
+        {
+          "case_id": "169",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            3,
+            16,
+            17,
+            19,
+            20,
+            21,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.983966588973999
+        },
+        {
+          "case_id": "192",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            21,
+            28,
+            30,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9743735790252686
+        },
+        {
+          "case_id": "193",
+          "response": "Missing teeth: 45, 49, 50",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            16,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2142901420593262
+        },
+        {
+          "case_id": "194",
+          "response": "Missing teeth: 45",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 0.7387456893920898
+        },
+        {
+          "case_id": "195",
+          "response": "Missing teeth: 45",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            3,
+            15,
+            16,
+            17,
+            18,
+            30,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.7386360168457031
+        },
+        {
+          "case_id": "211",
+          "response": "Missing teeth: 45",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            28,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.7380208969116211
+        },
+        {
+          "case_id": "216",
+          "response": "Missing teeth: 4, 5, 8",
+          "predicted_teeth": [
+            4,
+            5,
+            8
+          ],
+          "ground_truth_teeth": [
+            12,
+            13,
+            14,
+            15,
+            30
+          ],
+          "confidence": "Medium",
+          "seconds": 1.0339899063110352
+        },
+        {
+          "case_id": "218",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            2,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9784109592437744
+        },
+        {
+          "case_id": "220",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            16,
+            17
+          ],
+          "confidence": "Medium",
+          "seconds": 0.974907398223877
+        },
+        {
+          "case_id": "227",
+          "response": "Missing teeth: 45, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            4,
+            13,
+            20,
+            29
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9704952239990234
+        },
+        {
+          "case_id": "229",
+          "response": "Missing teeth: 4,5,9,10,18",
+          "predicted_teeth": [
+            4,
+            5,
+            9,
+            10,
+            18
+          ],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2657384872436523
+        },
+        {
+          "case_id": "274",
+          "response": "Missing teeth: 45, 48, 50, 53",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.4417588710784912
+        }
+      ]
+    },
+    "llava_med": {
+      "model_key": "llava_med",
+      "display_name": "LLaVA-Med-v1.5-7B",
+      "repo_id": "chaoyinshe/llava-med-v1.5-mistral-7b-hf",
+      "metrics": {
+        "n_cases": 46,
+        "n_failed": 4,
+        "image_level": {
+          "accuracy": 0.15217391304347827,
+          "precision": 0.6666666666666666,
+          "recall": 0.05,
+          "f1_score": 0.09302325581395349,
+          "confusion_matrix": [
+            [
+              5,
+              1
+            ],
+            [
+              38,
+              2
+            ]
+          ]
+        },
+        "per_tooth": {
+          "accuracy": 0.8220108695652174,
+          "precision": 0.23076923076923078,
+          "recall": 0.011764705882352941,
+          "f1_score": 0.022388059701492536,
+          "confusion_matrix": [
+            [
+              1207,
+              10
+            ],
+            [
+              252,
+              3
+            ]
+          ]
+        },
+        "mean_predicted_count": 0.2826086956521739,
+        "mean_ground_truth_count": 5.543478260869565,
+        "mean_seconds_per_case": 1.3904212246770444
+      },
+      "results": [
+        {
+          "case_id": "33",
+          "response": "Missing teeth: 45, 46",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.1030957698822021
+        },
+        {
+          "case_id": "34",
+          "response": "In this case, the image shows that there are no missing teeth. The total missing count is 0.",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            26
+          ],
+          "confidence": "Medium",
+          "seconds": 1.686948299407959
+        },
+        {
+          "case_id": "35",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            18,
+            20,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.25465726852417
+        },
+        {
+          "case_id": "50",
+          "response": "Missing teeth: None\nTotal missing: 0",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 0.9913108348846436
+        },
+        {
+          "case_id": "51",
+          "response": "Missing teeth: None\nTotal missing: None",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 0.9641454219818115
+        },
+        {
+          "case_id": "56",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2632207870483398
+        },
+        {
+          "case_id": "57",
+          "response": "Missing teeth: None\nTotal missing: 0",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9759337902069092
+        },
+        {
+          "case_id": "58",
+          "response": "Missing teeth: 45, 46",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            5,
+            13,
+            16,
+            17,
+            21,
+            29,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.026486873626709
+        },
+        {
+          "case_id": "59",
+          "response": "Missing teeth: None\nTotal missing: 0",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9749259948730469
+        },
+        {
+          "case_id": "60",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ],
+          "confidence": "Medium",
+          "seconds": 1.442385196685791
+        },
+        {
+          "case_id": "61",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2708535194396973
+        },
+        {
+          "case_id": "66",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            21,
+            29
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2663464546203613
+        },
+        {
+          "case_id": "67",
+          "response": "Missing teeth: 40, 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            16,
+            17,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.5027844905853271
+        },
+        {
+          "case_id": "68",
+          "response": "Missing teeth: 45, 46, 47, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 1.5050969123840332
+        },
+        {
+          "case_id": "69",
+          "response": "Missing teeth: None\nTotal missing: 0",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2479181289672852
+        },
+        {
+          "case_id": "92",
+          "error": "UnidentifiedImageError: cannot identify image file '/home/s222393187/Dental/Tufts_Dental_Database/Radiographs/92.JPG'"
+        },
+        {
+          "case_id": "93",
+          "error": "UnidentifiedImageError: cannot identify image file '/home/s222393187/Dental/Tufts_Dental_Database/Radiographs/93.JPG'"
+        },
+        {
+          "case_id": "94",
+          "error": "UnidentifiedImageError: cannot identify image file '/home/s222393187/Dental/Tufts_Dental_Database/Radiographs/94.JPG'"
+        },
+        {
+          "case_id": "95",
+          "error": "UnidentifiedImageError: cannot identify image file '/home/s222393187/Dental/Tufts_Dental_Database/Radiographs/95.JPG'"
+        },
+        {
+          "case_id": "102",
+          "response": "Missing teeth: 45, 46",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 1.0566461086273193
+        },
+        {
+          "case_id": "103",
+          "response": "Missing teeth: None\nTotal missing: 0\nConfidence: High",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            26
+          ],
+          "confidence": "High",
+          "seconds": 1.4878239631652832
+        },
+        {
+          "case_id": "104",
+          "response": "Missing teeth: None\nTotal missing: 0",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9642825126647949
+        },
+        {
+          "case_id": "105",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            5,
+            13,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2557573318481445
+        },
+        {
+          "case_id": "132",
+          "response": "Missing teeth: 18, 45, 46",
+          "predicted_teeth": [
+            18
+          ],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 1.2651872634887695
+        },
+        {
+          "case_id": "133",
+          "response": "Missing teeth: 45, 46, 47, 48, 49",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.745593786239624
+        },
+        {
+          "case_id": "134",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            16,
+            17,
+            19
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2555797100067139
+        },
+        {
+          "case_id": "135",
+          "response": "Missing teeth: 14, 15, 18, 20, 21, 22, 23, 29, 30, 31",
+          "predicted_teeth": [
+            14,
+            15,
+            18,
+            20,
+            21,
+            22,
+            23,
+            29,
+            30,
+            31
+          ],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            23,
+            30,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 2.949460506439209
+        },
+        {
+          "case_id": "150",
+          "response": "In this case, the missing teeth are #14 and #15. The total number of missing teeth is two.",
+          "predicted_teeth": [
+            14,
+            15
+          ],
+          "ground_truth_teeth": [
+            14
+          ],
+          "confidence": "Medium",
+          "seconds": 1.8707091808319092
+        },
+        {
+          "case_id": "151",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2672550678253174
+        },
+        {
+          "case_id": "156",
+          "response": "The image shows the following missing teeth: 45, 46, and 47. There are three missing teeth in total.",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            12,
+            15,
+            16,
+            17,
+            18,
+            19,
+            30,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 2.118086576461792
+        },
+        {
+          "case_id": "157",
+          "response": "The image shows that the patient has lost teeth #40 and #45. There are no other missing teeth mentioned in the provided information. However, it's important to note that there might be additional missing teeth not visible in this particular image.",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 3.4486758708953857
+        },
+        {
+          "case_id": "158",
+          "response": "Missing teeth: None\nTotal missing: 0",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            2,
+            10,
+            16,
+            17,
+            19,
+            30
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9695672988891602
+        },
+        {
+          "case_id": "159",
+          "response": "In the image, there are no missing teeth. The total missing is 0, and the confidence level is high.",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            24,
+            29,
+            30,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.8066740036010742
+        },
+        {
+          "case_id": "160",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2678353786468506
+        },
+        {
+          "case_id": "161",
+          "response": "Missing teeth: None\nTotal missing: 0\nConfidence: High",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            14,
+            16,
+            17,
+            19,
+            32
+          ],
+          "confidence": "High",
+          "seconds": 1.2681171894073486
+        },
+        {
+          "case_id": "166",
+          "response": "Missing teeth: 45, 46, 47, 48",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            17,
+            30
+          ],
+          "confidence": "Medium",
+          "seconds": 1.5139129161834717
+        },
+        {
+          "case_id": "167",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.258268117904663
+        },
+        {
+          "case_id": "168",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            4,
+            7,
+            8,
+            9,
+            12,
+            13,
+            16,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2678322792053223
+        },
+        {
+          "case_id": "169",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            3,
+            16,
+            17,
+            19,
+            20,
+            21,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2686972618103027
+        },
+        {
+          "case_id": "192",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            21,
+            28,
+            30,
+            31,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.269742727279663
+        },
+        {
+          "case_id": "193",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            2,
+            16,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.269169807434082
+        },
+        {
+          "case_id": "194",
+          "response": "Missing teeth: None\nTotal missing: None",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [],
+          "confidence": "Medium",
+          "seconds": 0.9666483402252197
+        },
+        {
+          "case_id": "195",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            3,
+            15,
+            16,
+            17,
+            18,
+            30,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.268310785293579
+        },
+        {
+          "case_id": "211",
+          "response": "Missing teeth: None\nTotal missing: 0",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            28,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9686200618743896
+        },
+        {
+          "case_id": "216",
+          "response": "Missing teeth: None\nTotal missing: 0\nConfidence: High",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            12,
+            13,
+            14,
+            15,
+            30
+          ],
+          "confidence": "High",
+          "seconds": 1.331573247909546
+        },
+        {
+          "case_id": "218",
+          "response": "Missing teeth: 45, 46, 47",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            2,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 1.2663908004760742
+        },
+        {
+          "case_id": "220",
+          "response": "In this case, the image shows that there are no missing teeth. The total count of missing teeth is 0, and the confidence level for this observation is high.",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            16,
+            17
+          ],
+          "confidence": "Medium",
+          "seconds": 2.4244093894958496
+        },
+        {
+          "case_id": "227",
+          "response": "In this particular image, there are no missing teeth. The total missing count is zero.",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            4,
+            13,
+            20,
+            29
+          ],
+          "confidence": "Medium",
+          "seconds": 1.449336290359497
+        },
+        {
+          "case_id": "229",
+          "response": "In the image, there are no missing teeth.",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.996037483215332
+        },
+        {
+          "case_id": "274",
+          "response": "Missing teeth: None\nTotal missing: 0",
+          "predicted_teeth": [],
+          "ground_truth_teeth": [
+            1,
+            16,
+            17,
+            32
+          ],
+          "confidence": "Medium",
+          "seconds": 0.9670653343200684
+        }
+      ]
+    }
+  }
+}

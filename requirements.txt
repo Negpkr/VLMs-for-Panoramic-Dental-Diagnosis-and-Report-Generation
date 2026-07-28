@@ -1,0 +1,36 @@
+# dental-llava kernel — key packages (CUDA 12.1 / driver 535)
+# Env: /home/s222393187/.conda/envs/dental-llava
+# Activate: source /home/s222393187/Dental/activate_env.sh
+
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
+torchaudio==2.5.1+cu121
+transformers>=4.44.0,<5
+accelerate
+bitsandbytes
+pillow
+numpy
+pandas
+scikit-learn
+nltk
+textstat
+jiwer
+tqdm
+regex
+einops
+sentencepiece
+scikit-image
+opencv-python-headless
+matplotlib
+seaborn
+ipykernel
+ipywidgets
+qwen-vl-utils
+# Medical / dental VLMs used in Results/model_comparison:
+#   llava-hf/llava-1.5-7b-hf
+#   chaoyinshe/llava-med-v1.5-mistral-7b-hf
+#   FreedomIntelligence/HuatuoGPT-Vision-7B-hf
+#   ZJU-AI4H/DentVLM
+# Download: HF_TOKEN=... python download_models.py
+# Compare:  CUDA_VISIBLE_DEVICES=1 python vlm_comparison.py --cases 125
+# Report:   python comparison_report.py

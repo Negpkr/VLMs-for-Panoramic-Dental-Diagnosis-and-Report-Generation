@@ -1,0 +1,13 @@
+Comparison,Metric,Approach1_Value,Approach2_Value,Difference,Cohens_D,Significance,CI1_Lower,CI1_Upper,CI2_Lower,CI2_Upper,Overlap
+RAW vs TH15,F1-Score,0.0,0.0,0.0,0.0,Not significant,0.0,0.0,0.0,0.0,Yes
+RAW vs TH15,Precision,0.0,0.0,0.0,0.0,Not significant,0.0,0.0,0.0,0.0,Yes
+RAW vs TH15,Recall,0.0,0.0,0.0,0.0,Not significant,0.0,0.0,0.0,0.0,Yes
+RAW vs TH15,Accuracy,0.549375,0.914375,0.3650000000000001,36.17056948984988,Significant,0.5249947492914987,0.5737552507085012,0.9006643342299007,0.9280856657700994,No
+RAW vs TH30,F1-Score,0.0,0.0,0.0,0.0,Not significant,0.0,0.0,0.0,0.0,Yes
+RAW vs TH30,Precision,0.0,0.0,0.0,0.0,Not significant,0.0,0.0,0.0,0.0,Yes
+RAW vs TH30,Recall,0.0,0.0,0.0,0.0,Not significant,0.0,0.0,0.0,0.0,Yes
+RAW vs TH30,Accuracy,0.549375,0.619375,0.07000000000000006,5.695860790794971,Significant,0.5249947492914987,0.5737552507085012,0.5955835138734594,0.6431664861265406,No
+TH15 vs TH30,F1-Score,0.0,0.0,0.0,0.0,Not significant,0.0,0.0,0.0,0.0,Yes
+TH15 vs TH30,Precision,0.0,0.0,0.0,0.0,Not significant,0.0,0.0,0.0,0.0,Yes
+TH15 vs TH30,Recall,0.0,0.0,0.0,0.0,Not significant,0.0,0.0,0.0,0.0,Yes
+TH15 vs TH30,Accuracy,0.914375,0.619375,-0.29500000000000004,29.77847602180525,Significant,0.9006643342299007,0.9280856657700994,0.5955835138734594,0.6431664861265406,No
