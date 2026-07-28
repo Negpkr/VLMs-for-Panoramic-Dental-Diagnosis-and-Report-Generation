@@ -15,3 +15,6 @@ venv/
 .vscode/
 *.swp
 *.swo
+
+# Local dataset (not tracked)
+Tufts_Dental_Database/
