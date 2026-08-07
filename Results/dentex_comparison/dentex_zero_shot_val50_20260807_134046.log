@@ -28,3 +28,17 @@
 [14:24:22] checkpoint -> dentex_zero_shot_val50_20260807_134046.json
 [14:24:22] === DentVLM (ZJU-AI4H/DentVLM) ===
 [14:24:46] loaded in 24.4s on cuda:0
+[14:39:26]   10/50 cases done
+[14:53:37]   20/50 cases done
+[15:13:36]   30/50 cases done
+[15:31:56]   40/50 cases done
+[15:52:40]   50/50 cases done
+[15:52:54]   patient-avg abnormal F1=0.000 P=0.000 R=0.000 Spec=1.000 Acc=0.888
+[15:52:54] checkpoint -> dentex_zero_shot_val50_20260807_134046.json
+[15:52:54] === SUMMARY (patient-mean abnormal-tooth) ===
+[15:52:54] model                         F1    Prec  Recall    Spec     Acc
+[15:52:54] LLaVA-1.5-7B               0.076   0.110   0.070   0.945   0.848
+[15:52:54] LLaVA-Med-v1.5-7B          0.000   0.000   0.000   1.000   0.888
+[15:52:54] HuatuoGPT-Vision-7B        0.052   0.067   0.051   0.949   0.849
+[15:52:54] DentVLM                    0.000   0.000   0.000   1.000   0.888
+[15:52:54] DENTEX_COMPARISON_DONE
