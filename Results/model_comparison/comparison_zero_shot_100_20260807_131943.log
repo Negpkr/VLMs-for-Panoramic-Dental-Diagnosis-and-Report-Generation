@@ -1,0 +1,64 @@
+[13:20:11] cases=100 models=['llava', 'llava_med', 'huatuogpt_vision', 'dentvlm'] strategy=zero_shot parse_mode=strict aggregation=patient_mean_of_32tooth
+[13:20:11] === LLaVA-1.5-7B (llava-hf/llava-1.5-7b-hf) ===
+[13:21:21] loaded in 43.1s on cuda:0
+[13:22:04]   10/100 cases done
+[13:22:38]   20/100 cases done
+[13:23:12]   30/100 cases done
+[13:23:51]   40/100 cases done
+[13:24:35]   50/100 cases done
+[13:25:09]   60/100 cases done
+[13:26:11]   70/100 cases done
+[13:27:01]   80/100 cases done
+[13:27:34]   90/100 cases done
+[13:28:07]   100/100 cases done
+[13:28:14]   patient-avg F1=0.042 P=0.127 R=0.039 Spec=0.873 Acc=0.722
+[13:28:14] checkpoint -> comparison_zero_shot_100_20260807_131943.json
+[13:28:14] === LLaVA-Med-v1.5-7B (chaoyinshe/llava-med-v1.5-mistral-7b-hf) ===
+[13:28:48] loaded in 33.6s on cuda:0
+[13:29:41]   10/100 cases done
+[13:30:15]   20/100 cases done
+[13:31:12]   30/100 cases done
+[13:31:48]   40/100 cases done
+[13:32:30]   50/100 cases done
+[13:33:32]   60/100 cases done
+[13:34:14]   70/100 cases done
+[13:35:00]   80/100 cases done
+[13:35:41]   90/100 cases done
+[13:36:29]   100/100 cases done
+[13:36:36]   patient-avg F1=0.052 P=0.082 R=0.047 Spec=0.921 Acc=0.772
+[13:36:36] checkpoint -> comparison_zero_shot_100_20260807_131943.json
+[13:36:36] === HuatuoGPT-Vision-7B (FreedomIntelligence/HuatuoGPT-Vision-7B-hf) ===
+[13:37:17] loaded in 40.6s on cuda:0
+[13:38:50]   10/100 cases done
+[13:40:39]   20/100 cases done
+[13:42:18]   30/100 cases done
+[13:43:54]   40/100 cases done
+[13:45:39]   50/100 cases done
+[13:47:19]   60/100 cases done
+[13:49:04]   70/100 cases done
+[13:50:38]   80/100 cases done
+[13:52:15]   90/100 cases done
+[13:53:50]   100/100 cases done
+[13:53:56]   patient-avg F1=0.188 P=0.216 R=0.228 Spec=0.706 Acc=0.646
+[13:53:56] checkpoint -> comparison_zero_shot_100_20260807_131943.json
+[13:53:56] === DentVLM (ZJU-AI4H/DentVLM) ===
+[13:54:39] loaded in 42.9s on cuda:0
+[13:57:12]   10/100 cases done
+[14:00:10]   20/100 cases done
+[14:01:58]   30/100 cases done
+[14:05:03]   40/100 cases done
+[14:06:55]   50/100 cases done
+[14:08:50]   60/100 cases done
+[14:10:31]   70/100 cases done
+[14:12:16]   80/100 cases done
+[14:13:36]   90/100 cases done
+[14:14:59]   100/100 cases done
+[14:15:02]   patient-avg F1=0.018 P=0.018 R=0.026 Spec=0.942 Acc=0.782
+[14:15:03] checkpoint -> comparison_zero_shot_100_20260807_131943.json
+[14:15:03] === SUMMARY (patient-mean of 32-tooth metrics) ===
+[14:15:03] model                         F1    Prec  Recall    Spec     Acc
+[14:15:03] LLaVA-1.5-7B               0.042   0.127   0.039   0.873   0.722
+[14:15:03] LLaVA-Med-v1.5-7B          0.052   0.082   0.047   0.921   0.772
+[14:15:03] HuatuoGPT-Vision-7B        0.188   0.216   0.228   0.706   0.646
+[14:15:03] DentVLM                    0.018   0.018   0.026   0.942   0.782
+[14:15:03] COMPARISON_DONE

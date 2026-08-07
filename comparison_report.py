@@ -24,11 +24,12 @@ def latest_results(results_dir: Path) -> Path:
 
 
 def build_table(payload: dict) -> pd.DataFrame:
+    """Build summary table from patient-mean 32-tooth metrics."""
     rows = []
     for entry in payload["models"].values():
         metrics = entry.get("metrics") or {}
         tooth = metrics.get("per_tooth")
-        image = metrics.get("image_level")
+        image = metrics.get("image_level") or {}
         if not tooth:
             rows.append({"Model": entry.get("display_name", entry["model_key"]), "Status": "failed"})
             continue
@@ -36,11 +37,14 @@ def build_table(payload: dict) -> pd.DataFrame:
             {
                 "Model": entry["display_name"],
                 "Cases": metrics["n_cases"],
+                "Strategy": payload.get("strategy") or payload.get("prompt_name", ""),
+                "Aggregation": metrics.get("aggregation", "unknown"),
                 "Tooth F1": tooth["f1_score"],
                 "Tooth Precision": tooth["precision"],
                 "Tooth Recall": tooth["recall"],
+                "Tooth Specificity": tooth.get("specificity", float("nan")),
                 "Tooth Accuracy": tooth["accuracy"],
-                "Image F1": image["f1_score"],
+                "Image F1": image.get("f1_score", float("nan")),
                 "Mean pred/case": metrics["mean_predicted_count"],
                 "Mean GT/case": metrics["mean_ground_truth_count"],
                 "Sec/case": metrics["mean_seconds_per_case"],
@@ -54,15 +58,27 @@ def plot_metrics(df: pd.DataFrame, out_path: Path) -> None:
     ok = df[df["Status"] == "ok"]
     if ok.empty:
         return
-    metrics = ["Tooth F1", "Tooth Precision", "Tooth Recall", "Tooth Accuracy"]
+    metrics = [
+        "Tooth F1",
+        "Tooth Precision",
+        "Tooth Recall",
+        "Tooth Specificity",
+        "Tooth Accuracy",
+    ]
+    metrics = [m for m in metrics if m in ok.columns]
     x = np.arange(len(metrics))
-    width = 0.8 / len(ok)
+    width = 0.8 / max(len(ok), 1)
+    strategy = ""
+    if "Strategy" in ok.columns and ok["Strategy"].notna().any():
+        strategy = str(ok["Strategy"].iloc[0])
 
-    fig, ax = plt.subplots(figsize=(10, 5.5))
+    fig, ax = plt.subplots(figsize=(11, 5.5))
     for i, (_, row) in enumerate(ok.iterrows()):
         values = [row[m] for m in metrics]
         bars = ax.bar(x + i * width - 0.4 + width / 2, values, width, label=row["Model"])
         for bar, value in zip(bars, values):
+            if pd.isna(value):
+                continue
             ax.text(
                 bar.get_x() + bar.get_width() / 2,
                 bar.get_height() + 0.01,
@@ -72,10 +88,13 @@ def plot_metrics(df: pd.DataFrame, out_path: Path) -> None:
                 fontsize=8,
             )
     ax.set_xticks(x)
-    ax.set_xticklabels(metrics)
+    ax.set_xticklabels(metrics, rotation=15, ha="right")
     ax.set_ylim(0, 1.05)
-    ax.set_ylabel("Score")
-    ax.set_title("Missing-teeth detection on Tufts panoramic radiographs (per-tooth, 1-32)")
+    ax.set_ylabel("Score (patient mean)")
+    title = "Missing-teeth detection (32 teeth/patient, then mean across patients)"
+    if strategy:
+        title = f"{title} [{strategy}]"
+    ax.set_title(title)
     ax.legend(loc="upper right", fontsize=9)
     ax.grid(axis="y", alpha=0.3)
     fig.tight_layout()
@@ -147,7 +166,10 @@ def main() -> int:
     plot_counts(payload, args.out_dir / f"counts_{stamp}.png")
 
     print(f"source     : {path.name}")
-    print(f"cases      : {payload['n_cases']}  prompt={payload.get('prompt_name')}")
+    print(
+        f"cases      : {payload['n_cases']}  strategy={payload.get('strategy') or payload.get('prompt_name')}  "
+        f"aggregation={payload.get('aggregation', 'n/a')}"
+    )
     print(df.to_string(index=False, float_format=lambda v: f"{v:.3f}"))
     print(f"\nwrote {csv_path.name}, metrics/confusion/counts_{stamp}.png -> {args.out_dir}")
     return 0

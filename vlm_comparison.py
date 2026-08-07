@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Four-way missing-teeth comparison: LLaVA-1.5 vs LLaVA-Med vs HuatuoGPT-Vision vs DentVLM.
 
-Ground-truth extraction, prompt and answer parsing are kept identical to
-llava_evaluation.ipynb so the numbers line up with the earlier LLaVA-only run.
+Evaluation is patient-level: for each sample, all 32 tooth numbers are scored as
+independent binary decisions (missing vs not-missing), then each metric is
+averaged across patients. Do not pool/flatten all patients before scoring.
 
 Usage:
-    python vlm_comparison.py --cases 50 --models llava llava_med huatuogpt_vision dentvlm
+    python vlm_comparison.py --cases 100 --strategy zero_shot
+    python vlm_comparison.py --cases 100 --strategy few_shot
+    python vlm_comparison.py --cases 100 --strategy cot
 """
 from __future__ import annotations
 
@@ -19,6 +22,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 from PIL import Image
 from sklearn.metrics import (
     accuracy_score,
@@ -36,21 +40,67 @@ PANOS_DIR = DATA_ROOT / "Radiographs"
 TEETH_BBOX_JSON = DATA_ROOT / "Segmentation" / "teeth_bbox.json"
 RESULTS_DIR = Path("/home/s222393187/Dental/Results/model_comparison")
 
-# Shared prompt for the cross-model comparison. It has to be short: LLaVA-Med
-# answers with an immediate EOS on the long notebook prompt, while all four
-# models produce parseable output with this one.
-COMPACT_PROMPT = (
-    "This is a panoramic dental X-ray. Teeth are numbered 1-32 "
-    "(1-16 upper jaw, 17-32 lower jaw).\n"
-    "Identify which teeth are missing.\n"
-    "Answer in exactly this format:\n"
-    "Missing teeth: <comma-separated numbers, or None>\n"
+# ---------------------------------------------------------------------------
+# Prompting strategies
+# ---------------------------------------------------------------------------
+
+ZERO_SHOT_PROMPT = (
+    "This is a panoramic dental X-ray.\n"
+    "Use ONLY the Universal Numbering System: teeth are numbered 1-32.\n"
+    "- Teeth 1-16: upper jaw (patient's right to left)\n"
+    "- Teeth 17-32: lower jaw (patient's left to right)\n"
+    "Do NOT use FDI numbers (11-48).\n\n"
+    "Identify which teeth are missing (gaps or empty sockets).\n"
+    "Answer in exactly this format and nothing else:\n"
+    "Missing teeth: <comma-separated Universal numbers 1-32, or None>\n"
     "Total missing: <count>\n"
     "Confidence: High/Medium/Low"
 )
 
-# The original prompt from llava_evaluation.ipynb, kept for reproducing the
-# LLaVA-only results.
+FEW_SHOT_PROMPT = (
+    "This is a panoramic dental X-ray.\n"
+    "Use ONLY the Universal Numbering System (teeth 1-32). Do NOT use FDI (11-48).\n"
+    "- Teeth 1-16: upper jaw (patient's right to left)\n"
+    "- Teeth 17-32: lower jaw (patient's left to right)\n\n"
+    "Task: list missing teeth (gaps or empty sockets).\n\n"
+    "Examples of correct answers:\n"
+    "Example 1 (no missing teeth):\n"
+    "Missing teeth: None\n"
+    "Total missing: 0\n"
+    "Confidence: High\n\n"
+    "Example 2 (a few missing):\n"
+    "Missing teeth: 1, 16, 17, 32\n"
+    "Total missing: 4\n"
+    "Confidence: High\n\n"
+    "Example 3 (several missing):\n"
+    "Missing teeth: 3, 14, 19, 30\n"
+    "Total missing: 4\n"
+    "Confidence: Medium\n\n"
+    "Now answer for THIS radiograph in exactly the same format:\n"
+    "Missing teeth: <comma-separated Universal numbers 1-32, or None>\n"
+    "Total missing: <count>\n"
+    "Confidence: High/Medium/Low"
+)
+
+COT_PROMPT = (
+    "This is a panoramic dental X-ray.\n"
+    "Use ONLY the Universal Numbering System (teeth 1-32). Do NOT use FDI (11-48).\n"
+    "- Teeth 1-16: upper jaw (patient's right to left)\n"
+    "- Teeth 17-32: lower jaw (patient's left to right)\n\n"
+    "Think step by step before answering:\n"
+    "1. Scan the upper arch (teeth 1-16). Note empty spaces / missing crowns.\n"
+    "2. Scan the lower arch (teeth 17-32). Note empty spaces / missing crowns.\n"
+    "3. Combine the missing tooth numbers.\n"
+    "4. Double-check that every listed number is a Universal ID from 1-32.\n\n"
+    "Write a short Reasoning section, then give the final answer in exactly this format:\n"
+    "Reasoning: <brief steps>\n"
+    "Missing teeth: <comma-separated Universal numbers 1-32, or None>\n"
+    "Total missing: <count>\n"
+    "Confidence: High/Medium/Low"
+)
+
+# Legacy aliases kept for older CLI / notebook reproduction.
+COMPACT_PROMPT = ZERO_SHOT_PROMPT
 MISSING_TEETH_PROMPT = (
     "You are a dental radiologist. Look at this panoramic X-ray and identify missing teeth.\n\n"
     "Teeth are numbered 1-32:\n"
@@ -69,14 +119,17 @@ MISSING_TEETH_PROMPT = (
     "Be thorough - look at the entire dental arch."
 )
 
+PROMPT_REGISTRY: dict[str, str] = {
+    "zero_shot": ZERO_SHOT_PROMPT,
+    "few_shot": FEW_SHOT_PROMPT,
+    "cot": COT_PROMPT,
+    "compact": ZERO_SHOT_PROMPT,
+    "notebook": MISSING_TEETH_PROMPT,
+}
+
 
 def recover_json_array(path: Path) -> list[dict]:
-    """Read as many complete records as possible from a JSON array.
-
-    The Tufts annotation files in this copy are truncated at exactly 256 KB, so
-    ``json.load`` fails outright. Decoding record-by-record keeps the complete
-    objects that precede the cut instead of discarding the whole file.
-    """
+    """Read as many complete records as possible from a JSON array."""
     raw = path.read_text(encoding="utf-8", errors="replace")
     start = raw.find("[")
     if start < 0:
@@ -92,18 +145,13 @@ def recover_json_array(path: Path) -> list[dict]:
         try:
             obj, idx = decoder.raw_decode(raw, idx)
         except ValueError:
-            break  # hit the truncation point
+            break
         items.append(obj)
     return items
 
 
 class GroundTruthExtractor:
-    """Missing teeth per case, derived from teeth_bbox.json.
-
-    Records are keyed by their ``External ID`` (e.g. ``"53.JPG"``). The original
-    notebook keyed them by list position instead, which does not correspond to
-    the radiograph filenames.
-    """
+    """Missing teeth per case, derived from teeth_bbox.json."""
 
     def __init__(self, bbox_json: Path = TEETH_BBOX_JSON):
         self.truncated = False
@@ -133,22 +181,21 @@ class GroundTruthExtractor:
         return sorted(set(range(1, 33)) - detected)
 
     def available_cases(self) -> list[str]:
-        """Cases that have real annotations, in numeric order."""
         return sorted(self.by_case, key=lambda c: (not c.isdigit(), int(c) if c.isdigit() else c))
 
 
 class MissingTeethParser:
-    """Same lenient parser used for the published LLaVA numbers.
+    """Parse model replies into Universal tooth IDs 1-32.
 
-    ``loose`` collects every 1-32 integer in the reply, ``strict`` reads only the
-    "Missing teeth:" line. Loose is the default so results stay comparable.
+    ``strict`` reads only the ``Missing teeth:`` line (preferred).
+    ``loose`` collects every 1-32 integer in the reply (legacy).
     """
 
     tooth_pattern = re.compile(r"\b([1-9]|[12][0-9]|3[0-2])\b")
     missing_line = re.compile(r"Missing teeth:\s*([^\n]+)", re.IGNORECASE)
     confidence_pattern = re.compile(r"Confidence:\s*(High|Medium|Low)", re.IGNORECASE)
 
-    def __init__(self, max_missing_teeth: int = 28, mode: str = "loose"):
+    def __init__(self, max_missing_teeth: int = 28, mode: str = "strict"):
         self.max_missing_teeth = max_missing_teeth
         self.mode = mode
 
@@ -178,7 +225,6 @@ def find_image(case_id: str) -> Path | None:
 
 
 def image_is_readable(path: Path) -> bool:
-    """309 radiographs in this copy are zero-byte or otherwise undecodable."""
     try:
         if path.stat().st_size == 0:
             return False
@@ -190,7 +236,6 @@ def image_is_readable(path: Path) -> bool:
 
 
 def usable_cases(gt: "GroundTruthExtractor") -> list[str]:
-    """Cases that have both recovered annotations and a decodable radiograph."""
     out = []
     for case_id in gt.available_cases():
         path = find_image(case_id)
@@ -199,38 +244,123 @@ def usable_cases(gt: "GroundTruthExtractor") -> list[str]:
     return out
 
 
+def to_binary_32(missing_teeth: list[int] | set[int]) -> list[int]:
+    """Fixed-length 32 binary labels: 1 = missing, 0 = not missing."""
+    missing = set(missing_teeth)
+    return [1 if tooth in missing else 0 for tooth in range(1, 33)]
+
+
+def to_position_array(missing_teeth: list[int] | set[int]) -> list[int]:
+    """Fixed-length 32 array: tooth number if missing else 0."""
+    missing = set(missing_teeth)
+    return [tooth if tooth in missing else 0 for tooth in range(1, 33)]
+
+
+def _specificity(y_true: list[int], y_pred: list[int], zero_division: float = 0.0) -> float:
+    cm = confusion_matrix(y_true, y_pred, labels=[0, 1])
+    tn, fp, _fn, _tp = cm.ravel()
+    denom = tn + fp
+    if denom == 0:
+        return float(zero_division)
+    return float(tn / denom)
+
+
+def sample_metrics(y_true: list[int], y_pred: list[int]) -> dict[str, Any]:
+    """Metrics for one patient's 32 tooth decisions."""
+    assert len(y_true) == 32 and len(y_pred) == 32
+    cm = confusion_matrix(y_true, y_pred, labels=[0, 1])
+    tn, fp, fn, tp = (int(x) for x in cm.ravel())
+    return {
+        "accuracy": float(accuracy_score(y_true, y_pred)),
+        "precision": float(precision_score(y_true, y_pred, zero_division=0)),
+        "recall": float(recall_score(y_true, y_pred, zero_division=0)),
+        "specificity": _specificity(y_true, y_pred, zero_division=0),
+        "f1_score": float(f1_score(y_true, y_pred, zero_division=0)),
+        "tp": tp,
+        "fp": fp,
+        "fn": fn,
+        "tn": tn,
+        "confusion_matrix": cm.tolist(),
+    }
+
+
 def compute_metrics(results: list[dict[str, Any]]) -> dict[str, Any]:
-    """Image-level and per-tooth binary metrics, matching the notebook."""
+    """Patient-level 32-tooth metrics, then arithmetic mean across patients.
+
+    For each sample:
+      - expand GT and prediction to 32 binary labels (teeth 1-32)
+      - score accuracy / precision / recall / specificity / F1 on those 32
+    Final reported metrics are the mean of the per-sample values.
+    """
     ok = [r for r in results if "error" not in r]
     if not ok:
-        return {"n_cases": 0}
+        return {"n_cases": 0, "aggregation": "patient_mean_of_32tooth"}
 
-    y_true_img, y_pred_img = [], []
-    y_true_tooth, y_pred_tooth = [], []
-
+    per_sample: list[dict[str, Any]] = []
     for r in ok:
-        pred = set(r["predicted_teeth"])
-        gt = set(r["ground_truth_teeth"])
-        y_true_img.append(1 if gt else 0)
-        y_pred_img.append(1 if pred else 0)
-        for tooth in range(1, 33):
-            y_true_tooth.append(1 if tooth in gt else 0)
-            y_pred_tooth.append(1 if tooth in pred else 0)
-
-    def block(y_true, y_pred):
-        return {
-            "accuracy": float(accuracy_score(y_true, y_pred)),
-            "precision": float(precision_score(y_true, y_pred, zero_division=0)),
-            "recall": float(recall_score(y_true, y_pred, zero_division=0)),
-            "f1_score": float(f1_score(y_true, y_pred, zero_division=0)),
-            "confusion_matrix": confusion_matrix(y_true, y_pred).tolist(),
+        y_true = to_binary_32(r["ground_truth_teeth"])
+        y_pred = to_binary_32(r["predicted_teeth"])
+        m = sample_metrics(y_true, y_pred)
+        m["case_id"] = r["case_id"]
+        m["y_true_32"] = y_true
+        m["y_pred_32"] = y_pred
+        m["gt_position_array"] = to_position_array(r["ground_truth_teeth"])
+        m["pred_position_array"] = to_position_array(r["predicted_teeth"])
+        per_sample.append(m)
+        # Attach onto the result dict for downstream inspection.
+        r["sample_metrics"] = {
+            k: m[k]
+            for k in (
+                "accuracy",
+                "precision",
+                "recall",
+                "specificity",
+                "f1_score",
+                "tp",
+                "fp",
+                "fn",
+                "tn",
+            )
         }
+        r["y_true_32"] = y_true
+        r["y_pred_32"] = y_pred
+
+    def mean_of(key: str) -> float:
+        return float(np.mean([s[key] for s in per_sample]))
+
+    # Summed confusion across patients (reporting only; not used for primary metrics).
+    total_cm = np.zeros((2, 2), dtype=int)
+    for s in per_sample:
+        total_cm += np.array(s["confusion_matrix"], dtype=int)
+
+    patient_avg = {
+        "accuracy": mean_of("accuracy"),
+        "precision": mean_of("precision"),
+        "recall": mean_of("recall"),
+        "specificity": mean_of("specificity"),
+        "f1_score": mean_of("f1_score"),
+        "confusion_matrix": total_cm.tolist(),
+    }
+
+    # Image-level: does the case have any missing teeth? (secondary)
+    y_true_img = [1 if r["ground_truth_teeth"] else 0 for r in ok]
+    y_pred_img = [1 if r["predicted_teeth"] else 0 for r in ok]
+    image_level = {
+        "accuracy": float(accuracy_score(y_true_img, y_pred_img)),
+        "precision": float(precision_score(y_true_img, y_pred_img, zero_division=0)),
+        "recall": float(recall_score(y_true_img, y_pred_img, zero_division=0)),
+        "specificity": _specificity(y_true_img, y_pred_img, zero_division=0),
+        "f1_score": float(f1_score(y_true_img, y_pred_img, zero_division=0)),
+        "confusion_matrix": confusion_matrix(y_true_img, y_pred_img, labels=[0, 1]).tolist(),
+    }
 
     return {
         "n_cases": len(ok),
         "n_failed": len(results) - len(ok),
-        "image_level": block(y_true_img, y_pred_img),
-        "per_tooth": block(y_true_tooth, y_pred_tooth),
+        "aggregation": "patient_mean_of_32tooth",
+        "per_tooth": patient_avg,  # primary: mean of per-patient 32-tooth metrics
+        "image_level": image_level,
+        "per_sample": per_sample,
         "mean_predicted_count": sum(len(r["predicted_teeth"]) for r in ok) / len(ok),
         "mean_ground_truth_count": sum(len(r["ground_truth_teeth"]) for r in ok) / len(ok),
         "mean_seconds_per_case": sum(r["seconds"] for r in ok) / len(ok),
@@ -243,13 +373,18 @@ def evaluate_model(
     gt: GroundTruthExtractor,
     parser: MissingTeethParser,
     *,
-    prompt: str = COMPACT_PROMPT,
+    prompt: str = ZERO_SHOT_PROMPT,
     load_in_4bit: bool = False,
+    max_new_tokens: int | None = None,
     log=print,
 ) -> dict[str, Any]:
     """Load one model, score every case, then release the GPU."""
     spec = vlm_models.MODEL_REGISTRY[model_key]
     log(f"=== {spec.display_name} ({spec.repo_id}) ===")
+
+    gen_overrides: dict[str, Any] = {}
+    if max_new_tokens is not None:
+        gen_overrides["max_new_tokens"] = max_new_tokens
 
     bundle = None
     results: list[dict[str, Any]] = []
@@ -269,6 +404,7 @@ def evaluate_model(
                     image_path,
                     prompt,
                     seed_key=f"{model_key}:{case_id}",
+                    **gen_overrides,
                 )
                 predicted = parser.extract_missing_teeth(reply)
                 results.append(
@@ -281,7 +417,7 @@ def evaluate_model(
                         "seconds": time.time() - t0,
                     }
                 )
-            except Exception as e:  # keep going; one bad case shouldn't kill the run
+            except Exception as e:
                 results.append({"case_id": case_id, "error": f"{type(e).__name__}: {e}"})
                 log(f"  case {case_id} failed: {type(e).__name__}: {e}")
 
@@ -292,7 +428,12 @@ def evaluate_model(
         vlm_models.unload(bundle)
 
     metrics = compute_metrics(results)
-    log(f"  per-tooth F1={metrics.get('per_tooth', {}).get('f1_score', 0):.3f}")
+    pt = metrics.get("per_tooth") or {}
+    log(
+        f"  patient-avg F1={pt.get('f1_score', 0):.3f} "
+        f"P={pt.get('precision', 0):.3f} R={pt.get('recall', 0):.3f} "
+        f"Spec={pt.get('specificity', 0):.3f} Acc={pt.get('accuracy', 0):.3f}"
+    )
     return {
         "model_key": model_key,
         "display_name": spec.display_name,
@@ -308,17 +449,33 @@ def main() -> int:
         "--cases", type=int, default=0, help="number of cases to evaluate (0 = all usable)"
     )
     ap.add_argument("--models", nargs="+", default=list(vlm_models.MODEL_REGISTRY))
-    ap.add_argument("--parse-mode", choices=["loose", "strict"], default="loose")
-    ap.add_argument("--prompt", choices=["compact", "notebook"], default="compact")
+    ap.add_argument("--parse-mode", choices=["loose", "strict"], default="strict")
+    ap.add_argument(
+        "--strategy",
+        "--prompt",
+        dest="strategy",
+        choices=list(PROMPT_REGISTRY),
+        default="zero_shot",
+        help="prompting strategy (zero_shot / few_shot / cot); legacy aliases: compact, notebook",
+    )
     ap.add_argument("--load-in-4bit", action="store_true")
     ap.add_argument("--out-dir", type=Path, default=RESULTS_DIR)
+    ap.add_argument(
+        "--tag",
+        type=str,
+        default="",
+        help="optional tag appended to output filenames (e.g. zero_shot)",
+    )
     args = ap.parse_args()
 
-    prompt = COMPACT_PROMPT if args.prompt == "compact" else MISSING_TEETH_PROMPT
+    prompt = PROMPT_REGISTRY[args.strategy]
+    max_new_tokens = 400 if args.strategy == "cot" else None
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_path = args.out_dir / f"comparison_{stamp}.log"
+    tag = args.tag or args.strategy
+    stem = f"comparison_{tag}_{stamp}"
+    log_path = args.out_dir / f"{stem}.log"
 
     def log(msg: str) -> None:
         line = f"[{datetime.now().strftime('%H:%M:%S')}] {msg}"
@@ -336,15 +493,21 @@ def main() -> int:
             f"WARNING teeth_bbox.json is truncated: only {len(gt.by_case)} of ~1000 "
             f"annotations recovered; {len(all_cases)} of those have a readable radiograph"
         )
-    log(f"cases={len(case_ids)} models={args.models} parse_mode={args.parse_mode}")
+    log(
+        f"cases={len(case_ids)} models={args.models} strategy={args.strategy} "
+        f"parse_mode={args.parse_mode} aggregation=patient_mean_of_32tooth"
+    )
 
     payload = {
         "timestamp": stamp,
+        "tag": tag,
         "n_cases": len(case_ids),
         "case_ids": case_ids,
         "parse_mode": args.parse_mode,
-        "prompt_name": args.prompt,
+        "prompt_name": args.strategy,
+        "strategy": args.strategy,
         "prompt": prompt,
+        "aggregation": "patient_mean_of_32tooth",
         "models": {},
     }
 
@@ -357,6 +520,7 @@ def main() -> int:
                 parser,
                 prompt=prompt,
                 load_in_4bit=args.load_in_4bit,
+                max_new_tokens=max_new_tokens,
                 log=log,
             )
         except Exception as e:
@@ -364,21 +528,22 @@ def main() -> int:
             log(traceback.format_exc())
             payload["models"][key] = {"model_key": key, "error": f"{type(e).__name__}: {e}"}
 
-        out_json = args.out_dir / f"comparison_{stamp}.json"
+        out_json = args.out_dir / f"{stem}.json"
         with out_json.open("w") as f:
             json.dump(payload, f, indent=2)
         log(f"checkpoint -> {out_json.name}")
 
-    log("=== SUMMARY (per-tooth) ===")
-    log(f"{'model':<24}{'F1':>8}{'Prec':>8}{'Recall':>8}{'Acc':>8}")
+    log("=== SUMMARY (patient-mean of 32-tooth metrics) ===")
+    log(f"{'model':<24}{'F1':>8}{'Prec':>8}{'Recall':>8}{'Spec':>8}{'Acc':>8}")
     for key, entry in payload["models"].items():
         pt = entry.get("metrics", {}).get("per_tooth")
         if not pt:
             log(f"{key:<24}{'ERROR':>8}")
             continue
         log(
-            f"{entry['display_name']:<24}{pt['f1_score']:>8.3f}{pt['precision']:>8.3f}"
-            f"{pt['recall']:>8.3f}{pt['accuracy']:>8.3f}"
+            f"{entry['display_name']:<24}"
+            f"{pt['f1_score']:>8.3f}{pt['precision']:>8.3f}"
+            f"{pt['recall']:>8.3f}{pt['specificity']:>8.3f}{pt['accuracy']:>8.3f}"
         )
     log("COMPARISON_DONE")
     return 0
