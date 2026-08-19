@@ -206,3 +206,46 @@ wrote summary_20260807_141518.csv, metrics/confusion/counts_20260807_141518.png 
 [15:46:15]   10/100 cases done
 [15:51:28]   20/100 cases done
 [15:55:27]   30/100 cases done
+[15:59:12]   40/100 cases done
+[16:03:07]   50/100 cases done
+[16:07:03]   60/100 cases done
+[16:11:19]   70/100 cases done
+[16:15:57]   80/100 cases done
+[16:20:11]   90/100 cases done
+[16:24:15]   100/100 cases done
+[16:24:22]   patient-avg F1=0.143 P=0.224 R=0.149 Spec=0.800 Acc=0.695
+[16:24:22] checkpoint -> comparison_cot_100_20260807_145219.json
+[16:24:22] === DentVLM (ZJU-AI4H/DentVLM) ===
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 3390.71it/s]
+Loading weights:   0%|          | 0/730 [00:00<?, ?it/s]Loading weights:   0%|          | 1/730 [00:01<13:16,  1.09s/it]Loading weights:   0%|          | 2/730 [00:01<11:26,  1.06it/s]Loading weights:   3%|▎         | 24/730 [00:02<00:37, 18.68it/s]Loading weights:   5%|▍         | 33/730 [00:02<00:38, 18.13it/s]Loading weights:   5%|▌         | 40/730 [00:02<00:31, 21.56it/s]Loading weights:   6%|▋         | 46/730 [00:02<00:30, 22.53it/s]Loading weights:   7%|▋         | 52/730 [00:03<00:30, 22.14it/s]Loading weights:   8%|▊         | 56/730 [00:03<00:34, 19.77it/s]Loading weights:   9%|▉         | 64/730 [00:03<00:27, 24.22it/s]Loading weights:   9%|▉         | 68/730 [00:03<00:27, 23.75it/s]Loading weights:  10%|█         | 76/730 [00:04<00:26, 24.65it/s]Loading weights:  11%|█         | 79/730 [00:04<00:33, 19.61it/s]Loading weights:  12%|█▏        | 90/730 [00:04<00:24, 25.83it/s]Loading weights:  14%|█▎        | 100/730 [00:05<00:19, 31.90it/s]Loading weights:  14%|█▍        | 104/730 [00:05<00:21, 28.99it/s]Loading weights:  15%|█▌        | 112/730 [00:05<00:23, 26.40it/s]Loading weights:  17%|█▋        | 124/730 [00:05<00:18, 32.72it/s]Loading weights:  18%|█▊        | 128/730 [00:05<00:20, 29.79it/s]Loading weights:  19%|█▊        | 136/730 [00:06<00:19, 30.94it/s]Loading weights:  19%|█▉        | 140/730 [00:06<00:22, 26.71it/s]Loading weights:  20%|██        | 148/730 [00:06<00:24, 23.39it/s]Loading weights:  21%|██        | 151/730 [00:07<00:24, 23.20it/s]Loading weights:  22%|██▏       | 161/730 [00:07<00:17, 32.75it/s]Loading weights:  23%|██▎       | 165/730 [00:07<00:18, 30.25it/s]Loading weights:  24%|██▎       | 172/730 [00:07<00:15, 35.69it/s]Loading weights:  24%|██▍       | 177/730 [00:07<00:19, 28.11it/s]Loading weights:  25%|██▌       | 184/730 [00:07<00:16, 32.23it/s]Loading weights:  26%|██▌       | 190/730 [00:08<00:15, 35.52it/s]Loading weights:  27%|██▋       | 196/730 [00:08<00:18, 28.76it/s]Loading weights:  28%|██▊       | 208/730 [00:08<00:15, 33.67it/s]Loading weights:  29%|██▉       | 212/730 [00:08<00:17, 28.90it/s]Loading weights:  30%|███       | 220/730 [00:09<00:18, 27.68it/s]Loading weights:  31%|███       | 223/730 [00:09<00:19, 26.27it/s]Loading weights:  32%|███▏      | 232/730 [00:09<00:21, 23.04it/s]Loading weights:  34%|███▎      | 246/730 [00:10<00:15, 32.20it/s]Loading weights:  35%|███▌      | 256/730 [00:10<00:13, 34.99it/s]Loading weights:  36%|███▌      | 260/730 [00:10<00:15, 30.28it/s]Loading weights:  37%|███▋      | 268/730 [00:10<00:15, 29.12it/s]Loading weights:  37%|███▋      | 271/730 [00:10<00:15, 29.23it/s]Loading weights:  38%|███▊      | 280/730 [00:11<00:15, 28.78it/s]Loading weights:  40%|████      | 292/730 [00:11<00:13, 32.37it/s]Loading weights:  41%|████      | 296/730 [00:11<00:15, 28.57it/s]Loading weights:  42%|████▏     | 304/730 [00:11<00:13, 32.25it/s]Loading weights:  42%|████▏     | 308/730 [00:12<00:14, 29.45it/s]Loading weights:  43%|████▎     | 316/730 [00:12<00:16, 25.19it/s]Loading weights:  45%|████▍     | 328/730 [00:12<00:13, 28.78it/s]Loading weights:  45%|████▌     | 331/730 [00:12<00:14, 28.49it/s]Loading weights:  54%|█████▍    | 393/730 [00:13<00:02, 116.66it/s]Loading weights:  61%|██████    | 443/730 [00:13<00:01, 181.40it/s]Loading weights:  67%|██████▋   | 492/730 [00:13<00:00, 240.76it/s]Loading weights:  74%|███████▍  | 543/730 [00:13<00:00, 296.54it/s]Loading weights:  80%|████████  | 585/730 [00:13<00:00, 314.24it/s]Loading weights:  87%|████████▋ | 635/730 [00:13<00:00, 349.30it/s]Loading weights:  95%|█████████▍| 691/730 [00:13<00:00, 400.08it/s]Loading weights: 100%|██████████| 730/730 [00:13<00:00, 52.67it/s] 
+[16:24:48] loaded in 25.7s on cuda:0
+[16:26:40]   10/100 cases done
+[16:28:39]   20/100 cases done
+[16:30:43]   30/100 cases done
+[16:32:58]   40/100 cases done
+[16:34:54]   50/100 cases done
+[16:36:58]   60/100 cases done
+[16:39:10]   70/100 cases done
+[16:41:04]   80/100 cases done
+[16:43:25]   90/100 cases done
+[16:45:26]   100/100 cases done
+[16:45:33]   patient-avg F1=0.000 P=0.000 R=0.000 Spec=0.970 Acc=0.793
+[16:45:34] checkpoint -> comparison_cot_100_20260807_145219.json
+[16:45:34] === SUMMARY (patient-mean of 32-tooth metrics) ===
+[16:45:34] model                         F1    Prec  Recall    Spec     Acc
+[16:45:34] LLaVA-1.5-7B               0.070   0.204   0.060   0.900   0.746
+[16:45:34] LLaVA-Med-v1.5-7B          0.009   0.012   0.007   0.960   0.786
+[16:45:34] HuatuoGPT-Vision-7B        0.143   0.224   0.149   0.800   0.695
+[16:45:34] DentVLM                    0.000   0.000   0.000   0.970   0.793
+[16:45:34] COMPARISON_DONE
+source     : comparison_cot_100_20260807_145219.json
+cases      : 100  strategy=cot  aggregation=patient_mean_of_32tooth
+              Model  Cases Strategy             Aggregation  Tooth F1  Tooth Precision  Tooth Recall  Tooth Specificity  Tooth Accuracy  Image F1  Mean pred/case  Mean GT/case  Sec/case Status
+       LLaVA-1.5-7B    100      cot patient_mean_of_32tooth     0.070            0.204         0.060              0.900           0.746     0.733           2.320         6.630    19.862     ok
+  LLaVA-Med-v1.5-7B    100      cot patient_mean_of_32tooth     0.009            0.012         0.007              0.960           0.786     0.136           0.290         6.630     7.037     ok
+HuatuoGPT-Vision-7B    100      cot patient_mean_of_32tooth     0.143            0.224         0.149              0.800           0.695     0.817           5.820         6.630    25.464     ok
+            DentVLM    100      cot patient_mean_of_32tooth     0.000            0.000         0.000              0.970           0.793     0.000           0.000         6.630    11.817     ok
+
+wrote summary_20260807_145219.csv, metrics/confusion/counts_20260807_145219.png -> Results/model_comparison
+===== DONE strategy=cot -> Results/model_comparison/comparison_cot_100_20260807_145219.json =====
+ALL_STRATEGIES_DONE

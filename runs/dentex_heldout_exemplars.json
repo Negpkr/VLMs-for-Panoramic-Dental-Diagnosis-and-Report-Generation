@@ -1,0 +1,52 @@
+{
+  "purpose": "Text-only few-shot exemplars taken from DENTEX train. These case_ids are excluded from qed scoring for zero-shot, few-shot, and CoT so all three strategies are evaluated on the same images. Few-shot does not feed the exemplar radiographs \u2014 only their GT text.",
+  "case_ids": [
+    "train_1",
+    "train_14",
+    "train_123"
+  ],
+  "exemplars": [
+    {
+      "case_id": "train_1",
+      "role": "impacted_only",
+      "gt": {
+        "48": [
+          "Impacted"
+        ],
+        "38": [
+          "Impacted"
+        ]
+      }
+    },
+    {
+      "case_id": "train_14",
+      "role": "multi_label_or_mixed",
+      "gt": {
+        "46": [
+          "Deep Caries",
+          "Periapical Lesion"
+        ],
+        "18": [
+          "Deep Caries"
+        ],
+        "26": [
+          "Deep Caries"
+        ],
+        "28": [
+          "Deep Caries"
+        ],
+        "37": [
+          "Deep Caries"
+        ],
+        "27": [
+          "Caries"
+        ]
+      }
+    },
+    {
+      "case_id": "train_123",
+      "role": "no_annotated_finding",
+      "gt": {}
+    }
+  ]
+}

@@ -1,3 +1,11 @@
-RUNNING DENTEX val50 zero-shot on GPU0
-Fri Aug  7 01:40:35 PM AEST 2026
-PID=1862660 log=runs/dentex_val_zero_shot_20260807_134035.log
+STOPPED — do not launch until asked.
+
+Canonical paper evaluation sizes (source: runs/dataset_counts.json):
+  Tufts     1000 usable cases × 32 slots (archive 100-case JSONs are not the paper run)
+  DENTEX    qed scored = 752 images
+            = 755 on-disk train+val minus held-out text exemplars
+              train_1, train_14, train_123
+            Disease support (paper): Impacted 642, Caries 2286, Deep Caries 602, Periapical 166
+
+Launcher: runs/run_all.sh (Tufts 1000, then DENTEX qed 752, then paper_figures.py)
+GPU 1. Strategies: zero_shot, few_shot, cot. Models: llava, llava_med, huatuogpt_vision, dentvlm.

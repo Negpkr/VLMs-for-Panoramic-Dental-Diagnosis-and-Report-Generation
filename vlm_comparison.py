@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Four-way missing-teeth comparison: LLaVA-1.5 vs LLaVA-Med vs HuatuoGPT-Vision vs DentVLM.
 
-Evaluation is patient-level: for each sample, all 32 tooth numbers are scored as
-independent binary decisions (missing vs not-missing), then each metric is
-averaged across patients. Do not pool/flatten all patients before scoring.
+Primary evaluation is pooled-slot: concatenate all 32 tooth decisions across
+patients, accumulate TP/FP/TN/FN per class, then compute P/R/F1. Headline is
+Macro F1. Patient-mean scores are stored as a secondary JSON record.
+Missing vs Present is derived from the parsed Missing teeth list, never from
+the Total missing count.
 
 Usage:
-    python vlm_comparison.py --cases 100 --strategy zero_shot
-    python vlm_comparison.py --cases 100 --strategy few_shot
-    python vlm_comparison.py --cases 100 --strategy cot
+    python vlm_comparison.py --cases 0 --strategy zero_shot
+    python vlm_comparison.py --cases 0 --strategy few_shot
+    python vlm_comparison.py --cases 0 --strategy cot
 """
 from __future__ import annotations
 
@@ -33,12 +35,14 @@ from sklearn.metrics import (
 )
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import eval_metrics  # noqa: E402
 import vlm_models  # noqa: E402
 
 DATA_ROOT = Path("/home/s222393187/Dental/Tufts_Dental_Database")
 PANOS_DIR = DATA_ROOT / "Radiographs"
 TEETH_BBOX_JSON = DATA_ROOT / "Segmentation" / "teeth_bbox.json"
 RESULTS_DIR = Path("/home/s222393187/Dental/Results/model_comparison")
+PARSER_VERSION = "tufts-strict-missing-line-v1"
 
 # ---------------------------------------------------------------------------
 # Prompting strategies
@@ -51,6 +55,7 @@ ZERO_SHOT_PROMPT = (
     "- Teeth 17-32: lower jaw (patient's left to right)\n"
     "Do NOT use FDI numbers (11-48).\n\n"
     "Identify which teeth are missing (gaps or empty sockets).\n"
+    "The Total missing line is formatting only and is not used for scoring.\n\n"
     "Answer in exactly this format and nothing else:\n"
     "Missing teeth: <comma-separated Universal numbers 1-32, or None>\n"
     "Total missing: <count>\n"
@@ -62,7 +67,8 @@ FEW_SHOT_PROMPT = (
     "Use ONLY the Universal Numbering System (teeth 1-32). Do NOT use FDI (11-48).\n"
     "- Teeth 1-16: upper jaw (patient's right to left)\n"
     "- Teeth 17-32: lower jaw (patient's left to right)\n\n"
-    "Task: list missing teeth (gaps or empty sockets).\n\n"
+    "Task: list missing teeth (gaps or empty sockets).\n"
+    "The Total missing line is formatting only and is not used for scoring.\n\n"
     "Examples of correct answers:\n"
     "Example 1 (no missing teeth):\n"
     "Missing teeth: None\n"
@@ -92,6 +98,7 @@ COT_PROMPT = (
     "2. Scan the lower arch (teeth 17-32). Note empty spaces / missing crowns.\n"
     "3. Combine the missing tooth numbers.\n"
     "4. Double-check that every listed number is a Universal ID from 1-32.\n\n"
+    "The Total missing line is formatting only and is not used for scoring.\n"
     "Write a short Reasoning section, then give the final answer in exactly this format:\n"
     "Reasoning: <brief steps>\n"
     "Missing teeth: <comma-separated Universal numbers 1-32, or None>\n"
@@ -200,6 +207,8 @@ class MissingTeethParser:
         self.mode = mode
 
     def extract_missing_teeth(self, text: str) -> list[int]:
+        """Parse Missing teeth: only. The Total missing line is never scored."""
+        text = re.sub(r"Total missing:\s*[^\n]*", " ", text, flags=re.IGNORECASE)
         source = text
         if self.mode == "strict":
             match = self.missing_line.search(text)
@@ -265,41 +274,56 @@ def _specificity(y_true: list[int], y_pred: list[int], zero_division: float = 0.
     return float(tn / denom)
 
 
+def _balanced_accuracy(recall: float, specificity: float) -> float:
+    """(Recall + Specificity) / 2 — accuracy that is not inflated by class imbalance."""
+    return float(0.5 * (recall + specificity))
+
+
 def sample_metrics(y_true: list[int], y_pred: list[int]) -> dict[str, Any]:
     """Metrics for one patient's 32 tooth decisions."""
     assert len(y_true) == 32 and len(y_pred) == 32
     cm = confusion_matrix(y_true, y_pred, labels=[0, 1])
     tn, fp, fn, tp = (int(x) for x in cm.ravel())
+    rec = float(recall_score(y_true, y_pred, zero_division=0))
+    spec = _specificity(y_true, y_pred, zero_division=0)
+    classes = eval_metrics.per_class_scores(
+        y_true, y_pred, labels=(0, 1), names=("present", "missing")
+    )
     return {
         "accuracy": float(accuracy_score(y_true, y_pred)),
         "precision": float(precision_score(y_true, y_pred, zero_division=0)),
-        "recall": float(recall_score(y_true, y_pred, zero_division=0)),
-        "specificity": _specificity(y_true, y_pred, zero_division=0),
+        "recall": rec,
+        "specificity": spec,
+        "balanced_accuracy": _balanced_accuracy(rec, spec),
         "f1_score": float(f1_score(y_true, y_pred, zero_division=0)),
         "tp": tp,
         "fp": fp,
         "fn": fn,
         "tn": tn,
         "confusion_matrix": cm.tolist(),
+        "per_class": classes["per_class"],
+        "macro": classes["macro"],
     }
 
 
 def compute_metrics(results: list[dict[str, Any]]) -> dict[str, Any]:
-    """Patient-level 32-tooth metrics, then arithmetic mean across patients.
+    """Pooled 32-tooth metrics across the evaluation split.
 
-    For each sample:
-      - expand GT and prediction to 32 binary labels (teeth 1-32)
-      - score accuracy / precision / recall / specificity / F1 on those 32
-    Final reported metrics are the mean of the per-sample values.
+    Primary: concatenate all 32 slots from all patients, then score.
+    Secondary: mean of per-patient 32-tooth scores (previous protocol).
     """
     ok = [r for r in results if "error" not in r]
     if not ok:
-        return {"n_cases": 0, "aggregation": "patient_mean_of_32tooth"}
+        return {"n_cases": 0, "aggregation": "pooled_slots"}
 
     per_sample: list[dict[str, Any]] = []
+    y_true_all: list[int] = []
+    y_pred_all: list[int] = []
     for r in ok:
         y_true = to_binary_32(r["ground_truth_teeth"])
         y_pred = to_binary_32(r["predicted_teeth"])
+        y_true_all.extend(y_true)
+        y_pred_all.extend(y_pred)
         m = sample_metrics(y_true, y_pred)
         m["case_id"] = r["case_id"]
         m["y_true_32"] = y_true
@@ -315,6 +339,7 @@ def compute_metrics(results: list[dict[str, Any]]) -> dict[str, Any]:
                 "precision",
                 "recall",
                 "specificity",
+                "balanced_accuracy",
                 "f1_score",
                 "tp",
                 "fp",
@@ -322,34 +347,57 @@ def compute_metrics(results: list[dict[str, Any]]) -> dict[str, Any]:
                 "tn",
             )
         }
+        r["per_class"] = m["per_class"]
+        r["macro"] = m["macro"]
         r["y_true_32"] = y_true
         r["y_pred_32"] = y_pred
 
     def mean_of(key: str) -> float:
         return float(np.mean([s[key] for s in per_sample]))
 
-    # Summed confusion across patients (reporting only; not used for primary metrics).
     total_cm = np.zeros((2, 2), dtype=int)
     for s in per_sample:
         total_cm += np.array(s["confusion_matrix"], dtype=int)
 
+    class_mean = eval_metrics.mean_per_class(per_sample)
     patient_avg = {
+        "aggregation": "patient_mean_of_32tooth",
         "accuracy": mean_of("accuracy"),
         "precision": mean_of("precision"),
         "recall": mean_of("recall"),
         "specificity": mean_of("specificity"),
+        "balanced_accuracy": mean_of("balanced_accuracy"),
         "f1_score": mean_of("f1_score"),
         "confusion_matrix": total_cm.tolist(),
+        "per_class": class_mean.get("per_class", {}),
+        "macro": class_mean.get("macro", {}),
     }
+    pooled = eval_metrics.pooled_metrics(
+        y_true_all, y_pred_all, labels=(0, 1), names=("present", "missing")
+    )
+    yt_patients = [s["y_true_32"] for s in per_sample]
+    yp_patients = [s["y_pred_32"] for s in per_sample]
+    mac_ci = eval_metrics.bootstrap_binary_macro_f1(
+        yt_patients,
+        yp_patients,
+        names=("present", "missing"),
+        n_boot=eval_metrics.PAPER_BOOTSTRAP_N,
+        seed=eval_metrics.PAPER_BOOTSTRAP_SEED,
+        cluster_ids=[eval_metrics.patient_id_for_image(s["case_id"]) for s in per_sample],
+    )
+    pooled.setdefault("macro", {})["f1_ci95"] = mac_ci
 
     # Image-level: does the case have any missing teeth? (secondary)
     y_true_img = [1 if r["ground_truth_teeth"] else 0 for r in ok]
     y_pred_img = [1 if r["predicted_teeth"] else 0 for r in ok]
+    rec_img = float(recall_score(y_true_img, y_pred_img, zero_division=0))
+    spec_img = _specificity(y_true_img, y_pred_img, zero_division=0)
     image_level = {
         "accuracy": float(accuracy_score(y_true_img, y_pred_img)),
         "precision": float(precision_score(y_true_img, y_pred_img, zero_division=0)),
-        "recall": float(recall_score(y_true_img, y_pred_img, zero_division=0)),
-        "specificity": _specificity(y_true_img, y_pred_img, zero_division=0),
+        "recall": rec_img,
+        "specificity": spec_img,
+        "balanced_accuracy": _balanced_accuracy(rec_img, spec_img),
         "f1_score": float(f1_score(y_true_img, y_pred_img, zero_division=0)),
         "confusion_matrix": confusion_matrix(y_true_img, y_pred_img, labels=[0, 1]).tolist(),
     }
@@ -357,9 +405,20 @@ def compute_metrics(results: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "n_cases": len(ok),
         "n_failed": len(results) - len(ok),
-        "aggregation": "patient_mean_of_32tooth",
-        "per_tooth": patient_avg,  # primary: mean of per-patient 32-tooth metrics
+        "aggregation": "pooled_slots",
+        "per_tooth": pooled,
+        "per_tooth_patient_mean": patient_avg,
         "image_level": image_level,
+        "bootstrap": {
+            "n_boot": eval_metrics.PAPER_BOOTSTRAP_N,
+            "seed": eval_metrics.PAPER_BOOTSTRAP_SEED,
+            "unit": "patient",
+            "n_patients": mac_ci.get("n_patients"),
+            "n_images": mac_ci.get("n_images"),
+            "patient_equals_image": mac_ci.get("patient_equals_image"),
+            "note": mac_ci.get("note"),
+            "macro_f1_ci95": mac_ci,
+        },
         "per_sample": per_sample,
         "mean_predicted_count": sum(len(r["predicted_teeth"]) for r in ok) / len(ok),
         "mean_ground_truth_count": sum(len(r["ground_truth_teeth"]) for r in ok) / len(ok),
@@ -411,6 +470,8 @@ def evaluate_model(
                     {
                         "case_id": case_id,
                         "response": reply,
+                        "raw_model_output": reply,
+                        "parser_version": PARSER_VERSION,
                         "predicted_teeth": predicted,
                         "ground_truth_teeth": gt.extract_missing_teeth(case_id),
                         "confidence": parser.confidence(reply),
@@ -430,9 +491,10 @@ def evaluate_model(
     metrics = compute_metrics(results)
     pt = metrics.get("per_tooth") or {}
     log(
-        f"  patient-avg F1={pt.get('f1_score', 0):.3f} "
+        f"  pooled missing F1={pt.get('f1_score', 0):.3f} "
         f"P={pt.get('precision', 0):.3f} R={pt.get('recall', 0):.3f} "
-        f"Spec={pt.get('specificity', 0):.3f} Acc={pt.get('accuracy', 0):.3f}"
+        f"Spec={pt.get('specificity', 0):.3f} BalAcc={pt.get('balanced_accuracy', 0):.3f} "
+        f"Acc={pt.get('accuracy', 0):.3f} MacroF1={(pt.get('macro') or {}).get('f1_score', 0):.3f}"
     )
     return {
         "model_key": model_key,
@@ -441,6 +503,73 @@ def evaluate_model(
         "metrics": metrics,
         "results": results,
     }
+
+
+def _model_complete(entry: dict[str, Any]) -> bool:
+    return bool((entry.get("metrics") or {}).get("per_tooth"))
+
+
+def gt_slot_support(case_ids: list[str], gt: GroundTruthExtractor) -> dict[str, int]:
+    missing = 0
+    for case_id in case_ids:
+        missing += len(gt.extract_missing_teeth(case_id))
+    n_slots = 32 * len(case_ids)
+    return {"missing": missing, "present": n_slots - missing, "n_slots": n_slots, "n_cases": len(case_ids)}
+
+
+def write_summary_csv(payload: dict[str, Any], out_path: Path) -> None:
+    import csv
+
+    rows = []
+    for entry in payload["models"].values():
+        m = entry.get("metrics") or {}
+        pt = m.get("per_tooth")
+        if not pt:
+            rows.append({"Model": entry.get("display_name", entry.get("model_key")), "Status": "failed"})
+            continue
+        row = {
+            "Model": entry["display_name"],
+            "Cases": m.get("n_cases"),
+            "Strategy": payload.get("strategy") or payload.get("prompt_name"),
+            "Aggregation": m.get("aggregation"),
+            **eval_metrics.flatten_binary_main(pt, "missing", "present"),
+            "Mean_pred_per_case": m.get("mean_predicted_count"),
+            "Mean_GT_per_case": m.get("mean_ground_truth_count"),
+            "Sec_per_case": m.get("mean_seconds_per_case"),
+            "Status": "ok",
+        }
+        rows.append(row)
+    if not rows:
+        return
+    with out_path.open("w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
+
+
+def write_supplementary_csv(payload: dict[str, Any], out_path: Path) -> None:
+    import csv
+
+    rows = []
+    for entry in payload["models"].values():
+        m = entry.get("metrics") or {}
+        pt = m.get("per_tooth")
+        if not pt:
+            continue
+        rows.append(
+            {
+                "Model": entry["display_name"],
+                "Cases": m.get("n_cases"),
+                "Strategy": payload.get("strategy") or payload.get("prompt_name"),
+                **eval_metrics.flatten_binary_report(pt, "missing", "present"),
+            }
+        )
+    if not rows:
+        return
+    with out_path.open("w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
 
 
 def main() -> int:
@@ -464,7 +593,18 @@ def main() -> int:
         "--tag",
         type=str,
         default="",
-        help="optional tag appended to output filenames (e.g. zero_shot)",
+        help="optional tag appended to output filenames (e.g. zero_shot_full)",
+    )
+    ap.add_argument(
+        "--resume-from",
+        type=Path,
+        default=None,
+        help="continue an interrupted run; skip models that already have metrics",
+    )
+    ap.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="print case count, models, and prompt length, then exit",
     )
     args = ap.parse_args()
 
@@ -476,6 +616,22 @@ def main() -> int:
     tag = args.tag or args.strategy
     stem = f"comparison_{tag}_{stamp}"
     log_path = args.out_dir / f"{stem}.log"
+    resume_payload: dict[str, Any] | None = None
+    skip_models: list[str] = []
+
+    if args.resume_from:
+        resume_payload = json.loads(args.resume_from.read_text())
+        stem = args.resume_from.stem
+        log_path = args.resume_from.with_suffix(".log")
+        skip_models = [
+            k for k, entry in resume_payload.get("models", {}).items() if _model_complete(entry)
+        ]
+        args.models = [k for k in args.models if k not in skip_models]
+        if resume_payload.get("strategy") and resume_payload["strategy"] != args.strategy:
+            raise SystemExit(
+                f"--resume-from strategy={resume_payload['strategy']} "
+                f"does not match --strategy {args.strategy}"
+            )
 
     def log(msg: str) -> None:
         line = f"[{datetime.now().strftime('%H:%M:%S')}] {msg}"
@@ -488,17 +644,39 @@ def main() -> int:
 
     all_cases = usable_cases(gt)
     case_ids = all_cases if args.cases <= 0 else all_cases[: args.cases]
+    if args.resume_from and resume_payload and resume_payload.get("case_ids"):
+        case_ids = list(resume_payload["case_ids"])
+
+    if args.dry_run:
+        print(
+            f"Tufts dry-run cases={len(case_ids)} strategy={args.strategy} "
+            f"models={args.models} parse_mode={args.parse_mode} "
+            f"max_new_tokens={max_new_tokens} prompt_chars={len(prompt)}"
+        )
+        if skip_models:
+            print(f"would skip completed models: {skip_models}")
+        print("first_case", case_ids[0] if case_ids else None)
+        return 0
+
     if gt.truncated:
         log(
             f"WARNING teeth_bbox.json is truncated: only {len(gt.by_case)} of ~1000 "
             f"annotations recovered; {len(all_cases)} of those have a readable radiograph"
         )
+    support = gt_slot_support(case_ids, gt)
     log(
         f"cases={len(case_ids)} models={args.models} strategy={args.strategy} "
-        f"parse_mode={args.parse_mode} aggregation=patient_mean_of_32tooth"
+        f"parse_mode={args.parse_mode} aggregation=pooled_slots "
+        f"scoring=parsed_Missing_teeth_line_only"
     )
+    log(
+        f"GT slot support: Missing n={support['missing']}  "
+        f"Present n={support['present']}  slots={support['n_slots']}"
+    )
+    if skip_models:
+        log(f"resume from {args.resume_from.name}; skipping completed models: {skip_models}")
 
-    payload = {
+    payload = resume_payload or {
         "timestamp": stamp,
         "tag": tag,
         "n_cases": len(case_ids),
@@ -507,9 +685,35 @@ def main() -> int:
         "prompt_name": args.strategy,
         "strategy": args.strategy,
         "prompt": prompt,
-        "aggregation": "patient_mean_of_32tooth",
+        "aggregation": "pooled_slots",
+        "parser_version": PARSER_VERSION,
+        "run_config": {
+            "dataset": "Tufts",
+            "n_cases_paper": len(case_ids),
+            "n_cases_note": "Paper evaluation is all usable Tufts cases (1000). The Aug 2026 100-case JSONs are archive only.",
+            "strategy": args.strategy,
+            "parser_version": PARSER_VERSION,
+            "parse_source": "Missing teeth line only; Total missing ignored",
+            "aggregation": "pooled_slots",
+            "bootstrap_n": eval_metrics.PAPER_BOOTSTRAP_N,
+            "bootstrap_seed": eval_metrics.PAPER_BOOTSTRAP_SEED,
+            "bootstrap_unit": "patient",
+            "bootstrap_patient_equals_image": True,
+            "bootstrap_note": eval_metrics.BOOTSTRAP_UNIT_NOTE,
+            "few_shot_uses_exemplar_images": False,
+            "few_shot_examples": "synthetic text templates, not Tufts case IDs",
+        },
+        "gt_support": support,
         "models": {},
     }
+    payload["gt_support"] = support
+
+    if not args.models:
+        log("nothing left to run; all requested models already complete")
+        write_summary_csv(payload, args.out_dir / f"{stem}_summary.csv")
+        write_supplementary_csv(payload, args.out_dir / f"{stem}_supplementary.csv")
+        log("COMPARISON_DONE")
+        return 0
 
     for key in args.models:
         try:
@@ -531,20 +735,38 @@ def main() -> int:
         out_json = args.out_dir / f"{stem}.json"
         with out_json.open("w") as f:
             json.dump(payload, f, indent=2)
+        write_summary_csv(payload, args.out_dir / f"{stem}_summary.csv")
+        write_supplementary_csv(payload, args.out_dir / f"{stem}_supplementary.csv")
         log(f"checkpoint -> {out_json.name}")
 
-    log("=== SUMMARY (patient-mean of 32-tooth metrics) ===")
-    log(f"{'model':<24}{'F1':>8}{'Prec':>8}{'Recall':>8}{'Spec':>8}{'Acc':>8}")
+    csv_path = args.out_dir / f"{stem}_summary.csv"
+    supp_path = args.out_dir / f"{stem}_supplementary.csv"
+    write_summary_csv(payload, csv_path)
+    write_supplementary_csv(payload, supp_path)
+    log("=== GT SUPPORT (not a paper table) ===")
+    log(f"  Missing n={support['missing']}  Present n={support['present']}  cases={support['n_cases']}  slots={support['n_slots']}")
+    log("=== TABLE A missing vs present (pooled; per-class F1 + Macro F1 95% CI + Acc + BalAcc) ===")
+    log(
+        f"{'model':<22}{'MissF1':>8}{'PresF1':>8}{'MacF1':>8}{'Acc':>8}{'BalAcc':>8}{'CI95':>19}"
+    )
     for key, entry in payload["models"].items():
         pt = entry.get("metrics", {}).get("per_tooth")
         if not pt:
-            log(f"{key:<24}{'ERROR':>8}")
+            log(f"{key:<22}{'ERROR':>8}")
             continue
+        row = eval_metrics.flatten_binary_main(pt, "missing", "present")
+        lo, hi = row.get("Macro_F1_CI95_low"), row.get("Macro_F1_CI95_high")
+        ci_s = f"[{lo:.3f},{hi:.3f}]" if lo is not None and hi is not None else "n/a"
         log(
-            f"{entry['display_name']:<24}"
-            f"{pt['f1_score']:>8.3f}{pt['precision']:>8.3f}"
-            f"{pt['recall']:>8.3f}{pt['specificity']:>8.3f}{pt['accuracy']:>8.3f}"
+            f"{entry['display_name']:<22}"
+            f"{(row['missing_F1'] or 0):>8.3f}"
+            f"{(row['present_F1'] or 0):>8.3f}"
+            f"{(row['Macro_F1'] or 0):>8.3f}"
+            f"{(row['Accuracy'] or 0):>8.3f}"
+            f"{(row['Balanced_Accuracy'] or 0):>8.3f}"
+            f"{ci_s:>19}"
         )
+    log(f"summary csv -> {csv_path.name}  supplementary P/R -> {supp_path.name}")
     log("COMPARISON_DONE")
     return 0
 

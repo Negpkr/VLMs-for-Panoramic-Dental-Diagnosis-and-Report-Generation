@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
+import eval_metrics  # noqa: E402
+
 RESULTS_DIR = Path("/home/s222393187/Dental/Results/model_comparison")
 
 
@@ -24,7 +26,7 @@ def latest_results(results_dir: Path) -> Path:
 
 
 def build_table(payload: dict) -> pd.DataFrame:
-    """Build summary table from patient-mean 32-tooth metrics."""
+    """Build summary table from pooled 32-tooth metrics."""
     rows = []
     for entry in payload["models"].values():
         metrics = entry.get("metrics") or {}
@@ -39,11 +41,7 @@ def build_table(payload: dict) -> pd.DataFrame:
                 "Cases": metrics["n_cases"],
                 "Strategy": payload.get("strategy") or payload.get("prompt_name", ""),
                 "Aggregation": metrics.get("aggregation", "unknown"),
-                "Tooth F1": tooth["f1_score"],
-                "Tooth Precision": tooth["precision"],
-                "Tooth Recall": tooth["recall"],
-                "Tooth Specificity": tooth.get("specificity", float("nan")),
-                "Tooth Accuracy": tooth["accuracy"],
+                **eval_metrics.flatten_binary_report(tooth, "missing", "present"),
                 "Image F1": image.get("f1_score", float("nan")),
                 "Mean pred/case": metrics["mean_predicted_count"],
                 "Mean GT/case": metrics["mean_ground_truth_count"],
@@ -59,11 +57,11 @@ def plot_metrics(df: pd.DataFrame, out_path: Path) -> None:
     if ok.empty:
         return
     metrics = [
-        "Tooth F1",
-        "Tooth Precision",
-        "Tooth Recall",
-        "Tooth Specificity",
-        "Tooth Accuracy",
+        "missing_F1",
+        "present_F1",
+        "Macro_F1",
+        "Balanced_Accuracy",
+        "Accuracy",
     ]
     metrics = [m for m in metrics if m in ok.columns]
     x = np.arange(len(metrics))

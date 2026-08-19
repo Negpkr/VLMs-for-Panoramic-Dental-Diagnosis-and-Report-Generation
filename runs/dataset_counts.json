@@ -1,0 +1,157 @@
+{
+  "tufts": {
+    "paper_evaluation": {
+      "n_cases": 1000,
+      "n_slots": 32000,
+      "missing_slots": 6741,
+      "present_slots": 25259,
+      "note": "Final Tufts paper run is ALL usable cases with bbox + readable radiograph."
+    },
+    "archive_100": {
+      "n_cases": 100,
+      "note": "Aug 2026 100-case prompting runs are archive only and will be replaced."
+    },
+    "n_bbox_records": 1000
+  },
+  "dentex": {
+    "train_json": {
+      "n_images": 705,
+      "n_annotations_raw": 3529,
+      "support_all_json_images": {
+        "Impacted": 604,
+        "Caries": 2186,
+        "Deep Caries": 575,
+        "Periapical Lesion": 158
+      }
+    },
+    "train_on_disk": {
+      "n_images": 705,
+      "n_slots": 22560,
+      "n_abnormal_teeth": 3456,
+      "n_no_finding_slots": 19104,
+      "table_a_binary_support": {
+        "abnormal": 3456,
+        "no_annotated_finding": 19104,
+        "n_slots": 22560,
+        "n_images": 705,
+        "sum": 22560,
+        "consistent": true
+      },
+      "disease_support": {
+        "Impacted": 604,
+        "Caries": 2186,
+        "Deep Caries": 575,
+        "Periapical Lesion": 158
+      },
+      "diagnosis_positive_slots_sum": 3523,
+      "disease_support_definition": "GT-positive tooth-slot support (n) under one-vs-rest. A multi-label tooth is counted in every disease it carries. Sum of disease_support is not equal to n_abnormal_teeth.",
+      "multi_label_teeth": {
+        "1": 3390,
+        "2": 65,
+        "3": 1
+      }
+    },
+    "val_json": {
+      "n_images": 50,
+      "n_annotations_raw": 182,
+      "support_all_json_images": {
+        "Impacted": 40,
+        "Caries": 101,
+        "Deep Caries": 32,
+        "Periapical Lesion": 9
+      }
+    },
+    "val_on_disk": {
+      "n_images": 50,
+      "n_slots": 1600,
+      "n_abnormal_teeth": 179,
+      "n_no_finding_slots": 1421,
+      "table_a_binary_support": {
+        "abnormal": 179,
+        "no_annotated_finding": 1421,
+        "n_slots": 1600,
+        "n_images": 50,
+        "sum": 1600,
+        "consistent": true
+      },
+      "disease_support": {
+        "Impacted": 40,
+        "Caries": 101,
+        "Deep Caries": 32,
+        "Periapical Lesion": 9
+      },
+      "diagnosis_positive_slots_sum": 182,
+      "disease_support_definition": "GT-positive tooth-slot support (n) under one-vs-rest. A multi-label tooth is counted in every disease it carries. Sum of disease_support is not equal to n_abnormal_teeth.",
+      "multi_label_teeth": {
+        "1": 176,
+        "2": 3
+      }
+    },
+    "qed_on_disk_before_heldout": {
+      "n_images": 755,
+      "n_slots": 24160,
+      "n_abnormal_teeth": 3635,
+      "n_no_finding_slots": 20525,
+      "table_a_binary_support": {
+        "abnormal": 3635,
+        "no_annotated_finding": 20525,
+        "n_slots": 24160,
+        "n_images": 755,
+        "sum": 24160,
+        "consistent": true
+      },
+      "disease_support": {
+        "Impacted": 644,
+        "Caries": 2287,
+        "Deep Caries": 607,
+        "Periapical Lesion": 167
+      },
+      "diagnosis_positive_slots_sum": 3705,
+      "disease_support_definition": "GT-positive tooth-slot support (n) under one-vs-rest. A multi-label tooth is counted in every disease it carries. Sum of disease_support is not equal to n_abnormal_teeth.",
+      "multi_label_teeth": {
+        "1": 3566,
+        "2": 68,
+        "3": 1
+      }
+    },
+    "heldout_exemplars": [
+      "train_1",
+      "train_14",
+      "train_123"
+    ],
+    "qed_paper_evaluation": {
+      "n_images": 752,
+      "n_slots": 24064,
+      "n_abnormal_teeth": 3627,
+      "n_no_finding_slots": 20437,
+      "table_a_binary_support": {
+        "abnormal": 3627,
+        "no_annotated_finding": 20437,
+        "n_slots": 24064,
+        "n_images": 752,
+        "sum": 24064,
+        "consistent": true
+      },
+      "disease_support": {
+        "Impacted": 642,
+        "Caries": 2286,
+        "Deep Caries": 602,
+        "Periapical Lesion": 166
+      },
+      "diagnosis_positive_slots_sum": 3696,
+      "disease_support_definition": "GT-positive tooth-slot support (n) under one-vs-rest. A multi-label tooth is counted in every disease it carries. Sum of disease_support is not equal to n_abnormal_teeth.",
+      "multi_label_teeth": {
+        "1": 3559,
+        "2": 67,
+        "3": 1
+      }
+    },
+    "missing_files": {
+      "train": 0,
+      "val": 0
+    },
+    "count_reconciliation": {
+      "why_2290_vs_2287": "2290/610 were unofficial QED sums using the DENTEX paper's train counts (Caries 2189 + val 101; Deep Caries 578 + val 32). Canonical counts are unique (image, FDI) diagnoses on radiographs that exist on disk, with a multi-label tooth counted in every disease it carries."
+    }
+  }
+}
