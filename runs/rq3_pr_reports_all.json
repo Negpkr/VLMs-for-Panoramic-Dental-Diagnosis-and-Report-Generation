@@ -1,0 +1,865 @@
+{
+  "dataset": "PR-Reports",
+  "source": "https://huggingface.co/datasets/saatwiksy/PR-Reports",
+  "seed": 20260820,
+  "n_eval": 121,
+  "n_holdout": 0,
+  "n_total": 121,
+  "eval_stratum_counts": {
+    "periapical": 33,
+    "impacted": 40,
+    "caries": 21,
+    "mixed_dentition": 9,
+    "other": 18
+  },
+  "eval_cases": [
+    {
+      "case_id": "pr_1",
+      "file_name": "1.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/1.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                          \n                                                                       63\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present:  36, 46\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: PDL widening wrt 46\n\nImpacted tooth:  Nil\nDeveloping teeth with incomplete root formation: 18, 24, 25, 28, 37, 38, 34, 35, 44, 45, 47, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Intact\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression:  Apical periodontitis wrt 46, Deep dentinal caries wrt 36, Retained 63"
+    },
+    {
+      "case_id": "pr_10",
+      "file_name": "10.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/10.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 -- -- --\nCaries present: 46\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 18, 28\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Intact\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Deep dentinal caries wrt 46, partially edentulous wrt 36, 37, 38, 48"
+    },
+    {
+      "case_id": "pr_100",
+      "file_name": "100.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/100.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 28\n\nRestorations present:  16\n\nEndodontically treated: 37\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Mild bone loss wrt 26, 37\n\nTemporomandibular joint: Hypoplastic left condyle\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Localized periodonitis wrt 26, 37; Dentinal caries wrt 28"
+    },
+    {
+      "case_id": "pr_101",
+      "file_name": "101.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/101.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 18, 36\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 36\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Intact\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 36; Dentinal caries wrt 18"
+    },
+    {
+      "case_id": "pr_102",
+      "file_name": "102.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/102.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       -- --  46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 37, 44\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 37\n\nImpacted tooth: 38\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Intact\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 37; Impacted 38; Edentulous wrt 47, 48"
+    },
+    {
+      "case_id": "pr_103",
+      "file_name": "103.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/103.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  46, 36\n\nEndodontically treated: Nil \n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Intact\n\nMaxillary sinus: Intact\n\nArtifacts seen: Overlapping of teeth.\n\nCentral lesions: Nil\n\nRadiographic impression: Vertical impaction wrt 38; mesioangular impaction  wrt 48"
+    },
+    {
+      "case_id": "pr_104",
+      "file_name": "104.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/104.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 -- 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCrown preparation: 46, 48\n\nCaries present: 44\n\nRestorations present:  Nil\n\nEndodontically treated: 45\n\nRoot stumps: 37\n\nPeriapical changes: 46, 45\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Hypoplastic right condyle\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Root stumps wrt 37; Periapical abscess wrt 45, 46; Dislodged FPD wrt 46-48."
+    },
+    {
+      "case_id": "pr_105",
+      "file_name": "105.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/105.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 14, 25\n\nRestorations present:  48\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Intact\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Partially edentulous wrt 46; Deep dentinal caries wrt 14."
+    },
+    {
+      "case_id": "pr_106",
+      "file_name": "106.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/106.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 -- -- 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 -- 36 37 --\nCaries present: 26, 27\n\nRestorations present:  48, 34; Crowns wrt 16, 21, 22\n\nEndodontically treated: 13\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring, RPD Clasp in 35 region\n\nCentral lesions: Nil\n\nRadiographic impression: Partially edentulous wrt 36; Dentinal caries wrt 26, 27."
+    },
+    {
+      "case_id": "pr_107",
+      "file_name": "107.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/107.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n                                                                                                 75\nCaries present: 24, 17\n\nRestorations present:  Nil\n\nEndodontically treated: 22, 25, 45, 46\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38, 35, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Intact\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Hoorizontal impaction wrt 38; Vertical impaction wrt 35, 48; Dentinal caries wrt 24, 17"
+    },
+    {
+      "case_id": "pr_108",
+      "file_name": "108.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/108.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 -- -- 14 13 12 11   21 22 23 24 25 26 -- 28\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 -- -- 38\nCaries present: Nil\n\nRestorations present:  FPD wrt 14-18, 25-28, 35-38, 45-47\n\nEndodontically treated: 17, 14, 13, 12, 22, 23, 24, 25, 26, 34, 35, 47, 48\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 17\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 17; Partially edentulous wrt 18, 16, 15, 27, 36, 37, 46"
+    },
+    {
+      "case_id": "pr_109",
+      "file_name": "109.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/109.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Dislodged restoration wrt 47\n\nEndodontically treated: 47\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Submerged 45\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Intact\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dislodged restoration wrt 47"
+    },
+    {
+      "case_id": "pr_11",
+      "file_name": "11.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/11.jpg",
+      "stratum": "mixed_dentition",
+      "expert_report": "Teeth present:\n                                                      55                                       65\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil \n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Developing teeth wrt 18, 15, 14, 24, 25, 27, 28, 38, 37, 35, 45, 47, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Intact\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Radiolucency between the roots of 35 and 36\n\nRadiographic impression: Mixed dentition status, lateral periodontal cyst wrt 35, 36."
+    },
+    {
+      "case_id": "pr_110",
+      "file_name": "110.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/110.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                        -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 25, 26\n\nRestorations present:  16, 14\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss in maxilla\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 25, 26."
+    },
+    {
+      "case_id": "pr_111",
+      "file_name": "111.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/111.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 -- -- -- 11   21 -- -- -- 25 26 27 --\n                                       -- 47 -- -- 44 43 42 --   -- 32 33 34 -- -- 37 --\nCaries present: Nil\n\nRestorations present:  17,  FPD wrt 16- 27, 37- 47\n\nEndodontically treated: 26, 27, 11, 21, 44\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Partially edentulous wrt 18, 14, 13, 12, 22, 23, 24, 28, 35, 36, 45, 46, 31, 41"
+    },
+    {
+      "case_id": "pr_112",
+      "file_name": "112.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/112.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil \n\nImpacted tooth: Developing teeth wrt 18, 28, 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Hypoplastic left condyle\n\nMaxillary sinus: Intact\n\nArtifacts seen: Orthodontic appliance present\n\nCentral lesions: Nil\n\nRadiographic impression: Normal dentition with orthodontic appliance"
+    },
+    {
+      "case_id": "pr_113",
+      "file_name": "113.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/113.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Generalized chronic periodontitis"
+    },
+    {
+      "case_id": "pr_114",
+      "file_name": "114.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/114.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                                      55 54 53 52 51  61 62 63 64 65 \n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\n                                                      85 84 83 82 81  71 72 73 74 75\nCaries present: 55, 54,52, 51, 61, 62, 75, 74, 83, 84, 85\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Developing teeth wrt 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 37, 36, 35, 34, 33, 32, 31, 41 (rotated), 42, 43, 44, 45, 46, 47\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Normal\n\nArtifacts seen: Normal\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 55, 54,52, 51, 61, 62, 75, 74, 83, 84, 85"
+    },
+    {
+      "case_id": "pr_115",
+      "file_name": "115.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/115.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Developing teeth wrt 18, 28, 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Developing teeth wrt 18, 28, 38, 48."
+    },
+    {
+      "case_id": "pr_116",
+      "file_name": "116.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/116.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  17, 16,26, 27, 47, 38\n\nEndodontically treated: 36, 37, 45\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 18, 38, 48\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil \n\nRadiographic impression: mesioangular impaction wrt 38, 48; distoangular impaction wrt 18; generalized chronic periodontitis"
+    },
+    {
+      "case_id": "pr_117",
+      "file_name": "117.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/117.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: Nil\n\nRestorations present:  36, 46\n\nEndodontically treated: 26\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Chronic generalized periodontitis; edentulous wrt 28, 38, 48"
+    },
+    {
+      "case_id": "pr_118",
+      "file_name": "118.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/118.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 -- --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 17\n\nRestorations present:  16, 48, Crown wrt 26, 36, 37; Implant wrt 27\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Implant wrt 27; Dentinal caries wrt 17"
+    },
+    {
+      "case_id": "pr_119",
+      "file_name": "119.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/119.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 -- 15 14 13 12 11   21 22 23 24 25 -- 27 --\n                                       -- 47 46 -- 44 -- 42 41   31 32 33 34 35 36 37 --\nCaries present: Nil\n\nRestorations present:  FPD wrt 25-27, 42-44; Crown wrt 33, 32, 46\n\nEndodontically treated: 36,33, 32,42, 44,46\n\nRoot stumps: 24, 34\n\nPeriapical changes: Radiolucency wrt 24, 34, 32\n\nImpacted tooth: Nil\n\nAlveolar bone: Horizontal bone loss in maxiollary and mandibular anterior region\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 24, 34, 32; Partially edentulous wrt 18, 16, 26, 28, 38, 43, 45, 48."
+    },
+    {
+      "case_id": "pr_12",
+      "file_name": "12.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/12.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 -- 14 13 12 --   21 22 23 24 25 26 27 --\n                                       48 47 46 -- 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 16, 13, 26,38\n\nRestorations present:  FPD wrt 12-21, 44-47.\n\nEndodontically treated: 12, 37, 36, 47\n\nRoot stumps: 18, 14, 37, 36, 35, 48\n\nPeriapical changes: 13, 37\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 13, 37; deep dentinal caries wrt 16, 26, 38."
+    },
+    {
+      "case_id": "pr_120",
+      "file_name": "120.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/120.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  NIl\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Horizontal bone loss in mandibular anterior region\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Localized periodontitis wrt mandibular anteriors."
+    },
+    {
+      "case_id": "pr_121",
+      "file_name": "121.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/121.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 36\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Periapical radiolucency wrt 36\n\nImpacted tooth: Vertical impaction wrt 18, 28, 38, 48\n\nAlveolar bone:  Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Apical periodontitis wrt 36; Vertically impacted 18, 28, 38, 48."
+    },
+    {
+      "case_id": "pr_13",
+      "file_name": "13.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/13.jpg",
+      "stratum": "mixed_dentition",
+      "expert_report": "Teeth present:\n                                                      55 54  53 52 52 61 62 63 64 65\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\n                                                      85 84 83                      73 74 75\nMixed dentition status with physiologic root resorption and developing roots.\nCaries present: 55, 54\n\nRestorations present:  54, 75, 84; Crown wrt 74, 85.\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Mixed dentition status; Dentinal caries wrt 55, 54."
+    },
+    {
+      "case_id": "pr_14",
+      "file_name": "14.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/14.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 17, 27, 28.\n\nRestorations present:  Crown wrt 26, 46.\n\nEndodontically treated: 26, 46\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 17, 46\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Hypoplastic left condyle\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 17, 46; Dentinal caries wrt 27, 28."
+    },
+    {
+      "case_id": "pr_15",
+      "file_name": "15.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/15.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 26, 28\n\nRestorations present:  Crown wrt 17, 25, 36, 37, 46, 47\n\nEndodontically treated: 17, 25, 46, 47\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 46\n\nImpacted tooth: 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Intact\n\nCentral lesions: Nil\n\nRadiographic impression: Apical periodontitis wrt 46; Dentinal caries wrt 26, 28; Mesioangular impaction wrt 48."
+    },
+    {
+      "case_id": "pr_16",
+      "file_name": "16.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/16.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 -- 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 36\n\nRestorations present:  Crown wrt 35\n\nEndodontically treated: 35\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 35\n\nImpacted tooth: Nil\n\nAlveolar bone: Nil\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Earring, nose ring\n\nCentral lesions: Radiolucency in 46 region\n\nRadiographic impression: Apical periodontitis wrt 35; Unhealed socket wrt 46; Edentulous wrt 18, 28, 46, 48."
+    },
+    {
+      "case_id": "pr_17",
+      "file_name": "17.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/17.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 26\n\nRestorations present:  Crown wrt 25\n\nEndodontically treated: 25\n\nRoot stumps: 22\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Root stump wrt 22; Edentulous wrt 38, 46."
+    },
+    {
+      "case_id": "pr_18",
+      "file_name": "18.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/18.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 -- 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 -- 41   31 32 33 34 35 36 37 38\nRotated 21; developing  28, 38, 48, 43\n\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Edentulous wrt 16, 42; Rotated 21"
+    },
+    {
+      "case_id": "pr_19",
+      "file_name": "19.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/19.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 18\n\nRestorations present:  Crown wrt 36\n\nEndodontically treated: 36\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 28, 38, 48, supernumerary tooth in 32, 33 region\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Suspected impacted supernumerary tooth in 32, 33 region\n\nRadiographic impression: Vertical impaction wrt 28, Horizontal impaction 38, mesioangular impaction wrt 48; impacted supernumerary tooth; dentinal caries wrt 18."
+    },
+    {
+      "case_id": "pr_2",
+      "file_name": "2.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/2.jpg",
+      "stratum": "mixed_dentition",
+      "expert_report": "Teeth present:\n                                                      55 54 53                     63      65\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n                                                      85      83                     73      75\n                                                      \nDevelipng teeth wrt 18, 17, 15, 14, 13, 23, 25, 27, 28, 38, 37, 35, 3, 33, 43, 44, 45, 47, 48\nCaries present: 55, 54, 73, 83, 85\n\nRestorations present:  75\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Radiopacity in left maxillary sinus\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Mixed dentition status with dentinal caries wrt 55, 54, 73, 83, 85"
+    },
+    {
+      "case_id": "pr_20",
+      "file_name": "20.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/20.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 -- 27 28\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild alveolar bone loss\n\nTemporomandibular joint: Beak like appearance left condyle\n\nMaxillary sinus: Pneumatization in 26 region\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Edentulous wrt 18, 26, 38, 48; Generalized chronic periodontitis"
+    },
+    {
+      "case_id": "pr_21",
+      "file_name": "21.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/21.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 -- -- --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 16, 44, 45\n\nRestorations present:  Implants wrt 26, 27; crown wrt 35, 36\n\nEndodontically treated: 35, 36\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild alveolar bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Well-osseointegrated implants wrt 26, 27; Dentinal caries wrt 16, 44, 45; Generalized chronic periodontitis"
+    },
+    {
+      "case_id": "pr_22",
+      "file_name": "22.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/22.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 -- 27 --\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 48\n\nRestorations present:  36, 37, 38, FPD wrt 45-47\n\nEndodontically treated: 36, 47\n\nRoot stumps: Nil\n\nPeriapical changes: PDl widening wrt 36\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: deep dentinal caries wrt 48; Apical periodontitis wrt 36; Edentulous wrt 18, 26, 28, 46"
+    },
+    {
+      "case_id": "pr_23",
+      "file_name": "23.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/23.jpg",
+      "stratum": "mixed_dentition",
+      "expert_report": "Teeth present:\n                                                     55 54 53 52                 63 64 65\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n                                                     85 84 83                      73 74 75\nDeveloping teeth wrt 18, 17, 15, 14, 13, 12, 23, 24, 25, 27, 28, 38, 37, 35, 34, 33, 43, 44, 45, 47, 48. rotated 12.\nCaries present:  Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil \n\nRadiographic impression: Mixed dentition status"
+    },
+    {
+      "case_id": "pr_24",
+      "file_name": "24.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/24.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 -- 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 37\n\nRestorations present:  Crown wrt 11, 21, FPD wrt 24- 26\n\nEndodontically treated: 17, 11, 21\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 18, 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Dilaceration wrt 48, with close proximity to inferior alveolar canal\n\nRadiographic impression: Vertical impaction wrt 18, 48; mesioangular impaction wrt 38. Edentulous wrt 25"
+    },
+    {
+      "case_id": "pr_25",
+      "file_name": "25.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/25.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 -- 15 14 13 12 11   21 22 23 24 -- 26 27 28\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 17\n\nRestorations present:  17; crowns wrt 36, 47\n\nEndodontically treated: 37, 36, 47\n\nRoot stumps: 37\n\nPeriapical changes: Periapicaal radiolucency wrt 17\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Priapical abscess wrt 17; root stumps wrt 37; edentulous wrt 16, 25, 38, 46"
+    },
+    {
+      "case_id": "pr_26",
+      "file_name": "26.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/26.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Vertical impacion wrt 38, 48"
+    },
+    {
+      "case_id": "pr_27",
+      "file_name": "27.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/27.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  37\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38\n\nAlveolar bone: Generalized mild alveolar bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Vertical impaction wrt 38."
+    },
+    {
+      "case_id": "pr_28",
+      "file_name": "28.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/28.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 -- 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  26; FPD wrt 34- 37\n\nEndodontically treated: 35, 37\n\nRoot stumps: Nil\n\nPeriapical changes: PDL widening wrt 37\n\nImpacted tooth: Nil\n\nAlveolar bone: Vertical bone loss wrt 37, horizontal bone loss wrt 26, 27\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Endo perio lesion wrt 37."
+    },
+    {
+      "case_id": "pr_29",
+      "file_name": "29.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/29.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 -- 13 12 11   21 22 23 -- 25 26 27 28\n                                       48 47 46 45 -- 43 42 41   31 32 33 -- 35 36 37 38\nCaries present: 16\n\nRestorations present:  37, 36, 46, 47\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 33, 32, 31 \n\nImpacted tooth: Nil\n\nAlveolar bone: Severe vertical bone loss wrt 33\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Endoperiolesion wrt 33; Apical periodontits wrt 31, 32; Dentinal caries wrt 18."
+    },
+    {
+      "case_id": "pr_3",
+      "file_name": "3.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/3.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n                                       \nDeveloping 18, 28, 38, 48.\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 47 is below the occlusal plane.\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Normal radiographic findings with mesioangular inclination wrt 47."
+    },
+    {
+      "case_id": "pr_30",
+      "file_name": "30.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/30.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 -- --\n                                                                                        73\nCaries present: Nil\n\nRestorations present:  18, 27, 28; crown wrt 16, 25, 36, 35, 44, 45, 46, 47\n\nEndodontically treated: 16, 25, 35, 44, 45, 46\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 33\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Vertical impaction wrt 33; Retained 73"
+    },
+    {
+      "case_id": "pr_31",
+      "file_name": "31.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/31.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                                     55                           62\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nDeveloping 18, 28, 38, 48.\nCaries present: 55\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 15\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Retained 55, 22; Vertical impaction wrt 15"
+    },
+    {
+      "case_id": "pr_32",
+      "file_name": "32.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/32.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 18, 28\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: PDL widening wrt 28\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Deep dentinal caries wrt 18, Apical periodontitis wrt 28"
+    },
+    {
+      "case_id": "pr_33",
+      "file_name": "33.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/33.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   -- 32 33 34 35 36 37 --\nCaries present: 27, 28\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 27, 28; Edentulous wrt 18, 38, 31; Generalized chronic periodontitis"
+    },
+    {
+      "case_id": "pr_34",
+      "file_name": "34.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/34.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Mesioangular impaction wrt 38; Horizontal impaction wrt 48"
+    },
+    {
+      "case_id": "pr_35",
+      "file_name": "35.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/35.jpg",
+      "stratum": "mixed_dentition",
+      "expert_report": "Teeth present:\n                                                     55 54 53 52             62 63 64 65\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\n                                                      85 84 83                     73 74 75\nCaries present: 55, 54, 75, 74, 84, 85\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Mixed dentition status with deep dentinal caries wrt 55, 54, 75, 74, 84, 85"
+    },
+    {
+      "case_id": "pr_36",
+      "file_name": "36.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/36.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 -- 27 28\n                                       -- 47 -- 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 27\n\nRestorations present:  17, 14, 27, 28, 35; Crown wrt 16, 36, 37, 47\n\nEndodontically treated: 16, 36, 37, 47; Furcation involvenment wrt 47\n\nRoot stumps: Fractured root wrt 47\n\nPeriapical changes: Periapical radiolucency wrt 36\n\nImpacted tooth: 18\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Distoangular impaction wrt 18; Periapical abscess wrt 36; Root fracture wrt 47; deep dentinal caries wrt 27; edentulous wrt 26, 46, 38, 48"
+    },
+    {
+      "case_id": "pr_37",
+      "file_name": "37.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/37.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 -- -- 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 46, 15\n\nRestorations present:  45; Crown wrt 16; FPD wrt 24-27\n\nEndodontically treated: 16\n\nRoot stumps: 27\n\nPeriapical changes: Radiolucency wrt 27\n\nImpacted tooth: 38\n\nAlveolar bone: Gebneralized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Dome shaped radiopacity in left maxillary sinus\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 46, 15; Meesioangular impaction wrt 38; edentulous wrt 18, 25, 26, 28; Periapical abscess wrt 27; Retention cyst in left maxillary sinus"
+    },
+    {
+      "case_id": "pr_38",
+      "file_name": "38.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/38.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 -- -- 14 -- 12 --   21 22 -- 24 -- 26 27 --\n                                       -- -- -- 45 -- 43 42 41   31 32 33 34 -- -- -- --\nCaries present: 17, 22, 26, 27, 43, 45\n\nRestorations present: Nil \n\nEndodontically treated: Nil\n\nRoot stumps: 14, 12, 21, 34, 33, 32\n\nPeriapical changes: PDL widening wrt 32, 33, 12\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 17, 22, 26, 27, 43, 45; Apical periodontits wrt 32, 33, 12; edentulous wrt 18, 16, 15, 11, 23, 25, 28, 38, 37, 36, 35, 44, 46, 47, 48"
+    },
+    {
+      "case_id": "pr_39",
+      "file_name": "39.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/39.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- -- 16 15 14 13 12 11   21 22 23 24 25 26 -- --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 45, 47, 37\n\nRestorations present:  Crown wrt 14, 26, 37\n\nEndodontically treated: 14, 26, 37\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Ghost images of earrings\n\nCentral lesions: Nil\n\nRadiographic impression: Vertically impacted 38; Dentinal caries wrt 45, 47, 37; edentulous wrt 18, 17, 27, 28."
+    },
+    {
+      "case_id": "pr_4",
+      "file_name": "4.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/4.jpg",
+      "stratum": "mixed_dentition",
+      "expert_report": "Teeth present:\n                                                      55     53                      63     65\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n                                                     85 84 83                      73 74 75\nDeveloping 18, 17, 27, 37, 38, 35, 45, 47, 48\nCaries present: 55\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Mixed dentition status; DEntinal caries wrt 55"
+    },
+    {
+      "case_id": "pr_40",
+      "file_name": "40.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/40.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 -- 12 --     -- 22 -- 24 -- -- -- --\n                                       -- 47 46 -- 44 43 42 41   31 32 33 34 -- -- -- --\nCaries present: 44, 24\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: 17, 16, 15, 14, 12, 22, 34, 33, 32, 42, 43, 46, 47\n\nPeriapical changes: Radiolucency wrt 43, 15\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Multiple root stumps; Periapical abscess wrt 43, 15; Dentinal caries wrt 44, 24; chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_41",
+      "file_name": "41.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/41.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 -- -- 15 14 13 12 11   21 22 23 24 25 --  --  --\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 -- 37 38\nCaries present: 14, 44\n\nRestorations present:  47; Implants wrt 16, 17, 26, 27, 36, 46, no surrounding radiolucency\n\nEndodontically treated: 15, 45\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss; moderate to severe bone loss in maxillary arch\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Well-osseointegrated implants wrt 16, 17, 26, 27, 36, 46; Chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_42",
+      "file_name": "42.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/42.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 -- -- --\n                                       48 47 -- 45 44 43 42 41   -- 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  37, 47\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 48\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal moderate to severe bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Endoperio lesion wrt 48; chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_43",
+      "file_name": "43.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/43.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- -- 16 15 -- 13 -- 11   21 22 23 24 -- -- -- --\n                                       -- -- 46 45 44 -- -- --   -- -- --  34 35 -- 37 --\nCaries present: Nil\n\nRestorations present:  FPD wrt 37 to 46\n\nEndodontically treated: 34, 35, 37, 44, 45, 46\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 46\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss; severe bone loss wrt 37.\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Endo perio lesion wrt 46; chronic generalized periodontitis; Edentulous wrt 18, 17, 14, 12, 25, 26, 27, 28"
+    },
+    {
+      "case_id": "pr_44",
+      "file_name": "44.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/44.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                                     55      53                     63 64 65\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 -- 44 43 42 41   31 32 33 34 -- 36 37 38\n                                                     85 84 83                      73 74 75\nDeveloping 18, 17, 15, 13, 23, 25, 27, 28, 38, 37, 34, 33, 43, 44, 47, 48\n\nCaries present: 55, 64, 83\n\nRestorations present:  65, 75, Crowns wrt 74, 85\n\nEndodontically treated: 74, 85\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 75\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical cyst wrt 75; Missing 35, 45"
+    },
+    {
+      "case_id": "pr_45",
+      "file_name": "45.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/45.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 37, 47, 48\n\nRestorations present:  Crown wrt 36\n\nEndodontically treated: 36\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Mesioangular impaction wrt 38, 48; Deep dentinal caries wrt 48; dentinal caries wrt 37, 47."
+    },
+    {
+      "case_id": "pr_46",
+      "file_name": "46.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/46.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       -- 17 16 -- 14 13 12 11   21 22 23 24 -- 26 27 28\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 -- 37 38\nCaries present: Nil\n\nRestorations present:  17, 26, 48,; FPD wrt 35-38\n\nEndodontically treated: 37\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Edentulous wrt 18, 15, 25, 36, 46; Chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_47",
+      "file_name": "47.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/47.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 18, 37, 36, 47, 48\n\nRestorations present:  Crowns wrt 16, 26.\n\nEndodontically treated: 16, 26, Incomplete endodontic treatment wrt 36\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 18, PDL widening wrt 36\n\nImpacted tooth: 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Vertical impaction wrt 38, 48; periapical abscess wrt 18; Apical periodontitis wrt 36; dentinal caries wrt 37"
+    },
+    {
+      "case_id": "pr_48",
+      "file_name": "48.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/48.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 -- 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 -- 37 38\nCaries present: 46, 47\n\nRestorations present:  24, 25, 26, 27, 28, 37; crown wrt 47, 46; implant wrt 16, below alveolar crest level\n\nEndodontically treated: 46, 47\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Interdental bone loss in 46, 47 region\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Superimposition of implant wrt 16 over right sinus floor.\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Well-osseointegrated implant wrt 16, superimposed over maxillary sinus floor; Dentinal caries wrt 46, 47"
+    },
+    {
+      "case_id": "pr_49",
+      "file_name": "49.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/49.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 -- -- 15 14 13 12 11   21 22 23 -- 25 26 -- --\n                                       48 47 -- -- 44 43 42 41   31 32 33 34 -- 36 -- 38\nCaries present: 23, 38, 36, 47\n\nRestorations present:  Crown wrt 21, 26, 32; FPD wrt 34-36, 44-47; Endosteal and cortical Implants in 16, 17, 24, 26, 27\n\nEndodontically treated: 21, 25, 26, 38, 36,32, 47\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Well osseointegrated implants wrt 16, 17, 24, 26, 27; Dentinal caries wrt 23, 38, 36, 47"
+    },
+    {
+      "case_id": "pr_5",
+      "file_name": "5.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/5.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 16\n\nRestorations present:  Crown wrt 21\n\nEndodontically treated: 21, 25\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Normal\n\nCentral lesions: Nil\n\nRadiographic impression: Deep dentinal caries wrt 16"
+    },
+    {
+      "case_id": "pr_50",
+      "file_name": "50.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/50.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 14, 44, 48\n\nRestorations present:  Crown wrt 35, 36, 45, 46, 47\n\nEndodontically treated: 35, 36, 45, 46, 47\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal moderate bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 14, 44, 48; Chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_51",
+      "file_name": "51.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/51.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 -- 15 14 13 12 11   21 22 23 24 25 -- 27 28\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 -- 37 38\nCaries present: 18, 28, 38, 37\n\nRestorations present: 48; Crown wrt 35, 47; FPD wrt 15-17 and 25-27\n\nEndodontically treated: 17,27, 35, 47\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 38\n\nImpacted tooth: Nil\n\nAlveolar bone: Horizontal bone loss in  posterior region\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 38; Dentinal caries wrt 18, 28, 37; Edentulous wrt 36, 46, 16, 26"
+    },
+    {
+      "case_id": "pr_52",
+      "file_name": "52.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/52.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 -- 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 -- 38\nCaries present: 17, 45, 35\n\nRestorations present:  28, 47; FPD wrt 14-16 and 36-38; crown wrt 23, 24, 25, 26, 46\n\nEndodontically treated: 14, 23, 24, 25, 36, 38\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 38\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Pneumatization in 16 region\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 17, 35, 45; periapical abscess wrt 38"
+    },
+    {
+      "case_id": "pr_53",
+      "file_name": "53.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/53.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- -- 46 45 44 43 42 41   31 32 33 34 35 36 -- --\nCaries present: Nil\n\nRestorations present:  23\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Chronic generalized periodontitis; edentulous wrt 18, 28, 37, 38, 47, 48"
+    },
+    {
+      "case_id": "pr_54",
+      "file_name": "54.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/54.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 36 -- 38\nCaries present: 26\n\nRestorations present:  Splint wrt 11-22\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Edentulous wrt 18, 28, 37, 46; dentinal caries wrt 26"
+    },
+    {
+      "case_id": "pr_55",
+      "file_name": "55.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/55.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 36, 46, 47\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 36, 46, 47, Mesio angular impaction wrt 38, 48"
+    },
+    {
+      "case_id": "pr_56",
+      "file_name": "56.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/56.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Crown wrt 25, 27\n\nEndodontically treated: 25, 27\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil \n\nRadiographic impression: Vertical impaction wrt 38, 48"
+    },
+    {
+      "case_id": "pr_57",
+      "file_name": "57.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/57.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       -- 47 46 -- 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 28, 38\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Healing socket wrt 45\n\nRadiographic impression: Vertical impaction wrt 28, 38; edentulous wrt 45, 48; Ectopic eruption wrt 35"
+    },
+    {
+      "case_id": "pr_58",
+      "file_name": "58.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/58.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                                               53                      63\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n                                                               83\nDeveloping 18, 28, 38, 48\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 13, 23, 43\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: earring\n\nCentral lesions: Pericoronal radiolucency around 43\n\nRadiographic impression: Hyperplastic dental follicle wrt 43; impacted 13, 23, 43"
+    },
+    {
+      "case_id": "pr_59",
+      "file_name": "59.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/59.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Fracture involving dentin wrt 21\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Ellis class 2 fracture wrt 21; Mesioangular impaction wrt 38, 48"
+    },
+    {
+      "case_id": "pr_6",
+      "file_name": "6.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/6.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: Nil\n\nRestorations present:  16, 27, 37, 36, 46, 47, 48\n\nEndodontically treated: 15\n\nRoot stumps: 15\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Root stumps wrt 15; Chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_60",
+      "file_name": "60.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/60.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 -- 13 12 11   21 22 23 -- 25 26 27 28\n                                       48 47 46 45 -- 43 42 41   31 32 33 -- 35 36 37 38\nCaries present: 28\n\nRestorations present:  17, 16, 37, 46, 47; crown wrt 26, 36\n\nEndodontically treated: 26, 27, 36\n\nRoot stumps: Nil\n\nPeriapical changes: 36\n\nImpacted tooth: 38\n\nAlveolar bone: Interradicular bone loss wrt 36\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Endo-perio lesion wrt 36; Mesioangular impaction wrt 38;Dentinal caries wrt 28"
+    },
+    {
+      "case_id": "pr_61",
+      "file_name": "61.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/61.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 26, 46, 47\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: 27, 48\n\nPeriapical changes: Radiolucency wrt 46, PDL widening wrt 26\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 46; Apical periodontitis wrt 26; Root stumps wrt 27, 48; Dentinal caries wrt 47"
+    },
+    {
+      "case_id": "pr_62",
+      "file_name": "62.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/62.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 -- 36 37 38\nCaries present: Nil\n\nRestorations present:  36; Crown wrt 16\n\nEndodontically treated: 16\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Edentulous wrt 35"
+    },
+    {
+      "case_id": "pr_63",
+      "file_name": "63.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/63.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Crown wrt 14\n\nEndodontically treated: 14\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: NIl\n\nAlveolar bone: generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Ghost image of opposite rami\n\nCentral lesions: Nil\n\nRadiographic impression: Chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_64",
+      "file_name": "64.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/64.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: generalized horizontal bone loss; vertical bone loss wrt 48\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Chronic generalized periodontitis."
+    },
+    {
+      "case_id": "pr_65",
+      "file_name": "65.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/65.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 -- 23 24 25 26 27 28\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 44\n\nRestorations present:  26, 45; Crown wrt 17, 16, 35, 36, 37, 46, 47; FPD wrt 21-23\n\nEndodontically treated: 17, 16, 21, 27, 35, 36, 37, 46, 47\n\nRoot stumps: 27, 28\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized moderate to severe bone loss; interradicular bone loss wrt 36\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: dentinal caries wrt 44; Endoperio lesion wrt 36; Root stumps wrt 27, 28"
+    },
+    {
+      "case_id": "pr_66",
+      "file_name": "66.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/66.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nDeveloping 18, 28, 38, 48\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Mixed Radiopaque and radiolucent lesion wrt 12, 13\n\nRadiographic impression: Supernumerary tooth, Odontome wrt 12- 13 region"
+    },
+    {
+      "case_id": "pr_67",
+      "file_name": "67.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/67.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 36, 47, 48\n\nRestorations present:  47\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 48\n\nAlveolar bone: generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 36, 47, 48; Mesioangular impaction wrt 48"
+    },
+    {
+      "case_id": "pr_68",
+      "file_name": "68.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/68.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 37\n\nRestorations present:  Crown wrt 25, FPD wrt 45- 47\n\nEndodontically treated: 25\n\nRoot stumps: 45\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Spine shadow over right ramus\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 37; Root stump wrt 45"
+    },
+    {
+      "case_id": "pr_69",
+      "file_name": "69.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/69.jpg",
+      "stratum": "mixed_dentition",
+      "expert_report": "Teeth present:\n                                                      55 54 53                     63 64 65 \n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\n                                                      85 84 83                     73 74 75\nDeveloping 17, 15, 14, 13, 23, 24, 25, 27, 33, 34, 35, 37, 43, 44, 45, 47\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Mixed dentition status"
+    },
+    {
+      "case_id": "pr_7",
+      "file_name": "7.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/7.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 -- --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 -- --\nCaries present: 36\n\nRestorations present:  36, 35, 46, 47\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 36; Chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_70",
+      "file_name": "70.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/70.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 -- 13 12 11   21 22 23 -- 25 26 27 --\n                                       -- 47 46 45 -- 43 42 41   31 32 33 -- 35 36 -- --\nCaries present: 35\n\nRestorations present:  17, 16, 36; crown wrt 15, 26, 27,46, 47\n\nEndodontically treated: 15, 27, 43, 45, 46\n\nRoot stumps: Nil\n\nPeriapical changes: PDL widening wrt 43\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Beak shaped left condyle\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Healing socket wrt 37\n\nRadiographic impression: Apical periodontitis wrt 43; Edentulous wrt 18, 28, 37, 38, 48; Bird beak appearance secondary to degenerative joint disease"
+    },
+    {
+      "case_id": "pr_71",
+      "file_name": "71.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/71.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present: 46\n\nEndodontically treated: 17, 36\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 36\n\nImpacted tooth: 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 36; Vertical impaction wrt 38, 48"
+    },
+    {
+      "case_id": "pr_72",
+      "file_name": "72.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/72.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 38\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 38"
+    },
+    {
+      "case_id": "pr_73",
+      "file_name": "73.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/73.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 -- -- -- 11   21 22 23 24 -- 26 -- --\n                                           -- -- -- 45 44 43 42 41   31 32 33 34 -- -- -- --\nCaries present: Nil\n\nRestorations present:  FPD wrt 18-27 and 34-46; Cantilever bridge wrt 27, 35, 46\n\nEndodontically treated: 18, 17, 16, 15, 11, 21, 22, 23, 24, 34, 33, 32, 31, 41, 42, 43, 44, 45\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 26\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 26; Edentulous wrt 14, 13, 12, 25, 27, 28, 38, 37, 36, 35, 4, 47, 48"
+    },
+    {
+      "case_id": "pr_74",
+      "file_name": "74.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/74.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Angular bone loss wrt 37, 47\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Localized periodontitis wrt 37, 47"
+    },
+    {
+      "case_id": "pr_75",
+      "file_name": "75.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/75.jpg",
+      "stratum": "mixed_dentition",
+      "expert_report": "Teeth present:\n                                                                                        63      65\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n                                                     85 84                                   75\nDeveloping 18, 17, 27, 28, 37, 38, 34, 35, 44, 45, 47, 48\n\nCaries present: 84, 65\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Mixed dentition status; Dentinal caries wrt 65, 84"
+    },
+    {
+      "case_id": "pr_76",
+      "file_name": "76.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/76.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present:  16\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Horizontal impaction wrt 48"
+    },
+    {
+      "case_id": "pr_77",
+      "file_name": "77.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/77.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       -- 17 -- 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 -- 41   31 32 33 34 35 36 37 --\nCaries present:  47\n\nRestorations present:  37\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Multiple radiopaque flecks superimposed on rami bilaterally\n\nRadiographic impression: Dentinal caries wrt 47; Edentulous wrt 18, 16, 28, 38, 42, 48; Bilateral tonsilloliths"
+    },
+    {
+      "case_id": "pr_78",
+      "file_name": "78.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/78.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- -- 16 15 14 13 12 --   -- -- -- --  25 26 -- --\n                                       48 47 -- 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 16, 15, 26, 48\n\nRestorations present:  47, 48; FPD wrt 13-25, 32-42\n\nEndodontically treated: Nil\n\nRoot stumps: 14\n\nPeriapical changes: Radiolucency wrt 37, 32, 42\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 37, 32, 42; Dentinal caries wrt 16, 15, 26, 48"
+    },
+    {
+      "case_id": "pr_79",
+      "file_name": "79.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/79.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- -- -- 45 44 43 42 41   31 32 33 34 -- -- -- --\nCaries present: 23, 26\n\nRestorations present:  Crown wrt 12, 11, 21, 22, 44, 45; Implants wrt 35, 36, 37\n\nEndodontically treated: 12, 11, 21, 22. 44, 45\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 23, 26; Well-osseointegrated implants wrt 35, 36, 37"
+    },
+    {
+      "case_id": "pr_8",
+      "file_name": "8.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/8.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 36, 46\n\nRestorations present:  16, 36,46, Crown wrt 14\n\nEndodontically treated: 14, 25\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 28\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Dentinal caries wrt 36, 46; Vertical impaction wrt 28"
+    },
+    {
+      "case_id": "pr_80",
+      "file_name": "80.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/80.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       -- -- -- -- -- -- -- --    -- -- -- -- -- -- -- --\n                                       -- -- -- -- -- -- -- --    -- -- -- -- -- -- -- --  \nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Healing socket wrt 23, 34, 33, 32, 31, 41, 42, 43, 44, 48. Moderate ridge resorption.\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Completely edentulous maxillary and mandibular arches; Healing socket wrt 23, 34, 33, 32, 31, 41, 42, 43, 44, 48"
+    },
+    {
+      "case_id": "pr_81",
+      "file_name": "81.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/81.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 -- -- 42 41   31 32 33 34 -- 36 37 --\nCaries present: 36\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: 18, 46, 48\n\nPeriapical changes: PDL widening wrt 36; Radiolucency wrt 18, 46\n\nImpacted tooth: 28\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 18, 46; Apical periodontitis wrt 36, Vertical impaction wrt 28; Chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_82",
+      "file_name": "82.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/82.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 -- 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 42\n\nImpacted tooth: Nil\n\nAlveolar bone: Angular bone loss wrt 42\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Edentulous wrt 25; Endo-perio lesion wrt 42"
+    },
+    {
+      "case_id": "pr_83",
+      "file_name": "83.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/83.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 -- 14 -- 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 -- -- --\nCaries present: 33\n\nRestorations present:  Crown wrt 23, 24, 25, 26, 27, 34, 35, 44, 45, 46, 47; Cantilever FPD wrt 36\n\nEndodontically treated: 14, 12, 11, 23, 26, 27, 34, 35, 44\n\nRoot stumps: 16, 17, 12, 11\n\nPeriapical changes: Radiolucency wrt 46\n\nImpacted tooth: Nil\n\nAlveolar bone: Furcation involvement wrt 46\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: NIl\n\nRadiographic impression: Endo-perio lesion wrt 46; Dentinal caries wrt 33; Edentulous wrt 18, 15, 13, 28, 38, 37, 36, 48"
+    },
+    {
+      "case_id": "pr_84",
+      "file_name": "84.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/84.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 -- 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 -- 35 36 37 --\n\nCaries present: 18, 27, 28, 37, 35, 44, 45, 46, 47\n\nRestorations present:  Nil\n\nEndodontically treated: 44\n\nRoot stumps: 36\n\nPeriapical changes: Radiolucency wrt 18, PDL widening wrt 45, 46, 27, 28\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 18, Apical periodontitis wrt 45, 46, 27, 28; edentulous wrt 15, 38, 34"
+    },
+    {
+      "case_id": "pr_85",
+      "file_name": "85.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/85.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 -- 41   31 32 33 34 35 36 37 38\nCaries present: 47\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38, 48. Apex of 38 appears bulbous.\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Horizontal impaction wrt 38, 48; Hypercementosis wrt 38; Dentinal caries wrt 47"
+    },
+    {
+      "case_id": "pr_86",
+      "file_name": "86.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/86.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 18, 38, 48\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Mesioangular impaction wrt 18, 38; Vertical impaction wrt 48"
+    },
+    {
+      "case_id": "pr_87",
+      "file_name": "87.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/87.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 -- 37 --\nCaries present: 37, 35\n\nRestorations present:  25, 26, 47; Crown wrt 15, 16, 46, 45; FPD wrt 35-37\n\nEndodontically treated: 15, 16, 37, 45, 46\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 15, 46\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 15, 46; Dentinal caries wrt 35, 37"
+    },
+    {
+      "case_id": "pr_88",
+      "file_name": "88.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/88.jpg",
+      "stratum": "mixed_dentition",
+      "expert_report": "Teeth present:\n                                                      55 54 53                     63 64 65\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n                                                     85      83                      73 74 75\nDeveloping teeth wrt 18, 17, 15, 14, 13, 23, 24, 25, 27, 28, 38, 37, 35, 34, 33, 43, 44, 45, 47, 48\nCaries present: 54, 65, 85\n\nRestorations present:  Nil\n\nEndodontically treated: 85\n\nRoot stumps: 74\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Mixed dentition status; Dentinal caries wrt 54, 65, 85"
+    },
+    {
+      "case_id": "pr_89",
+      "file_name": "89.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/89.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                                                                                65\n                                       18 17 -- 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 25\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Vertically impacted 25; edentulous wrt 16, 28, 38, 48"
+    },
+    {
+      "case_id": "pr_9",
+      "file_name": "9.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/9.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 26, 38\n\nRestorations present:  46\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: 38\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Horizontal impaction wrt 38; Deep dentinal caries wrt 26, 38"
+    },
+    {
+      "case_id": "pr_90",
+      "file_name": "90.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/90.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                                    55 54 53                62 63 64 65\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       -- 47 46 -- 44 43 42 41   31 32 33 34 -- 36 37 --\n                                                   85 84 83                     73 74 75\nDeveloping teeth wrt 17, 15, 14, 13, 12, 22, 23, 24, 25, 37, 34, 33, 32, 42, 43, 44, 47\nCaries present: NIl\n\nRestorations present:  Crown wrt 74, 75\n\nEndodontically treated: 74, 75\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Edentulous wrt 18, 28, 38, 35, 45, 48"
+    },
+    {
+      "case_id": "pr_91",
+      "file_name": "91.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/91.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: Nil\n\nRestorations present:  26, 27, 28, 37, 47, 48; Crown wrt 18, 17, 35, 36, 45, 46\n\nEndodontically treated: 16, 35, 36, 45, 46\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 36\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 36"
+    },
+    {
+      "case_id": "pr_92",
+      "file_name": "92.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/92.jpg",
+      "stratum": "caries",
+      "expert_report": "Teeth present:\n                                       -- 17 -- 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 -- -- 45 44 43 42 41   31 32 33 34 -- 36 -- 38\nCaries present: 38\n\nRestorations present:  17, 38, 45; Crown wrt 14, 22, 23, 24, 25, 26, 27, 36\n\nEndodontically treated: 15, 14, 22, 23, 25, 26, 27, 38, 36, 48\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Edentulous wrt 18, 16, 28, 37, 35, 46, 47"
+    },
+    {
+      "case_id": "pr_93",
+      "file_name": "93.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/93.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- -- -- -- -- -- 12 11      -- 22 23 24 25 -- -- --\n                                       -- -- -- 45 44 43 42 --   31 32 33 34 35 -- -- --\nCaries present: 12, 24\n\nRestorations present:  FPD wrt 35-45; Cantilever bridge wrt 36, 46\n\nEndodontically treated: 34, 35, 45\n\nRoot stumps: 24\n\nPeriapical changes: Radiolucency wrt 32, 33; PDL widening wrt 12\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized severe horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 32, 34; Endo-perio lesion wrt 12; Dentinal caries wrt 24; Chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_94",
+      "file_name": "94.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/94.jpg",
+      "stratum": "impacted",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\nCaries present: 47\n\nRestorations present:  16, 26, 37, 35, 46, 47\n\nEndodontically treated: 36\n\nRoot stumps: 28\n\nPeriapical changes: Nil\n\nImpacted tooth: 38\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nose ring\n\nCentral lesions: Nil\n\nRadiographic impression: Horizontal impaction wrt 38; Dentinal caries wrt 47"
+    },
+    {
+      "case_id": "pr_95",
+      "file_name": "95.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/95.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 16 -- 14 13 12 11   21 22 23 24 -- 26 27 28\n                                       48 47 46 -- 44 43 42 41   31 32 33 34 -- 36 37 38\nCaries present: Nil\n\nRestorations present:  Orthodontic appliance present\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: NIl\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Pneumatization of sinus floor in 14 and 25 region\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Normal radiographic findings, with orthodontic appliance in place."
+    },
+    {
+      "case_id": "pr_96",
+      "file_name": "96.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/96.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- 17 16 15 14 13 12 11   21 22 23 24 25 26 27 --\n                                       48 47 46 45 44 43 42 --   -- 32 33 34 35 -- 37 38\nCaries present: Nil\n\nRestorations present:  37, 47\n\nEndodontically treated: 46\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 46\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical abscess wrt 46; Edentulous wrt 36; Chronic generalized periodontitis"
+    },
+    {
+      "case_id": "pr_97",
+      "file_name": "97.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/97.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       -- 47 46 45 44 43 42 41   31 32 33 34 35 36 37 --\nCaries present: 18, 36\n\nRestorations present:  Crown wrt 37\n\nEndodontically treated: 37\n\nRoot stumps: Nil\n\nPeriapical changes: PDL widening wrt 36\n\nImpacted tooth: Nil\n\nAlveolar bone: Normal\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Apical periodontitis wrt 36; Dentinal caries wrt 18"
+    },
+    {
+      "case_id": "pr_98",
+      "file_name": "98.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/98.jpg",
+      "stratum": "periapical",
+      "expert_report": "Teeth present:\n                                       -- -- 16 15 14 13 12 11   21 22 23 24 25 26 -- --\n                                       -- -- 46 -- 44 -- 42 --        -- 32 33 34 35 36 37 --\nCaries present: 46\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Radiolucency wrt 46\n\nImpacted tooth: Nil\n\nAlveolar bone: Generalized mild horizontal bone loss\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Periapical absecss wrt 46; Edentulous wrt 18, 17, 27, 28, 38, 31, 41, 43, 45, 47, 48"
+    },
+    {
+      "case_id": "pr_99",
+      "file_name": "99.jpg",
+      "image_path": "/home/s222393187/Dental/PR-Reports/images/99.jpg",
+      "stratum": "other",
+      "expert_report": "Teeth present:\n                                       18 17 16 15 14 13 12 11   21 22 23 24 25 26 27 28\n                                       48 47 46 45 44 43 42 41   31 32 33 34 35 36 37 38\n                                                                                                 75\nDeveloping teeth wrt 18, 17, 27, 28, 38, 37, 35, 34, 44, 45, 47, 48\nCaries present: Nil\n\nRestorations present:  Nil\n\nEndodontically treated: Nil\n\nRoot stumps: Nil\n\nPeriapical changes: Nil\n\nImpacted tooth: Nil\n\nAlveolar bone: Nil\n\nTemporomandibular joint: Normal\n\nMaxillary sinus: Intact\n\nArtifacts seen: Nil\n\nCentral lesions: Nil\n\nRadiographic impression: Retained 75, with developing 35."
+    }
+  ],
+  "holdout_case_ids": []
+}

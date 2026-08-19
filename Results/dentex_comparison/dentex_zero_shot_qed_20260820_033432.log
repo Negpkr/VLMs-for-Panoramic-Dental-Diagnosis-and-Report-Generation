@@ -1,0 +1,161 @@
+[03:34:32] DENTEX split=qed cases=752 models=['llava', 'llava_med', 'huatuogpt_vision', 'dentvlm'] strategy=zero_shot aggregation=pooled_slots none_label='No annotated finding' disease_macro=4 pathology=multi_label_ovr parser=dentex-multilabel-v1 heldout_excluded=['train_1', 'train_14', 'train_123'] max_new_tokens=350
+[03:34:32] Few-shot uses TEXT from held-out train cases only; those case_ids are excluded from zero-shot, few-shot, and CoT scoring so all strategies share the same images: ['train_1', 'train_14', 'train_123']
+[03:34:32] === TABLE A binary support (unique abnormal teeth vs no-finding slots; these partition n_images × 32) ===
+[03:34:32]   n_images                 752
+[03:34:32]   n_slots                  24064
+[03:34:32]   Abnormal                 n=3627
+[03:34:32]   No annotated finding     n=20437
+[03:34:32]   check 3627 + 20437 = 24064  OK (expected 24064)
+[03:34:32] === TABLE B GT-positive tooth-slot support n (one-vs-rest; not unique teeth) ===
+[03:34:32]   Impacted               n=642
+[03:34:32]   Caries                 n=2286
+[03:34:32]   Deep Caries            n=602
+[03:34:32]   Periapical Lesion      n=166
+[03:34:32]   diagnosis-positive sum   n=3696  (can exceed unique abnormal teeth=3627 when teeth are multi-label)
+[03:34:32] All four DENTEX diagnoses have GT support; Macro-4 uses all four classes.
+[03:34:32] === LLaVA-1.5-7B (llava-hf/llava-1.5-7b-hf) ===
+[03:34:57] loaded in 18.5s on cuda:0
+[03:35:21]   10/752 cases done
+[03:35:35]   20/752 cases done
+[03:35:50]   30/752 cases done
+[03:36:11]   40/752 cases done
+[03:36:25]   50/752 cases done
+[03:36:51]   60/752 cases done
+[03:37:13]   70/752 cases done
+[03:37:43]   80/752 cases done
+[03:38:00]   90/752 cases done
+[03:38:29]   100/752 cases done
+[03:38:54]   110/752 cases done
+[03:39:21]   120/752 cases done
+[03:39:47]   130/752 cases done
+[03:40:03]   140/752 cases done
+[03:40:38]   150/752 cases done
+[03:40:56]   160/752 cases done
+[03:41:08]   170/752 cases done
+[03:41:27]   180/752 cases done
+[03:41:52]   190/752 cases done
+[03:42:05]   200/752 cases done
+[03:42:21]   210/752 cases done
+[03:42:37]   220/752 cases done
+[03:43:03]   230/752 cases done
+[03:43:23]   240/752 cases done
+[03:43:40]   250/752 cases done
+[03:43:57]   260/752 cases done
+[03:44:25]   270/752 cases done
+[03:44:50]   280/752 cases done
+[03:45:09]   290/752 cases done
+[03:45:31]   300/752 cases done
+[03:45:45]   310/752 cases done
+[03:46:04]   320/752 cases done
+[03:46:25]   330/752 cases done
+[03:46:44]   340/752 cases done
+[03:47:00]   350/752 cases done
+[03:47:16]   360/752 cases done
+[03:47:32]   370/752 cases done
+[03:47:52]   380/752 cases done
+[03:48:24]   390/752 cases done
+[03:48:37]   400/752 cases done
+[03:48:58]   410/752 cases done
+[03:49:17]   420/752 cases done
+[03:49:39]   430/752 cases done
+[03:49:57]   440/752 cases done
+[03:50:12]   450/752 cases done
+[03:50:42]   460/752 cases done
+[03:51:03]   470/752 cases done
+[03:51:28]   480/752 cases done
+[03:51:52]   490/752 cases done
+[03:52:17]   500/752 cases done
+[03:52:35]   510/752 cases done
+[03:52:49]   520/752 cases done
+[03:53:11]   530/752 cases done
+[03:53:34]   540/752 cases done
+[03:53:58]   550/752 cases done
+[03:54:24]   560/752 cases done
+[03:54:40]   570/752 cases done
+[03:55:08]   580/752 cases done
+[03:55:32]   590/752 cases done
+[03:55:50]   600/752 cases done
+[03:56:05]   610/752 cases done
+[03:56:20]   620/752 cases done
+[03:56:45]   630/752 cases done
+[03:56:59]   640/752 cases done
+[03:57:22]   650/752 cases done
+[03:57:40]   660/752 cases done
+[03:57:55]   670/752 cases done
+[03:58:07]   680/752 cases done
+[03:58:38]   690/752 cases done
+[03:58:52]   700/752 cases done
+[03:59:11]   710/752 cases done
+[03:59:35]   720/752 cases done
+[03:59:54]   730/752 cases done
+[04:00:15]   740/752 cases done
+[04:00:30]   750/752 cases done
+[04:00:33]   752/752 cases done
+[04:01:11]   pooled abnormal F1=0.109 macroF1=0.497 BalAcc=0.503 Acc=0.797
+[04:01:11] checkpoint -> dentex_zero_shot_qed_20260820_033432.json
+[04:01:11] === LLaVA-Med-v1.5-7B (chaoyinshe/llava-med-v1.5-mistral-7b-hf) ===
+[04:01:27] loaded in 16.3s on cuda:0
+[04:01:31]   10/752 cases done
+[04:01:35]   20/752 cases done
+[04:01:39]   30/752 cases done
+[04:01:43]   40/752 cases done
+[04:01:47]   50/752 cases done
+[04:01:51]   60/752 cases done
+[04:01:55]   70/752 cases done
+[04:01:59]   80/752 cases done
+[04:02:04]   90/752 cases done
+[04:02:08]   100/752 cases done
+[04:02:12]   110/752 cases done
+[04:02:16]   120/752 cases done
+[04:02:20]   130/752 cases done
+[04:02:24]   140/752 cases done
+[04:02:28]   150/752 cases done
+[04:02:32]   160/752 cases done
+[04:02:36]   170/752 cases done
+[04:02:40]   180/752 cases done
+[04:02:44]   190/752 cases done
+[04:02:49]   200/752 cases done
+[04:02:53]   210/752 cases done
+[04:02:56]   220/752 cases done
+[04:03:01]   230/752 cases done
+[04:03:05]   240/752 cases done
+[04:03:09]   250/752 cases done
+[04:03:13]   260/752 cases done
+[04:03:17]   270/752 cases done
+[04:03:21]   280/752 cases done
+[04:03:25]   290/752 cases done
+[04:03:29]   300/752 cases done
+[04:03:33]   310/752 cases done
+[04:03:37]   320/752 cases done
+[04:03:41]   330/752 cases done
+[04:03:45]   340/752 cases done
+[04:03:49]   350/752 cases done
+[04:03:53]   360/752 cases done
+[04:03:57]   370/752 cases done
+[04:04:01]   380/752 cases done
+[04:04:06]   390/752 cases done
+[04:04:10]   400/752 cases done
+[04:04:14]   410/752 cases done
+[04:04:18]   420/752 cases done
+[04:04:22]   430/752 cases done
+[04:04:26]   440/752 cases done
+[04:04:30]   450/752 cases done
+[04:04:34]   460/752 cases done
+[04:04:38]   470/752 cases done
+[04:04:42]   480/752 cases done
+[04:04:46]   490/752 cases done
+[04:04:50]   500/752 cases done
+[04:04:55]   510/752 cases done
+[04:04:59]   520/752 cases done
+[04:05:03]   530/752 cases done
+[04:05:07]   540/752 cases done
+[04:05:11]   550/752 cases done
+[04:05:15]   560/752 cases done
+[04:05:19]   570/752 cases done
+[04:05:23]   580/752 cases done
+[04:05:27]   590/752 cases done
+[04:05:31]   600/752 cases done
+[04:05:35]   610/752 cases done
+[04:05:39]   620/752 cases done
+[04:05:43]   630/752 cases done
+[04:05:47]   640/752 cases done

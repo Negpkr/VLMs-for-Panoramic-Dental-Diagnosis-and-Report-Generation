@@ -9,7 +9,7 @@
 set -euo pipefail
 cd /home/s222393187/Dental
 source activate_env.sh
-export CUDA_VISIBLE_DEVICES=1
+# Do not override Slurm's GPU. On luthin, activate_env.sh defaults to GPU 1.
 
 OUT=Results/dentex_comparison
 MODELS="llava llava_med huatuogpt_vision dentvlm"
@@ -55,5 +55,6 @@ for STRATEGY in $STRATEGIES; do
   echo "===== DONE strategy=$STRATEGY ====="
 done
 echo "===== PAPER FIGURES split=$SPLIT ====="
-python -u paper_figures.py --dentex-split "$SPLIT" --out-dir Paper/figures_main
+python -u paper_figures.py --dentex-split "$SPLIT" --out-dir Paper/figures_main \
+  || echo "PAPER_FIGURES_SKIPPED (DENTEX results are still saved)"
 echo "DENTEX_ALL_STRATEGIES_DONE"

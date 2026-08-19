@@ -10,7 +10,7 @@
 set -euo pipefail
 cd /home/s222393187/Dental
 source activate_env.sh
-export CUDA_VISIBLE_DEVICES=1
+# Do not override Slurm's GPU. On luthin, activate_env.sh defaults to GPU 1.
 
 OUT=Results/model_comparison
 MODELS="llava llava_med huatuogpt_vision dentvlm"

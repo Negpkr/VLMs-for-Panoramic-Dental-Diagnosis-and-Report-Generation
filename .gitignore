@@ -19,6 +19,7 @@ venv/
 # Local dataset (not tracked)
 Tufts_Dental_Database/
 DENTEX/
+PR-Reports/
 # Paper drafts / local manuscript materials
 Paper/
 
