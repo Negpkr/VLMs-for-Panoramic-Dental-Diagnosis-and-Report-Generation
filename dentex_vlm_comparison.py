@@ -14,7 +14,11 @@ multi-label: one tooth may have more than one diagnosis. Each disease is
 scored independently (pooled one-vs-rest). Table A is abnormal vs
 no-finding. Table B is the four diagnoses only; Macro-4 is their
 unweighted mean. Abnormality is derived from parsed FDI findings, never
-from the model's Total abnormal count.
+from the model's Total abnormal count. A model that predicts no finding
+on every slot has Macro F1 = no-finding F1 / 2 (the no-finding-only
+baseline, not a mathematical floor) and accuracy equal to the no-finding
+prior. Summary-CSV mean pred/GT counts are unique abnormal teeth per
+case, not diagnosis-label counts.
 
 Do not launch from this module. Use runs/run_dentex_strategies.sh when ready.
 
@@ -644,10 +648,26 @@ def compute_metrics(results: list[dict[str, Any]]) -> dict[str, Any]:
             "pathology_macro4_f1_ci95": mac4_ci,
         },
         "per_sample": per_sample,
-        "mean_predicted_count": sum(len(r["predicted_findings"]) for r in ok) / len(ok),
-        "mean_ground_truth_count": sum(len(r["ground_truth_findings"]) for r in ok) / len(ok),
+        # Unique abnormal teeth (mapping keys). Not diagnosis-label counts.
+        "mean_predicted_count": _mean_abnormal_teeth(ok, "predicted_findings"),
+        "mean_ground_truth_count": _mean_abnormal_teeth(ok, "ground_truth_findings"),
+        "mean_predicted_abnormal_teeth": _mean_abnormal_teeth(ok, "predicted_findings"),
+        "mean_ground_truth_abnormal_teeth": _mean_abnormal_teeth(ok, "ground_truth_findings"),
+        "mean_predicted_disease_labels": _mean_disease_labels(ok, "predicted_findings"),
+        "mean_ground_truth_disease_labels": _mean_disease_labels(ok, "ground_truth_findings"),
         "mean_seconds_per_case": sum(r["seconds"] for r in ok) / len(ok),
     }
+
+
+def _mean_abnormal_teeth(rows: list[dict[str, Any]], key: str) -> float:
+    return sum(len(r.get(key) or {}) for r in rows) / len(rows)
+
+
+def _mean_disease_labels(rows: list[dict[str, Any]], key: str) -> float:
+    return sum(
+        sum(len(eval_metrics.labels_on_tooth(v)) for v in (r.get(key) or {}).values())
+        for r in rows
+    ) / len(rows)
 
 
 def evaluate_model(
@@ -765,8 +785,14 @@ def write_summary_csv(payload: dict[str, Any], out_path: Path) -> None:
             **eval_metrics.flatten_pathology_main(
                 m.get("disease_multiclass") or {}, DISEASES
             ),
-            "Mean pred/case": m.get("mean_predicted_count"),
-            "Mean GT/case": m.get("mean_ground_truth_count"),
+            "Mean pred abnormal teeth/case": m.get(
+                "mean_predicted_abnormal_teeth", m.get("mean_predicted_count")
+            ),
+            "Mean GT abnormal teeth/case": m.get(
+                "mean_ground_truth_abnormal_teeth", m.get("mean_ground_truth_count")
+            ),
+            "Mean pred disease labels/case": m.get("mean_predicted_disease_labels"),
+            "Mean GT disease labels/case": m.get("mean_ground_truth_disease_labels"),
             "Sec/case": m.get("mean_seconds_per_case"),
             "Status": "ok",
         }

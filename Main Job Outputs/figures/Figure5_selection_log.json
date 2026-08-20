@@ -1,0 +1,26 @@
+{
+  "protocol": "/home/s222393187/Dental/Paper/figures_main/Figure5_selection_protocol.md",
+  "source_model": "huatuogpt_vision",
+  "source_strategy": "zero_shot",
+  "picks": {
+    "A_correct": null,
+    "B_missing_tooth_fn": {
+      "model": "huatuogpt_vision",
+      "case_id": "1"
+    },
+    "C_abnormality_fn": {
+      "case_id": "train_0",
+      "tooth": 26
+    },
+    "D_correct_multilabel": null,
+    "E_partial_multilabel": {
+      "case_id": "train_267",
+      "tooth": 46
+    }
+  },
+  "omitted": [
+    "A_correct",
+    "D_correct_multilabel"
+  ],
+  "note": "First sorted case_id match per locked category. No substitutions."
+}

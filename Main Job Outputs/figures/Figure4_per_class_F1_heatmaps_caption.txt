@@ -1,0 +1,1 @@
+Left: DENTEX one-vs-rest F1 for Impacted, Caries, Deep Caries, and Periapical Lesion. Right: binary F1 for Tufts Missing/Present and DENTEX Abnormal/No annotated finding. Rows are the 12 model × prompting combinations. Support counts are reported in Figure 2, not in cells.

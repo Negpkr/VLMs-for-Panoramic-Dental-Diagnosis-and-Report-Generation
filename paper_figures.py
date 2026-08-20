@@ -6,6 +6,7 @@ Figure 2  Dataset / class support + DENTEX multi-label inset
 Figure 3  Model × strategy Macro F1 (Tufts, DENTEX abnormality, DENTEX Macro-4)
 Figure 4  DENTEX per-disease F1 heatmap (+ binary heatmaps)
 Figure 5  Qualitative successes and failures
+Figure 6  DENTEX abnormal vs no-finding 2×2 confusion matrices (12 model × strategy cells)
 
 After the qed matrix finishes:
     python paper_figures.py --dentex-split qed
@@ -801,6 +802,81 @@ def figure5(out_dir: Path, dentex_matrix: dict) -> list[Path]:
     return paths
 
 
+# ---------------------------------------------------------------------------
+# Figure 6  DENTEX 2×2 confusion (abnormal vs no finding)
+# ---------------------------------------------------------------------------
+
+def figure6(out_dir: Path, dentex_matrix: dict) -> list[Path]:
+    """4 models × 3 strategies of 2×2 CMs. Colour is row-normalised so TN mass does not hide FN."""
+    cms = []
+    for mk in MODEL_ORDER:
+        row = []
+        for strat in STRAT_ORDER:
+            ab = dentex_matrix[strat]["models"][mk]["metrics"]["abnormal_tooth"]
+            cm = np.array(ab["confusion_matrix"], dtype=float)
+            row.append(cm)
+        cms.append(row)
+
+    fig, axes = plt.subplots(
+        len(MODEL_ORDER), len(STRAT_ORDER),
+        figsize=(11.6, 8.6),
+    )
+    xticklabels = ["Pred.\nno finding", "Pred.\nabnormal"]
+    yticklabels = ["True\nno finding", "True\nabnormal"]
+
+    last_im = None
+    for i, mk in enumerate(MODEL_ORDER):
+        for j, strat in enumerate(STRAT_ORDER):
+            ax = axes[i, j]
+            cm = cms[i][j]
+            row_sum = np.clip(cm.sum(axis=1, keepdims=True), 1, None)
+            rates = cm / row_sum
+            last_im = ax.imshow(rates, cmap="YlGnBu", vmin=0, vmax=1, aspect="equal")
+            for r in range(2):
+                for c in range(2):
+                    n = int(cm[r, c])
+                    p = rates[r, c]
+                    ax.text(
+                        c, r, f"{n:,}\n{p:.0%}",
+                        ha="center", va="center", fontsize=8,
+                        color="white" if p > 0.55 else "black",
+                    )
+            ax.set_xticks([0, 1])
+            ax.set_yticks([0, 1])
+            ax.set_xticklabels(xticklabels, fontsize=7.5)
+            ax.set_yticklabels(yticklabels, fontsize=7.5)
+            ax.tick_params(length=0)
+            for spine in ax.spines.values():
+                spine.set_visible(True)
+                spine.set_linewidth(0.6)
+                spine.set_color("#555555")
+            if i == 0:
+                ax.set_title(STRAT_LABEL[strat], fontsize=11, fontweight="bold", pad=6)
+            if j == 0:
+                ax.set_ylabel(MODEL_LABEL[mk], fontsize=10, fontweight="bold", labelpad=8)
+
+    fig.subplots_adjust(left=0.10, right=0.90, top=0.90, bottom=0.07, wspace=0.22, hspace=0.38)
+    cbar = fig.colorbar(last_im, ax=axes.ravel().tolist(), fraction=0.025, pad=0.03)
+    cbar.set_label("Share of true class", fontsize=9)
+    fig.suptitle(
+        "DENTEX abnormality confusion  (pooled 24,064 FDI slots; 3,627 abnormal / 20,437 no finding)",
+        y=0.97, fontweight="bold",
+    )
+    paths = _save(fig, out_dir, "Figure6_dentex_abnormal_confusion")
+    _caption(
+        out_dir,
+        "Figure6_dentex_abnormal_confusion",
+        "Two-by-two confusion matrices for Abnormal vs No annotated finding on DENTEX QED "
+        "(752 cases × 32 FDI slots = 24,064; 3,627 abnormal, 20,437 no finding). Rows are the "
+        "true class, columns the predicted class: [[TN, FP], [FN, TP]]. Cell colour is "
+        "row-normalised (share of that true class) so the majority true-negative class does not "
+        "dominate the colormap; numbers are raw slot counts and the same row percentage. "
+        "High specificity with low sensitivity appears as a dark top-left cell and a pale "
+        "bottom-right cell. PPV is undefined when a model never predicts abnormal (TP+FP = 0).",
+    )
+    return paths
+
+
 def write_status(out_dir: Path, made: dict[str, list[Path]], pending: list[str]) -> Path:
     lines = ["# Main-paper figures", ""]
     for name, paths in made.items():
@@ -811,7 +887,7 @@ def write_status(out_dir: Path, made: dict[str, list[Path]], pending: list[str])
         for p in pending:
             lines.append(f"- {p}")
     lines.append("")
-    lines.append("Confusion matrices and ROC/PR curves are not in the main set.")
+    lines.append("ROC/PR curves are not in the main set.")
     path = out_dir / "README.md"
     path.write_text("\n".join(lines) + "\n")
     return path
@@ -838,8 +914,9 @@ def main() -> int:
             "Figure 3 model × strategy Macro F1 (needs DENTEX qed JSON for all 3 strategies)",
             "Figure 4 per-class F1 heatmaps",
             "Figure 5 qualitative examples (first sorted match per locked category)",
+            "Figure 6 DENTEX abnormal vs no-finding confusion matrices",
         ]
-        print("DENTEX qed matrix not complete — skipping Figures 3–5")
+        print("DENTEX qed matrix not complete — skipping Figures 3–6")
     else:
         print("Figure 3 model × strategy…")
         made["Figure 3"] = figure3(args.out_dir, matrix)
@@ -847,6 +924,8 @@ def main() -> int:
         made["Figure 4"] = figure4(args.out_dir, matrix)
         print("Figure 5 qualitative…")
         made["Figure 5"] = figure5(args.out_dir, matrix)
+        print("Figure 6 DENTEX confusion…")
+        made["Figure 6"] = figure6(args.out_dir, matrix)
 
     write_status(args.out_dir, made, pending)
     print(f"wrote {args.out_dir}")
