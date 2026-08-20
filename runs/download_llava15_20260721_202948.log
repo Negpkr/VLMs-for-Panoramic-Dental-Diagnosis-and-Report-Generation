@@ -1,9 +1,0 @@
-START download llava-1.5-7b-hf
-/home/s222393187/.conda/envs/dental-llava/lib/python3.11/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-  warnings.warn(
-Fetching 17 files:   0%|          | 0/17 [00:00<?, ?it/s]Fetching 17 files:   6%|▌         | 1/17 [00:00<00:03,  4.45it/s]Fetching 17 files:  47%|████▋     | 8/17 [06:29<07:34, 50.54s/it]Fetching 17 files:  53%|█████▎    | 9/17 [07:16<06:40, 50.07s/it]Fetching 17 files: 100%|██████████| 17/17 [07:16<00:00, 25.69s/it]
-DONE /home/s222393187/.cache/huggingface/hub/models--llava-hf--llava-1.5-7b-hf/snapshots/b234b804b114d9e37bb655e11cbbb5f5e971b7a9 elapsed_min=7.3
-shards: ['model-00001-of-00003.safetensors', 'model-00002-of-00003.safetensors', 'model-00003-of-00003.safetensors']
-  model-00001-of-00003.safetensors: 4.99 GB
-  model-00002-of-00003.safetensors: 4.96 GB
-  model-00003-of-00003.safetensors: 4.18 GB

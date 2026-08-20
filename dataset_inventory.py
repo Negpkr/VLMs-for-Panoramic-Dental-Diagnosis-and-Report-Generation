@@ -28,10 +28,8 @@ HELDOUT_PATH = ROOT / "runs" / "dentex_heldout_exemplars.json"
 COUNTS_PATH = ROOT / "runs" / "dataset_counts.json"
 DISEASES = ["Impacted", "Caries", "Deep Caries", "Periapical Lesion"]
 
-# Archive 100-case Tufts runs exist under Results/model_comparison/comparison_*_100_*.
-# They are not the paper evaluation. The paper Tufts run is all usable radiographs.
-TUFTS_PAPER_N_CASES = 1000
-TUFTS_ARCHIVE_N_CASES = 100
+# Paper Tufts evaluation is all usable radiographs (1000). Older 100-case
+# archive runs were removed after the full matrix finished.
 
 
 def _disease_counts(findings_by_stem: dict[str, dict[int, list[str]]]) -> dict[str, int]:
@@ -118,10 +116,6 @@ def tufts_inventory() -> dict[str, Any]:
             "missing_slots": missing_slots,
             "present_slots": present_slots,
             "note": "Final Tufts paper run is ALL usable cases with bbox + readable radiograph.",
-        },
-        "archive_100": {
-            "n_cases": TUFTS_ARCHIVE_N_CASES,
-            "note": "Aug 2026 100-case prompting runs are archive only and will be replaced.",
         },
         "n_bbox_records": n_bbox,
     }
@@ -276,7 +270,6 @@ def main() -> int:
     t = inv["tufts"]["paper_evaluation"]
     d = inv["dentex"]
     print("TUFTS paper evaluation:", t)
-    print("TUFTS archive 100:", inv["tufts"]["archive_100"])
     print("DENTEX train json support", d["train_json"]["support_all_json_images"])
     print("DENTEX train on disk", d["train_on_disk"]["disease_support"], "n=", d["train_on_disk"]["n_images"])
     print("DENTEX val on disk", d["val_on_disk"]["disease_support"], "n=", d["val_on_disk"]["n_images"])

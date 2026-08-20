@@ -14,5 +14,4 @@ echo "Env: dental-llava | Python: $(which python) | CUDA devices: $(python -c 'i
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 # Four-way VLM comparison helpers:
 #   python download_models.py
-#   CUDA_VISIBLE_DEVICES=1 python vlm_comparison.py --cases 125
-#   python comparison_report.py
+#   python vlm_comparison.py --cases 1000

@@ -55,6 +55,6 @@ for STRATEGY in $STRATEGIES; do
   echo "===== DONE strategy=$STRATEGY ====="
 done
 echo "===== PAPER FIGURES split=$SPLIT ====="
-python -u paper_figures.py --dentex-split "$SPLIT" --out-dir Paper/figures_main \
+python -u paper_figures.py --dentex-split "$SPLIT" --out-dir "Main Job Outputs/figures" \
   || echo "PAPER_FIGURES_SKIPPED (DENTEX results are still saved)"
 echo "DENTEX_ALL_STRATEGIES_DONE"

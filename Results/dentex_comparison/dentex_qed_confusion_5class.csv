@@ -1,0 +1,301 @@
+strategy,model,true,pred,count
+zero_shot,LLaVA-1.5-7B,No annotated finding,No annotated finding,18893
+zero_shot,LLaVA-1.5-7B,No annotated finding,Impacted,162
+zero_shot,LLaVA-1.5-7B,No annotated finding,Caries,748
+zero_shot,LLaVA-1.5-7B,No annotated finding,Deep Caries,396
+zero_shot,LLaVA-1.5-7B,No annotated finding,Periapical Lesion,238
+zero_shot,LLaVA-1.5-7B,Impacted,No annotated finding,619
+zero_shot,LLaVA-1.5-7B,Impacted,Impacted,1
+zero_shot,LLaVA-1.5-7B,Impacted,Caries,15
+zero_shot,LLaVA-1.5-7B,Impacted,Deep Caries,1
+zero_shot,LLaVA-1.5-7B,Impacted,Periapical Lesion,6
+zero_shot,LLaVA-1.5-7B,Caries,No annotated finding,2052
+zero_shot,LLaVA-1.5-7B,Caries,Impacted,21
+zero_shot,LLaVA-1.5-7B,Caries,Caries,98
+zero_shot,LLaVA-1.5-7B,Caries,Deep Caries,78
+zero_shot,LLaVA-1.5-7B,Caries,Periapical Lesion,32
+zero_shot,LLaVA-1.5-7B,Deep Caries,No annotated finding,553
+zero_shot,LLaVA-1.5-7B,Deep Caries,Impacted,4
+zero_shot,LLaVA-1.5-7B,Deep Caries,Caries,20
+zero_shot,LLaVA-1.5-7B,Deep Caries,Deep Caries,9
+zero_shot,LLaVA-1.5-7B,Deep Caries,Periapical Lesion,5
+zero_shot,LLaVA-1.5-7B,Periapical Lesion,No annotated finding,106
+zero_shot,LLaVA-1.5-7B,Periapical Lesion,Impacted,0
+zero_shot,LLaVA-1.5-7B,Periapical Lesion,Caries,4
+zero_shot,LLaVA-1.5-7B,Periapical Lesion,Deep Caries,1
+zero_shot,LLaVA-1.5-7B,Periapical Lesion,Periapical Lesion,2
+zero_shot,LLaVA-Med-v1.5-7B,No annotated finding,No annotated finding,20437
+zero_shot,LLaVA-Med-v1.5-7B,No annotated finding,Impacted,0
+zero_shot,LLaVA-Med-v1.5-7B,No annotated finding,Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,No annotated finding,Deep Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,No annotated finding,Periapical Lesion,0
+zero_shot,LLaVA-Med-v1.5-7B,Impacted,No annotated finding,642
+zero_shot,LLaVA-Med-v1.5-7B,Impacted,Impacted,0
+zero_shot,LLaVA-Med-v1.5-7B,Impacted,Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,Impacted,Deep Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,Impacted,Periapical Lesion,0
+zero_shot,LLaVA-Med-v1.5-7B,Caries,No annotated finding,2281
+zero_shot,LLaVA-Med-v1.5-7B,Caries,Impacted,0
+zero_shot,LLaVA-Med-v1.5-7B,Caries,Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,Caries,Deep Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,Caries,Periapical Lesion,0
+zero_shot,LLaVA-Med-v1.5-7B,Deep Caries,No annotated finding,591
+zero_shot,LLaVA-Med-v1.5-7B,Deep Caries,Impacted,0
+zero_shot,LLaVA-Med-v1.5-7B,Deep Caries,Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,Deep Caries,Deep Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,Deep Caries,Periapical Lesion,0
+zero_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,No annotated finding,113
+zero_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,Impacted,0
+zero_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,Deep Caries,0
+zero_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,Periapical Lesion,0
+zero_shot,HuatuoGPT-Vision-7B,No annotated finding,No annotated finding,18899
+zero_shot,HuatuoGPT-Vision-7B,No annotated finding,Impacted,487
+zero_shot,HuatuoGPT-Vision-7B,No annotated finding,Caries,479
+zero_shot,HuatuoGPT-Vision-7B,No annotated finding,Deep Caries,295
+zero_shot,HuatuoGPT-Vision-7B,No annotated finding,Periapical Lesion,277
+zero_shot,HuatuoGPT-Vision-7B,Impacted,No annotated finding,626
+zero_shot,HuatuoGPT-Vision-7B,Impacted,Impacted,2
+zero_shot,HuatuoGPT-Vision-7B,Impacted,Caries,3
+zero_shot,HuatuoGPT-Vision-7B,Impacted,Deep Caries,5
+zero_shot,HuatuoGPT-Vision-7B,Impacted,Periapical Lesion,6
+zero_shot,HuatuoGPT-Vision-7B,Caries,No annotated finding,1963
+zero_shot,HuatuoGPT-Vision-7B,Caries,Impacted,117
+zero_shot,HuatuoGPT-Vision-7B,Caries,Caries,70
+zero_shot,HuatuoGPT-Vision-7B,Caries,Deep Caries,76
+zero_shot,HuatuoGPT-Vision-7B,Caries,Periapical Lesion,55
+zero_shot,HuatuoGPT-Vision-7B,Deep Caries,No annotated finding,516
+zero_shot,HuatuoGPT-Vision-7B,Deep Caries,Impacted,27
+zero_shot,HuatuoGPT-Vision-7B,Deep Caries,Caries,20
+zero_shot,HuatuoGPT-Vision-7B,Deep Caries,Deep Caries,12
+zero_shot,HuatuoGPT-Vision-7B,Deep Caries,Periapical Lesion,16
+zero_shot,HuatuoGPT-Vision-7B,Periapical Lesion,No annotated finding,106
+zero_shot,HuatuoGPT-Vision-7B,Periapical Lesion,Impacted,0
+zero_shot,HuatuoGPT-Vision-7B,Periapical Lesion,Caries,3
+zero_shot,HuatuoGPT-Vision-7B,Periapical Lesion,Deep Caries,2
+zero_shot,HuatuoGPT-Vision-7B,Periapical Lesion,Periapical Lesion,2
+zero_shot,DentVLM,No annotated finding,No annotated finding,20434
+zero_shot,DentVLM,No annotated finding,Impacted,2
+zero_shot,DentVLM,No annotated finding,Caries,1
+zero_shot,DentVLM,No annotated finding,Deep Caries,0
+zero_shot,DentVLM,No annotated finding,Periapical Lesion,0
+zero_shot,DentVLM,Impacted,No annotated finding,642
+zero_shot,DentVLM,Impacted,Impacted,0
+zero_shot,DentVLM,Impacted,Caries,0
+zero_shot,DentVLM,Impacted,Deep Caries,0
+zero_shot,DentVLM,Impacted,Periapical Lesion,0
+zero_shot,DentVLM,Caries,No annotated finding,2279
+zero_shot,DentVLM,Caries,Impacted,2
+zero_shot,DentVLM,Caries,Caries,0
+zero_shot,DentVLM,Caries,Deep Caries,0
+zero_shot,DentVLM,Caries,Periapical Lesion,0
+zero_shot,DentVLM,Deep Caries,No annotated finding,591
+zero_shot,DentVLM,Deep Caries,Impacted,0
+zero_shot,DentVLM,Deep Caries,Caries,0
+zero_shot,DentVLM,Deep Caries,Deep Caries,0
+zero_shot,DentVLM,Deep Caries,Periapical Lesion,0
+zero_shot,DentVLM,Periapical Lesion,No annotated finding,113
+zero_shot,DentVLM,Periapical Lesion,Impacted,0
+zero_shot,DentVLM,Periapical Lesion,Caries,0
+zero_shot,DentVLM,Periapical Lesion,Deep Caries,0
+zero_shot,DentVLM,Periapical Lesion,Periapical Lesion,0
+few_shot,LLaVA-1.5-7B,No annotated finding,No annotated finding,18129
+few_shot,LLaVA-1.5-7B,No annotated finding,Impacted,115
+few_shot,LLaVA-1.5-7B,No annotated finding,Caries,611
+few_shot,LLaVA-1.5-7B,No annotated finding,Deep Caries,1408
+few_shot,LLaVA-1.5-7B,No annotated finding,Periapical Lesion,174
+few_shot,LLaVA-1.5-7B,Impacted,No annotated finding,534
+few_shot,LLaVA-1.5-7B,Impacted,Impacted,11
+few_shot,LLaVA-1.5-7B,Impacted,Caries,20
+few_shot,LLaVA-1.5-7B,Impacted,Deep Caries,77
+few_shot,LLaVA-1.5-7B,Impacted,Periapical Lesion,0
+few_shot,LLaVA-1.5-7B,Caries,No annotated finding,1860
+few_shot,LLaVA-1.5-7B,Caries,Impacted,13
+few_shot,LLaVA-1.5-7B,Caries,Caries,94
+few_shot,LLaVA-1.5-7B,Caries,Deep Caries,275
+few_shot,LLaVA-1.5-7B,Caries,Periapical Lesion,39
+few_shot,LLaVA-1.5-7B,Deep Caries,No annotated finding,492
+few_shot,LLaVA-1.5-7B,Deep Caries,Impacted,5
+few_shot,LLaVA-1.5-7B,Deep Caries,Caries,16
+few_shot,LLaVA-1.5-7B,Deep Caries,Deep Caries,66
+few_shot,LLaVA-1.5-7B,Deep Caries,Periapical Lesion,12
+few_shot,LLaVA-1.5-7B,Periapical Lesion,No annotated finding,92
+few_shot,LLaVA-1.5-7B,Periapical Lesion,Impacted,1
+few_shot,LLaVA-1.5-7B,Periapical Lesion,Caries,5
+few_shot,LLaVA-1.5-7B,Periapical Lesion,Deep Caries,11
+few_shot,LLaVA-1.5-7B,Periapical Lesion,Periapical Lesion,4
+few_shot,LLaVA-Med-v1.5-7B,No annotated finding,No annotated finding,15878
+few_shot,LLaVA-Med-v1.5-7B,No annotated finding,Impacted,434
+few_shot,LLaVA-Med-v1.5-7B,No annotated finding,Caries,2781
+few_shot,LLaVA-Med-v1.5-7B,No annotated finding,Deep Caries,1288
+few_shot,LLaVA-Med-v1.5-7B,No annotated finding,Periapical Lesion,56
+few_shot,LLaVA-Med-v1.5-7B,Impacted,No annotated finding,552
+few_shot,LLaVA-Med-v1.5-7B,Impacted,Impacted,8
+few_shot,LLaVA-Med-v1.5-7B,Impacted,Caries,58
+few_shot,LLaVA-Med-v1.5-7B,Impacted,Deep Caries,23
+few_shot,LLaVA-Med-v1.5-7B,Impacted,Periapical Lesion,1
+few_shot,LLaVA-Med-v1.5-7B,Caries,No annotated finding,1810
+few_shot,LLaVA-Med-v1.5-7B,Caries,Impacted,28
+few_shot,LLaVA-Med-v1.5-7B,Caries,Caries,286
+few_shot,LLaVA-Med-v1.5-7B,Caries,Deep Caries,147
+few_shot,LLaVA-Med-v1.5-7B,Caries,Periapical Lesion,10
+few_shot,LLaVA-Med-v1.5-7B,Deep Caries,No annotated finding,479
+few_shot,LLaVA-Med-v1.5-7B,Deep Caries,Impacted,10
+few_shot,LLaVA-Med-v1.5-7B,Deep Caries,Caries,67
+few_shot,LLaVA-Med-v1.5-7B,Deep Caries,Deep Caries,28
+few_shot,LLaVA-Med-v1.5-7B,Deep Caries,Periapical Lesion,7
+few_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,No annotated finding,75
+few_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,Impacted,2
+few_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,Caries,24
+few_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,Deep Caries,12
+few_shot,LLaVA-Med-v1.5-7B,Periapical Lesion,Periapical Lesion,0
+few_shot,HuatuoGPT-Vision-7B,No annotated finding,No annotated finding,16435
+few_shot,HuatuoGPT-Vision-7B,No annotated finding,Impacted,1507
+few_shot,HuatuoGPT-Vision-7B,No annotated finding,Caries,1902
+few_shot,HuatuoGPT-Vision-7B,No annotated finding,Deep Caries,578
+few_shot,HuatuoGPT-Vision-7B,No annotated finding,Periapical Lesion,15
+few_shot,HuatuoGPT-Vision-7B,Impacted,No annotated finding,511
+few_shot,HuatuoGPT-Vision-7B,Impacted,Impacted,89
+few_shot,HuatuoGPT-Vision-7B,Impacted,Caries,35
+few_shot,HuatuoGPT-Vision-7B,Impacted,Deep Caries,7
+few_shot,HuatuoGPT-Vision-7B,Impacted,Periapical Lesion,0
+few_shot,HuatuoGPT-Vision-7B,Caries,No annotated finding,1615
+few_shot,HuatuoGPT-Vision-7B,Caries,Impacted,247
+few_shot,HuatuoGPT-Vision-7B,Caries,Caries,299
+few_shot,HuatuoGPT-Vision-7B,Caries,Deep Caries,117
+few_shot,HuatuoGPT-Vision-7B,Caries,Periapical Lesion,3
+few_shot,HuatuoGPT-Vision-7B,Deep Caries,No annotated finding,432
+few_shot,HuatuoGPT-Vision-7B,Deep Caries,Impacted,60
+few_shot,HuatuoGPT-Vision-7B,Deep Caries,Caries,63
+few_shot,HuatuoGPT-Vision-7B,Deep Caries,Deep Caries,35
+few_shot,HuatuoGPT-Vision-7B,Deep Caries,Periapical Lesion,1
+few_shot,HuatuoGPT-Vision-7B,Periapical Lesion,No annotated finding,83
+few_shot,HuatuoGPT-Vision-7B,Periapical Lesion,Impacted,11
+few_shot,HuatuoGPT-Vision-7B,Periapical Lesion,Caries,15
+few_shot,HuatuoGPT-Vision-7B,Periapical Lesion,Deep Caries,3
+few_shot,HuatuoGPT-Vision-7B,Periapical Lesion,Periapical Lesion,1
+few_shot,DentVLM,No annotated finding,No annotated finding,20434
+few_shot,DentVLM,No annotated finding,Impacted,1
+few_shot,DentVLM,No annotated finding,Caries,0
+few_shot,DentVLM,No annotated finding,Deep Caries,2
+few_shot,DentVLM,No annotated finding,Periapical Lesion,0
+few_shot,DentVLM,Impacted,No annotated finding,642
+few_shot,DentVLM,Impacted,Impacted,0
+few_shot,DentVLM,Impacted,Caries,0
+few_shot,DentVLM,Impacted,Deep Caries,0
+few_shot,DentVLM,Impacted,Periapical Lesion,0
+few_shot,DentVLM,Caries,No annotated finding,2281
+few_shot,DentVLM,Caries,Impacted,0
+few_shot,DentVLM,Caries,Caries,0
+few_shot,DentVLM,Caries,Deep Caries,0
+few_shot,DentVLM,Caries,Periapical Lesion,0
+few_shot,DentVLM,Deep Caries,No annotated finding,591
+few_shot,DentVLM,Deep Caries,Impacted,0
+few_shot,DentVLM,Deep Caries,Caries,0
+few_shot,DentVLM,Deep Caries,Deep Caries,0
+few_shot,DentVLM,Deep Caries,Periapical Lesion,0
+few_shot,DentVLM,Periapical Lesion,No annotated finding,113
+few_shot,DentVLM,Periapical Lesion,Impacted,0
+few_shot,DentVLM,Periapical Lesion,Caries,0
+few_shot,DentVLM,Periapical Lesion,Deep Caries,0
+few_shot,DentVLM,Periapical Lesion,Periapical Lesion,0
+cot,LLaVA-1.5-7B,No annotated finding,No annotated finding,20334
+cot,LLaVA-1.5-7B,No annotated finding,Impacted,18
+cot,LLaVA-1.5-7B,No annotated finding,Caries,57
+cot,LLaVA-1.5-7B,No annotated finding,Deep Caries,18
+cot,LLaVA-1.5-7B,No annotated finding,Periapical Lesion,10
+cot,LLaVA-1.5-7B,Impacted,No annotated finding,639
+cot,LLaVA-1.5-7B,Impacted,Impacted,1
+cot,LLaVA-1.5-7B,Impacted,Caries,1
+cot,LLaVA-1.5-7B,Impacted,Deep Caries,1
+cot,LLaVA-1.5-7B,Impacted,Periapical Lesion,0
+cot,LLaVA-1.5-7B,Caries,No annotated finding,2270
+cot,LLaVA-1.5-7B,Caries,Impacted,1
+cot,LLaVA-1.5-7B,Caries,Caries,8
+cot,LLaVA-1.5-7B,Caries,Deep Caries,1
+cot,LLaVA-1.5-7B,Caries,Periapical Lesion,1
+cot,LLaVA-1.5-7B,Deep Caries,No annotated finding,581
+cot,LLaVA-1.5-7B,Deep Caries,Impacted,7
+cot,LLaVA-1.5-7B,Deep Caries,Caries,1
+cot,LLaVA-1.5-7B,Deep Caries,Deep Caries,0
+cot,LLaVA-1.5-7B,Deep Caries,Periapical Lesion,2
+cot,LLaVA-1.5-7B,Periapical Lesion,No annotated finding,113
+cot,LLaVA-1.5-7B,Periapical Lesion,Impacted,0
+cot,LLaVA-1.5-7B,Periapical Lesion,Caries,0
+cot,LLaVA-1.5-7B,Periapical Lesion,Deep Caries,0
+cot,LLaVA-1.5-7B,Periapical Lesion,Periapical Lesion,0
+cot,LLaVA-Med-v1.5-7B,No annotated finding,No annotated finding,20434
+cot,LLaVA-Med-v1.5-7B,No annotated finding,Impacted,0
+cot,LLaVA-Med-v1.5-7B,No annotated finding,Caries,1
+cot,LLaVA-Med-v1.5-7B,No annotated finding,Deep Caries,0
+cot,LLaVA-Med-v1.5-7B,No annotated finding,Periapical Lesion,2
+cot,LLaVA-Med-v1.5-7B,Impacted,No annotated finding,642
+cot,LLaVA-Med-v1.5-7B,Impacted,Impacted,0
+cot,LLaVA-Med-v1.5-7B,Impacted,Caries,0
+cot,LLaVA-Med-v1.5-7B,Impacted,Deep Caries,0
+cot,LLaVA-Med-v1.5-7B,Impacted,Periapical Lesion,0
+cot,LLaVA-Med-v1.5-7B,Caries,No annotated finding,2278
+cot,LLaVA-Med-v1.5-7B,Caries,Impacted,0
+cot,LLaVA-Med-v1.5-7B,Caries,Caries,0
+cot,LLaVA-Med-v1.5-7B,Caries,Deep Caries,0
+cot,LLaVA-Med-v1.5-7B,Caries,Periapical Lesion,3
+cot,LLaVA-Med-v1.5-7B,Deep Caries,No annotated finding,591
+cot,LLaVA-Med-v1.5-7B,Deep Caries,Impacted,0
+cot,LLaVA-Med-v1.5-7B,Deep Caries,Caries,0
+cot,LLaVA-Med-v1.5-7B,Deep Caries,Deep Caries,0
+cot,LLaVA-Med-v1.5-7B,Deep Caries,Periapical Lesion,0
+cot,LLaVA-Med-v1.5-7B,Periapical Lesion,No annotated finding,113
+cot,LLaVA-Med-v1.5-7B,Periapical Lesion,Impacted,0
+cot,LLaVA-Med-v1.5-7B,Periapical Lesion,Caries,0
+cot,LLaVA-Med-v1.5-7B,Periapical Lesion,Deep Caries,0
+cot,LLaVA-Med-v1.5-7B,Periapical Lesion,Periapical Lesion,0
+cot,HuatuoGPT-Vision-7B,No annotated finding,No annotated finding,18557
+cot,HuatuoGPT-Vision-7B,No annotated finding,Impacted,652
+cot,HuatuoGPT-Vision-7B,No annotated finding,Caries,350
+cot,HuatuoGPT-Vision-7B,No annotated finding,Deep Caries,624
+cot,HuatuoGPT-Vision-7B,No annotated finding,Periapical Lesion,254
+cot,HuatuoGPT-Vision-7B,Impacted,No annotated finding,569
+cot,HuatuoGPT-Vision-7B,Impacted,Impacted,42
+cot,HuatuoGPT-Vision-7B,Impacted,Caries,6
+cot,HuatuoGPT-Vision-7B,Impacted,Deep Caries,10
+cot,HuatuoGPT-Vision-7B,Impacted,Periapical Lesion,15
+cot,HuatuoGPT-Vision-7B,Caries,No annotated finding,1875
+cot,HuatuoGPT-Vision-7B,Caries,Impacted,125
+cot,HuatuoGPT-Vision-7B,Caries,Caries,83
+cot,HuatuoGPT-Vision-7B,Caries,Deep Caries,144
+cot,HuatuoGPT-Vision-7B,Caries,Periapical Lesion,54
+cot,HuatuoGPT-Vision-7B,Deep Caries,No annotated finding,480
+cot,HuatuoGPT-Vision-7B,Deep Caries,Impacted,32
+cot,HuatuoGPT-Vision-7B,Deep Caries,Caries,22
+cot,HuatuoGPT-Vision-7B,Deep Caries,Deep Caries,42
+cot,HuatuoGPT-Vision-7B,Deep Caries,Periapical Lesion,15
+cot,HuatuoGPT-Vision-7B,Periapical Lesion,No annotated finding,100
+cot,HuatuoGPT-Vision-7B,Periapical Lesion,Impacted,2
+cot,HuatuoGPT-Vision-7B,Periapical Lesion,Caries,4
+cot,HuatuoGPT-Vision-7B,Periapical Lesion,Deep Caries,4
+cot,HuatuoGPT-Vision-7B,Periapical Lesion,Periapical Lesion,3
+cot,DentVLM,No annotated finding,No annotated finding,20437
+cot,DentVLM,No annotated finding,Impacted,0
+cot,DentVLM,No annotated finding,Caries,0
+cot,DentVLM,No annotated finding,Deep Caries,0
+cot,DentVLM,No annotated finding,Periapical Lesion,0
+cot,DentVLM,Impacted,No annotated finding,642
+cot,DentVLM,Impacted,Impacted,0
+cot,DentVLM,Impacted,Caries,0
+cot,DentVLM,Impacted,Deep Caries,0
+cot,DentVLM,Impacted,Periapical Lesion,0
+cot,DentVLM,Caries,No annotated finding,2281
+cot,DentVLM,Caries,Impacted,0
+cot,DentVLM,Caries,Caries,0
+cot,DentVLM,Caries,Deep Caries,0
+cot,DentVLM,Caries,Periapical Lesion,0
+cot,DentVLM,Deep Caries,No annotated finding,591
+cot,DentVLM,Deep Caries,Impacted,0
+cot,DentVLM,Deep Caries,Caries,0
+cot,DentVLM,Deep Caries,Deep Caries,0
+cot,DentVLM,Deep Caries,Periapical Lesion,0
+cot,DentVLM,Periapical Lesion,No annotated finding,113
+cot,DentVLM,Periapical Lesion,Impacted,0
+cot,DentVLM,Periapical Lesion,Caries,0
+cot,DentVLM,Periapical Lesion,Deep Caries,0
+cot,DentVLM,Periapical Lesion,Periapical Lesion,0

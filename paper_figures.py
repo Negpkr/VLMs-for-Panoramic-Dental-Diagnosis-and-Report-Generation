@@ -10,6 +10,7 @@ Figure 6  DENTEX abnormal vs no-finding 2×2 confusion matrices (12 model × str
 
 After the qed matrix finishes:
     python paper_figures.py --dentex-split qed
+    # writes to Main Job Outputs/figures/ (not Paper/)
 """
 from __future__ import annotations
 
@@ -44,7 +45,7 @@ TRAIN_JSON = (
 VAL_XRAYS = ROOT / "DENTEX" / "validation_data" / "quadrant_enumeration_disease" / "xrays"
 TRAIN_XRAYS = ROOT / "DENTEX" / "training_data" / "quadrant-enumeration-disease" / "xrays"
 TUFTS_XRAYS = ROOT / "Tufts_Dental_Database" / "Radiographs"
-OUT_DEFAULT = ROOT / "Paper" / "figures_main"
+OUT_DEFAULT = ROOT / "Main Job Outputs" / "figures"
 
 DISEASES = ["Impacted", "Caries", "Deep Caries", "Periapical Lesion"]
 DISEASE_SHORT = {
@@ -63,9 +64,9 @@ MODEL_LABEL = {
 STRAT_ORDER = ["zero_shot", "few_shot", "cot"]
 STRAT_LABEL = {"zero_shot": "Zero-shot", "few_shot": "Few-shot", "cot": "CoT"}
 TUFTS_JSON_FALLBACK = {
-    "zero_shot": TUFTS_DIR / "comparison_zero_shot_100_20260807_131943.json",
-    "few_shot": TUFTS_DIR / "comparison_few_shot_100_20260807_141518.json",
-    "cot": TUFTS_DIR / "comparison_cot_100_20260807_145219.json",
+    "zero_shot": TUFTS_DIR / "comparison_zero_shot_full_20260820_103338.json",
+    "few_shot": TUFTS_DIR / "comparison_few_shot_full_20260820_120337.json",
+    "cot": TUFTS_DIR / "comparison_cot_full_20260820_134750.json",
 }
 
 OKABE = ["#0072B2", "#E69F00", "#009E73", "#D55E00", "#CC79A7", "#56B4E9", "#F0E442"]
@@ -792,7 +793,7 @@ def figure5(out_dir: Path, dentex_matrix: dict) -> list[Path]:
         out_dir,
         "Figure5_qualitative_examples",
         "Qualitative cases selected by a protocol locked before inspecting outcomes "
-        "(Paper/figures_main/Figure5_selection_protocol.md). Each panel is the first matching "
+        "(Main Job Outputs/figures/Figure5_selection_protocol.md). Each panel is the first matching "
         "case in sorted case_id order from the declared model/strategy. A: completely correct "
         "DENTEX film. B: missed missing tooth on Tufts (Universal numbering). C: DENTEX abnormal "
         "tooth predicted as no annotated finding. D: correctly recovered multi-label tooth. "

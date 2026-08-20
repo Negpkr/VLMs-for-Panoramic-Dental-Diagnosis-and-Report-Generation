@@ -1,11 +1,20 @@
-STOPPED — do not launch until asked.
+COMPLETE — 20 August 2026 jobs finished. Do not relaunch unless asked.
 
-Canonical paper evaluation sizes (source: runs/dataset_counts.json):
-  Tufts     1000 usable cases × 32 slots (archive 100-case JSONs are not the paper run)
-  DENTEX    qed scored = 752 images
+Paper evaluation sizes (source: runs/dataset_counts.json):
+  Tufts     1000 cases × 32 slots (job 27299, L40S, ended 17:17 AEST)
+  DENTEX    qed scored = 752 images × 32 slots = 24064 (job 27255, L40S, ended ~10:01)
             = 755 on-disk train+val minus held-out text exemplars
               train_1, train_14, train_123
-            Disease support (paper): Impacted 642, Caries 2286, Deep Caries 602, Periapical 166
+            Unique abnormal teeth: 3627 (mean 4.82 / case)
+            Diagnosis-label positives: 3696 (mean 4.91 / case; multi-label teeth counted per disease)
+            Disease support (OvR): Impacted 642, Caries 2286, Deep Caries 602, Periapical 166
+            No-finding-only baseline: Macro F1 0.459, accuracy 20437/24064 = 0.849
+  RQ3      PR-Reports 121 cases, zero-shot (job 27258, RTX 4500 Ada, ended 05:34)
 
-Launcher: runs/run_all.sh (Tufts 1000, then DENTEX qed 752, then paper_figures.py)
-GPU 1. Strategies: zero_shot, few_shot, cot. Models: llava, llava_med, huatuogpt_vision, dentvlm.
+Models: llava, llava_med, huatuogpt_vision, dentvlm.
+Strategies: zero_shot, few_shot, cot (RQ3 is zero-shot only).
+
+Outputs:
+  Tables / figures pack  Main Job Outputs/
+  Raw per-case JSON      Results/dentex_comparison/, Results/model_comparison/, Results/rq3_reports/
+  Slurm logs             runs/dentex_l40s_27255.log, runs/tufts_l40s_27299.log, runs/rq3_rtx4500_27258.log

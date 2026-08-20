@@ -1,9 +1,8 @@
 #!/bin/bash
-# Tufts-only job on the next free L40S. Does not run DENTEX (that is job 27255).
-# Waits in queue until an L40S other than g46-1gpu-1 is free.
+# Tufts-only job on a free L40S. Does not run DENTEX or RQ3.
 #SBATCH -p gpu
 #SBATCH --gres=gpu:l40s:1
-#SBATCH --exclude=g46-1gpu-1
+#SBATCH -w g46-1gpu-1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
 #SBATCH --time=2-00:00:00

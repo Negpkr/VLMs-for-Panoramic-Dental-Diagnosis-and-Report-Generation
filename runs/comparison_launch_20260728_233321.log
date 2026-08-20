@@ -1,432 +1,0 @@
-[23:33:32] cases=1000 models=['llava', 'llava_med', 'huatuogpt_vision', 'dentvlm'] parse_mode=loose
-[23:33:32] === LLaVA-1.5-7B (llava-hf/llava-1.5-7b-hf) ===
-Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files: 100%|██████████| 3/3 [00:00<00:00, 4748.27it/s]
-Loading weights:   0%|          | 0/686 [00:00<?, ?it/s]Loading weights:   0%|          | 1/686 [00:00<04:57,  2.30it/s]Loading weights:   0%|          | 2/686 [00:00<03:34,  3.19it/s]Loading weights:   1%|          | 5/686 [00:00<01:21,  8.32it/s]Loading weights:   1%|          | 7/686 [00:00<01:11,  9.44it/s]Loading weights:   1%|▏         | 10/686 [00:01<01:00, 11.10it/s]Loading weights:   2%|▏         | 14/686 [00:01<00:41, 16.17it/s]Loading weights:   2%|▏         | 16/686 [00:01<00:47, 13.97it/s]Loading weights:   3%|▎         | 20/686 [00:01<00:54, 12.28it/s]Loading weights:   3%|▎         | 23/686 [00:02<00:49, 13.37it/s]Loading weights:   4%|▍         | 29/686 [00:02<00:32, 20.49it/s]Loading weights:   5%|▍         | 32/686 [00:02<00:40, 16.28it/s]Loading weights:   5%|▌         | 35/686 [00:02<00:39, 16.36it/s]Loading weights:   6%|▌         | 38/686 [00:02<00:36, 17.53it/s]Loading weights:   6%|▌         | 41/686 [00:03<00:43, 14.79it/s]Loading weights:   6%|▋         | 44/686 [00:03<00:40, 15.98it/s]Loading weights:   7%|▋         | 47/686 [00:03<00:40, 15.89it/s]Loading weights:   7%|▋         | 50/686 [00:03<00:47, 13.41it/s]Loading weights:   8%|▊         | 52/686 [00:03<00:44, 14.30it/s]Loading weights:   8%|▊         | 55/686 [00:03<00:39, 15.92it/s]Loading weights:   8%|▊         | 58/686 [00:04<00:38, 16.45it/s]Loading weights:   9%|▊         | 60/686 [00:04<00:52, 11.85it/s]Loading weights:   9%|▉         | 63/686 [00:04<00:43, 14.30it/s]Loading weights:  10%|▉         | 66/686 [00:04<00:43, 14.18it/s]Loading weights:  10%|▉         | 68/686 [00:04<00:43, 14.07it/s]Loading weights:  10%|█         | 70/686 [00:05<00:48, 12.70it/s]Loading weights:  11%|█         | 74/686 [00:05<00:34, 17.68it/s]Loading weights:  11%|█         | 77/686 [00:05<00:40, 15.21it/s]Loading weights:  12%|█▏        | 79/686 [00:05<00:45, 13.31it/s]Loading weights:  12%|█▏        | 82/686 [00:05<00:43, 14.03it/s]Loading weights:  13%|█▎        | 86/686 [00:06<00:36, 16.48it/s]Loading weights:  13%|█▎        | 88/686 [00:06<00:37, 15.92it/s]Loading weights:  13%|█▎        | 92/686 [00:06<00:36, 16.31it/s]Loading weights:  14%|█▍        | 95/686 [00:06<00:37, 15.69it/s]Loading weights:  14%|█▍        | 97/686 [00:06<00:37, 15.70it/s]Loading weights:  15%|█▍        | 100/686 [00:06<00:34, 16.93it/s]Loading weights:  15%|█▍        | 102/686 [00:07<00:34, 16.88it/s]Loading weights:  15%|█▌        | 104/686 [00:07<00:44, 12.98it/s]Loading weights:  15%|█▌        | 106/686 [00:07<00:43, 13.20it/s]Loading weights:  16%|█▌        | 110/686 [00:07<00:36, 15.83it/s]Loading weights:  16%|█▋        | 112/686 [00:07<00:36, 15.76it/s]Loading weights:  17%|█▋        | 114/686 [00:07<00:39, 14.59it/s]Loading weights:  17%|█▋        | 118/686 [00:08<00:30, 18.36it/s]Loading weights:  18%|█▊        | 122/686 [00:08<00:41, 13.51it/s]Loading weights:  19%|█▊        | 128/686 [00:08<00:29, 19.16it/s]Loading weights:  19%|█▉        | 131/686 [00:08<00:31, 17.48it/s]Loading weights:  20%|█▉        | 134/686 [00:09<00:34, 15.92it/s]Loading weights:  20%|█▉        | 137/686 [00:09<00:38, 14.20it/s]Loading weights:  20%|██        | 140/686 [00:09<00:33, 16.53it/s]Loading weights:  21%|██        | 142/686 [00:09<00:34, 15.55it/s]Loading weights:  21%|██        | 145/686 [00:09<00:33, 16.24it/s]Loading weights:  22%|██▏       | 149/686 [00:10<00:30, 17.51it/s]Loading weights:  22%|██▏       | 151/686 [00:10<00:33, 16.03it/s]Loading weights:  22%|██▏       | 154/686 [00:10<00:32, 16.24it/s]Loading weights:  23%|██▎       | 158/686 [00:10<00:25, 20.43it/s]Loading weights:  23%|██▎       | 161/686 [00:10<00:26, 19.85it/s]Loading weights:  24%|██▍       | 164/686 [00:10<00:25, 20.75it/s]Loading weights:  24%|██▍       | 167/686 [00:11<00:28, 18.03it/s]Loading weights:  25%|██▍       | 169/686 [00:11<00:32, 16.01it/s]Loading weights:  25%|██▌       | 172/686 [00:11<00:29, 17.46it/s]Loading weights:  26%|██▌       | 176/686 [00:11<00:28, 18.01it/s]Loading weights:  26%|██▌       | 178/686 [00:11<00:31, 16.26it/s]Loading weights:  26%|██▋       | 181/686 [00:11<00:28, 17.95it/s]Loading weights:  27%|██▋       | 183/686 [00:12<00:33, 14.96it/s]Loading weights:  27%|██▋       | 185/686 [00:12<00:32, 15.48it/s]Loading weights:  27%|██▋       | 187/686 [00:12<00:34, 14.39it/s]Loading weights:  28%|██▊       | 190/686 [00:12<00:31, 15.80it/s]Loading weights:  28%|██▊       | 193/686 [00:12<00:26, 18.38it/s]Loading weights:  28%|██▊       | 195/686 [00:12<00:41, 11.92it/s]Loading weights:  29%|██▉       | 199/686 [00:13<00:33, 14.64it/s]Loading weights:  30%|██▉       | 203/686 [00:13<00:30, 16.01it/s]Loading weights:  30%|███       | 208/686 [00:13<00:24, 19.90it/s]Loading weights:  31%|███       | 211/686 [00:13<00:23, 19.87it/s]Loading weights:  31%|███       | 214/686 [00:13<00:28, 16.39it/s]Loading weights:  32%|███▏      | 217/686 [00:14<00:27, 17.03it/s]Loading weights:  32%|███▏      | 221/686 [00:14<00:34, 13.41it/s]Loading weights:  33%|███▎      | 227/686 [00:14<00:23, 19.27it/s]Loading weights:  34%|███▎      | 230/686 [00:14<00:26, 17.14it/s]Loading weights:  34%|███▍      | 233/686 [00:15<00:26, 17.33it/s]Loading weights:  34%|███▍      | 236/686 [00:15<00:24, 18.00it/s]Loading weights:  35%|███▍      | 239/686 [00:15<00:26, 16.74it/s]Loading weights:  35%|███▌      | 241/686 [00:15<00:28, 15.55it/s]Loading weights:  36%|███▌      | 244/686 [00:15<00:26, 16.88it/s]Loading weights:  36%|███▌      | 247/686 [00:15<00:22, 19.42it/s]Loading weights:  36%|███▋      | 250/686 [00:16<00:26, 16.41it/s]Loading weights:  37%|███▋      | 253/686 [00:16<00:24, 17.74it/s]Loading weights:  37%|███▋      | 255/686 [00:16<00:25, 16.84it/s]Loading weights:  37%|███▋      | 257/686 [00:16<00:25, 16.92it/s]Loading weights:  38%|███▊      | 259/686 [00:16<00:28, 15.05it/s]Loading weights:  38%|███▊      | 262/686 [00:16<00:26, 16.31it/s]Loading weights:  39%|███▉      | 266/686 [00:17<00:29, 14.25it/s]Loading weights:  40%|███▉      | 271/686 [00:17<00:21, 19.29it/s]Loading weights:  40%|███▉      | 274/686 [00:17<00:20, 20.54it/s]Loading weights:  40%|████      | 277/686 [00:17<00:26, 15.59it/s]Loading weights:  41%|████      | 281/686 [00:17<00:23, 17.57it/s]Loading weights:  41%|████▏     | 284/686 [00:18<00:24, 16.75it/s]Loading weights:  42%|████▏     | 286/686 [00:18<00:25, 15.95it/s]Loading weights:  42%|████▏     | 290/686 [00:18<00:19, 19.87it/s]Loading weights:  48%|████▊     | 326/686 [00:18<00:04, 87.47it/s]Loading weights:  52%|█████▏    | 360/686 [00:18<00:02, 143.32it/s]Loading weights:  60%|██████    | 415/686 [00:18<00:01, 232.36it/s]Loading weights:  70%|██████▉   | 478/686 [00:18<00:00, 328.54it/s]Loading weights:  77%|███████▋  | 531/686 [00:18<00:00, 377.32it/s]Loading weights:  84%|████████▎ | 574/686 [00:18<00:00, 379.00it/s]Loading weights:  91%|█████████▏| 626/686 [00:19<00:00, 405.49it/s]Loading weights: 100%|██████████| 686/686 [00:19<00:00, 35.83it/s] 
-[23:34:09] loaded in 27.5s on cuda:0
-[23:34:24]   10/1000 cases done
-[23:34:35]   20/1000 cases done
-[23:34:48]   30/1000 cases done
-[23:35:09]   40/1000 cases done
-[23:35:21]   50/1000 cases done
-[23:35:35]   60/1000 cases done
-[23:35:49]   70/1000 cases done
-[23:36:00]   80/1000 cases done
-[23:36:12]   90/1000 cases done
-[23:36:26]   100/1000 cases done
-[23:36:37]   110/1000 cases done
-[23:36:55]   120/1000 cases done
-[23:37:09]   130/1000 cases done
-[23:37:25]   140/1000 cases done
-[23:37:43]   150/1000 cases done
-[23:37:59]   160/1000 cases done
-[23:38:10]   170/1000 cases done
-[23:38:31]   180/1000 cases done
-[23:38:43]   190/1000 cases done
-[23:38:55]   200/1000 cases done
-[23:39:08]   210/1000 cases done
-[23:39:21]   220/1000 cases done
-[23:39:33]   230/1000 cases done
-[23:39:44]   240/1000 cases done
-[23:39:57]   250/1000 cases done
-[23:40:08]   260/1000 cases done
-[23:40:21]   270/1000 cases done
-[23:40:36]   280/1000 cases done
-[23:40:51]   290/1000 cases done
-[23:41:05]   300/1000 cases done
-[23:41:16]   310/1000 cases done
-[23:41:33]   320/1000 cases done
-[23:41:45]   330/1000 cases done
-[23:41:59]   340/1000 cases done
-[23:42:20]   350/1000 cases done
-[23:42:31]   360/1000 cases done
-[23:42:44]   370/1000 cases done
-[23:42:57]   380/1000 cases done
-[23:43:08]   390/1000 cases done
-[23:43:20]   400/1000 cases done
-[23:43:34]   410/1000 cases done
-[23:43:45]   420/1000 cases done
-[23:43:59]   430/1000 cases done
-[23:44:10]   440/1000 cases done
-[23:44:27]   450/1000 cases done
-[23:44:40]   460/1000 cases done
-[23:44:53]   470/1000 cases done
-[23:45:09]   480/1000 cases done
-[23:45:24]   490/1000 cases done
-[23:45:36]   500/1000 cases done
-[23:45:52]   510/1000 cases done
-[23:46:10]   520/1000 cases done
-[23:46:22]   530/1000 cases done
-[23:46:42]   540/1000 cases done
-[23:46:55]   550/1000 cases done
-[23:47:16]   560/1000 cases done
-[23:47:32]   570/1000 cases done
-[23:47:45]   580/1000 cases done
-[23:47:59]   590/1000 cases done
-[23:48:19]   600/1000 cases done
-[23:48:31]   610/1000 cases done
-[23:48:43]   620/1000 cases done
-[23:48:59]   630/1000 cases done
-[23:49:13]   640/1000 cases done
-[23:49:30]   650/1000 cases done
-[23:49:54]   660/1000 cases done
-[23:50:14]   670/1000 cases done
-[23:50:29]   680/1000 cases done
-[23:50:49]   690/1000 cases done
-[23:51:03]   700/1000 cases done
-[23:51:14]   710/1000 cases done
-[23:51:27]   720/1000 cases done
-[23:51:44]   730/1000 cases done
-[23:51:59]   740/1000 cases done
-[23:52:14]   750/1000 cases done
-[23:52:26]   760/1000 cases done
-[23:52:37]   770/1000 cases done
-[23:52:51]   780/1000 cases done
-[23:53:07]   790/1000 cases done
-[23:53:18]   800/1000 cases done
-[23:53:30]   810/1000 cases done
-[23:53:44]   820/1000 cases done
-[23:53:58]   830/1000 cases done
-[23:54:10]   840/1000 cases done
-[23:54:28]   850/1000 cases done
-[23:54:45]   860/1000 cases done
-[23:54:57]   870/1000 cases done
-[23:55:20]   880/1000 cases done
-[23:55:34]   890/1000 cases done
-[23:55:46]   900/1000 cases done
-[23:56:02]   910/1000 cases done
-[23:56:17]   920/1000 cases done
-[23:56:31]   930/1000 cases done
-[23:56:47]   940/1000 cases done
-[23:57:05]   950/1000 cases done
-[23:57:22]   960/1000 cases done
-[23:57:40]   970/1000 cases done
-[23:57:51]   980/1000 cases done
-[23:58:03]   990/1000 cases done
-[23:58:17]   1000/1000 cases done
-[23:58:18]   per-tooth F1=0.138
-[23:58:18] checkpoint -> comparison_20260728_233324.json
-[23:58:18] === LLaVA-Med-v1.5-7B (chaoyinshe/llava-med-v1.5-mistral-7b-hf) ===
-Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 3209.11it/s]
-Loading weights:   0%|          | 0/686 [00:00<?, ?it/s]Loading weights:   0%|          | 1/686 [00:00<02:33,  4.46it/s]Loading weights:   0%|          | 2/686 [00:00<02:16,  5.02it/s]Loading weights:   1%|          | 6/686 [00:00<00:44, 15.29it/s]Loading weights:   1%|▏         | 10/686 [00:00<00:34, 19.37it/s]Loading weights:   2%|▏         | 13/686 [00:00<00:40, 16.60it/s]Loading weights:   3%|▎         | 19/686 [00:01<00:33, 19.64it/s]Loading weights:   3%|▎         | 23/686 [00:01<00:37, 17.59it/s]Loading weights:   4%|▍         | 28/686 [00:01<00:35, 18.70it/s]Loading weights:   5%|▍         | 31/686 [00:01<00:38, 16.94it/s]Loading weights:   5%|▌         | 37/686 [00:02<00:34, 18.60it/s]Loading weights:   6%|▌         | 41/686 [00:02<00:32, 19.93it/s]Loading weights:   7%|▋         | 45/686 [00:02<00:27, 23.24it/s]Loading weights:   7%|▋         | 48/686 [00:02<00:26, 24.25it/s]Loading weights:   7%|▋         | 51/686 [00:02<00:35, 17.99it/s]Loading weights:   8%|▊         | 55/686 [00:03<00:39, 15.99it/s]Loading weights:   9%|▊         | 60/686 [00:03<00:30, 20.64it/s]Loading weights:   9%|▉         | 64/686 [00:03<00:27, 22.24it/s]Loading weights:  10%|▉         | 68/686 [00:03<00:36, 16.92it/s]Loading weights:  11%|█         | 76/686 [00:04<00:32, 18.56it/s]Loading weights:  12%|█▏        | 81/686 [00:04<00:30, 20.06it/s]Loading weights:  13%|█▎        | 86/686 [00:04<00:37, 16.06it/s]Loading weights:  14%|█▍        | 95/686 [00:05<00:28, 20.43it/s]Loading weights:  15%|█▍        | 102/686 [00:05<00:24, 23.78it/s]Loading weights:  15%|█▌        | 105/686 [00:05<00:34, 16.81it/s]Loading weights:  16%|█▋        | 113/686 [00:06<00:31, 18.37it/s]Loading weights:  17%|█▋        | 116/686 [00:06<00:31, 17.94it/s]Loading weights:  18%|█▊        | 121/686 [00:06<00:26, 21.24it/s]Loading weights:  19%|█▊        | 127/686 [00:06<00:23, 23.82it/s]Loading weights:  19%|█▉        | 131/686 [00:06<00:28, 19.79it/s]Loading weights:  20%|█▉        | 134/686 [00:07<00:36, 15.07it/s]Loading weights:  21%|██        | 141/686 [00:07<00:25, 21.53it/s]Loading weights:  21%|██        | 145/686 [00:07<00:24, 22.12it/s]Loading weights:  22%|██▏       | 148/686 [00:07<00:24, 21.70it/s]Loading weights:  22%|██▏       | 151/686 [00:07<00:27, 19.22it/s]Loading weights:  23%|██▎       | 155/686 [00:08<00:24, 21.85it/s]Loading weights:  23%|██▎       | 158/686 [00:08<00:33, 15.73it/s]Loading weights:  24%|██▍       | 163/686 [00:08<00:26, 19.50it/s]Loading weights:  24%|██▍       | 167/686 [00:08<00:27, 18.73it/s]Loading weights:  25%|██▌       | 172/686 [00:09<00:27, 18.69it/s]Loading weights:  26%|██▌       | 176/686 [00:09<00:25, 19.92it/s]Loading weights:  26%|██▌       | 179/686 [00:09<00:30, 16.70it/s]Loading weights:  27%|██▋       | 184/686 [00:09<00:23, 21.55it/s]Loading weights:  27%|██▋       | 187/686 [00:09<00:26, 19.03it/s]Loading weights:  28%|██▊       | 193/686 [00:10<00:22, 22.02it/s]Loading weights:  29%|██▉       | 198/686 [00:10<00:19, 24.70it/s]Loading weights:  30%|██▉       | 203/686 [00:10<00:23, 20.26it/s]Loading weights:  30%|███       | 206/686 [00:10<00:24, 19.68it/s]Loading weights:  31%|███       | 212/686 [00:10<00:19, 24.36it/s]Loading weights:  32%|███▏      | 217/686 [00:11<00:22, 20.55it/s]Loading weights:  32%|███▏      | 221/686 [00:11<00:21, 21.30it/s]Loading weights:  33%|███▎      | 224/686 [00:11<00:22, 20.12it/s]Loading weights:  33%|███▎      | 227/686 [00:11<00:23, 19.40it/s]Loading weights:  34%|███▎      | 230/686 [00:11<00:21, 20.80it/s]Loading weights:  34%|███▍      | 235/686 [00:12<00:19, 23.32it/s]Loading weights:  35%|███▍      | 239/686 [00:12<00:23, 19.01it/s]Loading weights:  35%|███▌      | 242/686 [00:12<00:26, 16.54it/s]Loading weights:  36%|███▌      | 247/686 [00:12<00:21, 20.10it/s]Loading weights:  37%|███▋      | 252/686 [00:12<00:17, 24.67it/s]Loading weights:  37%|███▋      | 256/686 [00:13<00:23, 18.57it/s]Loading weights:  38%|███▊      | 259/686 [00:13<00:22, 18.76it/s]Loading weights:  38%|███▊      | 262/686 [00:13<00:23, 17.70it/s]Loading weights:  39%|███▊      | 265/686 [00:13<00:24, 17.46it/s]Loading weights:  40%|███▉      | 271/686 [00:13<00:20, 19.77it/s]Loading weights:  40%|████      | 275/686 [00:14<00:23, 17.21it/s]Loading weights:  40%|████      | 277/686 [00:14<00:23, 17.28it/s]Loading weights:  41%|████▏     | 283/686 [00:14<00:19, 20.66it/s]Loading weights:  42%|████▏     | 286/686 [00:14<00:18, 21.10it/s]Loading weights:  43%|████▎     | 295/686 [00:14<00:11, 33.35it/s]Loading weights:  49%|████▊     | 334/686 [00:14<00:03, 107.03it/s]Loading weights:  52%|█████▏    | 358/686 [00:15<00:02, 131.74it/s]Loading weights:  58%|█████▊    | 400/686 [00:15<00:01, 193.05it/s]Loading weights:  68%|██████▊   | 464/686 [00:15<00:00, 286.66it/s]Loading weights:  75%|███████▍  | 514/686 [00:15<00:00, 334.17it/s]Loading weights:  84%|████████▍ | 578/686 [00:15<00:00, 386.18it/s]Loading weights:  94%|█████████▎| 642/686 [00:15<00:00, 435.14it/s]Loading weights: 100%|██████████| 686/686 [00:15<00:00, 43.68it/s] 
-[23:58:42] loaded in 24.1s on cuda:0
-[23:59:00]   10/1000 cases done
-[23:59:17]   20/1000 cases done
-[23:59:35]   30/1000 cases done
-[23:59:50]   40/1000 cases done
-[00:00:06]   50/1000 cases done
-[00:00:21]   60/1000 cases done
-[00:00:40]   70/1000 cases done
-[00:00:57]   80/1000 cases done
-[00:01:15]   90/1000 cases done
-[00:01:30]   100/1000 cases done
-[00:01:44]   110/1000 cases done
-[00:02:01]   120/1000 cases done
-[00:02:18]   130/1000 cases done
-[00:02:33]   140/1000 cases done
-[00:02:51]   150/1000 cases done
-[00:03:09]   160/1000 cases done
-[00:03:25]   170/1000 cases done
-[00:03:43]   180/1000 cases done
-[00:03:58]   190/1000 cases done
-[00:04:15]   200/1000 cases done
-[00:04:29]   210/1000 cases done
-[00:04:47]   220/1000 cases done
-[00:05:03]   230/1000 cases done
-[00:05:20]   240/1000 cases done
-[00:05:47]   250/1000 cases done
-[00:06:03]   260/1000 cases done
-[00:06:20]   270/1000 cases done
-[00:06:37]   280/1000 cases done
-[00:06:56]   290/1000 cases done
-[00:07:12]   300/1000 cases done
-[00:07:29]   310/1000 cases done
-[00:07:45]   320/1000 cases done
-[00:08:01]   330/1000 cases done
-[00:08:27]   340/1000 cases done
-[00:08:46]   350/1000 cases done
-[00:09:07]   360/1000 cases done
-[00:09:25]   370/1000 cases done
-[00:09:42]   380/1000 cases done
-[00:09:59]   390/1000 cases done
-[00:10:15]   400/1000 cases done
-[00:10:31]   410/1000 cases done
-[00:10:50]   420/1000 cases done
-[00:11:06]   430/1000 cases done
-[00:11:24]   440/1000 cases done
-[00:11:40]   450/1000 cases done
-[00:11:59]   460/1000 cases done
-[00:12:15]   470/1000 cases done
-[00:12:32]   480/1000 cases done
-[00:12:50]   490/1000 cases done
-[00:13:11]   500/1000 cases done
-[00:14:08]   510/1000 cases done
-[00:14:42]   520/1000 cases done
-[00:15:11]   530/1000 cases done
-[00:15:28]   540/1000 cases done
-[00:15:46]   550/1000 cases done
-[00:16:06]   560/1000 cases done
-[00:16:30]   570/1000 cases done
-[00:16:50]   580/1000 cases done
-[00:17:06]   590/1000 cases done
-[00:17:24]   600/1000 cases done
-[00:17:41]   610/1000 cases done
-[00:18:00]   620/1000 cases done
-[00:18:18]   630/1000 cases done
-[00:18:37]   640/1000 cases done
-[00:18:54]   650/1000 cases done
-[00:19:09]   660/1000 cases done
-[00:19:24]   670/1000 cases done
-[00:19:40]   680/1000 cases done
-[00:19:56]   690/1000 cases done
-[00:20:16]   700/1000 cases done
-[00:20:32]   710/1000 cases done
-[00:20:51]   720/1000 cases done
-[00:21:10]   730/1000 cases done
-[00:21:28]   740/1000 cases done
-[00:21:48]   750/1000 cases done
-[00:22:08]   760/1000 cases done
-[00:22:28]   770/1000 cases done
-[00:22:49]   780/1000 cases done
-[00:23:06]   790/1000 cases done
-[00:23:24]   800/1000 cases done
-[00:23:45]   810/1000 cases done
-[00:24:02]   820/1000 cases done
-[00:24:25]   830/1000 cases done
-[00:24:42]   840/1000 cases done
-[00:25:01]   850/1000 cases done
-[00:25:18]   860/1000 cases done
-[00:25:35]   870/1000 cases done
-[00:25:53]   880/1000 cases done
-[00:26:13]   890/1000 cases done
-[00:26:27]   900/1000 cases done
-[00:26:44]   910/1000 cases done
-[00:27:03]   920/1000 cases done
-[00:27:21]   930/1000 cases done
-[00:27:37]   940/1000 cases done
-[00:27:55]   950/1000 cases done
-[00:28:13]   960/1000 cases done
-[00:28:34]   970/1000 cases done
-[00:28:51]   980/1000 cases done
-[00:29:12]   990/1000 cases done
-[00:29:31]   1000/1000 cases done
-[00:29:32]   per-tooth F1=0.025
-[00:29:33] checkpoint -> comparison_20260728_233324.json
-[00:29:33] === HuatuoGPT-Vision-7B (FreedomIntelligence/HuatuoGPT-Vision-7B-hf) ===
-Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 1497.70it/s]
-Loading weights:   0%|          | 0/734 [00:00<?, ?it/s]Loading weights:   0%|          | 1/734 [00:00<11:25,  1.07it/s]Loading weights:   0%|          | 2/734 [00:01<06:49,  1.79it/s]Loading weights:   2%|▏         | 18/734 [00:01<00:33, 21.15it/s]Loading weights:   3%|▎         | 24/734 [00:01<00:36, 19.32it/s]Loading weights:   4%|▍         | 29/734 [00:01<00:31, 22.66it/s]Loading weights:   4%|▍         | 33/734 [00:02<00:44, 15.75it/s]Loading weights:   6%|▌         | 41/734 [00:02<00:30, 22.66it/s]Loading weights:   7%|▋         | 50/734 [00:02<00:28, 23.94it/s]Loading weights:   7%|▋         | 54/734 [00:03<00:41, 16.53it/s]Loading weights:   9%|▊         | 64/734 [00:03<00:28, 23.91it/s]Loading weights:   9%|▉         | 68/734 [00:03<00:28, 23.48it/s]Loading weights:  10%|█         | 76/734 [00:04<00:26, 24.79it/s]Loading weights:  11%|█         | 80/734 [00:04<00:30, 21.12it/s]Loading weights:  11%|█▏        | 84/734 [00:04<00:33, 19.17it/s]Loading weights:  12%|█▏        | 89/734 [00:04<00:30, 21.15it/s]Loading weights:  13%|█▎        | 97/734 [00:04<00:23, 27.48it/s]Loading weights:  14%|█▍        | 101/734 [00:05<00:35, 17.71it/s]Loading weights:  14%|█▍        | 104/734 [00:05<00:44, 14.04it/s]Loading weights:  15%|█▌        | 111/734 [00:06<00:34, 18.20it/s]Loading weights:  16%|█▌        | 114/734 [00:06<00:39, 15.73it/s]Loading weights:  17%|█▋        | 125/734 [00:06<00:34, 17.45it/s]Loading weights:  19%|█▊        | 137/734 [00:07<00:22, 26.83it/s]Loading weights:  19%|█▉        | 141/734 [00:07<00:24, 23.87it/s]Loading weights:  20%|██        | 147/734 [00:07<00:22, 25.73it/s]Loading weights:  21%|██        | 151/734 [00:07<00:26, 21.68it/s]Loading weights:  22%|██▏       | 160/734 [00:08<00:23, 24.73it/s]Loading weights:  22%|██▏       | 163/734 [00:08<00:28, 19.73it/s]Loading weights:  23%|██▎       | 172/734 [00:08<00:31, 17.96it/s]Loading weights:  25%|██▌       | 184/734 [00:09<00:19, 28.06it/s]Loading weights:  26%|██▌       | 192/734 [00:09<00:17, 30.29it/s]Loading weights:  27%|██▋       | 197/734 [00:09<00:24, 21.71it/s]Loading weights:  28%|██▊       | 208/734 [00:10<00:25, 20.63it/s]Loading weights:  30%|███       | 221/734 [00:10<00:21, 23.79it/s]Loading weights:  31%|███▏      | 230/734 [00:10<00:18, 26.64it/s]Loading weights:  32%|███▏      | 234/734 [00:11<00:20, 24.44it/s]Loading weights:  32%|███▏      | 237/734 [00:11<00:20, 24.71it/s]Loading weights:  33%|███▎      | 244/734 [00:11<00:19, 25.26it/s]Loading weights:  34%|███▍      | 252/734 [00:11<00:17, 28.19it/s]Loading weights:  35%|███▌      | 257/734 [00:12<00:21, 21.71it/s]Loading weights:  35%|███▌      | 260/734 [00:12<00:21, 22.09it/s]Loading weights:  37%|███▋      | 268/734 [00:12<00:18, 24.68it/s]Loading weights:  37%|███▋      | 271/734 [00:12<00:20, 22.56it/s]Loading weights:  38%|███▊      | 280/734 [00:13<00:19, 22.84it/s]Loading weights:  39%|███▉      | 288/734 [00:14<00:31, 14.24it/s]Loading weights:  40%|███▉      | 292/734 [00:14<00:27, 15.95it/s]Loading weights:  40%|████      | 295/734 [00:14<00:31, 14.10it/s]Loading weights:  41%|████      | 302/734 [00:14<00:21, 19.92it/s]Loading weights:  42%|████▏     | 306/734 [00:15<00:32, 13.33it/s]Loading weights:  43%|████▎     | 317/734 [00:15<00:18, 22.38it/s]Loading weights:  44%|████▍     | 322/734 [00:15<00:19, 21.67it/s]Loading weights:  45%|████▍     | 329/734 [00:16<00:18, 21.40it/s]Loading weights:  51%|█████     | 374/734 [00:16<00:05, 70.94it/s]Loading weights:  54%|█████▍    | 400/734 [00:16<00:03, 96.72it/s]Loading weights:  57%|█████▋    | 416/734 [00:16<00:03, 105.78it/s]Loading weights:  65%|██████▌   | 480/734 [00:16<00:01, 203.19it/s]Loading weights:  72%|███████▏  | 530/734 [00:16<00:00, 237.68it/s]Loading weights:  81%|████████  | 592/734 [00:16<00:00, 296.82it/s]Loading weights:  89%|████████▉ | 656/734 [00:16<00:00, 365.68it/s]Loading weights:  98%|█████████▊| 720/734 [00:17<00:00, 426.71it/s]Loading weights: 100%|██████████| 734/734 [00:17<00:00, 43.12it/s] 
-[00:30:03] loaded in 30.1s on cuda:0
-[00:30:49]   10/1000 cases done
-[00:31:34]   20/1000 cases done
-[00:32:16]   30/1000 cases done
-[00:33:06]   40/1000 cases done
-[00:33:46]   50/1000 cases done
-[00:34:31]   60/1000 cases done
-[00:35:09]   70/1000 cases done
-[00:35:45]   80/1000 cases done
-[00:36:28]   90/1000 cases done
-[00:37:18]   100/1000 cases done
-[00:38:01]   110/1000 cases done
-[00:38:48]   120/1000 cases done
-[00:39:34]   130/1000 cases done
-[00:40:13]   140/1000 cases done
-[00:41:13]   150/1000 cases done
-[00:42:03]   160/1000 cases done
-[00:42:45]   170/1000 cases done
-[00:43:32]   180/1000 cases done
-[00:44:22]   190/1000 cases done
-[00:45:06]   200/1000 cases done
-[00:45:52]   210/1000 cases done
-[00:46:33]   220/1000 cases done
-[00:47:22]   230/1000 cases done
-[00:48:11]   240/1000 cases done
-[00:48:59]   250/1000 cases done
-[00:49:49]   260/1000 cases done
-[00:50:42]   270/1000 cases done
-[00:51:25]   280/1000 cases done
-[00:52:06]   290/1000 cases done
-[00:52:53]   300/1000 cases done
-[00:53:40]   310/1000 cases done
-[00:54:22]   320/1000 cases done
-[00:55:04]   330/1000 cases done
-[00:55:50]   340/1000 cases done
-[00:56:41]   350/1000 cases done
-[00:57:29]   360/1000 cases done
-[00:58:19]   370/1000 cases done
-[00:59:05]   380/1000 cases done
-[00:59:47]   390/1000 cases done
-[01:00:26]   400/1000 cases done
-[01:01:10]   410/1000 cases done
-[01:01:58]   420/1000 cases done
-[01:02:48]   430/1000 cases done
-[01:03:33]   440/1000 cases done
-[01:04:16]   450/1000 cases done
-[01:05:01]   460/1000 cases done
-[01:05:48]   470/1000 cases done
-[01:06:37]   480/1000 cases done
-[01:07:26]   490/1000 cases done
-[01:08:12]   500/1000 cases done
-[01:08:57]   510/1000 cases done
-[01:09:43]   520/1000 cases done
-[01:10:30]   530/1000 cases done
-[01:11:18]   540/1000 cases done
-[01:12:18]   550/1000 cases done
-[01:13:27]   560/1000 cases done
-[01:14:27]   570/1000 cases done
-[01:15:15]   580/1000 cases done
-[01:16:21]   590/1000 cases done
-[01:17:08]   600/1000 cases done
-[01:18:03]   610/1000 cases done
-[01:19:03]   620/1000 cases done
-[01:20:04]   630/1000 cases done
-[01:21:06]   640/1000 cases done
-[01:22:02]   650/1000 cases done
-[01:23:06]   660/1000 cases done
-[01:23:56]   670/1000 cases done
-[01:24:53]   680/1000 cases done
-[01:25:53]   690/1000 cases done
-[01:26:42]   700/1000 cases done
-[01:27:31]   710/1000 cases done
-[01:28:27]   720/1000 cases done
-[01:29:24]   730/1000 cases done
-[01:30:03]   740/1000 cases done
-[01:30:58]   750/1000 cases done
-[01:31:41]   760/1000 cases done
-[01:32:39]   770/1000 cases done
-[01:33:42]   780/1000 cases done
-[01:34:39]   790/1000 cases done
-[01:35:39]   800/1000 cases done
-[01:36:29]   810/1000 cases done
-[01:37:17]   820/1000 cases done
-[01:38:11]   830/1000 cases done
-[01:38:58]   840/1000 cases done
-[01:39:52]   850/1000 cases done
-[01:40:42]   860/1000 cases done
-[01:41:40]   870/1000 cases done
-[01:42:41]   880/1000 cases done
-[01:43:25]   890/1000 cases done
-[01:44:08]   900/1000 cases done
-[01:44:57]   910/1000 cases done
-[01:45:50]   920/1000 cases done
-[01:46:43]   930/1000 cases done
-[01:47:38]   940/1000 cases done
-[01:48:35]   950/1000 cases done
-[01:49:22]   960/1000 cases done
-[01:50:10]   970/1000 cases done
-[01:50:54]   980/1000 cases done
-[01:51:49]   990/1000 cases done
-[01:52:34]   1000/1000 cases done
-[01:52:34]   per-tooth F1=0.281
-[01:52:34] checkpoint -> comparison_20260728_233324.json
-[01:52:34] === DentVLM (ZJU-AI4H/DentVLM) ===
-Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 112.06it/s]
-Loading weights:   0%|          | 0/730 [00:00<?, ?it/s]Loading weights:   0%|          | 1/730 [00:01<17:35,  1.45s/it]Loading weights:   2%|▏         | 12/730 [00:01<01:08, 10.43it/s]Loading weights:   3%|▎         | 19/730 [00:02<01:11,  9.93it/s]Loading weights:   4%|▍         | 29/730 [00:02<00:49, 14.15it/s]Loading weights:   5%|▍         | 36/730 [00:02<00:36, 19.05it/s]Loading weights:   6%|▌         | 41/730 [00:03<00:52, 13.14it/s]Loading weights:   7%|▋         | 53/730 [00:03<00:30, 22.29it/s]Loading weights:   8%|▊         | 60/730 [00:04<00:35, 19.10it/s]Loading weights:   9%|▉         | 66/730 [00:04<00:39, 16.86it/s]Loading weights:  11%|█         | 77/730 [00:05<00:42, 15.43it/s]Loading weights:  12%|█▏        | 89/730 [00:05<00:30, 21.22it/s]Loading weights:  13%|█▎        | 96/730 [00:05<00:26, 23.60it/s]Loading weights:  14%|█▎        | 100/730 [00:06<00:40, 15.65it/s]Loading weights:  15%|█▌        | 111/730 [00:06<00:31, 19.43it/s]Loading weights:  16%|█▌        | 114/730 [00:07<00:37, 16.55it/s]Loading weights:  17%|█▋        | 124/730 [00:07<00:37, 16.15it/s]Loading weights:  17%|█▋        | 127/730 [00:07<00:34, 17.26it/s]Loading weights:  18%|█▊        | 132/730 [00:08<00:35, 16.89it/s]Loading weights:  19%|█▉        | 137/730 [00:08<00:32, 18.44it/s]Loading weights:  19%|█▉        | 141/730 [00:08<00:28, 20.35it/s]Loading weights:  20%|█▉        | 144/730 [00:08<00:30, 19.52it/s]Loading weights:  20%|██        | 148/730 [00:09<00:35, 16.38it/s]Loading weights:  21%|██        | 150/730 [00:09<00:34, 16.84it/s]Loading weights:  21%|██▏       | 156/730 [00:09<00:26, 21.82it/s]Loading weights:  22%|██▏       | 159/730 [00:09<00:35, 16.27it/s]Loading weights:  22%|██▏       | 161/730 [00:09<00:34, 16.27it/s]Loading weights:  22%|██▏       | 163/730 [00:10<00:38, 14.85it/s]Loading weights:  23%|██▎       | 170/730 [00:10<00:29, 18.79it/s]Loading weights:  24%|██▎       | 173/730 [00:10<00:35, 15.76it/s]Loading weights:  24%|██▍       | 175/730 [00:10<00:38, 14.36it/s]Loading weights:  24%|██▍       | 177/730 [00:10<00:39, 13.84it/s]Loading weights:  25%|██▌       | 185/730 [00:11<00:24, 22.03it/s]Loading weights:  26%|██▌       | 188/730 [00:11<00:24, 21.76it/s]Loading weights:  26%|██▌       | 191/730 [00:11<00:24, 21.96it/s]Loading weights:  27%|██▋       | 196/730 [00:11<00:25, 21.36it/s]Loading weights:  27%|██▋       | 199/730 [00:12<00:37, 14.30it/s]Loading weights:  29%|██▊       | 209/730 [00:12<00:28, 18.24it/s]Loading weights:  29%|██▉       | 214/730 [00:12<00:23, 21.71it/s]Loading weights:  30%|███       | 221/730 [00:13<00:29, 17.47it/s]Loading weights:  32%|███▏      | 232/730 [00:13<00:29, 16.62it/s]Loading weights:  34%|███▎      | 245/730 [00:14<00:22, 21.28it/s]Loading weights:  35%|███▍      | 252/730 [00:14<00:23, 20.51it/s]Loading weights:  35%|███▌      | 257/730 [00:14<00:21, 21.76it/s]Loading weights:  36%|███▌      | 260/730 [00:15<00:25, 18.59it/s]Loading weights:  37%|███▋      | 269/730 [00:15<00:18, 24.96it/s]Loading weights:  37%|███▋      | 273/730 [00:15<00:21, 21.52it/s]Loading weights:  38%|███▊      | 281/730 [00:15<00:16, 27.52it/s]Loading weights:  39%|███▉      | 288/730 [00:15<00:15, 29.38it/s]Loading weights:  40%|████      | 292/730 [00:16<00:17, 24.34it/s]Loading weights:  40%|████      | 295/730 [00:16<00:26, 16.18it/s]Loading weights:  42%|████▏     | 305/730 [00:16<00:16, 25.54it/s]Loading weights:  43%|████▎     | 314/730 [00:17<00:14, 29.51it/s]Loading weights:  44%|████▎     | 318/730 [00:17<00:16, 25.31it/s]Loading weights:  45%|████▍     | 325/730 [00:17<00:13, 29.84it/s]Loading weights:  45%|████▌     | 329/730 [00:17<00:16, 24.04it/s]Loading weights:  46%|████▌     | 333/730 [00:17<00:15, 26.41it/s]Loading weights:  49%|████▉     | 360/730 [00:17<00:05, 68.22it/s]Loading weights:  52%|█████▏    | 379/730 [00:18<00:03, 92.41it/s]Loading weights:  54%|█████▍    | 395/730 [00:18<00:03, 103.88it/s]Loading weights:  58%|█████▊    | 423/730 [00:18<00:02, 141.73it/s]Loading weights:  61%|██████    | 443/730 [00:18<00:01, 153.42it/s]Loading weights:  65%|██████▌   | 475/730 [00:18<00:01, 188.31it/s]Loading weights:  69%|██████▉   | 503/730 [00:18<00:01, 207.16it/s]Loading weights:  72%|███████▏  | 525/730 [00:18<00:00, 207.43it/s]Loading weights:  75%|███████▌  | 551/730 [00:18<00:00, 220.00it/s]Loading weights:  80%|████████  | 587/730 [00:18<00:00, 239.33it/s]Loading weights:  84%|████████▍ | 612/730 [00:19<00:00, 241.69it/s]Loading weights:  89%|████████▊ | 647/730 [00:19<00:00, 265.63it/s]Loading weights:  92%|█████████▏| 674/730 [00:19<00:00, 244.54it/s]Loading weights:  96%|█████████▌| 699/730 [00:19<00:00, 242.28it/s]Loading weights:  99%|█████████▉| 726/730 [00:19<00:00, 235.20it/s]Loading weights: 100%|██████████| 730/730 [00:19<00:00, 37.33it/s] 
-[01:53:06] loaded in 31.6s on cuda:0
-[01:53:59]   10/1000 cases done
-[01:54:57]   20/1000 cases done
-[01:55:43]   30/1000 cases done
-[01:56:34]   40/1000 cases done
-[01:57:31]   50/1000 cases done
-[01:58:21]   60/1000 cases done
-[01:59:17]   70/1000 cases done
-[02:00:04]   80/1000 cases done
-[02:01:06]   90/1000 cases done
-[02:01:57]   100/1000 cases done
-[02:02:50]   110/1000 cases done
-[02:03:41]   120/1000 cases done
-[02:04:39]   130/1000 cases done
-[02:05:42]   140/1000 cases done
-[02:06:37]   150/1000 cases done
-[02:07:36]   160/1000 cases done
-[02:08:32]   170/1000 cases done
-[02:09:23]   180/1000 cases done
-[02:10:19]   190/1000 cases done
-[02:11:04]   200/1000 cases done
-[02:11:53]   210/1000 cases done
-[02:12:53]   220/1000 cases done
-[02:13:41]   230/1000 cases done
-[02:14:34]   240/1000 cases done
-[02:15:20]   250/1000 cases done
-[02:16:05]   260/1000 cases done
-[02:17:02]   270/1000 cases done
-[02:17:54]   280/1000 cases done
-[02:18:50]   290/1000 cases done
-[02:19:36]   300/1000 cases done
-[02:20:24]   310/1000 cases done
-[02:21:14]   320/1000 cases done
-[02:21:58]   330/1000 cases done
-[02:22:55]   340/1000 cases done
-[02:23:47]   350/1000 cases done
-[02:24:40]   360/1000 cases done
-[02:25:28]   370/1000 cases done
-[02:26:22]   380/1000 cases done
-[02:27:13]   390/1000 cases done
-[02:28:06]   400/1000 cases done
-[02:29:11]   410/1000 cases done
-[02:30:09]   420/1000 cases done
-[02:31:16]   430/1000 cases done
-[02:32:06]   440/1000 cases done
-[02:33:10]   450/1000 cases done
-[02:34:05]   460/1000 cases done
-[02:35:13]   470/1000 cases done
-[02:36:14]   480/1000 cases done
-[02:37:25]   490/1000 cases done
-[02:38:27]   500/1000 cases done
-[02:39:26]   510/1000 cases done
-[02:40:27]   520/1000 cases done
-[02:41:42]   530/1000 cases done
-[02:42:41]   540/1000 cases done
-[02:43:36]   550/1000 cases done
-[02:44:35]   560/1000 cases done
-[02:45:37]   570/1000 cases done
-[02:46:45]   580/1000 cases done
-[02:47:42]   590/1000 cases done
-[02:48:49]   600/1000 cases done
-[02:49:47]   610/1000 cases done
-[02:50:49]   620/1000 cases done
-[02:51:51]   630/1000 cases done
-[02:52:51]   640/1000 cases done
-[02:53:40]   650/1000 cases done
-[02:54:39]   660/1000 cases done
-[02:55:33]   670/1000 cases done
-[02:56:41]   680/1000 cases done
-[02:57:39]   690/1000 cases done
-[02:58:35]   700/1000 cases done
-[02:59:35]   710/1000 cases done
-[03:00:47]   720/1000 cases done
-[03:01:46]   730/1000 cases done
-[03:02:46]   740/1000 cases done
-[03:03:41]   750/1000 cases done
-[03:04:31]   760/1000 cases done
-[03:05:33]   770/1000 cases done
-[03:06:30]   780/1000 cases done
-[03:07:25]   790/1000 cases done
-[03:08:25]   800/1000 cases done
-[03:09:22]   810/1000 cases done
-[03:10:21]   820/1000 cases done
-[03:11:19]   830/1000 cases done
-[03:12:13]   840/1000 cases done
-[03:13:10]   850/1000 cases done
-[03:14:01]   860/1000 cases done
-[03:14:55]   870/1000 cases done
-[03:15:48]   880/1000 cases done
-[03:16:45]   890/1000 cases done
-[03:17:36]   900/1000 cases done
-[03:18:37]   910/1000 cases done
-[03:19:33]   920/1000 cases done
-[03:20:27]   930/1000 cases done
-[03:21:19]   940/1000 cases done
-[03:22:13]   950/1000 cases done
-[03:23:06]   960/1000 cases done
-[03:24:02]   970/1000 cases done
-[03:24:53]   980/1000 cases done
-[03:25:42]   990/1000 cases done
-[03:26:29]   1000/1000 cases done
-[03:26:30]   per-tooth F1=0.035
-[03:26:30] checkpoint -> comparison_20260728_233324.json
-[03:26:30] === SUMMARY (per-tooth) ===
-[03:26:30] model                         F1    Prec  Recall     Acc
-[03:26:30] LLaVA-1.5-7B               0.138   0.322   0.088   0.769
-[03:26:30] LLaVA-Med-v1.5-7B          0.025   0.245   0.013   0.784
-[03:26:30] HuatuoGPT-Vision-7B        0.281   0.206   0.442   0.524
-[03:26:30] DentVLM                    0.035   0.320   0.019   0.785
-[03:26:30] COMPARISON_DONE

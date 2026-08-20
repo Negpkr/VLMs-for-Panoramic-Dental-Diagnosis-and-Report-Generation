@@ -7,10 +7,6 @@
       "present_slots": 25259,
       "note": "Final Tufts paper run is ALL usable cases with bbox + readable radiograph."
     },
-    "archive_100": {
-      "n_cases": 100,
-      "note": "Aug 2026 100-case prompting runs are archive only and will be replaced."
-    },
     "n_bbox_records": 1000
   },
   "dentex": {

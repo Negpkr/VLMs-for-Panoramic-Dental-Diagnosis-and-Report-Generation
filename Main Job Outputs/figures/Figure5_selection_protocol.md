@@ -14,4 +14,4 @@ Categories are searched in this order. For each category, take the **first** mat
 
 If a category has no match, that panel is omitted (not replaced by a prettier near-miss).
 
-The selection log is written to `Paper/figures_main/Figure5_selection_log.json` when Figure 5 is generated.
+The selection log is written to `Main Job Outputs/figures/Figure5_selection_log.json` when Figure 5 is generated.
