@@ -1,14 +1,14 @@
 # Main Job Outputs
 
-Replaces `temp_test_result/` (7 August 100-case / DENTEX val-50 supervisor pack).
+These files are from the three 20 August 2026 jobs.
 
-These files are from the three 20 August 2026 jobs. New figures are written here (`figures/`), not to `Paper/` (`Paper/` is gitignored).
 
-| Job | ID | Dataset | Status |
-|---|---|---|---|
-| DENTEX qed 752 × 4 models × 3 strategies | 27255 | DENTEX | Complete |
-| RQ3 expert reports, all 121 cases | 27258 | PR-Reports | Complete |
-| Tufts 1000 × 4 models × 3 strategies | 27299 | Tufts | Complete (ended 17:17 AEST, 6 h 44 m) |
+| Job                                      | ID    | Dataset    | Status                                |
+| ---------------------------------------- | ----- | ---------- | ------------------------------------- |
+| DENTEX qed 752 × 4 models × 3 strategies | 27255 | DENTEX     | Complete                              |
+| RQ3 expert reports, all 121 cases        | 27258 | PR-Reports | Complete                              |
+| Tufts 1000 × 4 models × 3 strategies     | 27299 | Tufts      | Complete (ended 17:17 AEST, 6 h 44 m) |
+
 
 ## Layout
 

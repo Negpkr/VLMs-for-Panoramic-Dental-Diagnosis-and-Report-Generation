@@ -4,26 +4,32 @@ This folder documents the three panoramic radiograph datasets used in the curren
 
 The radiographs themselves are **not** in GitHub. They stay on this machine under the original download folders, which are gitignored:
 
-| Dataset | Local path | On-disk size (approx.) |
-|---|---|---|
-| Tufts Dental Database | `../Tufts_Dental_Database/` | 936 MB |
-| DENTEX | `../DENTEX/` | 26 GB |
-| PR-Reports | `../PR-Reports/` | 77 MB |
+
+| Dataset               | Local path                  | On-disk size (approx.) |
+| --------------------- | --------------------------- | ---------------------- |
+| Tufts Dental Database | `../Tufts_Dental_Database/` | 936 MB                 |
+| DENTEX                | `../DENTEX/`                | 26 GB                  |
+| PR-Reports            | `../PR-Reports/`            | 77 MB                  |
+
 
 Canonical counts are in `../runs/dataset_counts.json`. Tables and figures from these runs are in `../Main Job Outputs/`.
 
 ## How they are used
 
-| Dataset | Research question | Task | Numbering | Scored set | Job |
-|---|---|---|---|---|---|
-| Tufts | RQ1 / RQ2 | Missing vs present tooth | Universal 1–32 | 1000 cases × 32 slots = 32,000 | 27299 |
-| DENTEX QED | RQ1 / RQ2 | Abnormal vs no annotated finding; four diseases | FDI 11–48 | 752 images × 32 slots = 24,064 | 27255 |
-| PR-Reports | RQ3 | Generated report vs expert report | FDI in the report text | All 121 cases, zero-shot | 27258 |
+
+| Dataset    | Research question | Task                                            | Numbering              | Scored set                     | Job   |
+| ---------- | ----------------- | ----------------------------------------------- | ---------------------- | ------------------------------ | ----- |
+| Tufts      | RQ1 / RQ2         | Missing vs present tooth                        | Universal 1–32         | 1000 cases × 32 slots = 32,000 | 27299 |
+| DENTEX QED | RQ1 / RQ2         | Abnormal vs no annotated finding; four diseases | FDI 11–48              | 752 images × 32 slots = 24,064 | 27255 |
+| PR-Reports | RQ3               | Generated report vs expert report               | FDI in the report text | All 121 cases, zero-shot       | 27258 |
+
 
 Models on all three: LLaVA-1.5-7B, LLaVA-Med, HuatuoGPT-Vision, DentVLM.  
 Tufts and DENTEX use zero-shot, few-shot, and chain-of-thought. RQ3 is zero-shot only.
 
 ---
+
+
 
 ## 1. Tufts Dental Database
 
@@ -36,11 +42,13 @@ Tufts and DENTEX use zero-shot, few-shot, and chain-of-thought. RQ3 is zero-shot
 - `Expert/expert.json` — expert narrative reports (**not** used as RQ3 gold)
 - `Student/` — student annotations (not scored)
 
-**What we score.** Every usable case with a bbox record and a readable radiograph: **1000 cases**. Ground truth missing teeth are the Universal numbers **1–32 that are absent from `teeth_bbox.json`**. Mean GT missing teeth per case is **6.741** (6741 missing slots, 25259 present).
+**What we score.** Every usable case with a bbox record and a readable radiograph: **1000 cases**. Ground truth missing teeth are the Universal numbers **1–32 that are absent from** `teeth_bbox.json`. Mean GT missing teeth per case is **6.741** (6741 missing slots, 25259 present).
 
 **What we do not score.** The earlier 50-case Phase 1 pilot (`../archive/`) and the 100-case / July 2026 runs. Those are not the paper evaluation.
 
 ---
+
+
 
 ## 2. DENTEX
 
@@ -54,7 +62,7 @@ Challenge paper: [arXiv:2305.19112](https://arxiv.org/abs/2305.19112). Dataset p
 - `validation_triple.json` — validation labels
 - `disease/` — 250-image test split with LabelMe labels (has no Deep Caries class; **not** in the paper run)
 
-**What we score (`qed`).** Train + val radiographs that exist on disk (**755**), minus three **text-only** few-shot exemplars that are held out of scoring for every strategy so the image set stays the same:
+**What we score (**`qed`**).** Train + val radiographs that exist on disk (**755**), minus three **text-only** few-shot exemplars that are held out of scoring for every strategy so the image set stays the same:
 
 - `train_1` (impacted only)
 - `train_14` (multi-label / mixed)
@@ -64,21 +72,25 @@ That leaves **752 images**, **24,064 FDI slots**.
 
 DENTEX labels diagnosis only on abnormal teeth. Unannotated slots are **No annotated finding**, not “normal.” One tooth may carry more than one disease; Table B scores Impacted, Caries, Deep Caries, and Periapical Lesion as independent one-vs-rest tasks.
 
-| Quantity | Count |
-|---|---|
-| Unique abnormal teeth | 3627 (mean 4.82 / case) |
+
+| Quantity                  | Count                                                                    |
+| ------------------------- | ------------------------------------------------------------------------ |
+| Unique abnormal teeth     | 3627 (mean 4.82 / case)                                                  |
 | Diagnosis-label positives | 3696 (mean 4.91 / case; a multi-label tooth is counted in every disease) |
-| No-finding slots | 20437 |
-| Disease support (OvR) | Impacted 642, Caries 2286, Deep Caries 602, Periapical 166 |
-| No-finding-only baseline | Macro F1 **0.459**, accuracy 20437/24064 = **0.849** |
+| No-finding slots          | 20437                                                                    |
+| Disease support (OvR)     | Impacted 642, Caries 2286, Deep Caries 602, Periapical 166               |
+| No-finding-only baseline  | Macro F1 **0.459**, accuracy 20437/24064 = **0.849**                     |
+
 
 Held-out exemplar details: `../runs/dentex_heldout_exemplars.json`.
 
 ---
 
+
+
 ## 3. PR-Reports (RQ3 gold)
 
-**Source:** Hugging Face [`saatwiksy/PR-Reports`](https://huggingface.co/datasets/saatwiksy/PR-Reports).  
+**Source:** Hugging Face `[saatwiksy/PR-Reports](https://huggingface.co/datasets/saatwiksy/PR-Reports)`.  
 IEEE DataPort: [doi:10.21227/dyae-tt87](https://doi.org/10.21227/dyae-tt87).
 
 **Local layout**
@@ -93,8 +105,5 @@ Strata in the 121-case list: impacted 40, periapical 33, caries 21, other 18, mi
 
 ---
 
-## Not copied here
-
-- Image files and zips stay in `Tufts_Dental_Database/`, `DENTEX/`, and `PR-Reports/` (gitignored).
-- Phase 1 LLaVA vs BLIP-2 50-case materials are in `../archive/`, not in this evaluation.
 - Result tables from the three jobs are in `../Main Job Outputs/`.
+
