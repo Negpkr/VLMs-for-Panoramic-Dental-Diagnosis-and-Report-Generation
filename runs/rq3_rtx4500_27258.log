@@ -1,0 +1,88 @@
+SLURM_JOB_ID=27258 host=g24-2gpu-2 CUDA_VISIBLE_DEVICES=0
+index, name, memory.total [MiB], memory.free [MiB]
+0, NVIDIA RTX 4500 Ada Generation, 24570 MiB, 24223 MiB
+Env: dental-llava | Python: /home/s222393187/.conda/envs/dental-llava/bin/python | CUDA devices: 1
+RQ3 launcher models=llava llava_med huatuogpt_vision dentvlm GPU=0
+prepared all 121 PR-Reports cases -> /home/s222393187/Dental/runs/rq3_pr_reports_all.json
+extracted 0 new images into /home/s222393187/Dental/PR-Reports/images
+eval strata: {'periapical': 33, 'impacted': 40, 'caries': 21, 'mixed_dentition': 9, 'other': 18}
+RQ3 dry-run dataset=PR-Reports n_eval=121 n_holdout=0 seed=20260820 models=['llava', 'llava_med', 'huatuogpt_vision', 'dentvlm'] prompt_chars=837 max_new_tokens=400 strata={'periapical': 33, 'impacted': 40, 'caries': 21, 'mixed_dentition': 9, 'other': 18}
+first_case pr_1 periapical
+case_list /home/s222393187/Dental/runs/rq3_pr_reports_all.json
+[04:03:10] RQ3 PR-Reports n=121 models=['llava', 'llava_med', 'huatuogpt_vision', 'dentvlm'] max_new_tokens=400 seed=20260820
+[04:03:10] === LLaVA-1.5-7B (llava-hf/llava-1.5-7b-hf) ===
+[04:03:44] loaded in 27.9s on cuda:0
+[04:06:16]   10/121 cases done
+[04:08:50]   20/121 cases done
+[04:11:27]   30/121 cases done
+[04:13:52]   40/121 cases done
+[04:16:22]   50/121 cases done
+[04:18:58]   60/121 cases done
+[04:21:26]   70/121 cases done
+[04:24:00]   80/121 cases done
+[04:26:25]   90/121 cases done
+[04:28:43]   100/121 cases done
+[04:31:21]   110/121 cases done
+[04:34:01]   120/121 cases done
+[04:34:16]   121/121 cases done
+[04:34:39]   mean BLEU-4=0.030  ROUGE-L=0.216  BERTScore=0.6197156883960913
+[04:34:39] checkpoint -> rq3_pr_all_20260820_040310.json
+[04:34:39] === LLaVA-Med-v1.5-7B (chaoyinshe/llava-med-v1.5-mistral-7b-hf) ===
+[04:35:02] loaded in 23.2s on cuda:0
+[04:36:30]   10/121 cases done
+[04:38:11]   20/121 cases done
+[04:40:08]   30/121 cases done
+[04:41:37]   40/121 cases done
+[04:43:15]   50/121 cases done
+[04:44:57]   60/121 cases done
+[04:46:42]   70/121 cases done
+[04:48:27]   80/121 cases done
+[04:50:05]   90/121 cases done
+[04:51:57]   100/121 cases done
+[04:53:39]   110/121 cases done
+[04:55:37]   120/121 cases done
+[04:55:46]   121/121 cases done
+[04:55:55]   mean BLEU-4=0.107  ROUGE-L=0.330  BERTScore=0.667788517376608
+[04:55:55] checkpoint -> rq3_pr_all_20260820_040310.json
+[04:55:55] === HuatuoGPT-Vision-7B (FreedomIntelligence/HuatuoGPT-Vision-7B-hf) ===
+[04:56:20] loaded in 25.1s on cuda:0
+[04:58:55]   10/121 cases done
+[05:01:21]   20/121 cases done
+[05:03:52]   30/121 cases done
+[05:06:16]   40/121 cases done
+[05:08:41]   50/121 cases done
+[05:11:02]   60/121 cases done
+[05:13:28]   70/121 cases done
+[05:15:52]   80/121 cases done
+[05:18:21]   90/121 cases done
+[05:20:51]   100/121 cases done
+[05:23:20]   110/121 cases done
+[05:25:58]   120/121 cases done
+[05:26:09]   121/121 cases done
+[05:26:23]   mean BLEU-4=0.122  ROUGE-L=0.301  BERTScore=0.6524683956272346
+[05:26:23] checkpoint -> rq3_pr_all_20260820_040310.json
+[05:26:23] === DentVLM (ZJU-AI4H/DentVLM) ===
+[05:26:49] loaded in 26.2s on cuda:0
+[05:27:29]   10/121 cases done
+[05:28:05]   20/121 cases done
+[05:28:42]   30/121 cases done
+[05:29:17]   40/121 cases done
+[05:29:53]   50/121 cases done
+[05:30:27]   60/121 cases done
+[05:30:59]   70/121 cases done
+[05:31:30]   80/121 cases done
+[05:32:04]   90/121 cases done
+[05:32:38]   100/121 cases done
+[05:33:12]   110/121 cases done
+[05:33:51]   120/121 cases done
+[05:33:55]   121/121 cases done
+[05:34:02]   mean BLEU-4=0.008  ROUGE-L=0.127  BERTScore=0.4880537644398114
+[05:34:03] checkpoint -> rq3_pr_all_20260820_040310.json
+[05:34:03] === RQ3 means (all PR-Reports expert reports) ===
+[05:34:03] model                    BLEU4 ROUGE-L BERT-F1
+[05:34:03] LLaVA-1.5-7B             0.030   0.216   0.620
+[05:34:03] LLaVA-Med-v1.5-7B        0.107   0.330   0.668
+[05:34:03] HuatuoGPT-Vision-7B      0.122   0.301   0.652
+[05:34:03] DentVLM                  0.008   0.127   0.488
+[05:34:03] RQ3_COMPARISON_DONE
+RQ3_ALL_DONE
