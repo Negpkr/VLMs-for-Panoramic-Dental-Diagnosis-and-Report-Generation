@@ -24,6 +24,7 @@ PR-Reports/
 # Paper drafts / local manuscript materials
 Paper/
 
-# Runtime process IDs
+# Runtime process IDs and job logs (keep local; JSON/tables stay on GitHub)
 *.pid
 runs/*.pid
+*.log
