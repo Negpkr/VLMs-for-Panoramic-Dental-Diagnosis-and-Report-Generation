@@ -12,9 +12,9 @@ These files are from the three 20 August 2026 jobs.
 
 ## Layout
 
-- `dentex/` — pooled-slot summary, supplementary P/R, and confusion CSVs (abnormal 2×2, disease OvR, 5-class exclusive).
+- `dentex/` — pooled-slot summary, supplementary P/R, confusion CSVs (abnormal 2×2, disease OvR, 5-class exclusive), and multi-label pathology metrics (`dentex_qed_pathology_example_label_metrics.csv`: Hamming loss, subset accuracy, Jaccard, example-based P/R/F1, micro/macro/weighted F1).
 - `rq3/` — BLEU / ROUGE-L / BERTScore summary, full per-case JSON, empty Likert rater sheet.
-- `tufts/` — pooled-slot summary + supplementary for zero-shot, few-shot, and CoT (1000 cases), plus missing-vs-present 2×2 counts (`tufts_1000_confusion_missing.csv`).
+- `tufts/` — pooled-slot summary + supplementary for zero-shot, few-shot, and CoT (1000 cases), missing-vs-present 2×2 counts (`tufts_1000_confusion_missing.csv`), and example/label-based metrics (`tufts_1000_example_label_metrics.csv`).
 - `figures/` — Figures 1–6 (PDF + PNG + captions). Figures 3 and 4 were regenerated after Tufts 27299 finished so the Tufts panels use the 1000-case pooled matrix.
 
 Raw per-case model JSON (12–24 MB each) stays in `Results/` locally and is not duplicated here.
