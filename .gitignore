@@ -24,6 +24,9 @@ PR-Reports/
 # Paper drafts / local manuscript materials
 Paper/
 
+# Phase 1 archive and local coursework (keep on disk only)
+archive/
+
 # Runtime process IDs and job logs (keep local; JSON/tables stay on GitHub)
 *.pid
 runs/*.pid
