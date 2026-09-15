@@ -1,0 +1,491 @@
+########## VERIFICATION: DENTEX / cot ##########
+
+--- image_id=train_0  (model=llava)  [hard: empty_pred]
+  Ground truth       : 26:Caries; 48:Caries
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 26:Caries; 48:Caries
+  TP=0 FP=0 FN=2 CHR_img=NaN (no predictions)
+
+--- image_id=train_8  (model=llava)  [hard: wrong_tooth]
+  Ground truth       : 18:Deep Caries; 28:Impacted; 36:Caries; 37:Caries; 38:Impacted; 48:Impacted
+  Model prediction   : 26:Periapical Lesion; 27:Caries; 36:Periapical Lesion
+  Matched TP         : (none)
+  FP / hallucinated  : 26:Periapical Lesion; 27:Caries; 36:Periapical Lesion
+  FN / missed        : 18:Deep Caries; 28:Impacted; 36:Caries; 37:Caries; 38:Impacted; 48:Impacted
+  TP=0 FP=3 FN=6 CHR_img=1.000
+
+--- image_id=train_185  (model=llava)  [hard: over_predict]
+  Ground truth       : 16:Deep Caries; 17:Deep Caries; 18:Deep Caries; 22:Caries; 24:Deep Caries; 25:Deep Caries; 27:Deep Caries; 28:Deep Caries; 38:Deep Caries; 45:Caries; 47:Caries
+  Model prediction   : 12:Deep Caries; 14:Caries; 15:Deep Caries; 15:Impacted; 16:Deep Caries; 16:Impacted; 17:Deep Caries; 17:Impacted; 18:Caries; 18:Impacted; 22:Deep Caries; 24:Deep Caries; 24:Impacted; 25:Deep Caries; 25:Impacted; 26:Deep Caries; 26:Impacted; 27:Deep Caries; 27:Impacted; 28:Deep Caries; 28:Impacted; 32:Deep Caries; 34:Deep Caries; 34:Impacted; 35:Deep Caries; 35:Impacted; 36:Deep Caries; 36:Impacted; 37:Deep Caries; 37:Impacted
+  Matched TP         : 16:Deep Caries; 17:Deep Caries; 24:Deep Caries; 25:Deep Caries; 27:Deep Caries; 28:Deep Caries
+  FP / hallucinated  : 12:Deep Caries; 14:Caries; 15:Deep Caries; 15:Impacted; 16:Impacted; 17:Impacted; 18:Caries; 18:Impacted; 22:Deep Caries; 24:Impacted; 25:Impacted; 26:Deep Caries; 26:Impacted; 27:Impacted; 28:Impacted; 32:Deep Caries; 34:Deep Caries; 34:Impacted; 35:Deep Caries; 35:Impacted; 36:Deep Caries; 36:Impacted; 37:Deep Caries; 37:Impacted
+  FN / missed        : 18:Deep Caries; 22:Caries; 38:Deep Caries; 45:Caries; 47:Caries
+  TP=6 FP=24 FN=5 CHR_img=0.800
+
+--- image_id=val_29  (model=llava)  [hard: empty_gt_pred]
+  Ground truth       : (none)
+  Model prediction   : 16:Caries
+  Matched TP         : (none)
+  FP / hallucinated  : 16:Caries
+  FN / missed        : (none)
+  TP=0 FP=1 FN=0 CHR_img=1.000
+
+--- image_id=train_286  (model=llava)
+  Ground truth       : 35:Caries; 37:Caries; 48:Caries
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 35:Caries; 37:Caries; 48:Caries
+  TP=0 FP=0 FN=3 CHR_img=NaN (no predictions)
+
+--- image_id=train_513  (model=llava)
+  Ground truth       : 17:Caries; 18:Deep Caries; 28:Caries; 47:Caries; 48:Caries
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 17:Caries; 18:Deep Caries; 28:Caries; 47:Caries; 48:Caries
+  TP=0 FP=0 FN=5 CHR_img=NaN (no predictions)
+
+--- image_id=train_450  (model=llava)
+  Ground truth       : 18:Caries; 36:Caries; 37:Caries; 47:Caries; 48:Caries
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 18:Caries; 36:Caries; 37:Caries; 47:Caries; 48:Caries
+  TP=0 FP=0 FN=5 CHR_img=NaN (no predictions)
+
+--- image_id=train_308  (model=llava)
+  Ground truth       : 16:Caries; 36:Caries; 45:Caries; 46:Caries
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 16:Caries; 36:Caries; 45:Caries; 46:Caries
+  TP=0 FP=0 FN=4 CHR_img=NaN (no predictions)
+
+--- image_id=train_198  (model=llava)
+  Ground truth       : 18:Impacted; 26:Caries; 28:Impacted; 38:Impacted; 46:Caries; 48:Impacted
+  Model prediction   : 11:Deep Caries; 11:Periapical Lesion; 21:Caries; 21:Periapical Lesion
+  Matched TP         : (none)
+  FP / hallucinated  : 11:Deep Caries; 11:Periapical Lesion; 21:Caries; 21:Periapical Lesion
+  FN / missed        : 18:Impacted; 26:Caries; 28:Impacted; 38:Impacted; 46:Caries; 48:Impacted
+  TP=0 FP=4 FN=6 CHR_img=1.000
+
+--- image_id=train_384  (model=llava)
+  Ground truth       : 46:Caries
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 46:Caries
+  TP=0 FP=0 FN=1 CHR_img=NaN (no predictions)
+
+########## VERIFICATION: DENTEX / few_shot ##########
+
+--- image_id=train_2  (model=llava)  [hard: wrong_tooth]
+  Ground truth       : 17:Caries; 36:Caries; 38:Impacted; 48:Impacted
+  Model prediction   : 35:Caries; 41:Caries; 44:Deep Caries; 47:Periapical Lesion
+  Matched TP         : (none)
+  FP / hallucinated  : 35:Caries; 41:Caries; 44:Deep Caries; 47:Periapical Lesion
+  FN / missed        : 17:Caries; 36:Caries; 38:Impacted; 48:Impacted
+  TP=0 FP=4 FN=4 CHR_img=1.000
+
+--- image_id=train_4  (model=llava)  [hard: over_predict]
+  Ground truth       : 15:Caries; 36:Deep Caries
+  Model prediction   : 11:Deep Caries; 13:Deep Caries; 15:Deep Caries; 17:Deep Caries; 22:Deep Caries; 24:Deep Caries; 26:Deep Caries; 28:Deep Caries; 31:Deep Caries; 33:Deep Caries; 35:Deep Caries; 37:Deep Caries; 41:Deep Caries; 43:Deep Caries; 45:Deep Caries; 47:Deep Caries
+  Matched TP         : (none)
+  FP / hallucinated  : 11:Deep Caries; 13:Deep Caries; 15:Deep Caries; 17:Deep Caries; 22:Deep Caries; 24:Deep Caries; 26:Deep Caries; 28:Deep Caries; 31:Deep Caries; 33:Deep Caries; 35:Deep Caries; 37:Deep Caries; 41:Deep Caries; 43:Deep Caries; 45:Deep Caries; 47:Deep Caries
+  FN / missed        : 15:Caries; 36:Deep Caries
+  TP=0 FP=16 FN=2 CHR_img=1.000
+
+--- image_id=train_32  (model=llava)  [hard: empty_pred]
+  Ground truth       : 38:Impacted
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 38:Impacted
+  TP=0 FP=0 FN=1 CHR_img=NaN (no predictions)
+
+--- image_id=train_38  (model=llava)  [hard: empty_gt_pred]
+  Ground truth       : (none)
+  Model prediction   : 11:Caries; 25:Caries; 31:Caries; 37:Caries; 41:Caries; 47:Caries
+  Matched TP         : (none)
+  FP / hallucinated  : 11:Caries; 25:Caries; 31:Caries; 37:Caries; 41:Caries; 47:Caries
+  FN / missed        : (none)
+  TP=0 FP=6 FN=0 CHR_img=1.000
+
+--- image_id=train_287  (model=llava)
+  Ground truth       : 44:Deep Caries
+  Model prediction   : 25:Impacted; 37:Impacted; 46:Impacted
+  Matched TP         : (none)
+  FP / hallucinated  : 25:Impacted; 37:Impacted; 46:Impacted
+  FN / missed        : 44:Deep Caries
+  TP=0 FP=3 FN=1 CHR_img=1.000
+
+--- image_id=train_514  (model=llava)
+  Ground truth       : 26:Deep Caries; 47:Caries; 48:Impacted
+  Model prediction   : 35:Caries
+  Matched TP         : (none)
+  FP / hallucinated  : 35:Caries
+  FN / missed        : 26:Deep Caries; 47:Caries; 48:Impacted
+  TP=0 FP=1 FN=3 CHR_img=1.000
+
+--- image_id=train_451  (model=llava)
+  Ground truth       : 17:Caries; 27:Caries; 28:Caries; 28:Impacted; 36:Caries; 36:Deep Caries; 37:Deep Caries; 44:Deep Caries; 48:Caries
+  Model prediction   : 25:Deep Caries; 26:Deep Caries; 27:Deep Caries; 28:Deep Caries; 37:Deep Caries; 46:Deep Caries; 46:Periapical Lesion
+  Matched TP         : 37:Deep Caries
+  FP / hallucinated  : 25:Deep Caries; 26:Deep Caries; 27:Deep Caries; 28:Deep Caries; 46:Deep Caries; 46:Periapical Lesion
+  FN / missed        : 17:Caries; 27:Caries; 28:Caries; 28:Impacted; 36:Caries; 36:Deep Caries; 44:Deep Caries; 48:Caries
+  TP=1 FP=6 FN=8 CHR_img=0.857
+
+--- image_id=train_309  (model=llava)
+  Ground truth       : 18:Impacted; 26:Caries; 28:Impacted; 37:Caries
+  Model prediction   : 25:Caries; 31:Deep Caries; 37:Deep Caries; 42:Periapical Lesion; 46:Periapical Lesion; 48:Caries
+  Matched TP         : (none)
+  FP / hallucinated  : 25:Caries; 31:Deep Caries; 37:Deep Caries; 42:Periapical Lesion; 46:Periapical Lesion; 48:Caries
+  FN / missed        : 18:Impacted; 26:Caries; 28:Impacted; 37:Caries
+  TP=0 FP=6 FN=4 CHR_img=1.000
+
+--- image_id=train_199  (model=llava)
+  Ground truth       : 38:Impacted
+  Model prediction   : 25:Deep Caries; 27:Caries; 28:Deep Caries; 37:Deep Caries; 46:Deep Caries; 46:Periapical Lesion
+  Matched TP         : (none)
+  FP / hallucinated  : 25:Deep Caries; 27:Caries; 28:Deep Caries; 37:Deep Caries; 46:Deep Caries; 46:Periapical Lesion
+  FN / missed        : 38:Impacted
+  TP=0 FP=6 FN=1 CHR_img=1.000
+
+--- image_id=train_385  (model=llava)
+  Ground truth       : 23:Caries; 25:Caries; 27:Caries; 28:Caries; 37:Caries; 44:Caries; 45:Caries; 46:Deep Caries; 47:Caries
+  Model prediction   : 25:Deep Caries; 26:Deep Caries; 27:Deep Caries; 28:Deep Caries; 36:Deep Caries; 38:Impacted; 46:Periapical Lesion
+  Matched TP         : (none)
+  FP / hallucinated  : 25:Deep Caries; 26:Deep Caries; 27:Deep Caries; 28:Deep Caries; 36:Deep Caries; 38:Impacted; 46:Periapical Lesion
+  FN / missed        : 23:Caries; 25:Caries; 27:Caries; 28:Caries; 37:Caries; 44:Caries; 45:Caries; 46:Deep Caries; 47:Caries
+  TP=0 FP=7 FN=9 CHR_img=1.000
+
+########## VERIFICATION: DENTEX / zero_shot ##########
+
+--- image_id=train_0  (model=llava)  [hard: wrong_tooth]
+  Ground truth       : 26:Caries; 48:Caries
+  Model prediction   : 11:Impacted; 25:Caries; 47:Periapical Lesion
+  Matched TP         : (none)
+  FP / hallucinated  : 11:Impacted; 25:Caries; 47:Periapical Lesion
+  FN / missed        : 26:Caries; 48:Caries
+  TP=0 FP=3 FN=2 CHR_img=1.000
+
+--- image_id=train_3  (model=llava)  [hard: empty_pred]
+  Ground truth       : 11:Deep Caries; 13:Caries; 14:Caries; 15:Caries; 16:Deep Caries; 17:Caries; 21:Deep Caries; 22:Deep Caries; 24:Caries; 25:Deep Caries; 26:Deep Caries; 28:Impacted; 34:Deep Caries; 35:Caries; 36:Deep Caries; 37:Caries; 38:Impacted; 44:Caries; 45:Caries; 46:Deep Caries; 47:Caries
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 11:Deep Caries; 13:Caries; 14:Caries; 15:Caries; 16:Deep Caries; 17:Caries; 21:Deep Caries; 22:Deep Caries; 24:Caries; 25:Deep Caries; 26:Deep Caries; 28:Impacted; 34:Deep Caries; 35:Caries; 36:Deep Caries; 37:Caries; 38:Impacted; 44:Caries; 45:Caries; 46:Deep Caries; 47:Caries
+  TP=0 FP=0 FN=21 CHR_img=NaN (no predictions)
+
+--- image_id=train_60  (model=llava)  [hard: empty_gt_pred]
+  Ground truth       : (none)
+  Model prediction   : 15:Deep Caries; 17:Caries
+  Matched TP         : (none)
+  FP / hallucinated  : 15:Deep Caries; 17:Caries
+  FN / missed        : (none)
+  TP=0 FP=2 FN=0 CHR_img=1.000
+
+--- image_id=train_286  (model=llava)
+  Ground truth       : 35:Caries; 37:Caries; 48:Caries
+  Model prediction   : 37:Periapical Lesion
+  Matched TP         : (none)
+  FP / hallucinated  : 37:Periapical Lesion
+  FN / missed        : 35:Caries; 37:Caries; 48:Caries
+  TP=0 FP=1 FN=3 CHR_img=1.000
+
+--- image_id=train_514  (model=llava)
+  Ground truth       : 26:Deep Caries; 47:Caries; 48:Impacted
+  Model prediction   : 47:Caries
+  Matched TP         : 47:Caries
+  FP / hallucinated  : (none)
+  FN / missed        : 26:Deep Caries; 48:Impacted
+  TP=1 FP=0 FN=2 CHR_img=0.000
+
+--- image_id=train_608  (model=llava)
+  Ground truth       : 17:Caries; 27:Caries; 35:Caries; 37:Caries; 46:Caries
+  Model prediction   : 17:Caries; 25:Deep Caries; 38:Periapical Lesion
+  Matched TP         : 17:Caries
+  FP / hallucinated  : 25:Deep Caries; 38:Periapical Lesion
+  FN / missed        : 27:Caries; 35:Caries; 37:Caries; 46:Caries
+  TP=1 FP=2 FN=4 CHR_img=0.667
+
+--- image_id=train_308  (model=llava)
+  Ground truth       : 16:Caries; 36:Caries; 45:Caries; 46:Caries
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 16:Caries; 36:Caries; 45:Caries; 46:Caries
+  TP=0 FP=0 FN=4 CHR_img=NaN (no predictions)
+
+--- image_id=train_198  (model=llava)
+  Ground truth       : 18:Impacted; 26:Caries; 28:Impacted; 38:Impacted; 46:Caries; 48:Impacted
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 18:Impacted; 26:Caries; 28:Impacted; 38:Impacted; 46:Caries; 48:Impacted
+  TP=0 FP=0 FN=6 CHR_img=NaN (no predictions)
+
+--- image_id=train_384  (model=llava)
+  Ground truth       : 46:Caries
+  Model prediction   : 15:Caries; 37:Periapical Lesion
+  Matched TP         : (none)
+  FP / hallucinated  : 15:Caries; 37:Periapical Lesion
+  FN / missed        : 46:Caries
+  TP=0 FP=2 FN=1 CHR_img=1.000
+
+--- image_id=train_303  (model=llava)
+  Ground truth       : 16:Caries; 18:Caries; 26:Caries; 34:Caries; 36:Caries; 41:Periapical Lesion; 44:Caries; 48:Caries
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 16:Caries; 18:Caries; 26:Caries; 34:Caries; 36:Caries; 41:Periapical Lesion; 44:Caries; 48:Caries
+  TP=0 FP=0 FN=8 CHR_img=NaN (no predictions)
+
+########## VERIFICATION: Tufts / cot ##########
+
+--- image_id=6  (model=llava)  [hard: empty_pred]
+  Ground truth       : 1:Missing; 10:Missing; 11:Missing; 12:Missing; 13:Missing; 14:Missing; 15:Missing; 16:Missing; 17:Missing; 18:Missing; 19:Missing; 2:Missing; 20:Missing; 21:Missing; 22:Missing; 23:Missing; 24:Missing; 25:Missing; 26:Missing; 27:Missing; 28:Missing; 29:Missing; 3:Missing; 30:Missing; 31:Missing; 32:Missing; 4:Missing; 5:Missing; 6:Missing; 7:Missing; 8:Missing; 9:Missing
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 1:Missing; 10:Missing; 11:Missing; 12:Missing; 13:Missing; 14:Missing; 15:Missing; 16:Missing; 17:Missing; 18:Missing; 19:Missing; 2:Missing; 20:Missing; 21:Missing; 22:Missing; 23:Missing; 24:Missing; 25:Missing; 26:Missing; 27:Missing; 28:Missing; 29:Missing; 3:Missing; 30:Missing; 31:Missing; 32:Missing; 4:Missing; 5:Missing; 6:Missing; 7:Missing; 8:Missing; 9:Missing
+  TP=0 FP=0 FN=32 CHR_img=NaN (no predictions)
+
+--- image_id=8  (model=llava)  [hard: over_predict]
+  Ground truth       : 16:Missing
+  Model prediction   : 16:Missing; 19:Missing; 23:Missing; 24:Missing; 9:Missing
+  Matched TP         : 16:Missing
+  FP / hallucinated  : 19:Missing; 23:Missing; 24:Missing; 9:Missing
+  FN / missed        : (none)
+  TP=1 FP=4 FN=0 CHR_img=0.800
+
+--- image_id=27  (model=llava)  [hard: empty_gt_pred]
+  Ground truth       : (none)
+  Model prediction   : 20:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 20:Missing
+  FN / missed        : (none)
+  TP=0 FP=1 FN=0 CHR_img=1.000
+
+--- image_id=876  (model=llava)
+  Ground truth       : 1:Missing; 16:Missing; 17:Missing; 28:Missing; 29:Missing; 30:Missing; 32:Missing
+  Model prediction   : 17:Missing; 19:Missing; 20:Missing; 25:Missing; 26:Missing; 29:Missing; 30:Missing
+  Matched TP         : 17:Missing; 29:Missing; 30:Missing
+  FP / hallucinated  : 19:Missing; 20:Missing; 25:Missing; 26:Missing
+  FN / missed        : 1:Missing; 16:Missing; 28:Missing; 32:Missing
+  TP=3 FP=4 FN=4 CHR_img=0.571
+
+--- image_id=524  (model=llava)
+  Ground truth       : 13:Missing; 5:Missing
+  Model prediction   : 15:Missing; 20:Missing; 29:Missing; 31:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 15:Missing; 20:Missing; 29:Missing; 31:Missing
+  FN / missed        : 13:Missing; 5:Missing
+  TP=0 FP=4 FN=2 CHR_img=1.000
+
+--- image_id=929  (model=llava)
+  Ground truth       : 1:Missing; 10:Missing; 13:Missing; 15:Missing; 16:Missing; 17:Missing; 18:Missing; 19:Missing; 2:Missing; 20:Missing; 3:Missing; 30:Missing; 32:Missing; 4:Missing; 6:Missing; 9:Missing
+  Model prediction   : 1:Missing; 19:Missing; 2:Missing; 21:Missing; 4:Missing
+  Matched TP         : 1:Missing; 19:Missing; 2:Missing; 4:Missing
+  FP / hallucinated  : 21:Missing
+  FN / missed        : 10:Missing; 13:Missing; 15:Missing; 16:Missing; 17:Missing; 18:Missing; 20:Missing; 3:Missing; 30:Missing; 32:Missing; 6:Missing; 9:Missing
+  TP=4 FP=1 FN=12 CHR_img=0.200
+
+--- image_id=374  (model=llava)
+  Ground truth       : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  Model prediction   : 10:Missing; 11:Missing; 12:Missing; 13:Missing; 14:Missing; 15:Missing; 16:Missing; 4:Missing; 5:Missing; 6:Missing; 9:Missing
+  Matched TP         : 16:Missing
+  FP / hallucinated  : 10:Missing; 11:Missing; 12:Missing; 13:Missing; 14:Missing; 15:Missing; 4:Missing; 5:Missing; 6:Missing; 9:Missing
+  FN / missed        : 1:Missing; 17:Missing; 32:Missing
+  TP=1 FP=10 FN=3 CHR_img=0.909
+
+--- image_id=42  (model=llava)
+  Ground truth       : 1:Missing; 15:Missing; 16:Missing; 17:Missing; 19:Missing; 32:Missing
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 1:Missing; 15:Missing; 16:Missing; 17:Missing; 19:Missing; 32:Missing
+  TP=0 FP=0 FN=6 CHR_img=NaN (no predictions)
+
+--- image_id=837  (model=llava)
+  Ground truth       : (none)
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : (none)
+  TP=0 FP=0 FN=0 CHR_img=NaN (no predictions)
+
+--- image_id=95  (model=llava)
+  Ground truth       : 1:Missing; 13:Missing; 15:Missing; 16:Missing; 17:Missing; 2:Missing; 29:Missing; 3:Missing; 30:Missing; 31:Missing; 32:Missing; 4:Missing
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 1:Missing; 13:Missing; 15:Missing; 16:Missing; 17:Missing; 2:Missing; 29:Missing; 3:Missing; 30:Missing; 31:Missing; 32:Missing; 4:Missing
+  TP=0 FP=0 FN=12 CHR_img=NaN (no predictions)
+
+########## VERIFICATION: Tufts / few_shot ##########
+
+--- image_id=4  (model=llava)  [hard: over_predict]
+  Ground truth       : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  Model prediction   : 15:Missing; 18:Missing; 22:Missing; 23:Missing; 25:Missing; 27:Missing; 29:Missing; 31:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 15:Missing; 18:Missing; 22:Missing; 23:Missing; 25:Missing; 27:Missing; 29:Missing; 31:Missing
+  FN / missed        : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  TP=0 FP=8 FN=4 CHR_img=1.000
+
+--- image_id=7  (model=llava)  [hard: empty_gt_pred]
+  Ground truth       : (none)
+  Model prediction   : 15:Missing; 24:Missing; 28:Missing; 31:Missing; 32:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 15:Missing; 24:Missing; 28:Missing; 31:Missing; 32:Missing
+  FN / missed        : (none)
+  TP=0 FP=5 FN=0 CHR_img=1.000
+
+--- image_id=38  (model=llava)  [hard: empty_pred]
+  Ground truth       : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  TP=0 FP=0 FN=4 CHR_img=NaN (no predictions)
+
+--- image_id=876  (model=llava)
+  Ground truth       : 1:Missing; 16:Missing; 17:Missing; 28:Missing; 29:Missing; 30:Missing; 32:Missing
+  Model prediction   : 15:Missing; 22:Missing; 24:Missing; 27:Missing; 30:Missing; 32:Missing
+  Matched TP         : 30:Missing; 32:Missing
+  FP / hallucinated  : 15:Missing; 22:Missing; 24:Missing; 27:Missing
+  FN / missed        : 1:Missing; 16:Missing; 17:Missing; 28:Missing; 29:Missing
+  TP=2 FP=4 FN=5 CHR_img=0.667
+
+--- image_id=524  (model=llava)
+  Ground truth       : 13:Missing; 5:Missing
+  Model prediction   : 15:Missing; 17:Missing; 19:Missing; 27:Missing; 32:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 15:Missing; 17:Missing; 19:Missing; 27:Missing; 32:Missing
+  FN / missed        : 13:Missing; 5:Missing
+  TP=0 FP=5 FN=2 CHR_img=1.000
+
+--- image_id=929  (model=llava)
+  Ground truth       : 1:Missing; 10:Missing; 13:Missing; 15:Missing; 16:Missing; 17:Missing; 18:Missing; 19:Missing; 2:Missing; 20:Missing; 3:Missing; 30:Missing; 32:Missing; 4:Missing; 6:Missing; 9:Missing
+  Model prediction   : 15:Missing; 19:Missing; 22:Missing; 25:Missing; 28:Missing; 31:Missing; 32:Missing
+  Matched TP         : 15:Missing; 19:Missing; 32:Missing
+  FP / hallucinated  : 22:Missing; 25:Missing; 28:Missing; 31:Missing
+  FN / missed        : 1:Missing; 10:Missing; 13:Missing; 16:Missing; 17:Missing; 18:Missing; 2:Missing; 20:Missing; 3:Missing; 30:Missing; 4:Missing; 6:Missing; 9:Missing
+  TP=3 FP=4 FN=13 CHR_img=0.571
+
+--- image_id=374  (model=llava)
+  Ground truth       : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  Model prediction   : 15:Missing; 26:Missing; 29:Missing; 32:Missing
+  Matched TP         : 32:Missing
+  FP / hallucinated  : 15:Missing; 26:Missing; 29:Missing
+  FN / missed        : 1:Missing; 16:Missing; 17:Missing
+  TP=1 FP=3 FN=3 CHR_img=0.750
+
+--- image_id=42  (model=llava)
+  Ground truth       : 1:Missing; 15:Missing; 16:Missing; 17:Missing; 19:Missing; 32:Missing
+  Model prediction   : 14:Missing; 16:Missing; 19:Missing; 26:Missing; 29:Missing; 32:Missing; 5:Missing
+  Matched TP         : 16:Missing; 19:Missing; 32:Missing
+  FP / hallucinated  : 14:Missing; 26:Missing; 29:Missing; 5:Missing
+  FN / missed        : 1:Missing; 15:Missing; 17:Missing
+  TP=3 FP=4 FN=3 CHR_img=0.571
+
+--- image_id=837  (model=llava)
+  Ground truth       : (none)
+  Model prediction   : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  FN / missed        : (none)
+  TP=0 FP=4 FN=0 CHR_img=1.000
+
+--- image_id=95  (model=llava)
+  Ground truth       : 1:Missing; 13:Missing; 15:Missing; 16:Missing; 17:Missing; 2:Missing; 29:Missing; 3:Missing; 30:Missing; 31:Missing; 32:Missing; 4:Missing
+  Model prediction   : 10:Missing; 15:Missing; 20:Missing; 25:Missing; 30:Missing; 32:Missing; 5:Missing
+  Matched TP         : 15:Missing; 30:Missing; 32:Missing
+  FP / hallucinated  : 10:Missing; 20:Missing; 25:Missing; 5:Missing
+  FN / missed        : 1:Missing; 13:Missing; 16:Missing; 17:Missing; 2:Missing; 29:Missing; 3:Missing; 31:Missing; 4:Missing
+  TP=3 FP=4 FN=9 CHR_img=0.571
+
+########## VERIFICATION: Tufts / zero_shot ##########
+
+--- image_id=4  (model=llava)  [hard: over_predict]
+  Ground truth       : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  Model prediction   : 10:Missing; 15:Missing; 25:Missing; 28:Missing; 32:Missing; 5:Missing; 9:Missing
+  Matched TP         : 32:Missing
+  FP / hallucinated  : 10:Missing; 15:Missing; 25:Missing; 28:Missing; 5:Missing; 9:Missing
+  FN / missed        : 1:Missing; 16:Missing; 17:Missing
+  TP=1 FP=6 FN=3 CHR_img=0.857
+
+--- image_id=7  (model=llava)  [hard: empty_gt_pred]
+  Ground truth       : (none)
+  Model prediction   : 10:Missing; 15:Missing; 5:Missing; 9:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 10:Missing; 15:Missing; 5:Missing; 9:Missing
+  FN / missed        : (none)
+  TP=0 FP=4 FN=0 CHR_img=1.000
+
+--- image_id=14  (model=llava)  [hard: empty_pred]
+  Ground truth       : 1:Missing; 13:Missing; 16:Missing; 17:Missing; 19:Missing; 2:Missing; 21:Missing; 29:Missing; 31:Missing; 32:Missing; 4:Missing; 5:Missing
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 1:Missing; 13:Missing; 16:Missing; 17:Missing; 19:Missing; 2:Missing; 21:Missing; 29:Missing; 31:Missing; 32:Missing; 4:Missing; 5:Missing
+  TP=0 FP=0 FN=12 CHR_img=NaN (no predictions)
+
+--- image_id=876  (model=llava)
+  Ground truth       : 1:Missing; 16:Missing; 17:Missing; 28:Missing; 29:Missing; 30:Missing; 32:Missing
+  Model prediction   : 15:Missing; 20:Missing; 25:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 15:Missing; 20:Missing; 25:Missing
+  FN / missed        : 1:Missing; 16:Missing; 17:Missing; 28:Missing; 29:Missing; 30:Missing; 32:Missing
+  TP=0 FP=3 FN=7 CHR_img=1.000
+
+--- image_id=524  (model=llava)
+  Ground truth       : 13:Missing; 5:Missing
+  Model prediction   : 10:Missing; 19:Missing; 25:Missing; 29:Missing; 32:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 10:Missing; 19:Missing; 25:Missing; 29:Missing; 32:Missing
+  FN / missed        : 13:Missing; 5:Missing
+  TP=0 FP=5 FN=2 CHR_img=1.000
+
+--- image_id=929  (model=llava)
+  Ground truth       : 1:Missing; 10:Missing; 13:Missing; 15:Missing; 16:Missing; 17:Missing; 18:Missing; 19:Missing; 2:Missing; 20:Missing; 3:Missing; 30:Missing; 32:Missing; 4:Missing; 6:Missing; 9:Missing
+  Model prediction   : 10:Missing; 11:Missing; 13:Missing; 16:Missing; 19:Missing; 20:Missing; 22:Missing; 24:Missing; 26:Missing; 28:Missing; 30:Missing; 32:Missing; 5:Missing; 9:Missing
+  Matched TP         : 10:Missing; 13:Missing; 16:Missing; 19:Missing; 20:Missing; 30:Missing; 32:Missing; 9:Missing
+  FP / hallucinated  : 11:Missing; 22:Missing; 24:Missing; 26:Missing; 28:Missing; 5:Missing
+  FN / missed        : 1:Missing; 15:Missing; 17:Missing; 18:Missing; 2:Missing; 3:Missing; 4:Missing; 6:Missing
+  TP=8 FP=6 FN=8 CHR_img=0.429
+
+--- image_id=374  (model=llava)
+  Ground truth       : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  Model prediction   : (none)
+  Matched TP         : (none)
+  FP / hallucinated  : (none)
+  FN / missed        : 1:Missing; 16:Missing; 17:Missing; 32:Missing
+  TP=0 FP=0 FN=4 CHR_img=NaN (no predictions)
+
+--- image_id=42  (model=llava)
+  Ground truth       : 1:Missing; 15:Missing; 16:Missing; 17:Missing; 19:Missing; 32:Missing
+  Model prediction   : 10:Missing; 11:Missing; 12:Missing; 13:Missing; 14:Missing; 15:Missing; 16:Missing; 17:Missing; 18:Missing; 19:Missing; 20:Missing; 21:Missing; 22:Missing; 23:Missing; 24:Missing; 25:Missing; 26:Missing; 27:Missing; 28:Missing; 29:Missing; 30:Missing; 31:Missing; 5:Missing; 6:Missing; 9:Missing
+  Matched TP         : 15:Missing; 16:Missing; 17:Missing; 19:Missing
+  FP / hallucinated  : 10:Missing; 11:Missing; 12:Missing; 13:Missing; 14:Missing; 18:Missing; 20:Missing; 21:Missing; 22:Missing; 23:Missing; 24:Missing; 25:Missing; 26:Missing; 27:Missing; 28:Missing; 29:Missing; 30:Missing; 31:Missing; 5:Missing; 6:Missing; 9:Missing
+  FN / missed        : 1:Missing; 32:Missing
+  TP=4 FP=21 FN=2 CHR_img=0.840
+
+--- image_id=837  (model=llava)
+  Ground truth       : (none)
+  Model prediction   : 19:Missing; 4:Missing; 5:Missing
+  Matched TP         : (none)
+  FP / hallucinated  : 19:Missing; 4:Missing; 5:Missing
+  FN / missed        : (none)
+  TP=0 FP=3 FN=0 CHR_img=1.000
+
+--- image_id=95  (model=llava)
+  Ground truth       : 1:Missing; 13:Missing; 15:Missing; 16:Missing; 17:Missing; 2:Missing; 29:Missing; 3:Missing; 30:Missing; 31:Missing; 32:Missing; 4:Missing
+  Model prediction   : 10:Missing; 14:Missing; 19:Missing; 20:Missing; 22:Missing; 24:Missing; 26:Missing; 29:Missing; 31:Missing; 32:Missing; 5:Missing; 9:Missing
+  Matched TP         : 29:Missing; 31:Missing; 32:Missing
+  FP / hallucinated  : 10:Missing; 14:Missing; 19:Missing; 20:Missing; 22:Missing; 24:Missing; 26:Missing; 5:Missing; 9:Missing
+  FN / missed        : 1:Missing; 13:Missing; 15:Missing; 16:Missing; 17:Missing; 2:Missing; 3:Missing; 30:Missing; 4:Missing
+  TP=3 FP=9 FN=9 CHR_img=0.750

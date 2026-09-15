@@ -1,0 +1,1 @@
+Condition heatmaps skipped for Tufts/cot: only one condition ('Missing'), so a model x condition matrix is a single column (see hallucinations_per_image_by_model instead).
