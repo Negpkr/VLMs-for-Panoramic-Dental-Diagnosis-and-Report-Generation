@@ -1,0 +1,129 @@
+{
+  "matching_rule": "A predicted finding (FDI tooth, condition) is a TP iff an identical (tooth, condition) exists in the ground truth; otherwise it is a FP (hallucination candidate). A GT finding with no matching prediction is a FN. TN = tooth x condition slots negative in both. Labels are used exactly as normalised by the project's own parser.",
+  "chr_definition": "CHR = FP / (TP + FP) = 1 - Precision (binary matching); NaN if TP+FP==0.",
+  "bootstrap": {
+    "n": 1000,
+    "seed": 42,
+    "unit": "image"
+  },
+  "iou": "Not computed: no bounding boxes or segmentation masks exist in the saved runs.",
+  "runs": [
+    {
+      "file": "Results/dentex_comparison/dentex_cot_qed_20260820_065218.json",
+      "dataset": "DENTEX",
+      "strategy": "cot",
+      "kind": "dentex",
+      "conditions": [
+        "Impacted",
+        "Caries",
+        "Deep Caries",
+        "Periapical Lesion"
+      ],
+      "n_teeth": 32,
+      "n_slots_per_image": 128,
+      "timestamp": "20260820_065218",
+      "models": [
+        "llava",
+        "llava_med",
+        "huatuogpt_vision",
+        "dentvlm"
+      ]
+    },
+    {
+      "file": "Results/dentex_comparison/dentex_few_shot_qed_20260820_045546.json",
+      "dataset": "DENTEX",
+      "strategy": "few_shot",
+      "kind": "dentex",
+      "conditions": [
+        "Impacted",
+        "Caries",
+        "Deep Caries",
+        "Periapical Lesion"
+      ],
+      "n_teeth": 32,
+      "n_slots_per_image": 128,
+      "timestamp": "20260820_045546",
+      "models": [
+        "llava",
+        "llava_med",
+        "huatuogpt_vision",
+        "dentvlm"
+      ]
+    },
+    {
+      "file": "Results/dentex_comparison/dentex_zero_shot_qed_20260820_033432.json",
+      "dataset": "DENTEX",
+      "strategy": "zero_shot",
+      "kind": "dentex",
+      "conditions": [
+        "Impacted",
+        "Caries",
+        "Deep Caries",
+        "Periapical Lesion"
+      ],
+      "n_teeth": 32,
+      "n_slots_per_image": 128,
+      "timestamp": "20260820_033432",
+      "models": [
+        "llava",
+        "llava_med",
+        "huatuogpt_vision",
+        "dentvlm"
+      ]
+    },
+    {
+      "file": "Results/model_comparison/comparison_cot_full_20260820_134750.json",
+      "dataset": "Tufts",
+      "strategy": "cot",
+      "kind": "tufts",
+      "conditions": [
+        "Missing"
+      ],
+      "n_teeth": 32,
+      "n_slots_per_image": 32,
+      "timestamp": "20260820_134750",
+      "models": [
+        "llava",
+        "llava_med",
+        "huatuogpt_vision",
+        "dentvlm"
+      ]
+    },
+    {
+      "file": "Results/model_comparison/comparison_few_shot_full_20260820_120337.json",
+      "dataset": "Tufts",
+      "strategy": "few_shot",
+      "kind": "tufts",
+      "conditions": [
+        "Missing"
+      ],
+      "n_teeth": 32,
+      "n_slots_per_image": 32,
+      "timestamp": "20260820_120337",
+      "models": [
+        "llava",
+        "llava_med",
+        "huatuogpt_vision",
+        "dentvlm"
+      ]
+    },
+    {
+      "file": "Results/model_comparison/comparison_zero_shot_full_20260820_103338.json",
+      "dataset": "Tufts",
+      "strategy": "zero_shot",
+      "kind": "tufts",
+      "conditions": [
+        "Missing"
+      ],
+      "n_teeth": 32,
+      "n_slots_per_image": 32,
+      "timestamp": "20260820_103338",
+      "models": [
+        "llava",
+        "llava_med",
+        "huatuogpt_vision",
+        "dentvlm"
+      ]
+    }
+  ]
+}
