@@ -5,7 +5,7 @@ module load cuda/12.2 2>/dev/null || module load cuda 2>/dev/null || true
 unset PYTHONPATH
 source /opt/python/3.11/anaconda/etc/profile.d/conda.sh
 conda activate /home/s222393187/.conda/envs/dental-llava
-# Prefer freer GPU on luthin (GPU 0 is often busy). Keep Slurm's assignment if set.
+# Prefer freer GPU on luthin. Keep Slurm's assignment if set.
 export CUDA_DEVICE_ORDER=PCI_BUS_ID
 if [[ -z "${CUDA_VISIBLE_DEVICES+x}" ]]; then
   export CUDA_VISIBLE_DEVICES=1

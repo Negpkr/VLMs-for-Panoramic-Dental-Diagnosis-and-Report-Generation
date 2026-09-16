@@ -2,7 +2,6 @@
 """Download the medical/dental VLMs used in the four-way comparison.
 
 Auth: set HF_TOKEN in the environment, or run `huggingface-cli login`.
-Do not hard-code tokens in this file.
 """
 from __future__ import annotations
 

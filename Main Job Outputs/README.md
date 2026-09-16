@@ -1,13 +1,11 @@
 # Main Job Outputs
 
-These files are from the three 20 August 2026 jobs.
 
-
-| Job                                      | ID    | Dataset    | Status                                |
-| ---------------------------------------- | ----- | ---------- | ------------------------------------- |
-| DENTEX qed 752 × 4 models × 3 strategies | 27255 | DENTEX     | Complete                              |
-| RQ3 expert reports, all 121 cases        | 27258 | PR-Reports | Complete                              |
-| Tufts 1000 × 4 models × 3 strategies     | 27299 | Tufts      | Complete (ended 17:17 AEST, 6 h 44 m) |
+| Job                                      | ID    | Dataset    | Status   |
+| ---------------------------------------- | ----- | ---------- | -------- |
+| DENTEX qed 752 × 4 models × 3 strategies | 27255 | DENTEX     | Complete |
+| RQ3 expert reports, all 121 cases        | 27258 | PR-Reports | Complete |
+| Tufts 1000 × 4 models × 3 strategies     | 27299 | Tufts      | Complete |
 
 
 ## Layout

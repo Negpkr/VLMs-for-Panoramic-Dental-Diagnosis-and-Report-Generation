@@ -1,6 +1,6 @@
 # Datasets
 
-This folder documents the three panoramic radiograph datasets used in the current evaluation (jobs 27255, 27258, 27299 on 20 August 2026).
+This folder documents the three panoramic radiograph datasets used in the current evaluation (jobs 27255, 27258, 27299).
 
 The radiographs themselves are **not** in GitHub. They stay on this machine under the original download folders, which are gitignored:
 
@@ -29,11 +29,9 @@ Tufts and DENTEX use zero-shot, few-shot, and chain-of-thought. RQ3 is zero-shot
 
 ---
 
-
-
 ## 1. Tufts Dental Database
 
-**Source:** Panetta et al., “Tufts Dental Database: A multimodal panoramic X-ray dataset for benchmarking diagnostic systems,” *IEEE J. Biomed. Health Inform.*, 2022. [doi:10.1109/JBHI.2021.3117575](https://doi.org/10.1109/JBHI.2021.3117575)
+**Source:** Panetta, K., Rajendran, R., Ramesh, A., Rao, S. P., & Agaian, S. (2022). Tufts Dental Database: A multimodal panoramic X-ray dataset for benchmarking diagnostic systems. *IEEE Journal of Biomedical and Health Informatics, 26*(4), 1650–1659. [https://doi.org/10.1109/JBHI.2021.3117575](https://doi.org/10.1109/JBHI.2021.3117575)
 
 **Local layout**
 
@@ -44,16 +42,11 @@ Tufts and DENTEX use zero-shot, few-shot, and chain-of-thought. RQ3 is zero-shot
 
 **What we score.** Every usable case with a bbox record and a readable radiograph: **1000 cases**. Ground truth missing teeth are the Universal numbers **1–32 that are absent from** `teeth_bbox.json`. Mean GT missing teeth per case is **6.741** (6741 missing slots, 25259 present).
 
-**What we do not score.** The earlier 50-case Phase 1 pilot (`../archive/`) and the 100-case / July 2026 runs. Those are not the paper evaluation.
-
 ---
-
-
 
 ## 2. DENTEX
 
-**Source:** Hamamci et al., DENTEX (MICCAI abnormal-tooth / enumeration / diagnosis benchmark).  
-Challenge paper: [arXiv:2305.19112](https://arxiv.org/abs/2305.19112). Dataset paper: Hamamci et al., *Sci. Data*, 2023, [doi:10.1038/s41597-023-02453-z](https://doi.org/10.1038/s41597-023-02453-z).
+**Source:** Hamamci, I. E., Er, S., Durugol, O. F., Cakmak, G. R., de la Rosa, E., Simsar, E., Yuksel, A. E., Gultekin, S., Ozdemir, S. D., Yang, K., Isler, M. B., Gucez, M. S., Mei, S., Ma, C., Shen, F., Shen, K., Wu, H., Wu, H., Mei, L., . . . Menze, B. (2023). *DENTEX: Dental enumeration and tooth pathosis detection benchmark for panoramic X-ray*. arXiv. [https://arxiv.org/abs/2305.19112](https://arxiv.org/abs/2305.19112)
 
 **Local layout (QED = quadrant–enumeration–disease)**
 
@@ -84,14 +77,13 @@ DENTEX labels diagnosis only on abnormal teeth. Unannotated slots are **No annot
 
 Held-out exemplar details: `../runs/dentex_heldout_exemplars.json`.
 
+
+
 ---
-
-
 
 ## 3. PR-Reports (RQ3 gold)
 
-**Source:** Hugging Face `[saatwiksy/PR-Reports](https://huggingface.co/datasets/saatwiksy/PR-Reports)`.  
-IEEE DataPort: [doi:10.21227/dyae-tt87](https://doi.org/10.21227/dyae-tt87).
+**Source:** saatwiksy. (2024). *PR-Reports: Panoramic radiograph reports dataset* [Data set]. Hugging Face. [https://huggingface.co/datasets/saatwiksy/PR-Reports](https://huggingface.co/datasets/saatwiksy/PR-Reports)
 
 **Local layout**
 

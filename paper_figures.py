@@ -10,7 +10,7 @@ Figure 6  DENTEX abnormal vs no-finding 2×2 confusion matrices (12 model × str
 
 After the qed matrix finishes:
     python paper_figures.py --dentex-split qed
-    # writes to Main Job Outputs/figures/ (not Paper/)
+    # writes to Main Job Outputs/figures/
 """
 from __future__ import annotations
 
