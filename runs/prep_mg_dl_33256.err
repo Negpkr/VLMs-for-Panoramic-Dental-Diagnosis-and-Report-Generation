@@ -1,0 +1,40 @@
+/opt/python/3.11/anaconda/lib/python3.11/site-packages/conda/base/context.py:198: FutureWarning: Adding 'defaults' to channel list implicitly is deprecated and will be removed in 25.3. 
+
+To remove this warning, please choose a default channel explicitly with conda's regular configuration system, e.g. by adding 'defaults' to the list of channels:
+
+  conda config --add channels defaults
+
+For more information see https://docs.conda.io/projects/conda/en/stable/user-guide/configuration/use-condarc.html
+
+  deprecated.topic(
+/opt/python/3.11/anaconda/lib/python3.11/site-packages/conda/base/context.py:198: FutureWarning: Adding 'defaults' to channel list implicitly is deprecated and will be removed in 25.3. 
+
+To remove this warning, please choose a default channel explicitly with conda's regular configuration system, e.g. by adding 'defaults' to the list of channels:
+
+  conda config --add channels defaults
+
+For more information see https://docs.conda.io/projects/conda/en/stable/user-guide/configuration/use-condarc.html
+
+  deprecated.topic(
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files:   7%|▋         | 1/15 [00:00<00:07,  1.86it/s]
+Fetching 15 files:  87%|████████▋ | 13/15 [00:00<00:00, 24.11it/s]
+
+Fetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]
+Fetching 16 files:   6%|▋         | 1/16 [00:00<00:10,  1.42it/s]
+Fetching 16 files: 100%|██████████| 16/16 [00:00<00:00, 22.35it/s]
+
+Fetching 28 files:   0%|          | 0/28 [00:00<?, ?it/s]
+Fetching 28 files:   4%|▎         | 1/28 [00:01<00:27,  1.00s/it]
+Fetching 28 files:  32%|███▏      | 9/28 [00:01<00:02,  6.83it/s]
+Fetching 28 files:  36%|███▌      | 10/28 [00:01<00:02,  6.35it/s]
+
+Fetching 21 files:   0%|          | 0/21 [00:00<?, ?it/s]
+Fetching 21 files:   5%|▍         | 1/21 [00:00<00:14,  1.37it/s]
+Fetching 21 files:  38%|███▊      | 8/21 [00:00<00:01,  9.90it/s]
+
+ERROR conda.cli.main_run:execute(125): `conda run python download_new_models.py --download --group hf_it2t` failed. (See above for error)

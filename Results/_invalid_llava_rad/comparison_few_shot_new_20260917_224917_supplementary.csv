@@ -1,0 +1,2 @@
+Model,Cases,Strategy,missing_P,missing_R,missing_F1,present_P,present_R,present_F1,Macro_P,Macro_F1,Macro_F1_CI95_low,Macro_F1_CI95_high,Accuracy,Balanced_Accuracy
+LLaVA-Rad,1000,few_shot,0.0,0.0,0.0,0.78934375,1.0,0.8822717826018617,0.394671875,0.44113589130093084,0.4363815696773285,0.44566667244097213,0.78934375,0.5

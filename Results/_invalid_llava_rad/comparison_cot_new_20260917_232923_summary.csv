@@ -1,0 +1,2 @@
+Model,Cases,Strategy,Aggregation,missing_F1,present_F1,Macro_F1,Macro_F1_CI95_low,Macro_F1_CI95_high,Accuracy,Balanced_Accuracy,Mean_pred_per_case,Mean_GT_per_case,Sec_per_case,Status
+LLaVA-Rad,1000,cot,pooled_slots,0.0,0.8822717826018617,0.44113589130093084,0.4363815696773285,0.44566667244097213,0.78934375,0.5,0.0,6.741,9.224229102373123,ok

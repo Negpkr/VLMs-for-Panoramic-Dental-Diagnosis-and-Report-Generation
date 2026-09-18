@@ -1,0 +1,2 @@
+model,n_scored,BLEU-4,ROUGE-L,BERTScore-F1
+LLaVA-Rad,121,0.0382,0.2302,0.5359

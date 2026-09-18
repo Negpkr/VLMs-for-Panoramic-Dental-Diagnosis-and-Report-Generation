@@ -1,0 +1,1612 @@
+{
+  "timestamp": "20260918_101611",
+  "dataset": "PR-Reports",
+  "task": "RQ3_expert_report_comparison",
+  "n_cases": 121,
+  "case_ids": [
+    "pr_1",
+    "pr_10",
+    "pr_100",
+    "pr_101",
+    "pr_102",
+    "pr_103",
+    "pr_104",
+    "pr_105",
+    "pr_106",
+    "pr_107",
+    "pr_108",
+    "pr_109",
+    "pr_11",
+    "pr_110",
+    "pr_111",
+    "pr_112",
+    "pr_113",
+    "pr_114",
+    "pr_115",
+    "pr_116",
+    "pr_117",
+    "pr_118",
+    "pr_119",
+    "pr_12",
+    "pr_120",
+    "pr_121",
+    "pr_13",
+    "pr_14",
+    "pr_15",
+    "pr_16",
+    "pr_17",
+    "pr_18",
+    "pr_19",
+    "pr_2",
+    "pr_20",
+    "pr_21",
+    "pr_22",
+    "pr_23",
+    "pr_24",
+    "pr_25",
+    "pr_26",
+    "pr_27",
+    "pr_28",
+    "pr_29",
+    "pr_3",
+    "pr_30",
+    "pr_31",
+    "pr_32",
+    "pr_33",
+    "pr_34",
+    "pr_35",
+    "pr_36",
+    "pr_37",
+    "pr_38",
+    "pr_39",
+    "pr_4",
+    "pr_40",
+    "pr_41",
+    "pr_42",
+    "pr_43",
+    "pr_44",
+    "pr_45",
+    "pr_46",
+    "pr_47",
+    "pr_48",
+    "pr_49",
+    "pr_5",
+    "pr_50",
+    "pr_51",
+    "pr_52",
+    "pr_53",
+    "pr_54",
+    "pr_55",
+    "pr_56",
+    "pr_57",
+    "pr_58",
+    "pr_59",
+    "pr_6",
+    "pr_60",
+    "pr_61",
+    "pr_62",
+    "pr_63",
+    "pr_64",
+    "pr_65",
+    "pr_66",
+    "pr_67",
+    "pr_68",
+    "pr_69",
+    "pr_7",
+    "pr_70",
+    "pr_71",
+    "pr_72",
+    "pr_73",
+    "pr_74",
+    "pr_75",
+    "pr_76",
+    "pr_77",
+    "pr_78",
+    "pr_79",
+    "pr_8",
+    "pr_80",
+    "pr_81",
+    "pr_82",
+    "pr_83",
+    "pr_84",
+    "pr_85",
+    "pr_86",
+    "pr_87",
+    "pr_88",
+    "pr_89",
+    "pr_9",
+    "pr_90",
+    "pr_91",
+    "pr_92",
+    "pr_93",
+    "pr_94",
+    "pr_95",
+    "pr_96",
+    "pr_97",
+    "pr_98",
+    "pr_99"
+  ],
+  "seed": 20260820,
+  "prompt": "You are a maxillofacial radiologist. Look at this panoramic dental radiograph and write a structured report using FDI tooth numbers.\n\nUse EXACTLY these headings and fill each line. Write Nil if there is no finding.\n\nTeeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>\n",
+  "metrics": [
+    "bleu4",
+    "rouge_l_f1",
+    "bertscore_f1"
+  ],
+  "bertscore_model": "bert-base-uncased",
+  "stratum_counts": {
+    "periapical": 33,
+    "impacted": 40,
+    "caries": 21,
+    "mixed_dentition": 9,
+    "other": 18
+  },
+  "models": {
+    "llava_rad": {
+      "model_key": "llava_rad",
+      "display_name": "LLaVA-Rad",
+      "repo_id": "microsoft/llava-rad",
+      "summary": {
+        "n_scored": 121,
+        "n_errors": 0,
+        "bleu4_mean": 0.03815874026665266,
+        "rouge_l_f1_mean": 0.2301852020151859,
+        "bertscore_f1_mean": 0.5359417116346438
+      },
+      "cases": [
+        {
+          "case_id": "pr_1",
+          "file_name": "1.jpg",
+          "stratum": "periapical",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with\n significant caries or restorations. Endodontically treated tooth is not\n included in this series of radiographs.  Alveolar bone is unremarkable. \n Temporomandibular joint is intact.  Maxillary sinus is unremarkable.  No\n central lesions are identified.",
+          "seconds": 6.11,
+          "metrics": {
+            "bleu4": 0.011910613338389922,
+            "rouge_l_f1": 0.20134228187919465,
+            "bertscore_f1": 0.513412594795227
+          }
+        },
+        {
+          "case_id": "pr_10",
+          "file_name": "10.jpg",
+          "stratum": "impacted",
+          "response": "FDI tooth numbers:\nThe lower arch shows FDI 47, 48, 49, 50.\nThe upper arch shows FDI 11, 21, 22, 23, 31, 32, 33, 41, 42, 43.\nCaries:\nThe lower arch shows a caries in FDI 48.\nThe upper arch shows a caries in FDI 22.\nRestorations:\nThe lower arch shows a restoration in FDI 47.\nThe upper arch shows a restoration in FDI 11.\nEndodontically treated:\nThe lower arch shows an endodontically treated tooth in FDI 48.\nRoot stumps:\nThe lower arch shows a root stump in FDI 27.\nPeriapical changes:\nThe lower arch shows mild periapical changes in FDI 48.\nImpacted tooth:\nThe lower arch shows an impacted tooth in FDI 49.\nAlveolar bone:\nThe lower arch shows moderate alveolar bone loss in FDI 48.\nTemporomandibular joint:\nThe lower joint shows a normal joint.\nMaxillary sinus:\nThe upper joint shows a normal sinus.\nArtifacts seen:\nThe lower lung fields are obscured by the patient's arms.\nCentral lesions:\nThe lower arch shows a central lesion in FDI 48.",
+          "seconds": 16.95,
+          "metrics": {
+            "bleu4": 0.03674844687926175,
+            "rouge_l_f1": 0.22580645161290322,
+            "bertscore_f1": 0.5969395637512207
+          }
+        },
+        {
+          "case_id": "pr_100",
+          "file_name": "100.jpg",
+          "stratum": "caries",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with significant caries or restorations. Endodontically treated tooth is noted. Alveolar bone is unremarkable. There are no central lucencies or signs of periodontal disease. No impacted tooth is seen. No pneumothorax is seen.",
+          "seconds": 4.19,
+          "metrics": {
+            "bleu4": 0.00745831306063665,
+            "rouge_l_f1": 0.13846153846153847,
+            "bertscore_f1": 0.5115172266960144
+          }
+        },
+        {
+          "case_id": "pr_101",
+          "file_name": "101.jpg",
+          "stratum": "periapical",
+          "response": "The upper and lower arches are not completely included on the exam.\n \n The distal tooth fragments are missing from the lower arch series. \n Cardiomediastinal silhouette is within normal limits.  There is atelectasis\n at both lung bases.  There is no overt pulmonary edema, focal consolidation,\n or pleural effusions.  No pneumothoraces are seen.",
+          "seconds": 5.13,
+          "metrics": {
+            "bleu4": 0.00267814554351097,
+            "rouge_l_f1": 0.04580152671755726,
+            "bertscore_f1": 0.4475681781768799
+          }
+        },
+        {
+          "case_id": "pr_102",
+          "file_name": "102.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.85,
+          "metrics": {
+            "bleu4": 0.12124160095011272,
+            "rouge_l_f1": 0.4,
+            "bertscore_f1": 0.5936012268066406
+          }
+        },
+        {
+          "case_id": "pr_103",
+          "file_name": "103.jpg",
+          "stratum": "impacted",
+          "response": "FDI teeth:\n\n1. 12, 27, 37\n2. 36, 45\n3. 44, 45\n4. 47, 48\n5. 55, 56\n6. 65, 66\n7. 75, 76\n8. 85, 86\n9. 95, 96\n10. 105, 106\n11. 115, 116\n12. 125, 126\n13. 135, 136\n14. 145, 146\n15. 155, 156\n16. 165, 166\n17. 175, 176\n18. 185, 186\n19. 195, 196\n20. 205, 206\n21. 215, 216\n22. 225, 226\n23. 235, 236\n24. 245, 246\n25. 255, 256\n26. 265, 266\n27. 275, 276\n28. 285, 286\n29. 295, 296\n30. 305, 306\n31. 315, 316\n32. 325, 326\n3",
+          "seconds": 19.51,
+          "metrics": {
+            "bleu4": 0.004037167338162414,
+            "rouge_l_f1": 0.143646408839779,
+            "bertscore_f1": 0.5067774057388306
+          }
+        },
+        {
+          "case_id": "pr_104",
+          "file_name": "104.jpg",
+          "stratum": "periapical",
+          "response": "The upper and lower arches are not completely imaged. The remaining\n visualized teeth and periodontium are unremarkable.  The cardiomediastinal\n silhouette is normal.  There is no evidence of pneumonia.",
+          "seconds": 3.13,
+          "metrics": {
+            "bleu4": 0.0006830745590969174,
+            "rouge_l_f1": 0.016666666666666666,
+            "bertscore_f1": 0.44871482253074646
+          }
+        },
+        {
+          "case_id": "pr_105",
+          "file_name": "105.jpg",
+          "stratum": "caries",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.88,
+          "metrics": {
+            "bleu4": 0.10195162761857113,
+            "rouge_l_f1": 0.41420118343195267,
+            "bertscore_f1": 0.5915241837501526
+          }
+        },
+        {
+          "case_id": "pr_106",
+          "file_name": "106.jpg",
+          "stratum": "caries",
+          "response": "Upper arch FDI numbers:\nTeeth present:\n4, 5, 14, 19, 20, 29, 30, 39, 40\nCaries present:\n4, 14, 19, 20, 29, 30, 39, 40\nRestorations present:\nTeeth not identified\nEndodontically treated:\nTeeth not identified\nRoot stumps:\nTeeth not identified\nPeriapical changes:\nTeeth not identified\nImpacted tooth:\nTeeth not identified\nAlveolar bone:\nRight: Moderate loss of alveolar bone, with vertical dimension maintained\n Maxillary sinus:\nRight: Moderate volume of air and chloride\nTemporomandibular joint:\nIntact\nMaxillary sinus:\nRight: Moderate volume of air and chloride\nArtifacts seen:\nMetal in patient's mouth\nCentral lesions:\nTeeth not identified\nRadiographic impression:\nTeeth not identified",
+          "seconds": 12.38,
+          "metrics": {
+            "bleu4": 0.014267829162343362,
+            "rouge_l_f1": 0.2947368421052632,
+            "bertscore_f1": 0.6851229667663574
+          }
+        },
+        {
+          "case_id": "pr_107",
+          "file_name": "107.jpg",
+          "stratum": "impacted",
+          "response": "FDI TOOTH NUMBERS:\nThe lower arch shows FDI 47, 48, 49, 50, 52, 53, 54, 55, 56, 57, 58, 59.\n The upper arch shows FDI 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46.\nCARIES PRESENT:\nNo caries present.\nRESTORATIONS PRESENT:\nNo restorations present.\nENDODONTICALLY TREATED:\nNo endodontically treated teeth.\nROOT STUMPS:\nNo root stumps.\nPERIAPICAL CHANGES:\nNo peripheral changes.\nIMPACTED TOOTH:\nNo impacted tooth.\nALVEOLAR BONE:\nNormal alveolar bone.\nTEMPOROMANDIBULAR JOINT:\nIntact temporomandibular joint.\nMAXILLARY SINUS:\nNormal maxillary sinus.\nART",
+          "seconds": 19.51,
+          "metrics": {
+            "bleu4": 0.18314892867776902,
+            "rouge_l_f1": 0.3557692307692308,
+            "bertscore_f1": 0.6685687899589539
+          }
+        },
+        {
+          "case_id": "pr_108",
+          "file_name": "108.jpg",
+          "stratum": "periapical",
+          "response": "<upper arch FDI numbers>: 15, 25, 46, 47, 55, 57, 65, 75, 85, 95, 105, 115\n <lower arch FDI numbers>: 21, 22, 23, 24, 31, 32, 33, 34, 35, 36, 37, 38, 39,\n 40, 41, 42, 43, 44, 45\n\nCaries present: 15, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,\n 44, 45\n\nRestorations present: 15, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42,\n 43, 44, 45\n\nEndodontically treated: 21, 22, 23, 24, 31, 32, 33, 34, 35, 36, 37, 38, 39,\n 40, 41, 42, 43, 44, 45\n\nRoot stumps: 15, 25, 31, 32, 33,",
+          "seconds": 19.51,
+          "metrics": {
+            "bleu4": 0.0978795770601095,
+            "rouge_l_f1": 0.27053140096618356,
+            "bertscore_f1": 0.6681513786315918
+          }
+        },
+        {
+          "case_id": "pr_109",
+          "file_name": "109.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.99,
+          "metrics": {
+            "bleu4": 0.0546270696743957,
+            "rouge_l_f1": 0.4047619047619048,
+            "bertscore_f1": 0.5955143570899963
+          }
+        },
+        {
+          "case_id": "pr_11",
+          "file_name": "11.jpg",
+          "stratum": "mixed_dentition",
+          "response": "FDI codes for upper and lower arch are included. The upper arch shows FDI 1.3, 2.4, 4.5, and 4.6. The lower arch shows FDI 35, 46, 47. No additional teeth are identified. No caries, restorations, endodontic treatments, impacted teeth, or periapical changes are identified. No central lucency or other artifact is seen. No TMJ or sinus abnormality is identified.",
+          "seconds": 6.07,
+          "metrics": {
+            "bleu4": 0.005449673939414483,
+            "rouge_l_f1": 0.07272727272727271,
+            "bertscore_f1": 0.5425098538398743
+          }
+        },
+        {
+          "case_id": "pr_110",
+          "file_name": "110.jpg",
+          "stratum": "caries",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.9,
+          "metrics": {
+            "bleu4": 0.05359395579919774,
+            "rouge_l_f1": 0.4210526315789474,
+            "bertscore_f1": 0.5897754430770874
+          }
+        },
+        {
+          "case_id": "pr_111",
+          "file_name": "111.jpg",
+          "stratum": "other",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.91,
+          "metrics": {
+            "bleu4": 0.1026721786491555,
+            "rouge_l_f1": 0.4137931034482759,
+            "bertscore_f1": 0.5904820561408997
+          }
+        },
+        {
+          "case_id": "pr_112",
+          "file_name": "112.jpg",
+          "stratum": "impacted",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.3,
+          "metrics": {
+            "bleu4": 0.051670808375821956,
+            "rouge_l_f1": 0.3508771929824561,
+            "bertscore_f1": 0.5867141485214233
+          }
+        },
+        {
+          "case_id": "pr_113",
+          "file_name": "113.jpg",
+          "stratum": "other",
+          "response": "Teeth: FDI numbers are present.\n Caries: Caries is not identified.\n Restorations: None are present.\n Endodontic treatments: None are present.\n Root stumps: None identified.\n Periapical changes: There are no periapical changes.\n Impacted tooth: None are identified.\nAlveolar bone: Alveolar bone is unremarkable.\nTemporomandibular joint: The TM joint is intact.\nMaxillary sinus: The maxillary sinus is intact.\nArtifacts: Numerous artifacts are seen throughout the film.\nCentral lesions: There are no central lesions.\nRadiographic impression: The lungs are clear.",
+          "seconds": 8.52,
+          "metrics": {
+            "bleu4": 0.016603383738866086,
+            "rouge_l_f1": 0.33112582781456956,
+            "bertscore_f1": 0.5987317562103271
+          }
+        },
+        {
+          "case_id": "pr_114",
+          "file_name": "114.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.02872199999524762,
+            "rouge_l_f1": 0.2857142857142857,
+            "bertscore_f1": 0.520719587802887
+          }
+        },
+        {
+          "case_id": "pr_115",
+          "file_name": "115.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.057736809001746374,
+            "rouge_l_f1": 0.4161849710982659,
+            "bertscore_f1": 0.5937747955322266
+          }
+        },
+        {
+          "case_id": "pr_116",
+          "file_name": "116.jpg",
+          "stratum": "impacted",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with RF or caries. There are no restorations, endodontically-treated, impacted, or infected teeth. Alveolar bone is unchanged. There are no TMJ abnormalities. No pneumothorax, pleural effusion, or pulmonary edema is present. No foreign metallic objects are visualized.",
+          "seconds": 5.18,
+          "metrics": {
+            "bleu4": 0.005664399744522428,
+            "rouge_l_f1": 0.1103448275862069,
+            "bertscore_f1": 0.48788172006607056
+          }
+        },
+        {
+          "case_id": "pr_117",
+          "file_name": "117.jpg",
+          "stratum": "other",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.1026721786491555,
+            "rouge_l_f1": 0.4235294117647059,
+            "bertscore_f1": 0.5918413400650024
+          }
+        },
+        {
+          "case_id": "pr_118",
+          "file_name": "118.jpg",
+          "stratum": "caries",
+          "response": "Teeth present:\nFDI 1: In the upper right quadrant, there is a rounded opacity which may\n represent a calcified granuloma.\nFDI 2: In the lower right quadrant, there is a rounded opacity which may\n represent a calcified ameloblastoma.\nFDI 3: In the lower left quadrant, there is a rounded opacity which may\n represent a calcified ameloblastoma.\nFDI 4: In the lower left quadrant, there is a rounded opacity which may\n represent a calcified ameloblastoma.\nCaries present:\nFDI 1: There is a small area of caries in the distal aspect of the tooth.\nFDI 2: There is a small area of caries in the body of the tooth.\nFDI 3: There is a small area of caries in the body of the tooth.\nFDI 4: There is a small area of caries in the body of the tooth.\nRestorations present:\nFDI 1: A crown is present.\nFDI 2: A crown is present.\nFDI 3: A crown is present.\nFDI 4: A crown is present.\nEndodontically treated:\nFDI 1: Endodontic treatment is present.\nFDI 2: Endodontic treatment is present.\nFDI 3: Endodontic treatment is present.\nFDI 4: Endodontic treatment is present.\nImpacted tooth:\nFDI 1: There is a partially impacted tooth.\nFDI 2: There is a partially impacted tooth.\nFDI 3: There is a partially impacted tooth.\nFDI 4: There is a partially impacted tooth",
+          "seconds": 19.5,
+          "metrics": {
+            "bleu4": 0.003973467037339319,
+            "rouge_l_f1": 0.0721311475409836,
+            "bertscore_f1": 0.48349976539611816
+          }
+        },
+        {
+          "case_id": "pr_119",
+          "file_name": "119.jpg",
+          "stratum": "periapical",
+          "response": "Teeth: FDI numbers are present.\n Caries: Caries is seen in the lower arch, left side, in the form of a\n decayed tooth #42.\n Restorations: None.\n Endodontically treated: None.\n Root stumps: None.\n Periapical changes: None.\n Impacted tooth: None.\n Alveolar bone: Alveolar bone is present in adequate quantity.\n Temporomandibular joint: TM joint is intact.\n Maxillary sinus: Maxillary sinus is present.\n Artifacts seen: None.\n Central lesions: None.\nRadiographic impression: The radiographic impression is that the oral\n cavity is unremarkable.",
+          "seconds": 8.63,
+          "metrics": {
+            "bleu4": 0.011749693054918041,
+            "rouge_l_f1": 0.28415300546448086,
+            "bertscore_f1": 0.5977964401245117
+          }
+        },
+        {
+          "case_id": "pr_12",
+          "file_name": "12.jpg",
+          "stratum": "periapical",
+          "response": "The upper and lower arches are not completely included on the exam. Within these limitations, there is no significant interval change.",
+          "seconds": 1.92,
+          "metrics": {
+            "bleu4": 0.0,
+            "rouge_l_f1": 0.0,
+            "bertscore_f1": 0.3391391634941101
+          }
+        },
+        {
+          "case_id": "pr_120",
+          "file_name": "120.jpg",
+          "stratum": "other",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.88,
+          "metrics": {
+            "bleu4": 0.05917650888215432,
+            "rouge_l_f1": 0.4444444444444445,
+            "bertscore_f1": 0.6030272245407104
+          }
+        },
+        {
+          "case_id": "pr_121",
+          "file_name": "121.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.05219303997964712,
+            "rouge_l_f1": 0.37988826815642457,
+            "bertscore_f1": 0.59129798412323
+          }
+        },
+        {
+          "case_id": "pr_13",
+          "file_name": "13.jpg",
+          "stratum": "mixed_dentition",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with significant caries or restorations. Endodontically treated tooth is seen. Alveolar bone is unremarkable. There are no central lesions or evidence of temporomandibular joint abnormality. No maxillary sinus opacities are seen.",
+          "seconds": 4.24,
+          "metrics": {
+            "bleu4": 0.005522754717682809,
+            "rouge_l_f1": 0.18666666666666665,
+            "bertscore_f1": 0.510206937789917
+          }
+        },
+        {
+          "case_id": "pr_14",
+          "file_name": "14.jpg",
+          "stratum": "periapical",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.09281380834314477,
+            "rouge_l_f1": 0.3626373626373626,
+            "bertscore_f1": 0.5857114195823669
+          }
+        },
+        {
+          "case_id": "pr_15",
+          "file_name": "15.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.041983693608753446,
+            "rouge_l_f1": 0.33695652173913043,
+            "bertscore_f1": 0.5799399614334106
+          }
+        },
+        {
+          "case_id": "pr_16",
+          "file_name": "16.jpg",
+          "stratum": "periapical",
+          "response": "<upper arch FDI numbers>: 15, 25, 46, 47\n<lower arch FDI numbers>: 26, 36, 45, 47\nCaries present: No\nRestorations present: No\nEndodontically treated: No\nRoot stumps: No\nPeriapical changes: No\nImpacted tooth: No\nAlveolar bone: Normal\nTemporomandibular joint: Intact/Normal\nMaxillary sinus: Intact\nArtifacts seen: Dental instruments\nCentral lesions: No\nRadiographic impression: No significant findings",
+          "seconds": 7.46,
+          "metrics": {
+            "bleu4": 0.09098572277465704,
+            "rouge_l_f1": 0.41666666666666663,
+            "bertscore_f1": 0.7133622765541077
+          }
+        },
+        {
+          "case_id": "pr_17",
+          "file_name": "17.jpg",
+          "stratum": "caries",
+          "response": "Teeth: FDI numbers are present.\n Caries: Caries is seen in the lower arch, left side, in the form of a\n decayed tooth #40.\n Restorations: None.\n Endodontic treatments: None.\n Root stumps: None.\n Periapical changes: None.\n Impacted tooth: None.\n Alveolar bone: Normal.\n Temporomandibular joint: Intact.\n Maxillary sinus: Normal.\n Artifacts: None.\n Central lesions: None.\nRadiographic impression: The upper arch is normal. In the lower arch, there is\n a decayed tooth #40.",
+          "seconds": 7.93,
+          "metrics": {
+            "bleu4": 0.08199406367660785,
+            "rouge_l_f1": 0.30344827586206896,
+            "bertscore_f1": 0.6267263889312744
+          }
+        },
+        {
+          "case_id": "pr_18",
+          "file_name": "18.jpg",
+          "stratum": "other",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with significant caries or restorations. Endodontically treated tooth is noted. Alveolar bone is unremarkable. There are no central lucencies or signs of periodontal disease. There are no impacted teeth or maxillary sinus abnormalities.",
+          "seconds": 4.19,
+          "metrics": {
+            "bleu4": 0.008314813003605082,
+            "rouge_l_f1": 0.15873015873015875,
+            "bertscore_f1": 0.5207009315490723
+          }
+        },
+        {
+          "case_id": "pr_19",
+          "file_name": "19.jpg",
+          "stratum": "impacted",
+          "response": "The upper and lower arches are clear without caries, restorations, impacted\n or root-stump teeth.  The bones are normal.  The temporomandibular joint is\n intact.  The maxillary sinuses are normal.  No central lymphadenopathy is\n seen.",
+          "seconds": 4.02,
+          "metrics": {
+            "bleu4": 0.002358978636217377,
+            "rouge_l_f1": 0.11594202898550726,
+            "bertscore_f1": 0.5066995024681091
+          }
+        },
+        {
+          "case_id": "pr_2",
+          "file_name": "2.jpg",
+          "stratum": "mixed_dentition",
+          "response": "The upper and lower arches are not completely included on the exam.\n \n The remaining teeth appear to be in good position.  There is no evidence of\n caries, restorations, endodontic treatment, impacted tooth, or periapical\n changes.  The maxillary sinus is intact.  There are no central lesions.  No\n artifacts are seen.",
+          "seconds": 4.79,
+          "metrics": {
+            "bleu4": 0.0042774989723031055,
+            "rouge_l_f1": 0.10650887573964497,
+            "bertscore_f1": 0.4739780128002167
+          }
+        },
+        {
+          "case_id": "pr_20",
+          "file_name": "20.jpg",
+          "stratum": "other",
+          "response": "<upper arch FDI numbers>: 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 14",
+          "seconds": 19.51,
+          "metrics": {
+            "bleu4": 0.001965099594635175,
+            "rouge_l_f1": 0.011299435028248588,
+            "bertscore_f1": 0.4660465717315674
+          }
+        },
+        {
+          "case_id": "pr_21",
+          "file_name": "21.jpg",
+          "stratum": "caries",
+          "response": "FDI codes for upper and lower teeth are provided. There are no caries, restorations, endodontically-treated teeth, or periapical changes identified. Impacted tooth is seen in the lower arch. Alveolar bone is unchanged. No TMJ, sinus, or central lytic lesions are identified. No artifacts are seen.",
+          "seconds": 4.62,
+          "metrics": {
+            "bleu4": 0.007081826350058024,
+            "rouge_l_f1": 0.19999999999999998,
+            "bertscore_f1": 0.5270119905471802
+          }
+        },
+        {
+          "case_id": "pr_22",
+          "file_name": "22.jpg",
+          "stratum": "periapical",
+          "response": "FDI codes for upper and lower arch are provided. There are no cavities, restorations, or endodontically treated teeth. Impacted tooth is not identified. Alveolar bone is unremarkable. There is no evidence of central lesions or maxillary sinus abnormality.",
+          "seconds": 3.88,
+          "metrics": {
+            "bleu4": 0.0061397563092858475,
+            "rouge_l_f1": 0.140625,
+            "bertscore_f1": 0.5117360353469849
+          }
+        },
+        {
+          "case_id": "pr_23",
+          "file_name": "23.jpg",
+          "stratum": "mixed_dentition",
+          "response": "FDI numbers are present. The upper arch includes teeth #5, #10, #20, #25, #30, #32, #35, #40, #41, #42, #43, #44, #45, #46, #47, #48, #51, #52, #53, #54, #55, #56, #57, #58, #59, #60, #61, #62, #63, #64, #65, #66, #67, #68, #69, #70, #71, #72, #73, #74, #75, #76, #77, #78, #79, #80, #81, #82, #83, #84, #85, #86, #87, #88, #89, #90, #91, #92, #93, #94, #95, #96, #97, #98, #99. The lower arch includes teeth #11, #12, #13, #14, #15, #16, #17, #18, #19, #26, #27, #28, #29, #33, #34, #36, #37, #38, #39, #40, #49, #50. No caries is identified. No restorations are present. No endodontically treated tooth is seen. No root stumps are identified. No periapical changes",
+          "seconds": 19.55,
+          "metrics": {
+            "bleu4": 0.036923755471979756,
+            "rouge_l_f1": 0.19658119658119655,
+            "bertscore_f1": 0.5960595011711121
+          }
+        },
+        {
+          "case_id": "pr_24",
+          "file_name": "24.jpg",
+          "stratum": "impacted",
+          "response": "The patient has received a left-sided hemiarthroplasty. The remaining teeth are alveolar and show normal morphology. No pulpitis, no caries, no periodontal abnormalities. No radiopaque foreign bodies.",
+          "seconds": 3.26,
+          "metrics": {
+            "bleu4": 0.0007004682476231083,
+            "rouge_l_f1": 0.04651162790697675,
+            "bertscore_f1": 0.47390976548194885
+          }
+        },
+        {
+          "case_id": "pr_25",
+          "file_name": "25.jpg",
+          "stratum": "periapical",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.91,
+          "metrics": {
+            "bleu4": 0.08655518437665496,
+            "rouge_l_f1": 0.360655737704918,
+            "bertscore_f1": 0.5879356861114502
+          }
+        },
+        {
+          "case_id": "pr_26",
+          "file_name": "26.jpg",
+          "stratum": "impacted",
+          "response": "FDI teeth:\n\n1. 12, 2. 38, 3. 43, 4. 44, 5. 45, 6. 46, 7. 47, 8. 48, 9. 49, 10. 50,\n 11. 51, 12. 52, 13. 53, 14. 54, 15. 55, 16. 56, 17. 57, 18. 58, 19. 59,\n 20. 60, 21. 61, 22. 62, 23. 63, 24. 64, 25. 65, 26. 66, 27. 67, 28. 68,\n 29. 69, 30. 70, 31. 71, 32. 72, 33. 73, 34. 74, 35. 75, 36. 76, 37. 77,\n 38. 78, 39. 79, 40. 80, 41. 81, 42. 82, 43. 83, 44. 84, 45. 85, 46. 86,\n 47. 87, 48. 88, 49. 89, 50. 90",
+          "seconds": 19.52,
+          "metrics": {
+            "bleu4": 0.004304055135399803,
+            "rouge_l_f1": 0.22598870056497175,
+            "bertscore_f1": 0.4708234667778015
+          }
+        },
+        {
+          "case_id": "pr_27",
+          "file_name": "27.jpg",
+          "stratum": "impacted",
+          "response": "FDI numbers are present. The upper arch includes teeth #5, #10, #20, #25, #36, #40, #45, #52, #56, #61, #66, #71, #76, #81, #86, #91, #96, #101, #106, #111, #116, #121, #126, #131, #136, #141, #146, #151, #156, #161, #166, #171, #176, #181, #186, #191, #196, #201, #206, #211, #216, #221, #226, #231, #236, #241, #246, #251, #256, #261, #266, #271, #276, #281, #286, #291, #296, #301, #306, #311, #316, #321, #326, #331, #336, #341, #346, #351, #356, #361, #366, #371, #376, #381, #386, #391, #396, #401, #406, #411, #416, #4",
+          "seconds": 19.51,
+          "metrics": {
+            "bleu4": 0.0029713468862826637,
+            "rouge_l_f1": 0.03592814371257485,
+            "bertscore_f1": 0.41878369450569153
+          }
+        },
+        {
+          "case_id": "pr_28",
+          "file_name": "28.jpg",
+          "stratum": "periapical",
+          "response": "FDI TOOTH NUMBERS:\nThe lower arch shows FDI 47, 48, 49, 50.\nThe upper arch shows FDI 11, 21, 22, 23, 31, 32, 33, 41, 42, 43.\nCARIES:\nThe lower arch shows a non-cavitated lesion at the cementoenamel junction of FDI 48.\nThe upper arch shows a non-cavitated lesion at the cementoenamel junction of FDI 31.\nRESTORATIONS:\nNONE.\nENDODONTICALLY TREATED:\nNONE.\nROOT STUMPS:\nNONE.\nPERIAPICAL CHANGES:\nNONE.\nIMPACTED TOOTH:\nNONE.\nALVEOLAR BONE:\nNONE.\nTEMPOROMANDIBULAR JOINT:\nNONE.\nMAXILLARY SINUS:\nNONE.\nARTIFACES SEEN:\nNONE.\nCENTRAL LESIONS:\nNONE.\nRADIOGRAPHIC IMPRESSION:\nNONE.",
+          "seconds": 14.42,
+          "metrics": {
+            "bleu4": 0.06869860959949714,
+            "rouge_l_f1": 0.30939226519337015,
+            "bertscore_f1": 0.6476195454597473
+          }
+        },
+        {
+          "case_id": "pr_29",
+          "file_name": "29.jpg",
+          "stratum": "periapical",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with significant caries or restorations. Endodontically treated tooth is noted. Alveolar bone is unremarkable. There are no radiographic abnormalities.",
+          "seconds": 3.23,
+          "metrics": {
+            "bleu4": 0.0035993439481349795,
+            "rouge_l_f1": 0.1487603305785124,
+            "bertscore_f1": 0.513535737991333
+          }
+        },
+        {
+          "case_id": "pr_3",
+          "file_name": "3.jpg",
+          "stratum": "impacted",
+          "response": "The upper and lower arches are both grossly unremarkable. No caries, restorations, endodontic treatments, impacted or infected root stumps are identified. No apical or periapical abnormalities are seen. The maxillary bones are unremarkable. The temporomandibular joints are intact. The cardiac and mediastinal silhouettes are normal.",
+          "seconds": 4.95,
+          "metrics": {
+            "bleu4": 0.005322406747406955,
+            "rouge_l_f1": 0.13636363636363635,
+            "bertscore_f1": 0.5508593916893005
+          }
+        },
+        {
+          "case_id": "pr_30",
+          "file_name": "30.jpg",
+          "stratum": "impacted",
+          "response": "Teeth: FDI numbers are present.\n Caries: Caries is seen in the lower right FDI number.\n Restorations: None are present.\n Endodontic treatments: None are present.\n Root stumps: None are present.\n Periapical changes: There are no periapical changes.\n Impacted tooth: An impacted tooth is seen in the lower left FDI number.\n Alveolar bone: Alveolar bone is present.\n Temporomandibular joint: The TM joint is intact.\n Maxillary sinus: The maxillary sinus is intact.\n Artifacts: Artifacts are present.\n Central lesions: There are no central lesions.\nRadiographic impression: There is no evidence of dental or skeletal abnormalities.",
+          "seconds": 9.41,
+          "metrics": {
+            "bleu4": 0.013685368135272467,
+            "rouge_l_f1": 0.25414364640883974,
+            "bertscore_f1": 0.5522547960281372
+          }
+        },
+        {
+          "case_id": "pr_31",
+          "file_name": "31.jpg",
+          "stratum": "impacted",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.26,
+          "metrics": {
+            "bleu4": 0.05300247765825908,
+            "rouge_l_f1": 0.3647058823529412,
+            "bertscore_f1": 0.5694621205329895
+          }
+        },
+        {
+          "case_id": "pr_32",
+          "file_name": "32.jpg",
+          "stratum": "periapical",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.09784872845718472,
+            "rouge_l_f1": 0.40462427745664736,
+            "bertscore_f1": 0.5914658308029175
+          }
+        },
+        {
+          "case_id": "pr_33",
+          "file_name": "33.jpg",
+          "stratum": "caries",
+          "response": "FDI numbers are present.  There is no significant caries.  No restorations\n are present.  There is no periapical disease.  No impacted teeth.  Alveolar\n bone is normal.  There is no evidence of temporomandibular joint disease. \n There is no pneumothorax.  The cardiomediastinal silhouette is normal.",
+          "seconds": 4.8,
+          "metrics": {
+            "bleu4": 0.006360172462720217,
+            "rouge_l_f1": 0.1746031746031746,
+            "bertscore_f1": 0.5230672955513
+          }
+        },
+        {
+          "case_id": "pr_34",
+          "file_name": "34.jpg",
+          "stratum": "impacted",
+          "response": "FDI teeth:\n\n1. 12, 27, 37, 47, 48, 49, 50\n2. 36, 45, 46, 47, 48, 49, 50\n\nCaries:\n\n1. 46, 47\n2. 45, 46\n\nRestorations:\n\n1. 45, 46\n2. 46, 47\n\nEndodontic treated:\n\n1. 45, 46\n2. 46, 47\n\nImpacted tooth:\n\n1. 45, 46\n2. 46, 47\n\nAlveolar bone:\n\n1. Left: Normal\n2. Right: Mildly diminished\n\nTemporomandibular joint:\n\n1. Intact/Normal\n2. Mild degenerative changes\n\nMaxillary sinus:\n\n1. Intact\n2. Minimal unchanged remnant air-fluid level\n\nArtifacts seen:\n\n1. External\n2. Internal\n\nCentral lesions:\n\n1. 45, 46\n2. 46, 47\n\nRadiographic impression:\n\n1. Dentally related\n2. Mild degenerative changes of the TMJ",
+          "seconds": 16.21,
+          "metrics": {
+            "bleu4": 0.011958459606499027,
+            "rouge_l_f1": 0.29050279329608936,
+            "bertscore_f1": 0.6282938122749329
+          }
+        },
+        {
+          "case_id": "pr_35",
+          "file_name": "35.jpg",
+          "stratum": "mixed_dentition",
+          "response": "Teeth: FDI numbers are present.\n Caries: Caries is seen in the lower arch, left side, in the form of a\n decayed tooth #41.\n Restorations: None.\n Endodontically treated: None.\n Root stumps: None.\n Periapical changes: None.\n Impacted tooth: None.\n Alveolar bone: Normal.\n Temporomandibular joint: Intact.\n Maxillary sinus: Normal.\n Artifacts seen: The patient is very agitated and could not keep still.\n Central lesions: None.\nRadiographic impression: There are no new teeth or bone changes.",
+          "seconds": 7.79,
+          "metrics": {
+            "bleu4": 0.06650430908784283,
+            "rouge_l_f1": 0.2958579881656805,
+            "bertscore_f1": 0.5854654312133789
+          }
+        },
+        {
+          "case_id": "pr_36",
+          "file_name": "36.jpg",
+          "stratum": "impacted",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with significant caries or periodontal disease. No restorations are identified. No endodontically treated tooth is seen. No impacted or root-stump teeth are identified. Alveolar bone is unremarkable. There are no temporomandibular joint abnormalities. Maxillary sinuses are unremarkable. No central or other radiographic artifacts are identified.",
+          "seconds": 5.36,
+          "metrics": {
+            "bleu4": 0.005986567459196736,
+            "rouge_l_f1": 0.15204678362573099,
+            "bertscore_f1": 0.5110567212104797
+          }
+        },
+        {
+          "case_id": "pr_37",
+          "file_name": "37.jpg",
+          "stratum": "impacted",
+          "response": "FDI TOOTH NUMBERS:\nThe upper arch FDI numbers are 5, 45, 46, 47, 48, 49, 50.\nThe lower arch FDI numbers are 1, 2, 3, 4, 5, 6, 7, 8, 9.\nCARIES PRESENT:\nNo caries present.\nRESTORATIONS PRESENT:\nNo restorations present.\nENDODONTICALLY TREATED:\nNo endodontically treated teeth present.\nROOT STUMPS:\nNo root stumps present.\nPIAAPICAL CHANGES:\nNo significant changes.\nIMPACTED TOOTH:\nNo impacted tooth present.\nALVEOLAR BONE:\nNormal alveolar bone.\nTEMPOROMANDIBULAR JOINT:\nIntact/normal temporomandibular joint.\nMAXILLARY SINUS:\nNormal maxillary sinus.\nARTIFACTS SEEN:\nDental artifacts seen.\nCENTRAL LESIONS:\nNo central lesions.\nRADIOGRAPHIC IMPRESSION:\nNo radiographic impressions.",
+          "seconds": 14.22,
+          "metrics": {
+            "bleu4": 0.05780437855114395,
+            "rouge_l_f1": 0.2731707317073171,
+            "bertscore_f1": 0.6516624689102173
+          }
+        },
+        {
+          "case_id": "pr_38",
+          "file_name": "38.jpg",
+          "stratum": "periapical",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.27,
+          "metrics": {
+            "bleu4": 0.07841983462304455,
+            "rouge_l_f1": 0.32631578947368417,
+            "bertscore_f1": 0.5525047183036804
+          }
+        },
+        {
+          "case_id": "pr_39",
+          "file_name": "39.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.08467362484785769,
+            "rouge_l_f1": 0.3567567567567568,
+            "bertscore_f1": 0.5800970792770386
+          }
+        },
+        {
+          "case_id": "pr_4",
+          "file_name": "4.jpg",
+          "stratum": "mixed_dentition",
+          "response": "The upper and lower arches are not completely imaged. The remaining\n teeth appear to be in similar position to prior radiograph. No new\n radiopaque foreign body is identified.",
+          "seconds": 2.52,
+          "metrics": {
+            "bleu4": 0.0005921422391627171,
+            "rouge_l_f1": 0.016129032258064516,
+            "bertscore_f1": 0.3909207880496979
+          }
+        },
+        {
+          "case_id": "pr_40",
+          "file_name": "40.jpg",
+          "stratum": "periapical",
+          "response": "The upper and lower arches are not included on this examination. Within the limitations, there is no filling, root perforation, or other radiographic abnormality. The patient has had a total of 12 root canals. There is no evidence of periapical infection. The bones are intact. The cardiac silhouette is normal.",
+          "seconds": 4.38,
+          "metrics": {
+            "bleu4": 0.002680480360519666,
+            "rouge_l_f1": 0.05714285714285715,
+            "bertscore_f1": 0.4609794318675995
+          }
+        },
+        {
+          "case_id": "pr_41",
+          "file_name": "41.jpg",
+          "stratum": "caries",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.046976089650102845,
+            "rouge_l_f1": 0.368421052631579,
+            "bertscore_f1": 0.5867782831192017
+          }
+        },
+        {
+          "case_id": "pr_42",
+          "file_name": "42.jpg",
+          "stratum": "periapical",
+          "response": "FDI teeth:\nThe lower arch shows FDI 18, 23, 27, 37, 40.\nThe upper arch shows FDI 38, 41, 42, 43, 44, 45, 54, 55, 66, 67.\nCaries:\nThe lower arch shows a caries in the posterior aspect of 37.\nThe upper arch shows a caries in the posterior aspect of 44.\nRestorations:\nThe lower arch shows a filling in the posterior aspect of 37.\nThe upper arch shows a filling in the posterior aspect of 44.\nEndodontic treatments:\nThe lower arch shows a periapical inflammation of 37.\nThe upper arch shows a periapical inflammation of 44.\nImpacted tooth:\nThe lower arch shows an impacted tooth that might be the 36.\nAlveolar bone:\nThe lower arch shows a normal alveolar bone.\nTemporomandibular joint:\nThe joint is intact.\nMaxillary sinus:\nThe sinus is intact.\nArtifacts:\nThere are no significant artifacts.\nCentral lesions:\nThere are no central lesions.\nRadiographic impression:\nThe radiographic impression is that of a normal dental patient.",
+          "seconds": 15.74,
+          "metrics": {
+            "bleu4": 0.007692217662080028,
+            "rouge_l_f1": 0.1940928270042194,
+            "bertscore_f1": 0.5671195387840271
+          }
+        },
+        {
+          "case_id": "pr_43",
+          "file_name": "43.jpg",
+          "stratum": "periapical",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.91,
+          "metrics": {
+            "bleu4": 0.05094268034114236,
+            "rouge_l_f1": 0.3910614525139665,
+            "bertscore_f1": 0.5954603552818298
+          }
+        },
+        {
+          "case_id": "pr_44",
+          "file_name": "44.jpg",
+          "stratum": "periapical",
+          "response": "FDI tooth numbers:\nThe lower arch shows FDI numbers 47, 49, 52, 56, 60, 65, 70, 76, 80, 85,\n 90, 96, 100, 106, 112, 117, 122, 127, 132, 137, 142, 147, 152, 157, 162,\n 167, 172, 177, 182, 187, 192, 197, 202, 207, 212, 217, 222, 227, 232,\n 237, 242, 247, 252, 257, 262, 267, 272, 277, 282, 287, 292, 297, 302,\n 307, 312, 317, 322, 327, 332, 337, 342, 347, 352, 357, 362, 367, 372, 377,\n 382, 387, 392, 397, 402, 407, 412, 417, 422, 427, 43",
+          "seconds": 19.51,
+          "metrics": {
+            "bleu4": 0.0023405543268904642,
+            "rouge_l_f1": 0.029999999999999995,
+            "bertscore_f1": 0.576293408870697
+          }
+        },
+        {
+          "case_id": "pr_45",
+          "file_name": "45.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.0460319080255121,
+            "rouge_l_f1": 0.35555555555555557,
+            "bertscore_f1": 0.5841928124427795
+          }
+        },
+        {
+          "case_id": "pr_46",
+          "file_name": "46.jpg",
+          "stratum": "other",
+          "response": "FDI codes for upper and lower teeth are provided. There are no caries, restorations, endodontically-treated, impacted, or root-stump teeth. Alveolar bone is normal. There is no change in the temporomandibular joint. Maxillary sinus is intact. No central lesions or artifacts are seen.",
+          "seconds": 4.44,
+          "metrics": {
+            "bleu4": 0.009362226982256337,
+            "rouge_l_f1": 0.23437500000000003,
+            "bertscore_f1": 0.5635639429092407
+          }
+        },
+        {
+          "case_id": "pr_47",
+          "file_name": "47.jpg",
+          "stratum": "impacted",
+          "response": "The upper and lower arch radiographs demonstrate a normal dental\n pattern.  There is no evidence of caries, restorations, endodontic treatments\n or root stumps.  There are no impacted or foreign-body teeth.  The maxillary\n bone is normal.  The temporomandibular joint is intact.  The central\n pulp-like densities are likely artifacts.  There is no evidence of central\n lesions.  The lung parenchyma is clear without evidence of acute changes.",
+          "seconds": 6.23,
+          "metrics": {
+            "bleu4": 0.007250954987801055,
+            "rouge_l_f1": 0.1627906976744186,
+            "bertscore_f1": 0.505841076374054
+          }
+        },
+        {
+          "case_id": "pr_48",
+          "file_name": "48.jpg",
+          "stratum": "caries",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with significant caries or restorations. Endodontically treated tooth is noted. Alveolar bone is unremarkable. There are no central lesions or maxillary sinus abnormality. Temporomandibular joint is intact.",
+          "seconds": 4.06,
+          "metrics": {
+            "bleu4": 0.0037372507586484437,
+            "rouge_l_f1": 0.1558441558441558,
+            "bertscore_f1": 0.5396521091461182
+          }
+        },
+        {
+          "case_id": "pr_49",
+          "file_name": "49.jpg",
+          "stratum": "caries",
+          "response": "The upper and lower arches are not completely included on this examination. Within the limitations, there is no significant interval change.",
+          "seconds": 1.97,
+          "metrics": {
+            "bleu4": 0.00014503110450981972,
+            "rouge_l_f1": 0.015503875968992248,
+            "bertscore_f1": 0.34905797243118286
+          }
+        },
+        {
+          "case_id": "pr_5",
+          "file_name": "5.jpg",
+          "stratum": "caries",
+          "response": "The upper and lower arches are not completely imaged. The remaining teeth appear to be in similar position to prior exam. No new teeth are identified. No pneumothorax or pleural effusion is identified. Cardiomediastinal silhouette is unchanged.",
+          "seconds": 3.4,
+          "metrics": {
+            "bleu4": 0.001700120309503155,
+            "rouge_l_f1": 0.017543859649122806,
+            "bertscore_f1": 0.44663745164871216
+          }
+        },
+        {
+          "case_id": "pr_50",
+          "file_name": "50.jpg",
+          "stratum": "caries",
+          "response": "Teeth: FDI numbers are present.\n Caries: Caries is seen in the lower arch, question in the upper arch.\n Restorations: None identified.\n Endodontic treatment: None identified.\n Root stumps: None identified.\n Periapical changes: Slight scarring at the left upper and lower arch.\n Impacted tooth: None identified.\nAlveolar bone: Alveolar bone is present.\nTemporomandibular joint: The TM joint appears intact.\nMaxillary sinus: The maxillary sinus is present.\nArtifacts: N/A\nCentral lesions: N/A\nRadiographic impression: The lungs are clear.",
+          "seconds": 8.21,
+          "metrics": {
+            "bleu4": 0.013389102908953836,
+            "rouge_l_f1": 0.26190476190476186,
+            "bertscore_f1": 0.5819010138511658
+          }
+        },
+        {
+          "case_id": "pr_51",
+          "file_name": "51.jpg",
+          "stratum": "periapical",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.040911389652611624,
+            "rouge_l_f1": 0.34693877551020413,
+            "bertscore_f1": 0.5862829685211182
+          }
+        },
+        {
+          "case_id": "pr_52",
+          "file_name": "52.jpg",
+          "stratum": "periapical",
+          "response": "The upper and lower arches are not completely included on the examination. However, the visualized portion of the teeth appears to be in good condition. No caries, restorations, endodontic treatments, impacted tooth, or maxillary sinus abnormalities are identified.",
+          "seconds": 3.69,
+          "metrics": {
+            "bleu4": 0.00306195931213198,
+            "rouge_l_f1": 0.0979020979020979,
+            "bertscore_f1": 0.45756807923316956
+          }
+        },
+        {
+          "case_id": "pr_53",
+          "file_name": "53.jpg",
+          "stratum": "other",
+          "response": "Teeth:\n<upper arch FDI numbers>\n<lower arch FDI numbers>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 9.76,
+          "metrics": {
+            "bleu4": 0.10714270461906115,
+            "rouge_l_f1": 0.4076433121019108,
+            "bertscore_f1": 0.5886702537536621
+          }
+        },
+        {
+          "case_id": "pr_54",
+          "file_name": "54.jpg",
+          "stratum": "caries",
+          "response": "The upper and lower arches are not completely included on the exam. The\n visualized portion of the lower arch is grossly unremarkable. The visualized\n portion of the upper arch is also grossly unremarkable. No radiopaque foreign\n body is identified.",
+          "seconds": 3.42,
+          "metrics": {
+            "bleu4": 0.0,
+            "rouge_l_f1": 0.0,
+            "bertscore_f1": 0.40392160415649414
+          }
+        },
+        {
+          "case_id": "pr_55",
+          "file_name": "55.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.05502438362880388,
+            "rouge_l_f1": 0.40462427745664736,
+            "bertscore_f1": 0.588209331035614
+          }
+        },
+        {
+          "case_id": "pr_56",
+          "file_name": "56.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.88,
+          "metrics": {
+            "bleu4": 0.05219303997964712,
+            "rouge_l_f1": 0.39999999999999997,
+            "bertscore_f1": 0.5980562567710876
+          }
+        },
+        {
+          "case_id": "pr_57",
+          "file_name": "57.jpg",
+          "stratum": "impacted",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with significant caries or restorations. Endodontically treated tooth is noted. Alveolar bone is unremarkable. There are no central lucencies or marginal corticosternal intervening lines. There is no pneumothorax or pleural effusion.",
+          "seconds": 4.24,
+          "metrics": {
+            "bleu4": 0.0061768405582737764,
+            "rouge_l_f1": 0.140625,
+            "bertscore_f1": 0.5051605105400085
+          }
+        },
+        {
+          "case_id": "pr_58",
+          "file_name": "58.jpg",
+          "stratum": "impacted",
+          "response": "The upper and lower arches are not included on this examination. Within the limitations, there is no filling, no root caries, no restorations, no endodontic treatments, no impacted teeth, no bone loss, no temporomandibular joint abnormalities, no pneumothorax, and no pleural effusions.",
+          "seconds": 4.34,
+          "metrics": {
+            "bleu4": 0.004090780384582775,
+            "rouge_l_f1": 0.09022556390977443,
+            "bertscore_f1": 0.4808878004550934
+          }
+        },
+        {
+          "case_id": "pr_59",
+          "file_name": "59.jpg",
+          "stratum": "impacted",
+          "response": "The upper and lower arches are not completely imaged. The remaining\n teeth appear to be in similar position to prior radiograph. No new\n radiopaque foreign body is identified.",
+          "seconds": 2.52,
+          "metrics": {
+            "bleu4": 0.0008770850953732147,
+            "rouge_l_f1": 0.017699115044247787,
+            "bertscore_f1": 0.4088139235973358
+          }
+        },
+        {
+          "case_id": "pr_6",
+          "file_name": "6.jpg",
+          "stratum": "other",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts seen:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.35,
+          "metrics": {
+            "bleu4": 0.09212983755928592,
+            "rouge_l_f1": 0.37209302325581395,
+            "bertscore_f1": 0.5824952721595764
+          }
+        },
+        {
+          "case_id": "pr_60",
+          "file_name": "60.jpg",
+          "stratum": "impacted",
+          "response": "Teeth: FDI numbers are present.\n Caries: Caries is seen in the lower right FDI number.\n Restorations: None.\n Endodontically treated: None.\nRoot stumps: None.\nPeriapical changes: None.\nImpacted tooth: None.\nAlveolar bone: Alveolar bone is present.\nTemporomandibular joint: The TM joint appears intact.\nMaxillary sinus: The maxillary sinus is intact.\nArtifacts seen: The patient's head obscures the upper portion of the\n radiograph.\nCentral lesions: None.\nRadiographic impression: The lungs are clear.",
+          "seconds": 8.06,
+          "metrics": {
+            "bleu4": 0.025220621449563396,
+            "rouge_l_f1": 0.31901840490797545,
+            "bertscore_f1": 0.6017969846725464
+          }
+        },
+        {
+          "case_id": "pr_61",
+          "file_name": "61.jpg",
+          "stratum": "periapical",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.88,
+          "metrics": {
+            "bleu4": 0.09261745696231881,
+            "rouge_l_f1": 0.37433155080213903,
+            "bertscore_f1": 0.5902302265167236
+          }
+        },
+        {
+          "case_id": "pr_62",
+          "file_name": "62.jpg",
+          "stratum": "other",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.9,
+          "metrics": {
+            "bleu4": 0.09784872845718472,
+            "rouge_l_f1": 0.42424242424242425,
+            "bertscore_f1": 0.6011566519737244
+          }
+        },
+        {
+          "case_id": "pr_63",
+          "file_name": "63.jpg",
+          "stratum": "other",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.9,
+          "metrics": {
+            "bleu4": 0.09784872845718472,
+            "rouge_l_f1": 0.4117647058823529,
+            "bertscore_f1": 0.6033795475959778
+          }
+        },
+        {
+          "case_id": "pr_64",
+          "file_name": "64.jpg",
+          "stratum": "other",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.05917650888215432,
+            "rouge_l_f1": 0.4444444444444445,
+            "bertscore_f1": 0.6078421473503113
+          }
+        },
+        {
+          "case_id": "pr_65",
+          "file_name": "65.jpg",
+          "stratum": "caries",
+          "response": "Teeth: FDI numbers are present.\n Caries: Caries is seen in the lower arch, left side, in the form of a\n decayed tooth #40.\n Restorations: None.\n Endodontically treated: None.\nRoot stumps: None.\nPeriapical changes: None.\nImpacted tooth: None.\nAlveolar bone: Alveolar bone is present in adequate quantity.\nTemporomandibular joint: TM joint is intact.\nMaxillary sinus: Maxillary sinus is present.\nArtifacts seen: The patient is very heavy, which made the procedure more\n difficult.\nCentral lesions: None.\nRadiographic impression: The upper arch is unremarkable. In the lower\n arch, there is a decayed tooth #40.",
+          "seconds": 9.61,
+          "metrics": {
+            "bleu4": 0.01157680054127332,
+            "rouge_l_f1": 0.24630541871921185,
+            "bertscore_f1": 0.5740364193916321
+          }
+        },
+        {
+          "case_id": "pr_66",
+          "file_name": "66.jpg",
+          "stratum": "other",
+          "response": "The upper and lower arches are not completely included on the exam.\n Radiopaque densities projecting over the upper abdomen are not fully\n evaluated. The cardiomediastinal and hilar contours are normal. There is no\n pleural effusion or pneumothorax. There is no pulmonary edema. There is no\n focal consolidation concerning for pneumonia.",
+          "seconds": 4.79,
+          "metrics": {
+            "bleu4": 0.0022573048386565243,
+            "rouge_l_f1": 0.028985507246376812,
+            "bertscore_f1": 0.46609577536582947
+          }
+        },
+        {
+          "case_id": "pr_67",
+          "file_name": "67.jpg",
+          "stratum": "impacted",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.9,
+          "metrics": {
+            "bleu4": 0.09281380834314477,
+            "rouge_l_f1": 0.38636363636363635,
+            "bertscore_f1": 0.5922108292579651
+          }
+        },
+        {
+          "case_id": "pr_68",
+          "file_name": "68.jpg",
+          "stratum": "caries",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.26,
+          "metrics": {
+            "bleu4": 0.08431638187495649,
+            "rouge_l_f1": 0.3333333333333333,
+            "bertscore_f1": 0.5917400121688843
+          }
+        },
+        {
+          "case_id": "pr_69",
+          "file_name": "69.jpg",
+          "stratum": "mixed_dentition",
+          "response": "The upper and lower arches are not completely imaged. The remaining\n teeth appear to be in similar position to prior radiograph. No new\n radiopaque foreign body is identified.  No definite fracture is identified.",
+          "seconds": 2.94,
+          "metrics": {
+            "bleu4": 0.0008122602438953518,
+            "rouge_l_f1": 0.015384615384615384,
+            "bertscore_f1": 0.3926033079624176
+          }
+        },
+        {
+          "case_id": "pr_7",
+          "file_name": "7.jpg",
+          "stratum": "caries",
+          "response": "The upper and lower arches are not completely imaged. The remaining\n teeth appear to be in similar position to prior examination. No new\n radiopaque foreign body is identified.  No definite new dental restoration is\n seen.  No definite new caries are seen.  No pneumothorax is identified.",
+          "seconds": 4.01,
+          "metrics": {
+            "bleu4": 0.0027024267836919967,
+            "rouge_l_f1": 0.049586776859504134,
+            "bertscore_f1": 0.4528932571411133
+          }
+        },
+        {
+          "case_id": "pr_70",
+          "file_name": "70.jpg",
+          "stratum": "periapical",
+          "response": "FDI codes for upper and lower teeth are provided.  There are no\n radiopaque densities projecting over the expected location of the gastroesophageal\n junction to suggest aspiration.  Otherwise, no acute findings.",
+          "seconds": 3.18,
+          "metrics": {
+            "bleu4": 0.0006964933320997256,
+            "rouge_l_f1": 0.030534351145038167,
+            "bertscore_f1": 0.41356152296066284
+          }
+        },
+        {
+          "case_id": "pr_71",
+          "file_name": "71.jpg",
+          "stratum": "impacted",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.26,
+          "metrics": {
+            "bleu4": 0.04491959546055111,
+            "rouge_l_f1": 0.34730538922155685,
+            "bertscore_f1": 0.583162784576416
+          }
+        },
+        {
+          "case_id": "pr_72",
+          "file_name": "72.jpg",
+          "stratum": "caries",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.9,
+          "metrics": {
+            "bleu4": 0.1026721786491555,
+            "rouge_l_f1": 0.43902439024390244,
+            "bertscore_f1": 0.5994910597801208
+          }
+        },
+        {
+          "case_id": "pr_73",
+          "file_name": "73.jpg",
+          "stratum": "periapical",
+          "response": "FDI codes for upper and lower teeth are provided.  There are no\n radiopaque densities projecting over the expected location of the aortic valve.\n The aortic valve is likely not calcified.  There is no caries, periapical\n raises, restoration, or endodontically treated tooth.  There is no impacted\n tooth.  Alveolar bone is unremarkable.  There is no evidence of temporomandibular\n joint abnormality.  There is no maxillary sinus abnormality.  There are no\n artifacts seen.  There are no central lesions.  There is no pneumothorax. \n There is no pleural effusion.  Cardiac silhouette is normal.",
+          "seconds": 8.78,
+          "metrics": {
+            "bleu4": 0.009754664528261861,
+            "rouge_l_f1": 0.16326530612244897,
+            "bertscore_f1": 0.5014176368713379
+          }
+        },
+        {
+          "case_id": "pr_74",
+          "file_name": "74.jpg",
+          "stratum": "other",
+          "response": "Teeth: FDI numbers are present.\nCaries: FDI numbers are clear.\nRestorations: None.\nEndodontic treatments: None.\nRoot stumps: None.\nPeriapical changes: None.\nImpacted tooth: None.\nAlveolar bone: Normal.\nTemporomandibular joint: Normal.\nMaxillary sinus: Normal.\nArtifacts: N/A.\nCentral lesions: N/A.\nRadiographic impression: No acute dental abnormality.",
+          "seconds": 6.52,
+          "metrics": {
+            "bleu4": 0.07213171633827309,
+            "rouge_l_f1": 0.36363636363636365,
+            "bertscore_f1": 0.6316874027252197
+          }
+        },
+        {
+          "case_id": "pr_75",
+          "file_name": "75.jpg",
+          "stratum": "mixed_dentition",
+          "response": "FDI numbers are present. Teeth are not completely visualized in the lower right arch. Within the limitations, there is no evidence of significant interval change.",
+          "seconds": 2.25,
+          "metrics": {
+            "bleu4": 0.0005263634544861629,
+            "rouge_l_f1": 0.01652892561983471,
+            "bertscore_f1": 0.37541744112968445
+          }
+        },
+        {
+          "case_id": "pr_76",
+          "file_name": "76.jpg",
+          "stratum": "impacted",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.26,
+          "metrics": {
+            "bleu4": 0.05300247765825908,
+            "rouge_l_f1": 0.3924050632911392,
+            "bertscore_f1": 0.5869484543800354
+          }
+        },
+        {
+          "case_id": "pr_77",
+          "file_name": "77.jpg",
+          "stratum": "caries",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.09281380834314477,
+            "rouge_l_f1": 0.39080459770114945,
+            "bertscore_f1": 0.5836734175682068
+          }
+        },
+        {
+          "case_id": "pr_78",
+          "file_name": "78.jpg",
+          "stratum": "periapical",
+          "response": "The upper and lower arches are not completely included on the exam. The remaining teeth appear to be loose, with some appearing to be partially avulsed. There is no significant caries, restorations, endodontic problems, or impaction. The bone is intact. The temporomandibular joint is intact. There is no pneumothorax or pleural effusion.",
+          "seconds": 4.7,
+          "metrics": {
+            "bleu4": 0.0050982860454676536,
+            "rouge_l_f1": 0.09999999999999999,
+            "bertscore_f1": 0.46635138988494873
+          }
+        },
+        {
+          "case_id": "pr_79",
+          "file_name": "79.jpg",
+          "stratum": "caries",
+          "response": "The upper and lower arches are not included on this examination. Within the limitations, there is no filling, no root caries, no restorations, no endodontic treatments, no impacted teeth, no bone loss, no intraoperative changes, no pneumothorax, no pleural effusion, no pulmonary edema, no pneumonia, no cavitations, no central lesions, no radiographic evidence of metastatic disease.",
+          "seconds": 5.51,
+          "metrics": {
+            "bleu4": 0.005623621995889221,
+            "rouge_l_f1": 0.0958904109589041,
+            "bertscore_f1": 0.4584057033061981
+          }
+        },
+        {
+          "case_id": "pr_8",
+          "file_name": "8.jpg",
+          "stratum": "impacted",
+          "response": "The upper and lower arches are not included on this examination. Within the limitations, there is no significant change from the prior radiograph.",
+          "seconds": 2.11,
+          "metrics": {
+            "bleu4": 0.0,
+            "rouge_l_f1": 0.0,
+            "bertscore_f1": 0.3519919812679291
+          }
+        },
+        {
+          "case_id": "pr_80",
+          "file_name": "80.jpg",
+          "stratum": "other",
+          "response": "FDI numbers are present. Teeth are not well visualized due to overlying soft tissue and scatter radiation. There is a rounded opacity seen in the left lower hemithorax, which is not well evaluated on this study.",
+          "seconds": 3.0,
+          "metrics": {
+            "bleu4": 0.002758629658221211,
+            "rouge_l_f1": 0.037383177570093455,
+            "bertscore_f1": 0.4165239632129669
+          }
+        },
+        {
+          "case_id": "pr_81",
+          "file_name": "81.jpg",
+          "stratum": "impacted",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts seen:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.33,
+          "metrics": {
+            "bleu4": 0.08512782071675087,
+            "rouge_l_f1": 0.34254143646408847,
+            "bertscore_f1": 0.579167366027832
+          }
+        },
+        {
+          "case_id": "pr_82",
+          "file_name": "82.jpg",
+          "stratum": "periapical",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.9,
+          "metrics": {
+            "bleu4": 0.05644681641105685,
+            "rouge_l_f1": 0.4302325581395349,
+            "bertscore_f1": 0.6025843620300293
+          }
+        },
+        {
+          "case_id": "pr_83",
+          "file_name": "83.jpg",
+          "stratum": "periapical",
+          "response": "FDI codes for upper and lower teeth are provided. There are no caries, restorations, endodontically-treated teeth, impacted teeth, or periapical changes. Alveolar bone is unremarkable. There is no temporomandibular joint abnormality. Maxillary sinus is unremarkable. No central lesions are seen. No artifacts are noted.",
+          "seconds": 4.79,
+          "metrics": {
+            "bleu4": 0.005289248556456037,
+            "rouge_l_f1": 0.19108280254777069,
+            "bertscore_f1": 0.5206640958786011
+          }
+        },
+        {
+          "case_id": "pr_84",
+          "file_name": "84.jpg",
+          "stratum": "periapical",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.89,
+          "metrics": {
+            "bleu4": 0.0822461273498844,
+            "rouge_l_f1": 0.3523316062176166,
+            "bertscore_f1": 0.578626811504364
+          }
+        },
+        {
+          "case_id": "pr_85",
+          "file_name": "85.jpg",
+          "stratum": "impacted",
+          "response": "<upper arch FDI numbers>: 1, 2, 4, 5, 7, 9, 10, 13, 15, 16, 19, 20, 22, 23, 25, 26, 28, 30, 32, 33, 35, 36, 38, 39, 41, 42, 44, 45, 47, 48, 50, 52, 53, 55, 56, 58, 59\n<lower arch FDI numbers>: 2, 4, 5, 7, 9, 10, 13, 14, 17, 18, 21, 22, 24, 25, 27, 28, 30, 31, 33, 34, 36, 37, 39, 40, 42, 43, 45, 46, 48, 49, 51, 52, 54, 55, 57, 58, 60\n<Caries present>: No\n<Restorations present>: No\n<Endodontically treated>: No\n<Root stumps>: No\n<Periapical changes>: No\n<Impacted tooth>: No\n<Alveolar bone>: Normal\n<Temporomandibular joint>: Intact/Normal\n<Maxillary sinus>: Intact\n<Artifacts seen>: None\n<Central lesions>: None\n<Radi",
+          "seconds": 19.51,
+          "metrics": {
+            "bleu4": 0.12824222663927998,
+            "rouge_l_f1": 0.37438423645320196,
+            "bertscore_f1": 0.6433359980583191
+          }
+        },
+        {
+          "case_id": "pr_86",
+          "file_name": "86.jpg",
+          "stratum": "impacted",
+          "response": "The upper and lower arches are not completely imaged. The remaining\n teeth appear to be in similar position to prior examination. No new\n radiopaque foreign body is identified.",
+          "seconds": 2.52,
+          "metrics": {
+            "bleu4": 0.0010117746635667775,
+            "rouge_l_f1": 0.01834862385321101,
+            "bertscore_f1": 0.4111517071723938
+          }
+        },
+        {
+          "case_id": "pr_87",
+          "file_name": "87.jpg",
+          "stratum": "periapical",
+          "response": "The upper and lower arches are not completely included on the exam. The\n lower arch is not included on the lateral view. The remaining radiograph is\n grossly unchanged from the prior exam.",
+          "seconds": 2.71,
+          "metrics": {
+            "bleu4": 0.0,
+            "rouge_l_f1": 0.0,
+            "bertscore_f1": 0.3679002821445465
+          }
+        },
+        {
+          "case_id": "pr_88",
+          "file_name": "88.jpg",
+          "stratum": "mixed_dentition",
+          "response": "The upper and lower arches are not completely imaged. The remaining teeth appear to be in similar position to prior radiograph. No new cavities are identified. No other significant findings are noted.",
+          "seconds": 2.7,
+          "metrics": {
+            "bleu4": 0.00044989654596820205,
+            "rouge_l_f1": 0.0136986301369863,
+            "bertscore_f1": 0.3804243206977844
+          }
+        },
+        {
+          "case_id": "pr_89",
+          "file_name": "89.jpg",
+          "stratum": "impacted",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.26,
+          "metrics": {
+            "bleu4": 0.054193741904743825,
+            "rouge_l_f1": 0.39506172839506165,
+            "bertscore_f1": 0.5796352028846741
+          }
+        },
+        {
+          "case_id": "pr_9",
+          "file_name": "9.jpg",
+          "stratum": "impacted",
+          "response": "Teeth:\nFDI: 1. 4. 6. 9. 14. 20. 25. 30. 36. 40.\nX-ray limited to upper teeth.\n\nFindings:\nThe upper and lower arches are grossly unremarkable.  No caries, restorations,\n endodontic treatments, impacted teeth, or apical changes.  No central lesions.",
+          "seconds": 5.53,
+          "metrics": {
+            "bleu4": 0.004864056266669896,
+            "rouge_l_f1": 0.14516129032258063,
+            "bertscore_f1": 0.5337547063827515
+          }
+        },
+        {
+          "case_id": "pr_90",
+          "file_name": "90.jpg",
+          "stratum": "other",
+          "response": "The upper and lower arches are not completely included on the exam.\n However, the visualized portion of the teeth and alveolar bones are\n unremarkable.",
+          "seconds": 2.44,
+          "metrics": {
+            "bleu4": 0.0002841721734521434,
+            "rouge_l_f1": 0.030303030303030304,
+            "bertscore_f1": 0.39673104882240295
+          }
+        },
+        {
+          "case_id": "pr_91",
+          "file_name": "91.jpg",
+          "stratum": "periapical",
+          "response": "Teeth present:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries present: <FDI numbers or Nil>\nRestorations present: <FDI numbers or Nil>\nEndodontically treated: <FDI numbers or Nil>\nRoot stumps: <FDI numbers or Nil>\nPeriapical changes: <finding and tooth, or Nil>\nImpacted tooth: <FDI numbers or Nil>\nAlveolar bone: <Normal or describe bone loss>\nTemporomandibular joint: <Intact/Normal or describe>\nMaxillary sinus: <Intact or describe>\nArtifacts seen: <describe or Nil>\nCentral lesions: <describe or Nil>\nRadiographic impression: <one or two sentences covering the main diagnoses>",
+          "seconds": 9.9,
+          "metrics": {
+            "bleu4": 0.09281380834314477,
+            "rouge_l_f1": 0.3756906077348066,
+            "bertscore_f1": 0.585468053817749
+          }
+        },
+        {
+          "case_id": "pr_92",
+          "file_name": "92.jpg",
+          "stratum": "caries",
+          "response": "The upper and lower arches are not included on this examination. Within the limitations, there is no significant caries, restoration, endodontic treatment, impacted tooth, or maxillary sinus abnormality. The mandible remains intact.",
+          "seconds": 3.35,
+          "metrics": {
+            "bleu4": 0.0026133562510723325,
+            "rouge_l_f1": 0.09375,
+            "bertscore_f1": 0.4631265699863434
+          }
+        },
+        {
+          "case_id": "pr_93",
+          "file_name": "93.jpg",
+          "stratum": "periapical",
+          "response": "The upper abdomen is not included on this examination. The bowel gas pattern\n is normal.  The breast prostheses are seen.",
+          "seconds": 2.25,
+          "metrics": {
+            "bleu4": 0.0003289545004478797,
+            "rouge_l_f1": 0.03603603603603604,
+            "bertscore_f1": 0.40582141280174255
+          }
+        },
+        {
+          "case_id": "pr_94",
+          "file_name": "94.jpg",
+          "stratum": "impacted",
+          "response": "The upper and lower arches are visualized. The teeth are in good order. No caries, restorations, endodontic treatments, impacted or root stumps are seen. The alveolar bone is normal. The temporomandibular joint is intact. The maxillary sinus is intact. No central lesions are seen. No artifacts are seen.",
+          "seconds": 4.67,
+          "metrics": {
+            "bleu4": 0.010535515996837354,
+            "rouge_l_f1": 0.2325581395348837,
+            "bertscore_f1": 0.5590571165084839
+          }
+        },
+        {
+          "case_id": "pr_95",
+          "file_name": "95.jpg",
+          "stratum": "other",
+          "response": "<upper arch FDI numbers>: 1, 2, 4, 5, 7, 9, 10, 13, 19, 25, 26, 36, 37\n<lower arch FDI numbers>: 1, 2, 4, 5, 7, 9, 10, 13, 19, 25, 26, 36, 37\nCaries present: No\nRestorations present: No\nEndodontically treated: No\nRoot stumps: No\nPeriapical changes: No\nImpacted tooth: No\nAlveolar bone: Normal\nTemporomandibular joint: Intact/Normal\nMaxillary sinus: Intact\nArtifacts seen: Dental instruments\nCentral lesions: No\nRadiographic impression: No acute dental findings.",
+          "seconds": 10.46,
+          "metrics": {
+            "bleu4": 0.09784263886747917,
+            "rouge_l_f1": 0.3924050632911392,
+            "bertscore_f1": 0.6653435826301575
+          }
+        },
+        {
+          "case_id": "pr_96",
+          "file_name": "96.jpg",
+          "stratum": "periapical",
+          "response": "FDI codes for upper and lower arch are provided. There are no teeth with RFDI numbers. Caries, restorations, endodontically-treated teeth, and periapical changes are seen. Impacted tooth is seen. Alveolar bone is unremarkable. No TMJ or sinus abnormality is seen. No artifacts are seen.",
+          "seconds": 4.61,
+          "metrics": {
+            "bleu4": 0.009139378752543512,
+            "rouge_l_f1": 0.22399999999999998,
+            "bertscore_f1": 0.5419979691505432
+          }
+        },
+        {
+          "case_id": "pr_97",
+          "file_name": "97.jpg",
+          "stratum": "periapical",
+          "response": "Teeth:\n<upper arch FDI numbers, right to left>\n<lower arch FDI numbers, left to right>\nCaries:\n<FDI numbers or Nil>\nRestorations:\n<FDI numbers or Nil>\nEndodontically treated:\n<FDI numbers or Nil>\nRoot stumps:\n<FDI numbers or Nil>\nPeriapical changes:\n<finding and tooth, or Nil>\nImpacted tooth:\n<FDI numbers or Nil>\nAlveolar bone:\n<Normal or describe bone loss>\nTemporomandibular joint:\n<Intact/Normal or describe>\nMaxillary sinus:\n<Intact or describe>\nArtifacts:\n<describe or Nil>\nCentral lesions:\n<describe or Nil>\nRadiographic impression:\n<one or two sentences covering the main diagnoses>",
+          "seconds": 10.26,
+          "metrics": {
+            "bleu4": 0.08360478760897899,
+            "rouge_l_f1": 0.34523809523809523,
+            "bertscore_f1": 0.5775195956230164
+          }
+        },
+        {
+          "case_id": "pr_98",
+          "file_name": "98.jpg",
+          "stratum": "periapical",
+          "response": "The upper and lower arches are not completely imaged. The remaining\n visualized teeth and periodontium are unremarkable.  The cardiomediastinal\n silhouette is normal.  No acute osseous abnormality is identified.",
+          "seconds": 3.27,
+          "metrics": {
+            "bleu4": 0.0012032096286930956,
+            "rouge_l_f1": 0.03669724770642202,
+            "bertscore_f1": 0.4562739431858063
+          }
+        },
+        {
+          "case_id": "pr_99",
+          "file_name": "99.jpg",
+          "stratum": "other",
+          "response": "FDI:\n\n1. ___\n2. ___\n3. ___\n4. ___\n5. ___\n6. ___\n7. ___\n8. ___\n9. ___\n10. ___\n11. ___\n12. ___\n13. ___\n14. ___\n15. ___\n16. ___\n17. ___\n18. ___\n19. ___\n20. ___\n21. ___\n22. ___\n23. ___\n24. ___\n25. ___\n26. ___\n27. ___\n28. ___\n29. ___\n30. ___\n31. ___\n32. ___\n33. ___\n34. ___\n35. ___\n36. ___\n37. ___\n38. ___\n39. ___\n40. ___\n41. ___\n42. ___\n43. ___\n44. ___\n45. ___\n46. ___\n47. ___\n48. ___\n49. ___\n50. ___\n51. ___\n52. ___\n53. ___\n54. ___\n55. ___\n56. ___\n57. ___\n58. ___\n59. ___\n60. ___\n61. ___\n62. ___\n63. ___\n64. ___\n65. ___\n66. ___\n67. ___\n68",
+          "seconds": 19.5,
+          "metrics": {
+            "bleu4": 0.17206480034475788,
+            "rouge_l_f1": 0.26415094339622636,
+            "bertscore_f1": 0.4376997947692871
+          }
+        }
+      ]
+    }
+  }
+}

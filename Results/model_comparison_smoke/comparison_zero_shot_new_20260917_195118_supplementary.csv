@@ -1,0 +1,2 @@
+Model,Cases,Strategy,missing_P,missing_R,missing_F1,present_P,present_R,present_F1,Macro_P,Macro_F1,Macro_F1_CI95_low,Macro_F1_CI95_high,Accuracy,Balanced_Accuracy
+Med-Flamingo,5,zero_shot,0.0,0.0,0.0,0.41875,1.0,0.5903083700440529,0.209375,0.29515418502202645,0.06432748538011696,0.4346289752650177,0.41875,0.5

@@ -1,0 +1,73 @@
+{
+  "timestamp": "20260917_193842",
+  "tag": "zero_shot_new",
+  "n_cases": 5,
+  "case_ids": [
+    "1",
+    "2",
+    "4",
+    "5",
+    "6"
+  ],
+  "parse_mode": "strict",
+  "prompt_name": "zero_shot",
+  "strategy": "zero_shot",
+  "prompt": "This is a panoramic dental X-ray.\nUse ONLY the Universal Numbering System: teeth are numbered 1-32.\n- Teeth 1-16: upper jaw (patient's right to left)\n- Teeth 17-32: lower jaw (patient's left to right)\nDo NOT use FDI numbers (11-48).\n\nIdentify which teeth are missing (gaps or empty sockets).\nThe Total missing line is formatting only and is not used for scoring.\n\nAnswer in exactly this format and nothing else:\nMissing teeth: <comma-separated Universal numbers 1-32, or None>\nTotal missing: <count>\nConfidence: High/Medium/Low",
+  "aggregation": "pooled_slots",
+  "parser_version": "tufts-strict-missing-line-v1",
+  "run_config": {
+    "dataset": "Tufts",
+    "n_cases_paper": 5,
+    "n_cases_note": "Paper evaluation is all usable Tufts cases (1000). The Aug 2026 100-case JSONs are archive only.",
+    "strategy": "zero_shot",
+    "parser_version": "tufts-strict-missing-line-v1",
+    "parse_source": "Missing teeth line only; Total missing ignored",
+    "aggregation": "pooled_slots",
+    "bootstrap_n": 5000,
+    "bootstrap_seed": 20260820,
+    "bootstrap_unit": "patient",
+    "bootstrap_patient_equals_image": true,
+    "bootstrap_note": "Independent sampling unit is the patient. All radiographs from the same patient are kept together in each replicate. On Tufts and DENTEX QED each image ID is unique and no multi-image patient identifier exists, so patient = image.",
+    "few_shot_uses_exemplar_images": false,
+    "few_shot_examples": "synthetic text templates, not Tufts case IDs"
+  },
+  "gt_support": {
+    "missing": 93,
+    "present": 67,
+    "n_slots": 160,
+    "n_cases": 5
+  },
+  "models": {
+    "llava_rad": {
+      "model_key": "llava_rad",
+      "display_name": "LLaVA-Rad",
+      "repo_id": "microsoft/llava-rad",
+      "metrics": {
+        "n_cases": 0,
+        "aggregation": "pooled_slots"
+      },
+      "results": [
+        {
+          "case_id": "1",
+          "error": "RuntimeError: new_models.workers.worker_llava_rad failed in env custom-vlms:  return func(*args, **kwargs)\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1282, in generate\n    self._validate_model_kwargs(model_kwargs.copy())\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1155, in _validate_model_kwargs\n    raise ValueError(\nValueError: The following `model_kwargs` are not used by the model: ['image_sizes'] (note: typos in the generate arguments will also show up in this list)\nERROR conda.cli.main_run:execute(125): `conda run python -m new_models.workers.worker_llava_rad --image /home/s222393187/Dental/Tufts_Dental_Database/Radiographs/1.JPG --prompt-file /tmp/tmp0g48xrkw.txt --max-new-tokens 250` failed. (See above for error)"
+        },
+        {
+          "case_id": "2",
+          "error": "RuntimeError: new_models.workers.worker_llava_rad failed in env custom-vlms:  return func(*args, **kwargs)\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1282, in generate\n    self._validate_model_kwargs(model_kwargs.copy())\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1155, in _validate_model_kwargs\n    raise ValueError(\nValueError: The following `model_kwargs` are not used by the model: ['image_sizes'] (note: typos in the generate arguments will also show up in this list)\nERROR conda.cli.main_run:execute(125): `conda run python -m new_models.workers.worker_llava_rad --image /home/s222393187/Dental/Tufts_Dental_Database/Radiographs/2.JPG --prompt-file /tmp/tmpczci10u_.txt --max-new-tokens 250` failed. (See above for error)"
+        },
+        {
+          "case_id": "4",
+          "error": "RuntimeError: new_models.workers.worker_llava_rad failed in env custom-vlms:  return func(*args, **kwargs)\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1282, in generate\n    self._validate_model_kwargs(model_kwargs.copy())\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1155, in _validate_model_kwargs\n    raise ValueError(\nValueError: The following `model_kwargs` are not used by the model: ['image_sizes'] (note: typos in the generate arguments will also show up in this list)\nERROR conda.cli.main_run:execute(125): `conda run python -m new_models.workers.worker_llava_rad --image /home/s222393187/Dental/Tufts_Dental_Database/Radiographs/4.JPG --prompt-file /tmp/tmplaqxk8m3.txt --max-new-tokens 250` failed. (See above for error)"
+        },
+        {
+          "case_id": "5",
+          "error": "RuntimeError: new_models.workers.worker_llava_rad failed in env custom-vlms:  return func(*args, **kwargs)\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1282, in generate\n    self._validate_model_kwargs(model_kwargs.copy())\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1155, in _validate_model_kwargs\n    raise ValueError(\nValueError: The following `model_kwargs` are not used by the model: ['image_sizes'] (note: typos in the generate arguments will also show up in this list)\nERROR conda.cli.main_run:execute(125): `conda run python -m new_models.workers.worker_llava_rad --image /home/s222393187/Dental/Tufts_Dental_Database/Radiographs/5.JPG --prompt-file /tmp/tmp68p5t7qr.txt --max-new-tokens 250` failed. (See above for error)"
+        },
+        {
+          "case_id": "6",
+          "error": "RuntimeError: new_models.workers.worker_llava_rad failed in env custom-vlms:  return func(*args, **kwargs)\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1282, in generate\n    self._validate_model_kwargs(model_kwargs.copy())\n  File \"/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/transformers/generation/utils.py\", line 1155, in _validate_model_kwargs\n    raise ValueError(\nValueError: The following `model_kwargs` are not used by the model: ['image_sizes'] (note: typos in the generate arguments will also show up in this list)\nERROR conda.cli.main_run:execute(125): `conda run python -m new_models.workers.worker_llava_rad --image /home/s222393187/Dental/Tufts_Dental_Database/Radiographs/6.JPG --prompt-file /tmp/tmpzfirzi27.txt --max-new-tokens 250` failed. (See above for error)"
+        }
+      ]
+    }
+  }
+}

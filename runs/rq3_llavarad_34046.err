@@ -1,0 +1,28 @@
+[2026-09-18 10:16:19,302] [INFO] [real_accelerator.py:110:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Loading LLaVA from base model...
+Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [00:00<00:00,  4.19it/s]Downloading shards: 100%|██████████| 2/2 [00:00<00:00,  4.11it/s]Downloading shards: 100%|██████████| 2/2 [00:00<00:00,  4.12it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.42s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.57s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  5.00s/it]
+Some weights of LlavaLlamaForCausalLM were not initialized from the model checkpoint at lmsys/vicuna-7b-v1.5 and are newly initialized: ['model.mm_projector.0.bias', 'model.mm_projector.2.weight', 'model.mm_projector.2.bias', 'model.mm_projector.0.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading additional LLaVA weights...
+Loading LoRA weights...
+Merging LoRA weights...
+Model is loaded...
+Loading vision tower from HF Hub
+loaded llava_rad on cuda:0
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  37%|███▋      | 73/199 [00:00<00:00, 509.61it/s]Loading weights:  62%|██████▏   | 124/199 [00:00<00:00, 360.50it/s]Loading weights:  81%|████████▏ | 162/199 [00:00<00:00, 353.61it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 393.46it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.

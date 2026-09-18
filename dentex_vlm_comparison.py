@@ -828,8 +828,13 @@ def write_supplementary_csv(payload: dict[str, Any], out_path: Path) -> None:
         rows.append(row)
     if not rows:
         return
+    fieldnames = []
+    for r in rows:
+        for kk in r.keys():
+            if kk not in fieldnames:
+                fieldnames.append(kk)
     with out_path.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w = csv.DictWriter(f, fieldnames=fieldnames, restval="", extrasaction="ignore")
         w.writeheader()
         w.writerows(rows)
 

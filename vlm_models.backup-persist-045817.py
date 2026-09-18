@@ -92,6 +92,11 @@ MODEL_REGISTRY: dict[str, ModelSpec] = {
         architecture="radfm",
         notes="~14B radiology FM (3D-capable); needs the RadFM GitHub code + pytorch_model.zip checkpoint.",
     ),
+    "oralgpt_omni": ModelSpec(
+        key="oralgpt_omni", display_name="OralGPT-Omni-7B", repo_id="OralGPT/OralGPT-Omni-7B-Instruct",
+        architecture="hf_it2t",
+        notes="Dental MLLM initialised from Qwen2.5-VL-7B. VERIFY exact HF repo id (OralGPT org / Bryceee/OralGPT).",
+    ),
     "qwen25_vl": ModelSpec(
         key="qwen25_vl", display_name="Qwen2.5-VL-7B", repo_id="Qwen/Qwen2.5-VL-7B-Instruct",
         architecture="hf_it2t", notes="General VLM baseline; AutoModelForImageTextToText.",
@@ -128,16 +133,6 @@ CUSTOM_SUBPROCESS_BY_KEY = {
     "medgemma": ("new_models.workers.worker_medgemma", "medgemma-env"),
 }
 
-# Workers that support `--serve` (load the model ONCE, then stream one JSON
-# request per line over stdin). The bridge keeps one long-running process per
-# bundle for these, instead of re-spawning `conda run` per case. Legacy workers
-# not listed here keep the per-call spawn behaviour until they gain --serve.
-PERSISTENT_WORKERS = {
-    "new_models.workers.worker_medgemma",
-    "new_models.workers.worker_llava_rad",
-    "new_models.workers.worker_med_flamingo",
-}
-
 def _subprocess_route(spec: "ModelSpec"):
     """Return (worker_module, env) if this model runs out-of-process, else None.
     A per-key override wins over the per-architecture map."""
@@ -154,7 +149,7 @@ def _subprocess_route(spec: "ModelSpec"):
 # Reinforce verbatim-label output for these models only; the paper's four legacy
 # models already comply and are left untouched. Task-agnostic: it references
 # "the labels above", so it works for Tufts, DENTEX, and RQ3 prompts alike.
-_SCHEMA_MODELS = {"medgemma", "qwen25_vl", "internvl25", "llava_onevision"}
+_SCHEMA_MODELS = {"oralgpt_omni", "medgemma", "qwen25_vl", "internvl25", "llava_onevision"}
 _FORMAT_REINFORCE = (
     "\n\nFormatting rules (must follow exactly): reproduce every labelled line "
     "shown above verbatim, copying the label text before the colon and putting "
@@ -266,7 +261,7 @@ def load_model(
         model = Qwen2VLForConditionalGeneration.from_pretrained(spec.repo_id, **common)
     elif spec.architecture == "hf_it2t":
         # Unified modern HF vision-language interface (Qwen2.5-VL, LLaVA-OneVision,
-        # MedGemma/Gemma-3, InternVL2.5).
+        # MedGemma/Gemma-3, InternVL2.5, OralGPT-Omni).
         # device_map="auto" was placing these on CPU here, so load without it and
         # move the whole model onto the visible GPU explicitly.
         from transformers import AutoModelForImageTextToText
@@ -309,65 +304,14 @@ def _load_subprocess_bundle(spec: ModelSpec, dtype: torch.dtype) -> "ModelBundle
             f"Create it with the matching new_models/env_setup/ script and download weights, "
             f"then re-run. Guard prevents silent failures."
         )
-    extra = {"env": env, "worker": worker}  # env/worker from _subprocess_route
-    if worker in PERSISTENT_WORKERS:
-        import time
-        t0 = time.time()
-        proc = _start_persistent_worker(env, worker)
-        extra["proc"] = proc
-        load_seconds = time.time() - t0
-        return ModelBundle(spec=spec, model=None, processor=None,
-                           device=f"subprocess:{env}(persistent)", dtype=dtype,
-                           load_seconds=load_seconds, extra=extra)
     return ModelBundle(spec=spec, model=None, processor=None,
-                       device=f"subprocess:{env}", dtype=dtype, extra=extra)
-
-
-def _start_persistent_worker(env: str, worker: str):
-    """Launch `worker --serve` in `env` and block until it reports readiness.
-    Returns the Popen. Raises with the worker's error line if the load fails."""
-    import json, os, subprocess
-    proc = subprocess.Popen(
-        ["conda", "run", "--no-capture-output", "-n", env, "python", "-u", "-m", worker, "--serve"],
-        stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=None, text=True,
-        bufsize=1, cwd=str(Path(__file__).resolve().parent), env=os.environ.copy(),
-    )
-    line = proc.stdout.readline()  # blocks until the model has loaded
-    if not line:
-        proc.wait()
-        raise RuntimeError(
-            f"persistent worker {worker} (env {env}) exited during load; see the job .err log"
-        )
-    try:
-        msg = json.loads(line)
-    except Exception:
-        raise RuntimeError(f"persistent worker {worker} bad handshake: {line.strip()[:200]!r}")
-    if msg.get("error"):
-        raise RuntimeError(f"persistent worker {worker} load error: {msg['error']}")
-    if not msg.get("ready"):
-        raise RuntimeError(f"persistent worker {worker} did not report ready: {msg}")
-    return proc
+                       device=f"subprocess:{env}", dtype=dtype,
+                       extra={"env": env, "worker": worker})  # env/worker from _subprocess_route
 
 
 def _subprocess_generate(bundle: "ModelBundle", image_path, prompt: str, max_new_tokens: int) -> str:
-    import json, os, subprocess, tempfile
+    import os, subprocess, tempfile
     env, worker = bundle.extra["env"], bundle.extra["worker"]
-
-    proc = bundle.extra.get("proc")
-    if proc is not None:
-        if proc.poll() is not None:
-            raise RuntimeError(f"persistent worker {worker} died (rc={proc.returncode}); see .err log")
-        req = json.dumps({"image": str(image_path), "prompt": prompt,
-                          "max_new_tokens": int(max_new_tokens)})
-        proc.stdin.write(req + "\n"); proc.stdin.flush()
-        line = proc.stdout.readline()
-        if not line:
-            raise RuntimeError(f"persistent worker {worker} closed its output; see .err log")
-        resp = json.loads(line)
-        if "error" in resp:
-            raise RuntimeError(f"{worker} (persistent, env {env}): {resp['error']}")
-        return resp["reply"].strip()
-
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
         f.write(prompt); prompt_file = f.name
     try:
@@ -386,19 +330,6 @@ def _subprocess_generate(bundle: "ModelBundle", image_path, prompt: str, max_new
 def unload(bundle: ModelBundle | None) -> None:
     if bundle is None:
         return
-    proc = getattr(bundle, "extra", {}).get("proc") if getattr(bundle, "extra", None) else None
-    if proc is not None:
-        try:
-            if proc.stdin:
-                proc.stdin.close()
-            proc.terminate()
-            proc.wait(timeout=15)
-        except Exception:
-            try:
-                proc.kill()
-            except Exception:
-                pass
-        bundle.extra["proc"] = None
     if getattr(bundle, "model", None) is None:
         free_vram(); return
     try:

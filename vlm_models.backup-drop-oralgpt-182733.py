@@ -92,6 +92,11 @@ MODEL_REGISTRY: dict[str, ModelSpec] = {
         architecture="radfm",
         notes="~14B radiology FM (3D-capable); needs the RadFM GitHub code + pytorch_model.zip checkpoint.",
     ),
+    "oralgpt_omni": ModelSpec(
+        key="oralgpt_omni", display_name="OralGPT-Omni-7B", repo_id="OralGPT/OralGPT-Omni-7B-Instruct",
+        architecture="hf_it2t",
+        notes="Dental MLLM initialised from Qwen2.5-VL-7B. VERIFY exact HF repo id (OralGPT org / Bryceee/OralGPT).",
+    ),
     "qwen25_vl": ModelSpec(
         key="qwen25_vl", display_name="Qwen2.5-VL-7B", repo_id="Qwen/Qwen2.5-VL-7B-Instruct",
         architecture="hf_it2t", notes="General VLM baseline; AutoModelForImageTextToText.",
@@ -134,8 +139,6 @@ CUSTOM_SUBPROCESS_BY_KEY = {
 # not listed here keep the per-call spawn behaviour until they gain --serve.
 PERSISTENT_WORKERS = {
     "new_models.workers.worker_medgemma",
-    "new_models.workers.worker_llava_rad",
-    "new_models.workers.worker_med_flamingo",
 }
 
 def _subprocess_route(spec: "ModelSpec"):
@@ -154,7 +157,7 @@ def _subprocess_route(spec: "ModelSpec"):
 # Reinforce verbatim-label output for these models only; the paper's four legacy
 # models already comply and are left untouched. Task-agnostic: it references
 # "the labels above", so it works for Tufts, DENTEX, and RQ3 prompts alike.
-_SCHEMA_MODELS = {"medgemma", "qwen25_vl", "internvl25", "llava_onevision"}
+_SCHEMA_MODELS = {"oralgpt_omni", "medgemma", "qwen25_vl", "internvl25", "llava_onevision"}
 _FORMAT_REINFORCE = (
     "\n\nFormatting rules (must follow exactly): reproduce every labelled line "
     "shown above verbatim, copying the label text before the colon and putting "
@@ -266,7 +269,7 @@ def load_model(
         model = Qwen2VLForConditionalGeneration.from_pretrained(spec.repo_id, **common)
     elif spec.architecture == "hf_it2t":
         # Unified modern HF vision-language interface (Qwen2.5-VL, LLaVA-OneVision,
-        # MedGemma/Gemma-3, InternVL2.5).
+        # MedGemma/Gemma-3, InternVL2.5, OralGPT-Omni).
         # device_map="auto" was placing these on CPU here, so load without it and
         # move the whole model onto the visible GPU explicitly.
         from transformers import AutoModelForImageTextToText

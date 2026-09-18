@@ -1,0 +1,42 @@
+[2026-09-17 21:23:24,708] [INFO] [real_accelerator.py:110:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Loading LLaVA from base model...
+Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [00:00<00:00,  4.17it/s]Downloading shards: 100%|██████████| 2/2 [00:00<00:00,  4.09it/s]Downloading shards: 100%|██████████| 2/2 [00:00<00:00,  4.10it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.11s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.46s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.86s/it]
+Some weights of LlavaLlamaForCausalLM were not initialized from the model checkpoint at lmsys/vicuna-7b-v1.5 and are newly initialized: ['model.mm_projector.2.weight', 'model.mm_projector.2.bias', 'model.mm_projector.0.weight', 'model.mm_projector.0.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading additional LLaVA weights...
+Loading LoRA weights...
+Merging LoRA weights...
+Model is loaded...
+Loading vision tower from HF Hub
+loaded llava_rad on cuda:0
+[2026-09-17 22:49:30,986] [INFO] [real_accelerator.py:110:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Loading LLaVA from base model...
+Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [00:00<00:00,  4.07it/s]Downloading shards: 100%|██████████| 2/2 [00:00<00:00,  4.11it/s]Downloading shards: 100%|██████████| 2/2 [00:00<00:00,  4.10it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.25s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.51s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.92s/it]
+Some weights of LlavaLlamaForCausalLM were not initialized from the model checkpoint at lmsys/vicuna-7b-v1.5 and are newly initialized: ['model.mm_projector.0.bias', 'model.mm_projector.2.weight', 'model.mm_projector.0.weight', 'model.mm_projector.2.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading additional LLaVA weights...
+Loading LoRA weights...
+Merging LoRA weights...
+Model is loaded...
+Loading vision tower from HF Hub
+loaded llava_rad on cuda:0
+[2026-09-17 23:29:35,142] [INFO] [real_accelerator.py:110:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+/home/s222393187/.conda/envs/custom-vlms/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Loading LLaVA from base model...
+Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [00:00<00:00,  4.07it/s]Downloading shards: 100%|██████████| 2/2 [00:00<00:00,  4.16it/s]Downloading shards: 100%|██████████| 2/2 [00:00<00:00,  4.14it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.23s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.53s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.93s/it]
+Some weights of LlavaLlamaForCausalLM were not initialized from the model checkpoint at lmsys/vicuna-7b-v1.5 and are newly initialized: ['model.mm_projector.2.bias', 'model.mm_projector.0.weight', 'model.mm_projector.0.bias', 'model.mm_projector.2.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading additional LLaVA weights...
+Loading LoRA weights...
+Merging LoRA weights...
+Model is loaded...
+Loading vision tower from HF Hub
+loaded llava_rad on cuda:0

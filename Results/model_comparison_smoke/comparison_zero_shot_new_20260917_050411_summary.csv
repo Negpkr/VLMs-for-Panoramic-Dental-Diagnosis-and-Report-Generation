@@ -1,0 +1,2 @@
+Model,Cases,Strategy,Aggregation,missing_F1,present_F1,Macro_F1,Macro_F1_CI95_low,Macro_F1_CI95_high,Accuracy,Balanced_Accuracy,Mean_pred_per_case,Mean_GT_per_case,Sec_per_case,Status
+MedGemma-4B-it,6,zero_shot,pooled_slots,0.5511111111111111,0.36477987421383645,0.45794549266247375,0.3464508094645081,0.503030303030303,0.4739583333333333,0.4797979797979798,22.0,15.5,4.25919783115387,ok
