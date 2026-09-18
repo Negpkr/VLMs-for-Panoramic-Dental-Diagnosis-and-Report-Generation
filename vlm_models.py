@@ -82,11 +82,6 @@ MODEL_REGISTRY: dict[str, ModelSpec] = {
         architecture="hf_it2t",
         notes="Gemma-3 medical multimodal; AutoModelForImageTextToText. GATED: accept license + set HF_TOKEN.",
     ),
-    "med_flamingo": ModelSpec(
-        key="med_flamingo", display_name="Med-Flamingo", repo_id="med-flamingo/med-flamingo",
-        architecture="med_flamingo",
-        notes="OpenFlamingo-9B (CLIP ViT-L/14 + LLaMA-7B); needs open_flamingo lib + LLaMA-7B base weights.",
-    ),
     "radfm": ModelSpec(
         key="radfm", display_name="RadFM", repo_id="chaoyi-wu/RadFM",
         architecture="radfm",
@@ -112,7 +107,6 @@ MODEL_REGISTRY: dict[str, ModelSpec] = {
 CUSTOM_VLMS_ENV = os.environ.get("CUSTOM_VLMS_ENV", "custom-vlms")
 CUSTOM_SUBPROCESS = {
     "llava_rad":    "new_models.workers.worker_llava_rad",
-    "med_flamingo": "new_models.workers.worker_med_flamingo",
     "radfm":        "new_models.workers.worker_radfm",
 }
 def _env_for(arch: str) -> str:
@@ -135,7 +129,6 @@ CUSTOM_SUBPROCESS_BY_KEY = {
 PERSISTENT_WORKERS = {
     "new_models.workers.worker_medgemma",
     "new_models.workers.worker_llava_rad",
-    "new_models.workers.worker_med_flamingo",
 }
 
 def _subprocess_route(spec: "ModelSpec"):

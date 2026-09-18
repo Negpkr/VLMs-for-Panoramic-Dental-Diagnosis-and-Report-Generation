@@ -28,7 +28,6 @@ import os
 env=os.environ.get("CUSTOM_VLMS_ENV","custom-vlms")
 env_ok=(Path.home()/".conda/envs"/env).exists()
 print(f"== legacy custom (shared env '{env}' via subprocess workers) ==")
-for k in ["llava_rad","med_flamingo","radfm"]:
     per=os.environ.get(f"{k.upper()}_ENV",env); ok=(Path.home()/".conda/envs"/per).exists()
     print(f"  {k:<16} registered={'Y' if k in keys else 'N'}  env={per} exists={'Y' if ok else 'N'}  -> {'ready' if ok else 'run env_setup/setup_custom_vlms.sh'}")
 print("\nNOTE: 'needs download' clears after download_new_models.py; then run one smoke test per model at start.")

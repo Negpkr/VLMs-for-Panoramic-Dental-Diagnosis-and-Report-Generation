@@ -4,7 +4,7 @@ set -euo pipefail
 cd /home/s222393187/Dental
 source activate_env.sh
 OUT="${OUT:-Results/dentex_comparison_new}"
-MODELS="${MODELS:-medgemma qwen25_vl llava_onevision llava_rad med_flamingo}"
+MODELS="${MODELS:-medgemma qwen25_vl llava_onevision llava_rad}"
 SPLIT="${SPLIT:-qed}"
 STRATEGIES="${STRATEGIES:-zero_shot few_shot cot}"
 mkdir -p "$OUT" runs

@@ -14,7 +14,6 @@ REPOS = {
   "llava_onevision":("llava-hf/llava-onevision-qwen2-7b-ov-hf", "hf_it2t", "ungated"),
   # --- optional originals: need bespoke code + separate conda envs (not in default runs) ---
   "llava_rad":      ("microsoft/llava-rad",  "custom", "LLaVA-Rad codebase + BiomedCLIP-CXR"),
-  "med_flamingo":   ("med-flamingo/med-flamingo", "custom", "open_flamingo + LLaMA-7B base"),
   "radfm":          ("chaoyi-wu/RadFM",      "custom", "RadFM code + pytorch_model.zip (~14B)"),
 }
 def main() -> int:
