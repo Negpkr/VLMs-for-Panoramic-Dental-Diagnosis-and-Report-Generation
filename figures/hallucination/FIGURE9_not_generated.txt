@@ -1,0 +1,2 @@
+Figure 9 (Precision vs CHR) was intentionally not generated.
+Under this project's binary finding-matching rule, CHR = FP/(TP+FP) = 1 - Precision exactly, so a precision-vs-CHR scatter is a deterministic anti-diagonal (y = 1 - x) and carries no information beyond the precision bars (Figure 2) and the hallucination-vs-recall scatter (Figure 8). It is documented here rather than drawn.
