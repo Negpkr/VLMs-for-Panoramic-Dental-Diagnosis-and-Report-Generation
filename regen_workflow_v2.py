@@ -33,10 +33,12 @@ models=[("LLaVA-1.5-7B","general-purpose",BLUE,"#e8edf7"),("LLaVA-Med-v1.5-7B","
         ("HuatuoGPT-Vision-7B","medical",GREEN,"#e6f2e9"),("DentVLM","dental-specialised",CORAL,"#fbeee7"),
         ("Qwen2.5-VL-7B ★","general-purpose",BLUE,"#e8edf7"),("LLaVA-OneVision-7B ★","general-purpose",BLUE,"#e8edf7"),
         ("MedGemma-4B ★","medical (Gemma-3)",GREEN,"#e6f2e9"),("LLaVA-Rad ★","radiology-adapted",CORAL,"#fdf0e6")]
-bw=20.9; gap=1.8; x0=5.6
+bw=20.6; gap=1.8; x0=6.0
 for i,(nm,ty,ec,fc) in enumerate(models):
     row=i//4; col=i%4; x=x0+col*(bw+gap); y=83.0-row*6.4
-    titled(x,y,bw,5.4,nm,ty,ec,fc,tsize=8.2,ssize=7.2)
+    rbox(x,y,bw,5.4,fc,ec)
+    ax.text(x+bw/2,y+3.35,nm,ha="center",va="center",fontsize=8.2,fontweight="bold",color=ec)
+    ax.text(x+bw/2,y+1.55,ty,ha="center",va="center",fontsize=7.2,color="#333")
 ax.text(94.2,72.3,"★ newer\n   models",ha="right",va="center",fontsize=6.8,color=GREY)
 ax.text(6,70.0,"Prompting:",ha="left",va="center",fontsize=9,fontweight="bold",color=NAVY)
 px=17
@@ -45,28 +47,28 @@ for lab in ["Zero-shot","Few-shot","Chain-of-thought"]:
     rbox(px,68.6,w,2.8,"white",NAVY,lw=1.3,r=1.4); ax.text(px+w/2,70.0,lab,ha="center",va="center",fontsize=8.3,fontweight="bold",color=NAVY); px+=w+2.5
 ax.text(px+1,70.0,"effect analysed under RQ2",ha="left",va="center",fontsize=7.2,style="italic",color=GREY)
 # 4 inference / 5 parser
-titled(4,61,92,5.6,"4 · Inference harness","Slurm on Deakin GPU host · L40S / RTX 4500 Ada / A4000 / A100 · fp16 (bf16 for MedGemma) · per-model checkpointing → raw generations",BLUE,"#eef2f8",tsize=10,ssize=8)
-titled(4,53.5,92,5.6,"5 · Schema-constrained parser","Strict output schema · explicit numbering (Universal ↔ FDI) · empty / off-schema output kept as all-negative → per-tooth predictions",BLUE,"#eef2f8",tsize=10,ssize=8)
+titled(4,59.4,92,5.6,"4 · Inference harness","Slurm on Deakin GPU host · L40S / RTX 4500 Ada / A4000 / A100 · fp16 (bf16 for MedGemma) · per-model checkpointing → raw generations",BLUE,"#eef2f8",tsize=10,ssize=8)
+titled(4,50.8,92,5.6,"5 · Schema-constrained parser","Strict output schema · explicit numbering (Universal ↔ FDI) · empty / off-schema output kept as all-negative → per-tooth predictions",BLUE,"#eef2f8",tsize=10,ssize=8)
 # 6 scoring
-seclabel(4,50,"6 · SCORING & METRICS",PURPLE)
+seclabel(4,49.0,"6 · SCORING & METRICS",PURPLE)
 for x,t,s in [(4,"Patient-level classification","Macro-F1 · accuracy · specificity\nbalanced acc. · 95% patient bootstrap"),
               (35.5,"Multi-label pathology","Hamming · example / label F1 · Jaccard\nMacro-4 F1 vs no-finding baseline"),
               (67,"Report quality (RQ3)","BLEU-4 · ROUGE-1/2/L · BERTScore-F1\nKL & JS divergence")]:
-    titled(x,41,29,7.2,t,s,PURPLE,"#efeaf7",tsize=9,ssize=7.4)
-titled(4,32.6,92,6.8,"Hallucination & error-type audit","CHR = 1 − precision · hallucinations per image · correct-condition / wrong-tooth vs. unsupported localisation\nplain-prompt vs. schema-reinforced prompt ablation",RED,"#f7e9ea",tsize=9,ssize=7.5)
+    titled(x,40.6,29,7.2,t,s,PURPLE,"#efeaf7",tsize=9,ssize=7.4)
+titled(4,30.8,92,6.8,"Hallucination & error-type audit","CHR = 1 − precision · hallucinations per image · correct-condition / wrong-tooth vs. unsupported localisation\nplain-prompt vs. schema-reinforced prompt ablation",RED,"#f7e9ea",tsize=9,ssize=7.5)
 # 7 RQs
-seclabel(4,30.5,"7 · RESEARCH QUESTIONS",AMBER)
+seclabel(4,29.0,"7 · RESEARCH QUESTIONS",AMBER)
 for x,t,s in [(4,"RQ1 · Diagnostic performance","how do general / medical / dental VLMs compare?"),
               (35.5,"RQ2 · Prompting strategies","does zero / few / CoT change reliability?"),
               (67,"RQ3 · Report quality","how close are reports to expert references?")]:
-    titled(x,23,29,6.0,t,s,AMBER,"#fbf3d9",tsize=8.6,ssize=7.2)
+    titled(x,21.8,29,6.0,t,s,AMBER,"#fbf3d9",tsize=8.6,ssize=7.2)
 # 8 outputs
-rbox(4,12,92,7.6,"#e7f3ea",GREEN)
-ax.text(5.8,18.0,"8 · Outputs & synthesis",ha="left",va="center",fontsize=10,fontweight="bold",color=GREEN)
-ax.text(5.8,15.3,"Summary tables · per-class & strategy figures · CHR & divergence plots · per-case JSON → research analysis & manuscript",ha="left",va="center",fontsize=8,color="#333")
-ax.text(5.8,13.3,"Headline: medical instruction tuning & model recency > dental branding · newer general models match specialists · disease-level F1 near floor · CHR ≈ 0.9 on DENTEX",ha="left",va="center",fontsize=7.5,style="italic",color=GREEN)
-rbox(30,3.5,40,4.6,NAVY,NAVY,lw=0,r=2.3); ax.text(50,5.8,"Analysis · Discussion · Publication",ha="center",va="center",fontsize=12,fontweight="bold",color="white")
-for y1,y2 in [(109.4,104.3),(98.4,93.7),(67.9,66.8),(60.9,59.2),(53.4,48.4),(40.9,39.5),(32.4,29.4),(22.9,19.8),(11.9,8.2)]:
+rbox(4,11.2,92,7.6,"#e7f3ea",GREEN)
+ax.text(5.8,17.2,"8 · Outputs & synthesis",ha="left",va="center",fontsize=10,fontweight="bold",color=GREEN)
+ax.text(5.8,14.5,"Summary tables · per-class & strategy figures · CHR & divergence plots · per-case JSON → research analysis & manuscript",ha="left",va="center",fontsize=8,color="#333")
+ax.text(5.8,12.5,"Headline: medical instruction tuning & model recency > dental branding · newer general models match specialists · disease-level F1 near floor · CHR ≈ 0.9 on DENTEX",ha="left",va="center",fontsize=7.5,style="italic",color=GREEN)
+rbox(30,3.6,40,4.6,NAVY,NAVY,lw=0,r=2.3); ax.text(50,5.9,"Analysis · Discussion · Publication",ha="center",va="center",fontsize=12,fontweight="bold",color="white")
+for y1,y2 in [(109.4,104.3),(98.4,93.7),(67.9,65.1),(59.3,56.5),(50.7,47.9),(40.5,37.7),(30.7,27.9),(21.7,18.9),(11.1,8.3)]:
     arrow(y1,y2)
 plt.subplots_adjust(left=0.01,right=0.99,top=0.995,bottom=0.005)
 for ext in ("pdf","png"): fig.savefig(f"{OUT}/workflow_diagram.{ext}",dpi=200,bbox_inches="tight")
