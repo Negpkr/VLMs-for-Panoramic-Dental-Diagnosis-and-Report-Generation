@@ -13,14 +13,15 @@ def grouped(ax,data,title,baseline=None):
     for i,s in enumerate(STRAT):
         ax.bar(x+(i-1)*w,data[s],w,label=s,color=sc[i],edgecolor="black",linewidth=0.4)
     if baseline is not None:
-        ax.axhline(baseline,ls="--",lw=1,color="#b3261e"); ax.text(len(MODELS)-0.5,baseline+0.006,"no-finding baseline",ha="right",fontsize=7,color="#b3261e")
+        ax.axhline(baseline,ls="--",lw=1,color="#b3261e")
+        ax.text(-0.35,0.715,f"-- no-finding baseline ({baseline:.2f})",ha="left",va="top",fontsize=7,color="#b3261e")
     newer_shade(ax)
     ax.set_xticks(x); ax.set_xticklabels(MODELS,rotation=35,ha="right",fontsize=8)
     ax.set_ylabel("Macro F1"); ax.set_title(title,fontsize=10); ax.set_ylim(0,0.75); ax.legend(fontsize=8,ncol=3,loc="upper right",framealpha=0.9)
 fig,axes=plt.subplots(2,1,figsize=(7.0,7.4))
 grouped(axes[0],TUFTS,"Tufts missing-teeth detection (Macro F1)")
 grouped(axes[1],DENTEXA,"DENTEX abnormal-tooth detection (Macro F1)",baseline=0.459)
-axes[0].text(5.5,0.72,"newer models",fontsize=8,style="italic",ha="center",color="#a07800")
+axes[0].text(5.5,0.69,"newer models",fontsize=8,style="italic",ha="center",color="#a07800")
 plt.tight_layout()
 for e in("pdf","png"): fig.savefig(f"{OUT}/Figure3_model_strategy_macroF1.{e}",dpi=200,bbox_inches="tight")
 plt.close(fig)
@@ -50,10 +51,11 @@ plt.close(fig)
 # ---- Figure4 heatmaps (viridis) ----
 TM=np.array([[.221,.220,.141],[.077,.117,.024],[.243,.312,.263],[.002,.001,.001],[.323,.333,.295],[.156,.187,.053],[.163,.259,.174],[.322,.440,.270]])
 DA=np.array([[.109,.197,.013],[.000,.160,.002],[.149,.229,.197],[.001,.000,.000],[.277,.334,.213],[.032,.169,.174],[.147,.268,.089],[.097,.215,.040]])
-fig,axes=plt.subplots(1,2,figsize=(7.4,4.8))
+fig,axes=plt.subplots(1,2,figsize=(7.8,4.8),gridspec_kw={"wspace":0.10})
 for ax,mat,title in [(axes[0],TM,"Tufts: missing-tooth F1"),(axes[1],DA,"DENTEX: abnormal-tooth F1")]:
     im=ax.imshow(mat,cmap="viridis",vmin=0,vmax=0.55,aspect="auto")
-    ax.set_xticks(range(3)); ax.set_xticklabels(STRAT,fontsize=8); ax.set_yticks(range(8)); ax.set_yticklabels(MODELS,fontsize=8); ax.set_title(title,fontsize=10)
+    ax.set_xticks(range(3)); ax.set_xticklabels(STRAT,fontsize=8); ax.set_yticks(range(8))
+    ax.set_yticklabels(MODELS if ax is axes[0] else [""]*8,fontsize=8); ax.set_title(title,fontsize=10)
     for i in range(8):
         for j in range(3):
             v=mat[i,j]; ax.text(j,i,f"{v:.2f}",ha="center",va="center",fontsize=7,color=("white" if v<0.33 else "black"))

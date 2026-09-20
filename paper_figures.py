@@ -348,7 +348,7 @@ def figure2(out_dir: Path) -> list[Path]:
     disease_n = dx["disease_support"]
     multi = {int(k): v for k, v in (dx.get("multi_label_teeth") or {}).items()}
 
-    fig, axes = plt.subplots(1, 3, figsize=(11.4, 4.15), gridspec_kw={"width_ratios": [1.05, 1.35, 1.0]})
+    fig, axes = plt.subplots(1, 3, figsize=(12.2, 4.35), gridspec_kw={"width_ratios": [1.0, 1.55, 0.95]})
 
     ax = axes[0]
     vals = [tufts["missing_slots"], tufts["present_slots"]]
@@ -361,16 +361,19 @@ def figure2(out_dir: Path) -> list[Path]:
 
     ax = axes[1]
     names = [
-        "Unique\nabnormal\nteeth",
-        "No annotated\nfinding",
-        "Impacted\nGT+ slots",
-        "Caries\nGT+ slots",
-        "Deep Caries\nGT+ slots",
-        "Periapical\nGT+ slots",
+        "Unique abnormal teeth",
+        "No annotated finding",
+        "Impacted GT+",
+        "Caries GT+",
+        "Deep Caries GT+",
+        "Periapical GT+",
     ]
     counts_v = [dx["n_abnormal_teeth"], dx["n_no_finding_slots"]] + [disease_n.get(d, 0) for d in DISEASES]
     colors = [OKABE[3], OKABE[0], OKABE[2], OKABE[1], OKABE[5], OKABE[4]]
-    bars = ax.bar(names, counts_v, color=colors, width=0.72)
+    xpos = list(range(len(names)))
+    bars = ax.bar(xpos, counts_v, color=colors, width=0.72)
+    ax.set_xticks(xpos)
+    ax.set_xticklabels(names, rotation=22, ha="right", fontsize=7.5)
     for b, v in zip(bars, counts_v):
         ax.text(b.get_x() + b.get_width() / 2, v, f"{v:,}", ha="center", va="bottom", fontsize=7.5)
     ax.set_title(f"DENTEX QED scored  ({dx['n_images']} images; 3 train exemplars held out)")

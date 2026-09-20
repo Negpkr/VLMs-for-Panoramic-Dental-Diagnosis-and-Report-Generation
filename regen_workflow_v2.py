@@ -33,7 +33,7 @@ models=[("LLaVA-1.5-7B","general-purpose",BLUE,"#e8edf7"),("LLaVA-Med-v1.5-7B","
         ("HuatuoGPT-Vision-7B","medical",GREEN,"#e6f2e9"),("DentVLM","dental-specialised",CORAL,"#fbeee7"),
         ("Qwen2.5-VL-7B ★","general-purpose",BLUE,"#e8edf7"),("LLaVA-OneVision-7B ★","general-purpose",BLUE,"#e8edf7"),
         ("MedGemma-4B ★","medical (Gemma-3)",GREEN,"#e6f2e9"),("LLaVA-Rad ★","radiology-adapted",CORAL,"#fdf0e6")]
-bw=21.5; gap=1.83; x0=5.5
+bw=20.9; gap=1.8; x0=5.6
 for i,(nm,ty,ec,fc) in enumerate(models):
     row=i//4; col=i%4; x=x0+col*(bw+gap); y=83.0-row*6.4
     titled(x,y,bw,5.4,nm,ty,ec,fc,tsize=8.2,ssize=7.2)
@@ -53,7 +53,7 @@ for x,t,s in [(4,"Patient-level classification","Macro-F1 · accuracy · specifi
               (35.5,"Multi-label pathology","Hamming · example / label F1 · Jaccard\nMacro-4 F1 vs no-finding baseline"),
               (67,"Report quality (RQ3)","BLEU-4 · ROUGE-1/2/L · BERTScore-F1\nKL & JS divergence")]:
     titled(x,41,29,7.2,t,s,PURPLE,"#efeaf7",tsize=9,ssize=7.4)
-titled(4,34.2,92,5.0,"Hallucination & error-type audit","CHR = 1 − precision · hallucinations / image · correct-condition-wrong-tooth vs unsupported localisation · plain-vs-reinforced prompt ablation",RED,"#f7e9ea",tsize=9,ssize=7.5)
+titled(4,32.6,92,6.8,"Hallucination & error-type audit","CHR = 1 − precision · hallucinations per image · correct-condition / wrong-tooth vs. unsupported localisation\nplain-prompt vs. schema-reinforced prompt ablation",RED,"#f7e9ea",tsize=9,ssize=7.5)
 # 7 RQs
 seclabel(4,30.5,"7 · RESEARCH QUESTIONS",AMBER)
 for x,t,s in [(4,"RQ1 · Diagnostic performance","how do general / medical / dental VLMs compare?"),
@@ -66,7 +66,7 @@ ax.text(5.8,18.0,"8 · Outputs & synthesis",ha="left",va="center",fontsize=10,fo
 ax.text(5.8,15.3,"Summary tables · per-class & strategy figures · CHR & divergence plots · per-case JSON → research analysis & manuscript",ha="left",va="center",fontsize=8,color="#333")
 ax.text(5.8,13.3,"Headline: medical instruction tuning & model recency > dental branding · newer general models match specialists · disease-level F1 near floor · CHR ≈ 0.9 on DENTEX",ha="left",va="center",fontsize=7.5,style="italic",color=GREEN)
 rbox(30,3.5,40,4.6,NAVY,NAVY,lw=0,r=2.3); ax.text(50,5.8,"Analysis · Discussion · Publication",ha="center",va="center",fontsize=12,fontweight="bold",color="white")
-for y1,y2 in [(109.4,104.3),(98.4,93.7),(67.9,66.8),(60.9,59.2),(53.4,48.4),(40.9,39.4),(34.1,29.4),(22.9,19.8),(11.9,8.2)]:
+for y1,y2 in [(109.4,104.3),(98.4,93.7),(67.9,66.8),(60.9,59.2),(53.4,48.4),(40.9,39.5),(32.4,29.4),(22.9,19.8),(11.9,8.2)]:
     arrow(y1,y2)
 plt.subplots_adjust(left=0.01,right=0.99,top=0.995,bottom=0.005)
 for ext in ("pdf","png"): fig.savefig(f"{OUT}/workflow_diagram.{ext}",dpi=200,bbox_inches="tight")
