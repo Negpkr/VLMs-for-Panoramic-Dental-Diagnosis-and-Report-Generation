@@ -157,7 +157,10 @@ _FORMAT_REINFORCE = (
 )
 
 def _apply_prompt_style(spec: "ModelSpec", prompt: str) -> str:
-    if spec.key in _SCHEMA_MODELS:
+    # Schema reinforcement is an OPTIONAL, documented ablation, OFF by default so
+    # the canonical protocol matches the original 4 models (plain prompt, strict
+    # parser). Set VLM_SCHEMA_REINFORCE=1 to reproduce the reinforced runs.
+    if os.environ.get("VLM_SCHEMA_REINFORCE", "0") == "1" and spec.key in _SCHEMA_MODELS:
         return prompt + _FORMAT_REINFORCE
     return prompt
 

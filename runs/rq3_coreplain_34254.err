@@ -1,0 +1,47 @@
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.05s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.75s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.80s/it]
+loaded medgemma on cuda:0
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  12%|█▏        | 24/199 [00:00<00:00, 185.11it/s]Loading weights:  23%|██▎       | 45/199 [00:00<00:01, 147.95it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 657.46it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/729 [00:00<?, ?it/s]Loading weights:   0%|          | 1/729 [00:00<06:47,  1.79it/s]Loading weights:   7%|▋         | 52/729 [00:00<00:06, 98.41it/s]Loading weights:  10%|█         | 75/729 [00:00<00:05, 126.47it/s]Loading weights:  13%|█▎        | 98/729 [00:00<00:04, 130.82it/s]Loading weights:  16%|█▌        | 118/729 [00:01<00:04, 139.33it/s]Loading weights:  19%|█▉        | 137/729 [00:01<00:04, 131.53it/s]Loading weights:  22%|██▏       | 160/729 [00:01<00:03, 149.32it/s]Loading weights:  24%|██▍       | 178/729 [00:01<00:03, 149.00it/s]Loading weights:  27%|██▋       | 196/729 [00:01<00:03, 155.90it/s]Loading weights:  29%|██▉       | 213/729 [00:01<00:03, 154.95it/s]Loading weights:  32%|███▏      | 230/729 [00:01<00:03, 153.25it/s]Loading weights:  34%|███▎      | 246/729 [00:01<00:03, 146.37it/s]Loading weights:  37%|███▋      | 268/729 [00:02<00:02, 156.49it/s]Loading weights:  39%|███▉      | 284/729 [00:02<00:03, 146.50it/s]Loading weights:  42%|████▏     | 304/729 [00:02<00:02, 159.23it/s]Loading weights:  44%|████▍     | 321/729 [00:02<00:02, 161.41it/s]Loading weights:  57%|█████▋    | 413/729 [00:02<00:00, 371.09it/s]Loading weights:  77%|███████▋  | 559/729 [00:02<00:00, 674.40it/s]Loading weights:  99%|█████████▊| 719/729 [00:02<00:00, 913.42it/s]Loading weights: 100%|██████████| 729/729 [00:02<00:00, 269.69it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 20889.12it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Loading weights:   0%|          | 0/765 [00:00<?, ?it/s]Loading weights: 100%|██████████| 765/765 [00:00<00:00, 8492.09it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 12613.78it/s]
+[transformers] [1mBertModel LOAD REPORT[0m from: bert-base-uncased
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.

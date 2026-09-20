@@ -1,0 +1,2875 @@
+{
+  "timestamp": "20260918_145645",
+  "dataset": "DENTEX",
+  "split": "qed",
+  "tag": "zs_llavamed_check",
+  "n_cases": 10,
+  "case_ids": [
+    "train_0",
+    "train_2",
+    "train_3",
+    "train_4",
+    "train_5",
+    "train_6",
+    "train_7",
+    "train_8",
+    "train_9",
+    "train_10"
+  ],
+  "strategy": "zero_shot",
+  "prompt": "This is a panoramic dental X-ray.\nUse the FDI tooth numbering system ONLY (11-18, 21-28, 31-38, 41-48).\nDo NOT use Universal numbers 1-32.\n\nTask: find abnormal teeth and list every diagnosis that applies from:\nImpacted, Caries, Deep Caries, Periapical Lesion.\nOne tooth may have more than one diagnosis. If so, write a separate line for each diagnosis on that same FDI.\nOnly list teeth that clearly show one or more of these abnormalities.\nIf none, write None.\nThe Total abnormal line is formatting only and is not used for scoring.\n\nAnswer in exactly this format:\nFindings:\n<FDI>: <diagnosis>\n<FDI>: <diagnosis>\nTotal abnormal: <count>\nConfidence: High/Medium/Low\n\nExample:\nFindings:\n18: Impacted\n16: Caries\n36: Deep Caries\nTotal abnormal: 3\nConfidence: Medium",
+  "aggregation": "pooled_slots",
+  "fdi_teeth": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48
+  ],
+  "diseases": [
+    "Impacted",
+    "Caries",
+    "Deep Caries",
+    "Periapical Lesion"
+  ],
+  "none_label": "No annotated finding",
+  "disease_macro_classes": [
+    "Impacted",
+    "Caries",
+    "Deep Caries",
+    "Periapical Lesion"
+  ],
+  "pathology_scoring": "multi_label_one_vs_rest",
+  "heldout_exemplars": [
+    "train_1",
+    "train_14",
+    "train_123"
+  ],
+  "parser_version": "dentex-multilabel-v1",
+  "run_config": {
+    "dataset": "DENTEX",
+    "split": "qed",
+    "strategy": "zero_shot",
+    "parser_version": "dentex-multilabel-v1",
+    "parse_source": "Findings FDI lines only; Total abnormal ignored",
+    "pathology_scoring": "multi_label_one_vs_rest",
+    "aggregation": "pooled_slots",
+    "bootstrap_n": 5000,
+    "bootstrap_seed": 20260820,
+    "bootstrap_unit": "patient",
+    "bootstrap_patient_equals_image": true,
+    "bootstrap_note": "Independent sampling unit is the patient. All radiographs from the same patient are kept together in each replicate. On Tufts and DENTEX QED each image ID is unique and no multi-image patient identifier exists, so patient = image.",
+    "heldout_exemplars": [
+      "train_1",
+      "train_14",
+      "train_123"
+    ],
+    "few_shot_uses_exemplar_images": false
+  },
+  "gt_support": {
+    "n_images": 10,
+    "n_slots": 320,
+    "table_a": {
+      "n_images": 10,
+      "n_slots": 320,
+      "abnormal": 56,
+      "no_annotated_finding": 264,
+      "sum": 320,
+      "consistent": true
+    },
+    "table_b_gt_positive_slots": {
+      "Impacted": 11,
+      "Caries": 29,
+      "Deep Caries": 16,
+      "Periapical Lesion": 0
+    },
+    "diagnosis_positive_slots_sum": 56,
+    "Impacted": 11,
+    "Caries": 29,
+    "Deep Caries": 16,
+    "Periapical Lesion": 0
+  },
+  "models": {
+    "llava_med": {
+      "model_key": "llava_med",
+      "display_name": "LLaVA-Med-v1.5-7B",
+      "repo_id": "chaoyinshe/llava-med-v1.5-mistral-7b-hf",
+      "metrics": {
+        "n_cases": 10,
+        "n_failed": 0,
+        "aggregation": "pooled_slots",
+        "pathology_scoring": "multi_label_one_vs_rest",
+        "abnormal_tooth": {
+          "aggregation": "pooled_slots",
+          "n_slots": 320,
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.825,
+              "recall": 1.0,
+              "f1_score": 0.9041095890410958,
+              "specificity": 0.0,
+              "accuracy": 0.825,
+              "balanced_accuracy": 0.5,
+              "support": 264,
+              "undefined": false,
+              "tp": 264,
+              "fp": 56,
+              "fn": 0,
+              "tn": 0
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0,
+              "accuracy": 0.825,
+              "balanced_accuracy": 0.5,
+              "support": 56,
+              "undefined": false,
+              "tp": 0,
+              "fp": 0,
+              "fn": 56,
+              "tn": 264
+            }
+          },
+          "macro": {
+            "precision": 0.4125,
+            "recall": 0.5,
+            "f1_score": 0.4520547945205479,
+            "specificity": 0.5,
+            "accuracy": 0.825,
+            "balanced_accuracy": 0.5,
+            "f1_ci95": {
+              "low": 0.41391941391941395,
+              "high": 0.4736842105263158,
+              "mean": 0.4513664024306094,
+              "n_boot": 5000,
+              "unit": "patient",
+              "n_patients": 10,
+              "n_images": 10,
+              "max_images_per_patient": 1,
+              "patient_equals_image": true,
+              "note": "Independent sampling unit is the patient. All radiographs from the same patient are kept together in each replicate. On Tufts and DENTEX QED each image ID is unique and no multi-image patient identifier exists, so patient = image."
+            }
+          },
+          "macro_all_classes": {
+            "precision": 0.4125,
+            "recall": 0.5,
+            "f1_score": 0.4520547945205479,
+            "specificity": 0.5,
+            "accuracy": 0.825,
+            "balanced_accuracy": 0.5,
+            "f1_ci95": {
+              "low": 0.41391941391941395,
+              "high": 0.4736842105263158,
+              "mean": 0.4513664024306094,
+              "n_boot": 5000,
+              "unit": "patient",
+              "n_patients": 10,
+              "n_images": 10,
+              "max_images_per_patient": 1,
+              "patient_equals_image": true,
+              "note": "Independent sampling unit is the patient. All radiographs from the same patient are kept together in each replicate. On Tufts and DENTEX QED each image ID is unique and no multi-image patient identifier exists, so patient = image."
+            }
+          },
+          "accuracy": 0.825,
+          "balanced_accuracy": 0.5,
+          "confusion_matrix": [
+            [
+              264,
+              0
+            ],
+            [
+              56,
+              0
+            ]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "specificity": 1.0
+        },
+        "abnormal_tooth_patient_mean": {
+          "accuracy": 0.825,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1_score": 0.0,
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.825,
+              "recall": 1.0,
+              "f1_score": 0.8923834816097361,
+              "support": 26.4
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 5.6
+            }
+          },
+          "macro": {
+            "precision": 0.4125,
+            "recall": 0.5,
+            "f1_score": 0.44619174080486806
+          }
+        },
+        "per_disease": {
+          "Impacted": {
+            "aggregation": "pooled_slots",
+            "n_slots": 320,
+            "per_class": {
+              "other": {
+                "precision": 0.965625,
+                "recall": 1.0,
+                "f1_score": 0.9825119236883942,
+                "specificity": 0.0,
+                "accuracy": 0.965625,
+                "balanced_accuracy": 0.5,
+                "support": 309,
+                "undefined": false,
+                "tp": 309,
+                "fp": 11,
+                "fn": 0,
+                "tn": 0
+              },
+              "Impacted": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "specificity": 1.0,
+                "accuracy": 0.965625,
+                "balanced_accuracy": 0.5,
+                "support": 11,
+                "undefined": false,
+                "tp": 0,
+                "fp": 0,
+                "fn": 11,
+                "tn": 309
+              }
+            },
+            "macro": {
+              "precision": 0.4828125,
+              "recall": 0.5,
+              "f1_score": 0.4912559618441971,
+              "specificity": 0.5,
+              "accuracy": 0.965625,
+              "balanced_accuracy": 0.5
+            },
+            "macro_all_classes": {
+              "precision": 0.4828125,
+              "recall": 0.5,
+              "f1_score": 0.4912559618441971,
+              "specificity": 0.5,
+              "accuracy": 0.965625,
+              "balanced_accuracy": 0.5
+            },
+            "accuracy": 0.965625,
+            "balanced_accuracy": 0.5,
+            "confusion_matrix": [
+              [
+                309,
+                0
+              ],
+              [
+                11,
+                0
+              ]
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "specificity": 1.0
+          },
+          "Caries": {
+            "aggregation": "pooled_slots",
+            "n_slots": 320,
+            "per_class": {
+              "other": {
+                "precision": 0.909375,
+                "recall": 1.0,
+                "f1_score": 0.9525368248772504,
+                "specificity": 0.0,
+                "accuracy": 0.909375,
+                "balanced_accuracy": 0.5,
+                "support": 291,
+                "undefined": false,
+                "tp": 291,
+                "fp": 29,
+                "fn": 0,
+                "tn": 0
+              },
+              "Caries": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "specificity": 1.0,
+                "accuracy": 0.909375,
+                "balanced_accuracy": 0.5,
+                "support": 29,
+                "undefined": false,
+                "tp": 0,
+                "fp": 0,
+                "fn": 29,
+                "tn": 291
+              }
+            },
+            "macro": {
+              "precision": 0.4546875,
+              "recall": 0.5,
+              "f1_score": 0.4762684124386252,
+              "specificity": 0.5,
+              "accuracy": 0.909375,
+              "balanced_accuracy": 0.5
+            },
+            "macro_all_classes": {
+              "precision": 0.4546875,
+              "recall": 0.5,
+              "f1_score": 0.4762684124386252,
+              "specificity": 0.5,
+              "accuracy": 0.909375,
+              "balanced_accuracy": 0.5
+            },
+            "accuracy": 0.909375,
+            "balanced_accuracy": 0.5,
+            "confusion_matrix": [
+              [
+                291,
+                0
+              ],
+              [
+                29,
+                0
+              ]
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "specificity": 1.0
+          },
+          "Deep Caries": {
+            "aggregation": "pooled_slots",
+            "n_slots": 320,
+            "per_class": {
+              "other": {
+                "precision": 0.95,
+                "recall": 1.0,
+                "f1_score": 0.9743589743589743,
+                "specificity": 0.0,
+                "accuracy": 0.95,
+                "balanced_accuracy": 0.5,
+                "support": 304,
+                "undefined": false,
+                "tp": 304,
+                "fp": 16,
+                "fn": 0,
+                "tn": 0
+              },
+              "Deep Caries": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "specificity": 1.0,
+                "accuracy": 0.95,
+                "balanced_accuracy": 0.5,
+                "support": 16,
+                "undefined": false,
+                "tp": 0,
+                "fp": 0,
+                "fn": 16,
+                "tn": 304
+              }
+            },
+            "macro": {
+              "precision": 0.475,
+              "recall": 0.5,
+              "f1_score": 0.48717948717948717,
+              "specificity": 0.5,
+              "accuracy": 0.95,
+              "balanced_accuracy": 0.5
+            },
+            "macro_all_classes": {
+              "precision": 0.475,
+              "recall": 0.5,
+              "f1_score": 0.48717948717948717,
+              "specificity": 0.5,
+              "accuracy": 0.95,
+              "balanced_accuracy": 0.5
+            },
+            "accuracy": 0.95,
+            "balanced_accuracy": 0.5,
+            "confusion_matrix": [
+              [
+                304,
+                0
+              ],
+              [
+                16,
+                0
+              ]
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "specificity": 1.0
+          },
+          "Periapical Lesion": {
+            "aggregation": "pooled_slots",
+            "n_slots": 320,
+            "per_class": {
+              "other": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1_score": 1.0,
+                "specificity": 0.0,
+                "accuracy": 1.0,
+                "balanced_accuracy": 0.5,
+                "support": 320,
+                "undefined": false,
+                "tp": 320,
+                "fp": 0,
+                "fn": 0,
+                "tn": 0
+              },
+              "Periapical Lesion": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "specificity": 1.0,
+                "accuracy": 1.0,
+                "balanced_accuracy": 0.5,
+                "support": 0,
+                "undefined": true,
+                "tp": 0,
+                "fp": 0,
+                "fn": 0,
+                "tn": 320
+              }
+            },
+            "macro": {
+              "precision": 0.5,
+              "recall": 0.5,
+              "f1_score": 0.5,
+              "specificity": 0.5,
+              "accuracy": 1.0,
+              "balanced_accuracy": 0.5
+            },
+            "macro_all_classes": {
+              "precision": 0.5,
+              "recall": 0.5,
+              "f1_score": 0.5,
+              "specificity": 0.5,
+              "accuracy": 1.0,
+              "balanced_accuracy": 0.5
+            },
+            "accuracy": 1.0,
+            "balanced_accuracy": 0.5,
+            "confusion_matrix": [
+              [
+                320,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "specificity": 1.0
+          }
+        },
+        "per_disease_patient_mean": {
+          "Impacted": {
+            "accuracy": 0.965625,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0
+          },
+          "Caries": {
+            "accuracy": 0.909375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0
+          },
+          "Deep Caries": {
+            "accuracy": 0.95,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0
+          },
+          "Periapical Lesion": {
+            "accuracy": 1.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0
+          }
+        },
+        "disease_multiclass": {
+          "aggregation": "pooled_slots_one_vs_rest",
+          "n_slots": 320,
+          "per_class": {
+            "Impacted": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0,
+              "accuracy": 0.965625,
+              "balanced_accuracy": 0.5,
+              "support": 11,
+              "undefined": false,
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "tn": 309
+            },
+            "Caries": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0,
+              "accuracy": 0.909375,
+              "balanced_accuracy": 0.5,
+              "support": 29,
+              "undefined": false,
+              "tp": 0,
+              "fp": 0,
+              "fn": 29,
+              "tn": 291
+            },
+            "Deep Caries": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0,
+              "accuracy": 0.95,
+              "balanced_accuracy": 0.5,
+              "support": 16,
+              "undefined": false,
+              "tp": 0,
+              "fp": 0,
+              "fn": 16,
+              "tn": 304
+            },
+            "Periapical Lesion": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0,
+              "accuracy": 1.0,
+              "balanced_accuracy": 0.5,
+              "support": 0,
+              "undefined": true,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "tn": 320
+            },
+            "No annotated finding": {
+              "precision": 0.825,
+              "recall": 1.0,
+              "f1_score": 0.9041095890410958,
+              "specificity": 0.0,
+              "accuracy": 0.825,
+              "balanced_accuracy": 0.5,
+              "support": 264,
+              "undefined": false,
+              "tp": 264,
+              "fp": 56,
+              "fn": 0,
+              "tn": 0
+            }
+          },
+          "macro": {
+            "classes_used": [
+              "Impacted",
+              "Caries",
+              "Deep Caries"
+            ],
+            "classes_undefined": [
+              "Periapical Lesion"
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "specificity": 1.0,
+            "accuracy": 0.9416666666666668,
+            "balanced_accuracy": 0.5,
+            "f1_ci95": {
+              "low": 0.0,
+              "high": 0.0,
+              "mean": 0.0,
+              "n_boot": 5000,
+              "unit": "patient",
+              "n_patients": 10,
+              "n_images": 10,
+              "max_images_per_patient": 1,
+              "patient_equals_image": true,
+              "note": "Independent sampling unit is the patient. All radiographs from the same patient are kept together in each replicate. On Tufts and DENTEX QED each image ID is unique and no multi-image patient identifier exists, so patient = image."
+            }
+          },
+          "per_disease": {
+            "Impacted": {
+              "aggregation": "pooled_slots",
+              "n_slots": 320,
+              "per_class": {
+                "other": {
+                  "precision": 0.965625,
+                  "recall": 1.0,
+                  "f1_score": 0.9825119236883942,
+                  "specificity": 0.0,
+                  "accuracy": 0.965625,
+                  "balanced_accuracy": 0.5,
+                  "support": 309,
+                  "undefined": false,
+                  "tp": 309,
+                  "fp": 11,
+                  "fn": 0,
+                  "tn": 0
+                },
+                "Impacted": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1_score": 0.0,
+                  "specificity": 1.0,
+                  "accuracy": 0.965625,
+                  "balanced_accuracy": 0.5,
+                  "support": 11,
+                  "undefined": false,
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 11,
+                  "tn": 309
+                }
+              },
+              "macro": {
+                "precision": 0.4828125,
+                "recall": 0.5,
+                "f1_score": 0.4912559618441971,
+                "specificity": 0.5,
+                "accuracy": 0.965625,
+                "balanced_accuracy": 0.5
+              },
+              "macro_all_classes": {
+                "precision": 0.4828125,
+                "recall": 0.5,
+                "f1_score": 0.4912559618441971,
+                "specificity": 0.5,
+                "accuracy": 0.965625,
+                "balanced_accuracy": 0.5
+              },
+              "accuracy": 0.965625,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  309,
+                  0
+                ],
+                [
+                  11,
+                  0
+                ]
+              ],
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0
+            },
+            "Caries": {
+              "aggregation": "pooled_slots",
+              "n_slots": 320,
+              "per_class": {
+                "other": {
+                  "precision": 0.909375,
+                  "recall": 1.0,
+                  "f1_score": 0.9525368248772504,
+                  "specificity": 0.0,
+                  "accuracy": 0.909375,
+                  "balanced_accuracy": 0.5,
+                  "support": 291,
+                  "undefined": false,
+                  "tp": 291,
+                  "fp": 29,
+                  "fn": 0,
+                  "tn": 0
+                },
+                "Caries": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1_score": 0.0,
+                  "specificity": 1.0,
+                  "accuracy": 0.909375,
+                  "balanced_accuracy": 0.5,
+                  "support": 29,
+                  "undefined": false,
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 29,
+                  "tn": 291
+                }
+              },
+              "macro": {
+                "precision": 0.4546875,
+                "recall": 0.5,
+                "f1_score": 0.4762684124386252,
+                "specificity": 0.5,
+                "accuracy": 0.909375,
+                "balanced_accuracy": 0.5
+              },
+              "macro_all_classes": {
+                "precision": 0.4546875,
+                "recall": 0.5,
+                "f1_score": 0.4762684124386252,
+                "specificity": 0.5,
+                "accuracy": 0.909375,
+                "balanced_accuracy": 0.5
+              },
+              "accuracy": 0.909375,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  291,
+                  0
+                ],
+                [
+                  29,
+                  0
+                ]
+              ],
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0
+            },
+            "Deep Caries": {
+              "aggregation": "pooled_slots",
+              "n_slots": 320,
+              "per_class": {
+                "other": {
+                  "precision": 0.95,
+                  "recall": 1.0,
+                  "f1_score": 0.9743589743589743,
+                  "specificity": 0.0,
+                  "accuracy": 0.95,
+                  "balanced_accuracy": 0.5,
+                  "support": 304,
+                  "undefined": false,
+                  "tp": 304,
+                  "fp": 16,
+                  "fn": 0,
+                  "tn": 0
+                },
+                "Deep Caries": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1_score": 0.0,
+                  "specificity": 1.0,
+                  "accuracy": 0.95,
+                  "balanced_accuracy": 0.5,
+                  "support": 16,
+                  "undefined": false,
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 16,
+                  "tn": 304
+                }
+              },
+              "macro": {
+                "precision": 0.475,
+                "recall": 0.5,
+                "f1_score": 0.48717948717948717,
+                "specificity": 0.5,
+                "accuracy": 0.95,
+                "balanced_accuracy": 0.5
+              },
+              "macro_all_classes": {
+                "precision": 0.475,
+                "recall": 0.5,
+                "f1_score": 0.48717948717948717,
+                "specificity": 0.5,
+                "accuracy": 0.95,
+                "balanced_accuracy": 0.5
+              },
+              "accuracy": 0.95,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  304,
+                  0
+                ],
+                [
+                  16,
+                  0
+                ]
+              ],
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0
+            },
+            "Periapical Lesion": {
+              "aggregation": "pooled_slots",
+              "n_slots": 320,
+              "per_class": {
+                "other": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1_score": 1.0,
+                  "specificity": 0.0,
+                  "accuracy": 1.0,
+                  "balanced_accuracy": 0.5,
+                  "support": 320,
+                  "undefined": false,
+                  "tp": 320,
+                  "fp": 0,
+                  "fn": 0,
+                  "tn": 0
+                },
+                "Periapical Lesion": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1_score": 0.0,
+                  "specificity": 1.0,
+                  "accuracy": 1.0,
+                  "balanced_accuracy": 0.5,
+                  "support": 0,
+                  "undefined": true,
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0,
+                  "tn": 320
+                }
+              },
+              "macro": {
+                "precision": 0.5,
+                "recall": 0.5,
+                "f1_score": 0.5,
+                "specificity": 0.5,
+                "accuracy": 1.0,
+                "balanced_accuracy": 0.5
+              },
+              "macro_all_classes": {
+                "precision": 0.5,
+                "recall": 0.5,
+                "f1_score": 0.5,
+                "specificity": 0.5,
+                "accuracy": 1.0,
+                "balanced_accuracy": 0.5
+              },
+              "accuracy": 1.0,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  320,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0
+            }
+          },
+          "no_finding_binary": {
+            "aggregation": "pooled_slots",
+            "n_slots": 320,
+            "per_class": {
+              "has_finding": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "specificity": 1.0,
+                "accuracy": 0.825,
+                "balanced_accuracy": 0.5,
+                "support": 56,
+                "undefined": false,
+                "tp": 0,
+                "fp": 0,
+                "fn": 56,
+                "tn": 264
+              },
+              "No annotated finding": {
+                "precision": 0.825,
+                "recall": 1.0,
+                "f1_score": 0.9041095890410958,
+                "specificity": 0.0,
+                "accuracy": 0.825,
+                "balanced_accuracy": 0.5,
+                "support": 264,
+                "undefined": false,
+                "tp": 264,
+                "fp": 56,
+                "fn": 0,
+                "tn": 0
+              }
+            },
+            "macro": {
+              "precision": 0.4125,
+              "recall": 0.5,
+              "f1_score": 0.4520547945205479,
+              "specificity": 0.5,
+              "accuracy": 0.825,
+              "balanced_accuracy": 0.5
+            },
+            "macro_all_classes": {
+              "precision": 0.4125,
+              "recall": 0.5,
+              "f1_score": 0.4520547945205479,
+              "specificity": 0.5,
+              "accuracy": 0.825,
+              "balanced_accuracy": 0.5
+            },
+            "accuracy": 0.825,
+            "balanced_accuracy": 0.5,
+            "confusion_matrix": [
+              [
+                0,
+                56
+              ],
+              [
+                0,
+                264
+              ]
+            ],
+            "precision": 0.825,
+            "recall": 1.0,
+            "f1_score": 0.9041095890410958,
+            "specificity": 0.0
+          },
+          "accuracy": null,
+          "balanced_accuracy": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "specificity": 1.0
+        },
+        "disease_multiclass_patient_mean": {
+          "per_class": {
+            "Impacted": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 1.1
+            },
+            "Caries": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 2.9
+            },
+            "Deep Caries": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 1.6
+            },
+            "Periapical Lesion": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 0.0
+            }
+          },
+          "macro": {
+            "classes_used": [
+              "Impacted",
+              "Caries",
+              "Deep Caries"
+            ],
+            "classes_undefined": [
+              "Periapical Lesion"
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          }
+        },
+        "disease_exclusive_multiclass": {
+          "aggregation": "pooled_slots",
+          "n_slots": 320,
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.825,
+              "recall": 1.0,
+              "f1_score": 0.9041095890410958,
+              "specificity": 0.0,
+              "accuracy": 0.825,
+              "balanced_accuracy": 0.5,
+              "support": 264,
+              "undefined": false,
+              "tp": 264,
+              "fp": 56,
+              "fn": 0,
+              "tn": 0
+            },
+            "Impacted": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0,
+              "accuracy": 0.965625,
+              "balanced_accuracy": 0.5,
+              "support": 11,
+              "undefined": false,
+              "tp": 0,
+              "fp": 0,
+              "fn": 11,
+              "tn": 309
+            },
+            "Caries": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0,
+              "accuracy": 0.909375,
+              "balanced_accuracy": 0.5,
+              "support": 29,
+              "undefined": false,
+              "tp": 0,
+              "fp": 0,
+              "fn": 29,
+              "tn": 291
+            },
+            "Deep Caries": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0,
+              "accuracy": 0.95,
+              "balanced_accuracy": 0.5,
+              "support": 16,
+              "undefined": false,
+              "tp": 0,
+              "fp": 0,
+              "fn": 16,
+              "tn": 304
+            },
+            "Periapical Lesion": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "specificity": 1.0,
+              "accuracy": 1.0,
+              "balanced_accuracy": 0.5,
+              "support": 0,
+              "undefined": true,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "tn": 320
+            }
+          },
+          "macro": {
+            "classes_used": [
+              "Impacted",
+              "Caries",
+              "Deep Caries"
+            ],
+            "classes_undefined": [
+              "Periapical Lesion"
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0,
+            "specificity": 1.0,
+            "accuracy": 0.9416666666666668,
+            "balanced_accuracy": 0.5
+          },
+          "macro_all_classes": {
+            "precision": 0.16499999999999998,
+            "recall": 0.2,
+            "f1_score": 0.18082191780821916,
+            "specificity": 0.8,
+            "accuracy": 0.93,
+            "balanced_accuracy": 0.5
+          },
+          "accuracy": 0.825,
+          "balanced_accuracy": 0.0,
+          "confusion_matrix": [
+            [
+              264,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              11,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              29,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              16,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "specificity": 1.0
+        },
+        "disease_exclusive_multiclass_patient_mean": {
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.825,
+              "recall": 1.0,
+              "f1_score": 0.8923834816097361,
+              "support": 26.4
+            },
+            "Impacted": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 1.1
+            },
+            "Caries": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 2.9
+            },
+            "Deep Caries": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 1.6
+            },
+            "Periapical Lesion": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 0.0
+            }
+          },
+          "macro": {
+            "classes_used": [
+              "Impacted",
+              "Caries",
+              "Deep Caries"
+            ],
+            "classes_undefined": [
+              "Periapical Lesion"
+            ],
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1_score": 0.0
+          },
+          "macro_all_classes": {
+            "precision": 0.16499999999999998,
+            "recall": 0.2,
+            "f1_score": 0.17847669632194724
+          }
+        },
+        "gt_support": {
+          "Impacted": 11,
+          "Caries": 29,
+          "Deep Caries": 16,
+          "Periapical Lesion": 0
+        },
+        "bootstrap": {
+          "n_boot": 5000,
+          "seed": 20260820,
+          "unit": "patient",
+          "n_patients": 10,
+          "n_images": 10,
+          "patient_equals_image": true,
+          "note": "Independent sampling unit is the patient. All radiographs from the same patient are kept together in each replicate. On Tufts and DENTEX QED each image ID is unique and no multi-image patient identifier exists, so patient = image.",
+          "abnormal_macro_f1_ci95": {
+            "low": 0.41391941391941395,
+            "high": 0.4736842105263158,
+            "mean": 0.4513664024306094,
+            "n_boot": 5000,
+            "unit": "patient",
+            "n_patients": 10,
+            "n_images": 10,
+            "max_images_per_patient": 1,
+            "patient_equals_image": true,
+            "note": "Independent sampling unit is the patient. All radiographs from the same patient are kept together in each replicate. On Tufts and DENTEX QED each image ID is unique and no multi-image patient identifier exists, so patient = image."
+          },
+          "pathology_macro4_f1_ci95": {
+            "low": 0.0,
+            "high": 0.0,
+            "mean": 0.0,
+            "n_boot": 5000,
+            "unit": "patient",
+            "n_patients": 10,
+            "n_images": 10,
+            "max_images_per_patient": 1,
+            "patient_equals_image": true,
+            "note": "Independent sampling unit is the patient. All radiographs from the same patient are kept together in each replicate. On Tufts and DENTEX QED each image ID is unique and no multi-image patient identifier exists, so patient = image."
+          }
+        },
+        "per_sample": [
+          {
+            "accuracy": 0.9375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "tn": 30,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.9375,
+                "recall": 1.0,
+                "f1_score": 0.967741935483871,
+                "support": 30
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 2
+              }
+            },
+            "macro": {
+              "precision": 0.46875,
+              "recall": 0.5,
+              "f1_score": 0.4838709677419355
+            },
+            "case_id": "train_0"
+          },
+          {
+            "accuracy": 0.875,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "tn": 28,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.875,
+                "recall": 1.0,
+                "f1_score": 0.9333333333333333,
+                "support": 28
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 4
+              }
+            },
+            "macro": {
+              "precision": 0.4375,
+              "recall": 0.5,
+              "f1_score": 0.4666666666666667
+            },
+            "case_id": "train_2"
+          },
+          {
+            "accuracy": 0.34375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "tn": 11,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.34375,
+                "recall": 1.0,
+                "f1_score": 0.5116279069767442,
+                "support": 11
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 21
+              }
+            },
+            "macro": {
+              "precision": 0.171875,
+              "recall": 0.5,
+              "f1_score": 0.2558139534883721
+            },
+            "case_id": "train_3"
+          },
+          {
+            "accuracy": 0.9375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "tn": 30,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.9375,
+                "recall": 1.0,
+                "f1_score": 0.967741935483871,
+                "support": 30
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 2
+              }
+            },
+            "macro": {
+              "precision": 0.46875,
+              "recall": 0.5,
+              "f1_score": 0.4838709677419355
+            },
+            "case_id": "train_4"
+          },
+          {
+            "accuracy": 0.9375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "tn": 30,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.9375,
+                "recall": 1.0,
+                "f1_score": 0.967741935483871,
+                "support": 30
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 2
+              }
+            },
+            "macro": {
+              "precision": 0.46875,
+              "recall": 0.5,
+              "f1_score": 0.4838709677419355
+            },
+            "case_id": "train_5"
+          },
+          {
+            "accuracy": 0.875,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "tn": 28,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.875,
+                "recall": 1.0,
+                "f1_score": 0.9333333333333333,
+                "support": 28
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 4
+              }
+            },
+            "macro": {
+              "precision": 0.4375,
+              "recall": 0.5,
+              "f1_score": 0.4666666666666667
+            },
+            "case_id": "train_6"
+          },
+          {
+            "accuracy": 0.84375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "tn": 27,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.84375,
+                "recall": 1.0,
+                "f1_score": 0.9152542372881356,
+                "support": 27
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 5
+              }
+            },
+            "macro": {
+              "precision": 0.421875,
+              "recall": 0.5,
+              "f1_score": 0.4576271186440678
+            },
+            "case_id": "train_7"
+          },
+          {
+            "accuracy": 0.8125,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "tn": 26,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.8125,
+                "recall": 1.0,
+                "f1_score": 0.896551724137931,
+                "support": 26
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 6
+              }
+            },
+            "macro": {
+              "precision": 0.40625,
+              "recall": 0.5,
+              "f1_score": 0.4482758620689655
+            },
+            "case_id": "train_8"
+          },
+          {
+            "accuracy": 0.84375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "tn": 27,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.84375,
+                "recall": 1.0,
+                "f1_score": 0.9152542372881356,
+                "support": 27
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 5
+              }
+            },
+            "macro": {
+              "precision": 0.421875,
+              "recall": 0.5,
+              "f1_score": 0.4576271186440678
+            },
+            "case_id": "train_9"
+          },
+          {
+            "accuracy": 0.84375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "tn": 27,
+            "per_class": {
+              "No annotated finding": {
+                "precision": 0.84375,
+                "recall": 1.0,
+                "f1_score": 0.9152542372881356,
+                "support": 27
+              },
+              "abnormal": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1_score": 0.0,
+                "support": 5
+              }
+            },
+            "macro": {
+              "precision": 0.421875,
+              "recall": 0.5,
+              "f1_score": 0.4576271186440678
+            },
+            "case_id": "train_10"
+          }
+        ],
+        "mean_predicted_count": 0.0,
+        "mean_ground_truth_count": 5.6,
+        "mean_predicted_abnormal_teeth": 0.0,
+        "mean_ground_truth_abnormal_teeth": 5.6,
+        "mean_predicted_disease_labels": 0.0,
+        "mean_ground_truth_disease_labels": 5.6,
+        "mean_seconds_per_case": 0.8430129766464234
+      },
+      "results": [
+        {
+          "case_id": "train_0",
+          "file_name": "train_0.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "26": [
+              "Caries"
+            ],
+            "48": [
+              "Caries"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 3.9788827896118164,
+          "sample_metrics": {
+            "accuracy": 0.9375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "tn": 30
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.9375,
+              "recall": 1.0,
+              "f1_score": 0.967741935483871,
+              "support": 30
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 2
+            }
+          },
+          "macro": {
+            "precision": 0.46875,
+            "recall": 0.5,
+            "f1_score": 0.4838709677419355
+          },
+          "y_true_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "case_id": "train_2",
+          "file_name": "train_2.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "48": [
+              "Impacted"
+            ],
+            "17": [
+              "Caries"
+            ],
+            "36": [
+              "Caries"
+            ],
+            "38": [
+              "Impacted"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 0.5143630504608154,
+          "sample_metrics": {
+            "accuracy": 0.875,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "tn": 28
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.875,
+              "recall": 1.0,
+              "f1_score": 0.9333333333333333,
+              "support": 28
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 4
+            }
+          },
+          "macro": {
+            "precision": 0.4375,
+            "recall": 0.5,
+            "f1_score": 0.4666666666666667
+          },
+          "y_true_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "case_id": "train_3",
+          "file_name": "train_3.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "11": [
+              "Deep Caries"
+            ],
+            "13": [
+              "Caries"
+            ],
+            "14": [
+              "Caries"
+            ],
+            "15": [
+              "Caries"
+            ],
+            "16": [
+              "Deep Caries"
+            ],
+            "17": [
+              "Caries"
+            ],
+            "21": [
+              "Deep Caries"
+            ],
+            "22": [
+              "Deep Caries"
+            ],
+            "24": [
+              "Caries"
+            ],
+            "25": [
+              "Deep Caries"
+            ],
+            "26": [
+              "Deep Caries"
+            ],
+            "28": [
+              "Impacted"
+            ],
+            "34": [
+              "Deep Caries"
+            ],
+            "35": [
+              "Caries"
+            ],
+            "36": [
+              "Deep Caries"
+            ],
+            "37": [
+              "Caries"
+            ],
+            "38": [
+              "Impacted"
+            ],
+            "44": [
+              "Caries"
+            ],
+            "45": [
+              "Caries"
+            ],
+            "46": [
+              "Deep Caries"
+            ],
+            "47": [
+              "Caries"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 0.47479963302612305,
+          "sample_metrics": {
+            "accuracy": 0.34375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 21,
+            "tn": 11
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.34375,
+              "recall": 1.0,
+              "f1_score": 0.5116279069767442,
+              "support": 11
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 21
+            }
+          },
+          "macro": {
+            "precision": 0.171875,
+            "recall": 0.5,
+            "f1_score": 0.2558139534883721
+          },
+          "y_true_32": [
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "case_id": "train_4",
+          "file_name": "train_4.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "36": [
+              "Deep Caries"
+            ],
+            "15": [
+              "Caries"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 0.4795715808868408,
+          "sample_metrics": {
+            "accuracy": 0.9375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "tn": 30
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.9375,
+              "recall": 1.0,
+              "f1_score": 0.967741935483871,
+              "support": 30
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 2
+            }
+          },
+          "macro": {
+            "precision": 0.46875,
+            "recall": 0.5,
+            "f1_score": 0.4838709677419355
+          },
+          "y_true_32": [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "case_id": "train_5",
+          "file_name": "train_5.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "45": [
+              "Caries"
+            ],
+            "46": [
+              "Caries"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 0.4864506721496582,
+          "sample_metrics": {
+            "accuracy": 0.9375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 2,
+            "tn": 30
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.9375,
+              "recall": 1.0,
+              "f1_score": 0.967741935483871,
+              "support": 30
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 2
+            }
+          },
+          "macro": {
+            "precision": 0.46875,
+            "recall": 0.5,
+            "f1_score": 0.4838709677419355
+          },
+          "y_true_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "case_id": "train_6",
+          "file_name": "train_6.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "32": [
+              "Caries"
+            ],
+            "31": [
+              "Caries"
+            ],
+            "42": [
+              "Caries"
+            ],
+            "41": [
+              "Deep Caries"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 0.483579158782959,
+          "sample_metrics": {
+            "accuracy": 0.875,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 4,
+            "tn": 28
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.875,
+              "recall": 1.0,
+              "f1_score": 0.9333333333333333,
+              "support": 28
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 4
+            }
+          },
+          "macro": {
+            "precision": 0.4375,
+            "recall": 0.5,
+            "f1_score": 0.4666666666666667
+          },
+          "y_true_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "case_id": "train_7",
+          "file_name": "train_7.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "36": [
+              "Deep Caries"
+            ],
+            "38": [
+              "Impacted"
+            ],
+            "18": [
+              "Impacted"
+            ],
+            "28": [
+              "Impacted"
+            ],
+            "48": [
+              "Impacted"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 0.4865849018096924,
+          "sample_metrics": {
+            "accuracy": 0.84375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "tn": 27
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.84375,
+              "recall": 1.0,
+              "f1_score": 0.9152542372881356,
+              "support": 27
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 5
+            }
+          },
+          "macro": {
+            "precision": 0.421875,
+            "recall": 0.5,
+            "f1_score": 0.4576271186440678
+          },
+          "y_true_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "case_id": "train_8",
+          "file_name": "train_8.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "48": [
+              "Impacted"
+            ],
+            "18": [
+              "Deep Caries"
+            ],
+            "38": [
+              "Impacted"
+            ],
+            "28": [
+              "Impacted"
+            ],
+            "36": [
+              "Caries"
+            ],
+            "37": [
+              "Caries"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 0.5094039440155029,
+          "sample_metrics": {
+            "accuracy": 0.8125,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 6,
+            "tn": 26
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.8125,
+              "recall": 1.0,
+              "f1_score": 0.896551724137931,
+              "support": 26
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 6
+            }
+          },
+          "macro": {
+            "precision": 0.40625,
+            "recall": 0.5,
+            "f1_score": 0.4482758620689655
+          },
+          "y_true_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "case_id": "train_9",
+          "file_name": "train_9.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "48": [
+              "Deep Caries"
+            ],
+            "17": [
+              "Deep Caries"
+            ],
+            "16": [
+              "Caries"
+            ],
+            "15": [
+              "Deep Caries"
+            ],
+            "43": [
+              "Caries"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 0.5193767547607422,
+          "sample_metrics": {
+            "accuracy": 0.84375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "tn": 27
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.84375,
+              "recall": 1.0,
+              "f1_score": 0.9152542372881356,
+              "support": 27
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 5
+            }
+          },
+          "macro": {
+            "precision": 0.421875,
+            "recall": 0.5,
+            "f1_score": 0.4576271186440678
+          },
+          "y_true_32": [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "case_id": "train_10",
+          "file_name": "train_10.png",
+          "response": "",
+          "raw_model_output": "",
+          "parser_version": "dentex-multilabel-v1",
+          "predicted_findings": {},
+          "ground_truth_findings": {
+            "37": [
+              "Caries"
+            ],
+            "36": [
+              "Caries"
+            ],
+            "45": [
+              "Caries"
+            ],
+            "46": [
+              "Caries"
+            ],
+            "47": [
+              "Caries"
+            ]
+          },
+          "confidence": "Medium",
+          "seconds": 0.497117280960083,
+          "sample_metrics": {
+            "accuracy": 0.84375,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 1.0,
+            "balanced_accuracy": 0.5,
+            "f1_score": 0.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 5,
+            "tn": 27
+          },
+          "per_class": {
+            "No annotated finding": {
+              "precision": 0.84375,
+              "recall": 1.0,
+              "f1_score": 0.9152542372881356,
+              "support": 27
+            },
+            "abnormal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1_score": 0.0,
+              "support": 5
+            }
+          },
+          "macro": {
+            "precision": 0.421875,
+            "recall": 0.5,
+            "f1_score": 0.4576271186440678
+          },
+          "y_true_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0
+          ],
+          "y_pred_32": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  }
+}
